@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>S-IT LAN Device Scanner</title>
+<style>
+body{
+    font-family: Segoe UI, Arial, sans-serif;
+    margin:0;
+    background:#f4f6f8;
+    color:#2c3e50;
+}
+header{
+    background:#2c3e50;
+    color:white;
+    padding:40px 20px;
+    text-align:center;
+}
+header h1{
+    margin:0;
+    font-size:42px;
+}
+header p{
+    font-size:20px;
+    margin-top:10px;
+}
+.download-btn{
+    display:inline-block;
+    margin-top:20px;
+    padding:14px 28px;
+    background:#27ae60;
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    border-radius:6px;
+}
+section{
+    max-width:1200px;
+    margin:auto;
+    padding:40px 20px;
+}
+.features{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+.card{
+    background:white;
+    padding:20px;
+    border-radius:8px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.08);
+}
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
+    gap:20px;
+}
+.gallery img{
+    width:100%;
+    border-radius:8px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.12);
+}
+footer{
+    background:#2c3e50;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:40px;
+}
+</style>
+</head>
+<body>
+
+<header>
+    <h1>S-IT LAN Device Scanner</h1>
+    <p>Professioneller LAN- und WLAN-Scanner für Windows</p>
+    <a class="download-btn" href="https://github.com/SattlerIT/sit-lanscanner/releases">
+        Download aktuelle Version
+    </a>
+</header>
+
+<section>
+    <h2>Leistungsmerkmale</h2>
+    <div class="features">
+        <div class="card">
+            <h3>Netzwerk-Scan</h3>
+            <p>Erkennt Geräte, Hersteller, Betriebssysteme und offene Ports im LAN und WLAN.</p>
+        </div>
+        <div class="card">
+            <h3>Internet-Test</h3>
+            <p>Misst Ping, Download und Upload inklusive Testprotokoll.</p>
+        </div>
+        <div class="card">
+            <h3>LAN-Performance</h3>
+            <p>Live-Durchsatztest mit Schreib- und Leseraten für Netzwerkfreigaben.</p>
+        </div>
+        <div class="card">
+    <h3>LOG-Manager</h3>
+    <p>Integrierter LOG-Manager mit zahlreichen Funktionen zur Auswertung, Archivierung und HTML-Report-Erstellung.</p>
+</div>
+    </div>
+</section>
+
+<section>
+    <h2>Screenshots</h2>
+    <div class="gallery">
+        <img src="screenshot-main.png" alt="Hauptansicht">
+        <img src="screenshot-config.png" alt="Konfiguration">
+        <img src="screenshot-speedtest.png" alt="Speedtest">
+        <img src="screenshot-performance.png" alt="LAN Performance">
+    </div>
+</section>
+
+<section>
+    <h2>Download & Dokumentation</h2>
+    <p>
+        Die aktuelle Version, Hilfe-Datei und Changelog findest du im
+        <a href="https://github.com/SattlerIT/sit-lanscanner/releases">Release-Bereich</a>.
+    </p>
+</section>
+
+<footer>
+    © 2026 Hans Udo Sattler · Sattler IT-Service
+</footer>
+
+</body>
+</html>
