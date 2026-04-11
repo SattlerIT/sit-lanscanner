@@ -3,209 +3,400 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>S-IT LAN Device Scanner</title>
+<title>S-IT LAN Device Scanner – Professioneller Netzwerk-Scanner für Windows</title>
 <link rel="icon" type="image/x-icon" href="s-it-icon140.ico">
 <style>
-body{
-    font-family: Segoe UI, Arial, sans-serif;
-    margin:0;
-    background:#f4f6f8;
-    color:#2c3e50;
-}
-header{
-    background:#2c3e50;
-    color:white;
-    padding:40px 20px;
-    text-align:center;
-}
-header h1{
-    margin:0;
-    font-size:42px;
-}
-header p{
-    font-size:20px;
-    margin-top:10px;
-}
-.download-btn{
-    display:inline-block;
-    margin-top:20px;
-    padding:14px 28px;
-    background:#27ae60;
-    color:white;
-    text-decoration:none;
-    font-weight:bold;
-    border-radius:6px;
-}
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:40px 20px;
-}
-.features{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-    gap:20px;
-}
-.card{
-    background:white;
-    padding:20px;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.08);
-}
-.gallery{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(500px,1fr));
-    gap:20px;
-}
-.gallery img{
-    width:100%;
-    border-radius:8px;
-    box-shadow:0 2px 8px rgba(0,0,0,0.12);
-}
-footer{
-    background:#2c3e50;
-    color:white;
-    text-align:center;
-    padding:20px;
-    margin-top:40px;
-}
+  :root {
+    --primary:   #2C3E50;
+    --success:   #27AE60;
+    --info:      #3498DB;
+    --warning:   #F39C12;
+    --danger:    #E74C3C;
+    --light:     #ECF0F1;
+    --bg:        #F5F5F5;
+    --white:     #FFFFFF;
+    --text:      #2C3E50;
+    --muted:     #7F8C8D;
+    --border:    #BDC3C7;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    font-size: 15px;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+  }
+
+  /* ── HEADER ── */
+  header {
+    background: var(--primary);
+    color: var(--white);
+    padding: 48px 40px 40px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+  header p.tagline {
+    font-size: 16px;
+    color: var(--light);
+    margin-bottom: 28px;
+  }
+  .btn-download {
+    display: inline-block;
+    background: var(--success);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    padding: 13px 32px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .btn-download:hover { background: #219150; }
+
+  /* ── NAV ── */
+  nav {
+    background: #34495E;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+  }
+  nav a {
+    color: var(--light);
+    text-decoration: none;
+    padding: 12px 22px;
+    font-size: 13px;
+    transition: background 0.2s;
+  }
+  nav a:hover { background: var(--primary); color: var(--white); }
+
+  /* ── MAIN ── */
+  main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  h2 {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--primary);
+    border-bottom: 3px solid var(--info);
+    padding-bottom: 8px;
+    margin: 48px 0 20px;
+  }
+  h2:first-child { margin-top: 0; }
+
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--primary);
+    margin: 18px 0 6px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  /* ── FEATURE CARDS ── */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    margin: 24px 0;
+  }
+  .feature-card {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 24px 20px;
+    border-top: 4px solid var(--info);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  .feature-card .icon {
+    font-size: 28px;
+    margin-bottom: 10px;
+    display: block;
+  }
+  .feature-card h3 { margin-top: 0; }
+  .feature-card p  { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* ── SCREENSHOTS ── */
+  .screenshots {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+  .screenshots img {
+    width: 100%;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+    display: block;
+  }
+
+  /* ── SYSREQ TABLE ── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+  th {
+    background: var(--primary);
+    color: var(--white);
+    padding: 10px 16px;
+    text-align: left;
+    font-weight: 600;
+  }
+  td { padding: 9px 16px; border-bottom: 1px solid var(--border); }
+  tr:nth-child(even) td { background: #F0F3F4; }
+
+  /* ── NOTICE BOXES ── */
+  .note {
+    background: #EBF5FB;
+    border-left: 4px solid var(--info);
+    padding: 14px 18px;
+    border-radius: 3px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .warn {
+    background: #FEF9E7;
+    border-left: 4px solid var(--warning);
+    padding: 14px 18px;
+    border-radius: 3px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+  .ok {
+    background: #EAFAF1;
+    border-left: 4px solid var(--success);
+    padding: 14px 18px;
+    border-radius: 3px;
+    margin: 16px 0;
+    font-size: 14px;
+  }
+
+  /* ── CHANGELOG ── */
+  .changelog-item {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 20px 24px;
+    margin-bottom: 14px;
+    border-left: 4px solid var(--success);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .changelog-item h3 { margin: 0 0 8px; }
+  .changelog-item p  { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* ── MENTIONS ── */
+  .mentions {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+  .mention-badge {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 16px 24px;
+    border-left: 4px solid var(--info);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    font-size: 14px;
+  }
+  .mention-badge a { color: var(--info); font-weight: 600; text-decoration: none; }
+  .mention-badge a:hover { text-decoration: underline; }
+
+  /* ── DONATE ── */
+  .donate-box {
+    background: var(--white);
+    border-radius: 6px;
+    padding: 28px 32px;
+    text-align: center;
+    border-top: 4px solid var(--warning);
+    box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+    margin-top: 20px;
+  }
+  .donate-box p { color: var(--muted); font-size: 14px; margin-bottom: 18px; }
+  .btn-donate {
+    display: inline-block;
+    background: var(--warning);
+    color: var(--white);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 11px 28px;
+    border-radius: 4px;
+    transition: background 0.2s;
+  }
+  .btn-donate:hover { background: #d68910; }
+
+  /* ── FOOTER ── */
+  footer {
+    background: var(--primary);
+    color: var(--light);
+    text-align: center;
+    padding: 22px 40px;
+    font-size: 13px;
+    line-height: 1.9;
+  }
+  footer strong { color: var(--white); }
+  footer a { color: var(--light); }
 </style>
 </head>
 <body>
 
 <header>
-    <h1>S-IT LAN Device Scanner</h1>
-    <p>Professioneller LAN- und WLAN-Scanner für Windows</p>
-    <a class="download-btn" href="https://github.com/SattlerIT/sit-lanscanner/releases">
-        Download aktuelle Version
-    </a>
+  <h1>S-IT LAN Device Scanner</h1>
+  <p class="tagline">Professioneller LAN- und WLAN-Scanner &nbsp;&ndash;&nbsp; Netzwerkgeräte erkennen, analysieren und dokumentieren</p>
+  <a class="btn-download" href="https://github.com/SattlerIT/sit-lanscanner/releases">⬇ Download aktuelle Version</a>
 </header>
 
-<section>
-    <h2>Leistungsmerkmale</h2>
-    <div class="features">
-        <div class="card">
-            <h3>Netzwerk-Scan</h3>
-            <p>Erkennt Geräte, Hersteller, Betriebssysteme und offene Ports im LAN und WLAN.</p>
-        </div>
-        <div class="card">
-            <h3>Internet-Test</h3>
-            <p>Misst Ping, Download und Upload inklusive Testprotokoll.</p>
-        </div>
-        <div class="card">
-            <h3>LAN-Performance</h3>
-            <p>Live-Durchsatztest mit Schreib- und Leseraten für Netzwerkfreigaben.</p>
-        </div>
-        <div class="card">
-    <h3>LOG-Manager</h3>
-    <p>Integrierter LOG-Manager mit zahlreichen Funktionen zur Auswertung, Archivierung und HTML-Report-Erstellung.</p>
-</div>
-    </div>
-</section>
+<nav>
+  <a href="#leistung">Leistungsmerkmale</a>
+  <a href="#screenshots">Screenshots</a>
+  <a href="#download">Download</a>
+  <a href="#system">Systemanforderungen</a>
+  <a href="#sicherheit">Sicherheitshinweis</a>
+  <a href="#changelog">Changelog</a>
+  <a href="#erwaehnung">Erwähnungen</a>
+  <a href="#kontakt">Kontakt</a>
+</nav>
 
-<section>
-    <h2>Screenshots</h2>
-    <div class="gallery">
-        <img src="screenshot-main.png" alt="Geräteliste mit erkannten Netzwerkgeräten, Herstellern und Betriebssystemen">
-        <img src="screenshot-config.png" alt="Konfiguration">
-        <img src="screenshot-speedtest.png" alt="Speedtest">
-        <img src="screenshot-performance.png" alt="LAN Performance">
-    </div>
-</section>
+<main>
 
-<section>
-    <h2>Download & Dokumentation</h2>
-    <p>
-        Die aktuelle Version, Hilfe-Datei und Changelog findest du im
-        <a href="https://github.com/SattlerIT/sit-lanscanner/releases">Release-Bereich</a>.
-    </p>
-</section>
+  <h2 id="leistung">Leistungsmerkmale</h2>
+
+  <div class="features">
+    <div class="feature-card">
+      <span class="icon">🔍</span>
+      <h3>Netzwerk-Scan</h3>
+      <p>Erkennt Geräte, Hersteller (OUI-Datenbank), Betriebssysteme und offene Ports im LAN und WLAN – inklusive Intensiv-Scan mit Npcap.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🌐</span>
+      <h3>Internet-Test</h3>
+      <p>Misst Ping, Download und Upload mit Testprotokoll – ideal zur Dokumentation beim Kunden.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📈</span>
+      <h3>LAN-Performance</h3>
+      <p>Live-Durchsatztest für Netzwerkfreigaben mit Schreib- und Leseraten und grafischer Anzeige.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📋</span>
+      <h3>LOG-Manager</h3>
+      <p>Integrierter LOG-Manager zur Auswertung, Archivierung und HTML-Report-Erstellung aller Scan-Ergebnisse.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">📡</span>
+      <h3>WLAN-Analyse</h3>
+      <p>WLAN-Karte mit SSID, Signalstärke, Verbindungsrate und Empfangsrate direkt aus netsh – ohne Drittanbieter-Software.</p>
+    </div>
+    <div class="feature-card">
+      <span class="icon">🔄</span>
+      <h3>OUI-Updater</h3>
+      <p>Integriertes Tool zur Aktualisierung der Hersteller-Datenbank – stets aktuelle Geräteerkennung auf Knopfdruck.</p>
+    </div>
+  </div>
+
+  <h2 id="screenshots">Screenshots</h2>
+  <div class="screenshots">
+    <img src="screenshot-main.png" alt="Geräteliste mit erkannten Netzwerkgeräten, Herstellern und Betriebssystemen">
+    <img src="screenshot-config.png" alt="Konfiguration">
+    <img src="screenshot-speedtest.png" alt="Speedtest">
+    <img src="screenshot-performance.png" alt="LAN Performance">
+  </div>
+
+  <h2 id="download">Download &amp; Dokumentation</h2>
+  <p>Die aktuelle Version, Hilfe-Datei und Changelog findest du im <a href="https://github.com/SattlerIT/sit-lanscanner/releases">Release-Bereich auf GitHub</a>.</p>
+
+  <div class="ok">
+    <strong>Setup inklusive:</strong> Das Paket enthält einen Installer und Deinstaller für eine saubere Windows-Integration &ndash; inklusive Eintrag in der Systemsteuerung unter „Programme und Features".
+  </div>
+
+  <div class="note">
+    <strong>Npcap empfohlen:</strong> Für den erweiterten ARP- und Intensiv-Scan wird <a href="https://npcap.com" target="_blank">Npcap</a> benötigt. Der Basis-Scan funktioniert auch ohne zusätzliche Komponenten.
+  </div>
+
+  <h2 id="system">Systemanforderungen</h2>
+  <table>
+    <tr><th>Komponente</th><th>Anforderung</th></tr>
+    <tr><td>Betriebssystem</td><td>Windows 10 / Windows 11 (64-Bit)</td></tr>
+    <tr><td>Rechte</td><td>Administratorrechte für den Intensivmodus erforderlich</td></tr>
+    <tr><td>Optional</td><td>Npcap für erweiterten ARP- und Intensiv-Scan</td></tr>
+    <tr><td>Lieferumfang</td><td>Setup, Deinstaller, Hilfe-Datei und ChangeLog</td></tr>
+  </table>
+
+  <h2 id="sicherheit">Sicherheits- und Installationshinweis</h2>
+
+  <h3>Hinweis zu Virenscannern &amp; SmartScreen</h3>
+  <p>Da es sich um unabhängig entwickelte Windows-Tools handelt, kann es vorkommen, dass Windows SmartScreen oder installierte Internet-Security-Programme die Datei zunächst als unbekannt einstufen.</p>
+  <p>In diesem Fall fügen Sie das Programm bitte als <strong>vertrauenswürdig</strong> bzw. als <strong>Ausnahme</strong> in Ihrer Sicherheitssoftware hinzu. Gegebenenfalls muss der Windows SmartScreen-Filter einmalig bestätigt oder vorübergehend deaktiviert werden.</p>
+
+  <div class="warn">
+    Alle bereitgestellten Dateien stammen direkt von <strong>Sattler IT-Service</strong> und werden ausschließlich über die offizielle GitHub-Seite veröffentlicht. <strong>Tipp:</strong> Nach der ersten Freigabe läuft das Tool in der Regel dauerhaft ohne weitere Warnmeldungen.
+  </div>
+
+  <h2 id="changelog">Neu in Version 3.22.14</h2>
+
+  <div class="changelog-item">
+    <h3>Verbesserte WLAN-Erkennung</h3>
+    <p>WLAN-Karte mit SSID, Signalstärke, Verbindungs- und Empfangsrate aus netsh – zuverlässige Anzeige auch ohne Administratorrechte.</p>
+  </div>
+  <div class="changelog-item">
+    <h3>Zweispaltige LAN-Performance-Ansicht</h3>
+    <p>Neue Aufteilung: links Durchsatz-Steuerung und Messwerte, rechts Verbindungs- und WLAN-Karte für bessere Übersicht.</p>
+  </div>
+  <div class="changelog-item">
+    <h3>Optimierter LOG-Manager</h3>
+    <p>Verbessertes HTML-Report-Format, zuverlässigere Öffnung nach Scan-Abschluss und stabilisiertes Verhalten bei mehrfachem Aufruf.</p>
+  </div>
+  <div class="changelog-item">
+    <h3>OUI-Updater integriert</h3>
+    <p>Hersteller-Datenbank lässt sich direkt aus dem Programm heraus aktualisieren – mit INI-basierter Pfadspeicherung und Protokolldatei.</p>
+  </div>
+  <div class="changelog-item">
+    <h3>Zahlreiche Fehlerbehebungen</h3>
+    <p>WLAN-Adapter nicht mehr fälschlich als LAN erkannt, Encoding-Probleme bei Umlauten in netsh behoben, custom Gerätezuweisungen ohne Dopplungen.</p>
+  </div>
+
+  <h2 id="erwaehnung">Erwähnungen &amp; Reviews</h2>
+  <div class="mentions">
+    <div class="mention-badge">
+      📰 Besprochen bei <a href="https://www.deskmodder.de/blog/2026/03/27/s-it-lan-scanner-geraete-im-einen-netzwerk-scannen-und-auflisten/" target="_blank">Deskmodder</a>
+    </div>
+    <div class="mention-badge">
+      📦 Gelistet bei <a href="https://www.wintotal.de/download/s-it-lan-device-scanner/" target="_blank">WinTotal</a>
+    </div>
+  </div>
+
+  <h2 id="kontakt">Kontakt / Impressum</h2>
+
+  <div class="donate-box">
+    <h3>Hat Ihnen dieses Tool geholfen?</h3>
+    <p>Der S-IT LAN Device Scanner wird kostenlos entwickelt und gepflegt.<br>Eine kleine Spende hilft dabei, die Tools weiterzuentwickeln. Herzlichen Dank! 🙏</p>
+    <a class="btn-donate" href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR">☕ Spende via PayPal</a>
+    <p style="margin-top:14px; font-size:13px;">tool-entwicklung@sattler-it.de</p>
+  </div>
+
+</main>
 
 <footer>
-    © 2026 Hans Udo Sattler · Sattler IT-Service
+  © 2026 Hans Udo Sattler &nbsp;·&nbsp; Sattler IT-Service &nbsp;·&nbsp;
+  <a href="impressum.html">Impressum</a>
 </footer>
-<section>
-    <h2>Systemanforderungen</h2>
-    <div class="features">
-        <div class="card">
-            <h3>Betriebssystem</h3>
-            <p>Windows 10 und Windows 11 (64-Bit)</p>
-        </div>
-        <div class="card">
-            <h3>Zusätzliche Komponenten</h3>
-            <p>Npcap empfohlen für erweiterten ARP- und Intensiv-Scan. 
-            Administratorrechte für den Intensivmodus erforderlich.</p>
-        </div>
-        <div class="card">
-            <h3>Lieferumfang</h3>
-            <p>Setup, Deinstaller, Hilfe-Datei und ChangeLog enthalten.</p>
-        </div>
-    </div>
-</section>
 
-<section>
-  <h2>Sicherheits- und Installationshinweis</h2>
-  <div class="features">
-    <div class="card">
-      <h3>Hinweis zu Virenscannern &amp; SmartScreen</h3>
-      <p>
-        Da es sich um unabhängig entwickelte Windows-Tools handelt, kann es vorkommen,
-        dass Windows SmartScreen oder installierte Internet-Security-Programme
-        die Datei zunächst als unbekannt einstufen.
-      </p>
-      <p>
-        In diesem Fall fügen Sie das Programm bitte als <strong>vertrauenswürdig</strong>
-        bzw. als <strong>Ausnahme</strong> in Ihrer Sicherheitssoftware hinzu.
-        Gegebenenfalls muss der Windows SmartScreen-Filter für die Installation
-        einmalig bestätigt oder vorübergehend deaktiviert werden.
-      </p>
-      <p>
-        Alle bereitgestellten Dateien stammen direkt von
-        <strong>Sattler IT-Service</strong> und werden ausschließlich
-        über die offizielle GitHub-Seite veröffentlicht.
-      </p>
-      <p>
-        <strong>Tipp:</strong> Nach der ersten Freigabe läuft das Tool in der Regel
-        dauerhaft ohne weitere Warnmeldungen.
-      </p>
-    </div>
-  </div>
-</section>
-    
-<section>
-    <h2>Erwähnungen & Reviews</h2>
-    <p>
-        Besprochen bei
-        <a href="https://www.deskmodder.de/blog/2026/03/27/s-it-lan-scanner-geraete-im-einen-netzwerk-scannen-und-auflisten/" target="_blank">
-            Deskmodder
-        </a>
-        und gelistet bei
-        <a href="https://www.wintotal.de/download/s-it-lan-device-scanner/" target="_blank">
-            WinTotal
-        </a>.
-    </p>
-</section>
-<section>
-    <h2>Neu in Version 3.22.14</h2>
-    <p>Verbesserte WLAN-Erkennung, optimierter LOG-Manager und zahlreiche Fehlerbehebungen.</p>
-</section>
-<section>
-     <div class="paypal-box">
-    <p style="font-size:17px; font-weight:600; color:#2c3e50; margin-bottom:8px;">
-      Hat Ihnen dieses Tool geholfen?</p>
-    <p>Die S-IT-BRC-Tools werden kostenlos entwickelt und gepflegt.<br>
-       Eine kleine Spende hilft dabei, die Tools weiterzuentwickeln. Herzlichen Dank! 🙏</p>
-    <a class="paypal-btn"
-       href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
-       target="_blank">
-      ☕ Spende via PayPal
-    </a>
-    <p class="paypal-mail">tool-entwicklung@sattler-it.de</p>
-  </div>
- 
-</section>
-  <footer style="margin-top:40px; text-align:center; font-size:14px; color:#ffffff;">
-  © 2026 Hans Udo Sattler · Sattler IT-Service ·
+</body>
+</html>
+
   <a href="impressum.html" style="color:#ffffff; text-decoration:underline;">Impressum</a>
 </footer>  
     
