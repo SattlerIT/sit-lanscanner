@@ -4,25 +4,125 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Impressum – Sattler IT-Service</title>
+  <link rel="icon" type="image/x-icon" href="s-it-icon140.ico">
+  <style>
+    :root {
+      --primary: #2C3E50;
+      --info:    #3498DB;
+      --light:   #ECF0F1;
+      --bg:      #F5F5F5;
+      --white:   #FFFFFF;
+      --muted:   #7F8C8D;
+      --border:  #BDC3C7;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      font-size: 15px;
+      background: var(--bg);
+      color: var(--primary);
+      line-height: 1.7;
+    }
+
+    header {
+      background: var(--primary);
+      color: var(--white);
+      padding: 40px;
+      text-align: center;
+    }
+    header h1 {
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 6px;
+    }
+    header p {
+      font-size: 14px;
+      color: var(--light);
+    }
+
+    main {
+      max-width: 700px;
+      margin: 48px auto;
+      padding: 0 24px 80px;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 6px;
+      border-top: 4px solid var(--info);
+      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
+      padding: 32px 36px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: var(--muted);
+      margin-bottom: 12px;
+    }
+
+    p { margin-bottom: 6px; }
+
+    a { color: var(--info); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    .back {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 14px;
+    }
+
+    footer {
+      background: var(--primary);
+      color: var(--light);
+      text-align: center;
+      padding: 20px 40px;
+      font-size: 13px;
+    }
+    footer a { color: var(--light); }
+  </style>
 </head>
-<body style="font-family:Arial, sans-serif; max-width:800px; margin:40px auto; line-height:1.6;">
+<body>
+
+<header>
   <h1>Impressum</h1>
   <p>Angaben gemäß § 5 DDG</p>
-  <p>
-    Hans Udo Sattler<br>
-    Sattler IT-Service<br>
-    Gartenstr. 4<br>
-    35753 Greifenstein
-  </p>
-  <p>
-    E-Mail:
-    <a href="mailto:kontakt@sattler-it.de">kontakt@sattler-it.de</a>
-  </p>
-  <p>
-    Verantwortlich für den Inhalt: Hans Udo Sattler
-  </p>
-  <p>
-    <a href="index.html">Zurück zur Startseite</a>
-  </p>
+</header>
+
+<main>
+
+  <div class="card">
+    <h2>Anbieter</h2>
+    <p>Hans Udo Sattler</p>
+    <p>Sattler IT-Service</p>
+    <p>Gartenstr. 4</p>
+    <p>35753 Greifenstein</p>
+  </div>
+
+  <div class="card">
+    <h2>Kontakt</h2>
+    <p>E-Mail: <a href="mailto:kontakt@sattler-it.de">kontakt@sattler-it.de</a></p>
+  </div>
+
+  <div class="card">
+    <h2>Verantwortlich für den Inhalt</h2>
+    <p>Hans Udo Sattler, Gartenstr. 4, 35753 Greifenstein</p>
+  </div>
+
+  <div class="back">
+    <a href="index.html">← Zurück zur Startseite</a>
+  </div>
+
+</main>
+
+<footer>
+  © 2026 Hans Udo Sattler &nbsp;·&nbsp; Sattler IT-Service
+</footer>
+
 </body>
 </html>
