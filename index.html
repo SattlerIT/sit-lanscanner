@@ -368,24 +368,28 @@
   <h2 id="changelog">Neu in Version 3.22.17</h2>
 
   <div class="changelog-item">
-    <h3>Verbesserte WLAN-Erkennung</h3>
-    <p>WLAN-Karte mit SSID, Signalstärke, Verbindungs- und Empfangsrate aus netsh – zuverlässige Anzeige auch ohne Administratorrechte.</p>
+    <h3>🔌📶 LAN + WLAN gleichzeitig erkannt</h3>
+    <p>Die Verbindungskachel erkennt jetzt beide Adapter gleichzeitig. Die aktive Verbindung wird als Hauptverbindung angezeigt, inaktive Hardware als Zusatzinfo (z.B. „LAN verfügbar: 1 Gbps"). Automatische Aktualisierung alle 15 Sekunden – ein Wechsel von LAN auf WLAN wird ohne Neustart erkannt.</p>
   </div>
+
   <div class="changelog-item">
-    <h3>Zweispaltige LAN-Performance-Ansicht</h3>
-    <p>Neue Aufteilung: links Durchsatz-Steuerung und Messwerte, rechts Verbindungs- und WLAN-Karte für bessere Übersicht.</p>
+    <h3>📶 WLAN-Geschwindigkeits-Fallback</h3>
+    <p>Wenn die Hardware-Rate nicht ausgelesen werden kann, wird ein typischer Richtwert angezeigt: 300 Mbit/s (typ.) für 5 GHz, 130 Mbit/s (typ.) für 2,4 GHz. VirtualBox- und VMware-Adapter werden jetzt dreifach gefiltert (Name, MAC-Adresse, wmic-Beschreibung) und erscheinen nicht mehr als echte LAN-Verbindung.</p>
   </div>
+
   <div class="changelog-item">
-    <h3>Optimierter LOG-Manager</h3>
-    <p>Verbessertes HTML-Report-Format, zuverlässigere Öffnung nach Scan-Abschluss und stabilisiertes Verhalten bei mehrfachem Aufruf.</p>
+    <h3>🖥 DPI-Schalter für HiDPI-Monitore</h3>
+    <p>Neuer Button „🖥 DPI" in der Toolbar: öffnet ein Fenster mit An/Aus-Schiebeschalter für die Windows-eigene Hochskalierung. Nützlich auf UHD/4K-Bildschirmen für bessere Lesbarkeit. Einstellung wird dauerhaft gespeichert, Programm startet nach Änderung automatisch neu.</p>
   </div>
+
   <div class="changelog-item">
-    <h3>OUI-Updater integriert</h3>
-    <p>Hersteller-Datenbank lässt sich direkt aus dem Programm heraus aktualisieren – mit INI-basierter Pfadspeicherung und Protokolldatei.</p>
+    <h3>⚙ Netzwerk-Einstellungen 2-spaltig</h3>
+    <p>Tab „Netzwerk-Einstellungen" zeigt Checks und Reparatur-Bereiche jetzt in zwei Spalten. Reparatur-Bereich im 2×2-Raster: Drucker-Spooler / Netzwerk-Cache / TCP-IP & Winsock / SMB-Verbindungen – übersichtlicher und platzsparender.</p>
   </div>
+
   <div class="changelog-item">
-    <h3>Zahlreiche Fehlerbehebungen</h3>
-    <p>WLAN-Adapter nicht mehr fälschlich als LAN erkannt, Encoding-Probleme bei Umlauten in netsh behoben, custom Gerätezuweisungen ohne Dopplungen.</p>
+    <h3>🐛 Fehlerbehebungen</h3>
+    <p>Hardcodierter NAS-Pfad (\\192.168.x.x\share) erschien auf allen PCs als Vorschlag im Geschwindigkeitstest – entfernt. Verbindungskachel von Lila auf warmes Orange umgestellt. Label „(pro Messzyklus)" neben Chunk-Größen-Radiobuttons war abgeschnitten – korrigiert.</p>
   </div>
 
   <h2 id="erwaehnung">Erwähnungen &amp; Reviews</h2>
