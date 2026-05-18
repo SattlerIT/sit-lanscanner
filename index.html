@@ -276,7 +276,7 @@
 <header>
   <h1>S-IT LAN Device Scanner</h1>
   <p class="tagline">Professioneller LAN- und WLAN-Scanner &nbsp;&ndash;&nbsp; Netzwerkgeräte erkennen, analysieren und dokumentieren</p>
-  <a class="btn-download" href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v3.22.17/sit-lanscanner_v3-22-17.zip">⬇ Download aktuelle Version</a>
+  <a class="btn-download" href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v3.22.19/sit-lanscanner_v3-22-19.zip">⬇ Download aktuelle Version</a>
 </header>
 
 <nav>
@@ -365,31 +365,31 @@
     Alle bereitgestellten Dateien stammen direkt von <strong>Sattler IT-Service</strong> und werden ausschließlich über die offizielle GitHub-Seite veröffentlicht. <strong>Tipp:</strong> Nach der ersten Freigabe läuft das Tool in der Regel dauerhaft ohne weitere Warnmeldungen.
   </div>
 
-  <h2 id="changelog">Neu in Version 3.22.17</h2>
+  <h2 id="changelog">Neu in Version 3.22.19</h2>
 
   <div class="changelog-item">
-    <h3>🔌📶 LAN + WLAN gleichzeitig erkannt</h3>
-    <p>Die Verbindungskachel erkennt jetzt beide Adapter gleichzeitig. Die aktive Verbindung wird als Hauptverbindung angezeigt, inaktive Hardware als Zusatzinfo (z.B. „LAN verfügbar: 1 Gbps"). Automatische Aktualisierung alle 15 Sekunden – ein Wechsel von LAN auf WLAN wird ohne Neustart erkannt.</p>
+    <h3>🖥 Vollständige UI-Skalierung für HiDPI &amp; UHD</h3>
+    <p>Alle Schriftgrößen und Pixel-Werte skalieren proportional in 7 Stufen (100–300 %). Einstellung direkt im ⚙ Konfig-Dialog, dritte Spalte. Bei UHD/4K empfohlen: Windows + Programm beide auf 150 % – schrittweise erhöhen bis optimal.</p>
   </div>
 
   <div class="changelog-item">
-    <h3>📶 WLAN-Geschwindigkeits-Fallback</h3>
-    <p>Wenn die Hardware-Rate nicht ausgelesen werden kann, wird ein typischer Richtwert angezeigt: 300 Mbit/s (typ.) für 5 GHz, 130 Mbit/s (typ.) für 2,4 GHz. VirtualBox- und VMware-Adapter werden jetzt dreifach gefiltert (Name, MAC-Adresse, wmic-Beschreibung) und erscheinen nicht mehr als echte LAN-Verbindung.</p>
+    <h3>📊 LAN-Performance Tab scrollbar &amp; proportionale Kacheln</h3>
+    <p>Messprotokoll per Scrollbalken und Mausrad erreichbar. Verbindungs- und WLAN-Kacheln passen sich automatisch der Fensterbreite an. Treeview-Zeilenhöhe wird aus der logischen Auflösung berechnet – auf UHD deutlich größer.</p>
   </div>
 
   <div class="changelog-item">
-    <h3>🖥 DPI-Schalter für HiDPI-Monitore</h3>
-    <p>Neuer Button „🖥 DPI" in der Toolbar: öffnet ein Fenster mit An/Aus-Schiebeschalter für die Windows-eigene Hochskalierung. Nützlich auf UHD/4K-Bildschirmen für bessere Lesbarkeit. Einstellung wird dauerhaft gespeichert, Programm startet nach Änderung automatisch neu.</p>
+    <h3>🐛 HTML-Report öffnet nicht mehr doppelt</h3>
+    <p>Nach jedem Scan wurden zwei Browser-Tabs geöffnet. Behoben – Checkbox „Nach Scan automatisch öffnen" in ⚙ Konfigurieren funktioniert jetzt zuverlässig.</p>
   </div>
 
   <div class="changelog-item">
-    <h3>⚙ Netzwerk-Einstellungen 2-spaltig</h3>
-    <p>Tab „Netzwerk-Einstellungen" zeigt Checks und Reparatur-Bereiche jetzt in zwei Spalten. Reparatur-Bereich im 2×2-Raster: Drucker-Spooler / Netzwerk-Cache / TCP-IP & Winsock / SMB-Verbindungen – übersichtlicher und platzsparender.</p>
+    <h3>🔌📶 LAN + WLAN gleichzeitig erkannt (seit v3.22.17)</h3>
+    <p>Aktive Verbindung als Hauptverbindung, inaktive Hardware als Zusatzinfo. Auto-Refresh alle 15 Sekunden. VirtualBox-Adapter dreifach gefiltert.</p>
   </div>
 
   <div class="changelog-item">
-    <h3>🐛 Fehlerbehebungen</h3>
-    <p>Hardcodierter NAS-Pfad (\\192.168.x.x\share) erschien auf allen PCs als Vorschlag im Geschwindigkeitstest – entfernt. Verbindungskachel von Lila auf warmes Orange umgestellt. Label „(pro Messzyklus)" neben Chunk-Größen-Radiobuttons war abgeschnitten – korrigiert.</p>
+    <h3>⚙ Netzwerk-Einstellungen 2-spaltig (seit v3.22.17)</h3>
+    <p>Checks und Reparatur im 2×2-Raster – übersichtlicher und platzsparender.</p>
   </div>
 
   <h2 id="erwaehnung">Erwähnungen &amp; Reviews</h2>
