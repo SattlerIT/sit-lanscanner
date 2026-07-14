@@ -1,0 +1,53 @@
+============================================================
+ S-IT LAN Device Scanner – Haftungsausschluss (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+============================================================
+
+Alle Angaben ohne Gewähr. Irrtümer vorbehalten.
+
+S-IT LAN Device Scanner ist ein kostenloses Diagnose-Werkzeug
+zur Erkennung und Analyse von Netzwerkgeräten. Die angezeigten
+Ergebnisse (erkannte Geräte, Hersteller, Betriebssysteme, offene
+Ports, Signal- und Durchsatzwerte usw.) werden automatisch aus
+Netzwerkprotokollen, der OUI-Datenbank und Systemschnittstellen
+(z. B. netsh, ARP) ermittelt. Diese Quellen können unvollständig,
+veraltet oder fehlerhaft sein – eine Fehleinschätzung ist deshalb
+nie ganz auszuschließen.
+
+1. Unverbindliche Schätzung
+   Die Ergebnisse sind unverbindliche Anhaltspunkte und eine
+   Momentaufnahme zum Zeitpunkt der Prüfung. Sie sind keine
+   Zusicherung über die tatsächliche Netzwerksicherheit, die
+   Vollständigkeit der erkannten Geräte oder die Stabilität der
+   Verbindung und ersetzen weder eine fachliche Prüfung noch eine
+   professionelle Sicherheitsanalyse.
+
+2. Keine Sicherheits- oder Erreichbarkeitsgarantie
+   Ein Gerät kann trotz erfolgreicher Erkennung falsch zugeordnet
+   werden oder bei einem späteren Scan nicht mehr erscheinen.
+   Ebenso ersetzen die Internet- und LAN-Performance-Tests keine
+   Messung durch zertifizierte Mess-Systeme.
+
+3. Nutzung auf eigene Verantwortung
+   Die Verwendung des Tools und seiner Ergebnisse erfolgt auf
+   eigene Verantwortung. Für Entscheidungen (z. B. Änderungen an
+   Netzwerk-, Firewall- oder Sicherheitseinstellungen), die auf
+   Basis der Scan-Ergebnisse getroffen werden, wird keine
+   Verantwortung übernommen.
+
+4. Haftungsausschluss
+   Eine Haftung für Schäden, Datenverluste, Ausfälle oder
+   Vermögensschäden, die aus der Nutzung des Tools oder seiner
+   Ergebnisse entstehen, ist – soweit gesetzlich zulässig –
+   ausgeschlossen.
+
+5. Eigenständige Absicherung bleibt unerlässlich
+   Verlassen Sie sich unabhängig vom Scan-Ergebnis nicht allein
+   auf dieses Tool für die Absicherung Ihres Netzwerks. Kein
+   Diagnose-Tool kann eine vollständige Sicherheitsprüfung oder
+   professionelle Netzwerkberatung ersetzen.
+
+------------------------------------------------------------
+Kontakt:       tool-entwicklung@sattler-it.de
+Projektseite:  https://sattlerit.github.io/sit-lanscanner/
+------------------------------------------------------------
