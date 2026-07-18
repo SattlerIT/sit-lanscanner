@@ -45,15 +45,15 @@
 <body>
 <header>
   <h1>S-IT LAN Device Scanner – ChangeLog</h1>
-  <p>© 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
-     Alle Versionen im Überblick</p>
+  <p>Aktuell: Version 3.22.19 (Build 2026.07.17) &nbsp;•&nbsp;
+     © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
 </header>
 
 <div class="container">
 
   <div class="intro">
     Vielen Dank an alle Nutzer bei <strong>deskmodder.de</strong> und <strong>wintotal.de</strong>
-    für das wertvolle Feedback! Ein Großteil der Verbesserungen ab Version 3.20
+    für das wertvolle Feedback! Ein Großteil der Verbesserungen mit Version 3.20
     geht direkt auf Ihre Anregungen zurück.
   </div>
 
@@ -62,13 +62,96 @@
     <div class="version-header current">
       <div class="v-badge">v 3.22.19</div>
       <div>
-        <div style="font-size:15px;font-weight:600;">Vollständige UI-Skalierung &amp; Stabilitätsverbesserungen</div>
-        <div class="v-date">Mai 2026</div>
+        <div style="font-size:15px;font-weight:600;">Zuverlässige LAN/WLAN-Erkennung, Diagnose &amp; vollständige UI-Skalierung</div>
+        <div class="v-date">Mai 2026 &nbsp;·&nbsp; überarbeitet Juli 2026</div>
       </div>
       <div class="v-tag">Aktuell</div>
     </div>
+
     <div class="section">
-      <h3>★ Neue Funktionen</h3>
+      <h3>◆ Überarbeitung – Build 2026.07.17</h3>
+      <p style="font-size:12px;color:#7F8C8D;margin:0 0 10px 0;">
+        Gleiche Versionsnummer, neuer Build. Wer den Mai-Build (2026.05.20) einsetzt,
+        sollte austauschen – die LAN/WLAN-Erkennung zeigte dort auf manchen Geräten
+        falsche Werte an. Die Build-Nummer steht in der Titelzeile des Programms.
+      </p>
+      <ul>
+        <li class="fix"><span class="highlight">Falsche LAN/WLAN-Anzeige auf manchen Geräten</span> –
+            der Hauptfehler. Sobald <em>keine</em> Verbindung aktiv war, überschrieb die
+            letzte Erkennungsstufe (<code>netsh</code>) die längst korrekt ermittelten
+            Daten mit dem Windows-Verbindungsnamen („Ethernet 3“) und einem Schätzwert
+            („100 Mbit/s“). Die Stufe greift jetzt nur noch, wenn ein Adapter überhaupt
+            nicht gefunden wurde.</li>
+        <li class="fix"><span class="highlight">„9.223.372.036.854 Mbit/s“</span> –
+            Windows meldet eine unbekannte Geschwindigkeit je nach Datentyp mit
+            verschiedenen Kennwerten; der 64-Bit-Wert wurde nicht erkannt und als
+            Geschwindigkeit ausgerechnet. Zusätzlich greift jetzt eine
+            Plausibilitätsgrenze.</li>
+        <li class="fix"><span class="highlight">Adapter mit „WiFi“ im Namen</span> –
+            wurden als LAN einsortiert, weil nur die Schreibweise „Wi-Fi“ geprüft wurde.
+            Bindestriche und Leerzeichen werden jetzt vor dem Vergleich entfernt –
+            Wi-Fi, WiFi und WLAN greifen gleichermaßen.</li>
+        <li class="fix"><span class="highlight">VPN-Adapter als LAN angezeigt</span> –
+            z.B. „Symantec TAP Driver“. Software-Adapter werden jetzt an ihrer
+            PNPDeviceID erkannt (<code>ROOT\</code> statt <code>PCI\</code> /
+            <code>USB\</code>) und herausgefiltert – auch solche, die namentlich nicht
+            bekannt sind.</li>
+        <li class="fix"><span class="highlight">Keine erfundenen Geschwindigkeiten mehr</span> –
+            konnte keine Abfrage eine Rate liefern, wurden bisher „typische“ Werte
+            eingesetzt (100 / 130 / 300 Mbit/s). Das sah aus wie eine Messung, war aber
+            geraten. Jetzt steht dort <strong>„unbekannt“</strong>.</li>
+        <li class="fix"><span class="highlight">Neustart als Administrator</span> –
+            beim Start aus der .py-Datei öffnete sich die Python-Konsole als
+            Administrator statt des Programms. Außerdem beendete sich das Programm,
+            wenn die Windows-Rückfrage mit „Nein“ beantwortet wurde – es läuft jetzt
+            ohne Adminrechte weiter.</li>
+        <li class="fix"><span class="highlight">Einstellungen gingen verloren</span> –
+            beim Speichern wurde die komplette Sektion neu geschrieben und nicht
+            übergebene Werte mit Vorgaben gefüllt. Folge: der Start des Dauertests
+            setzte die <strong>Skalierung still auf 100 % zurück</strong>, das Speichern
+            der Konfiguration löschte den gemerkten Testpfad, und die eigenen
+            Diagnose-Ziele fielen auf die Standardliste zurück.</li>
+        <li class="fix"><span class="highlight">SMB1-Umschaltung ohne Neustart-Hinweis</span> –
+            SMB1 ist ein Windows-Feature: Windows lädt die Dateien nach bzw. entfernt sie.
+            Der Dialog behauptete „wird sofort übernommen“. Jetzt wird der Neustart
+            erklärt und angeboten.</li>
+        <li class="fix"><span class="highlight">Abgeschnittene Button-Texte</span> –
+            in den Netzwerk-Einstellungen waren 12 von 13 Reparatur-Schaltflächen zu
+            lang für den Knopf. Kurztext am Knopf, ausführliche Erklärung im
+            Bestätigungsdialog.</li>
+        <li class="fix"><span class="highlight">Log-Manager zeigte nur einen Eintrag</span> –
+            ältere Scans, zu denen nur HTML- oder CSV-Dateien vorliegen, wurden
+            übersprungen. Sie erscheinen jetzt mit.</li>
+        <li class="new"><span class="highlight">🔧 Diagnose (DIAG)</span> –
+            neu für Tester: erzeugt auf Klick <strong>genau eine</strong> Datei mit den
+            Rohantworten aller Erkennungswege. Damit lässt sich auf einem fremden Rechner
+            nachvollziehen, warum die Anzeige dort abweicht. Einzuschalten unter
+            ⚙ Konfig → Diagnose; im Normalbetrieb ausgeblendet. MAC-Adressen werden
+            gekürzt, der Inhalt ist im Programm im Klartext einsehbar.</li>
+        <li class="new"><span class="highlight">Zielpfad wird vor dem Start geprüft</span> –
+            im LAN-Geschwindigkeitstest. Ein häufiger Fall wird jetzt erklärt statt nur
+            bemängelt: <code>\\NAS-Name</code> ist nur der Servername, dort lässt sich
+            keine Datei anlegen – nötig ist <code>\\NAS-Name\Freigabe</code>. Dazu ein
+            ⓘ-Knopf am Eingabefeld und eine Bereitschaftsanzeige.</li>
+        <li class="note"><span class="highlight">Erkennung neu geordnet</span> –
+            <code>Get-CimInstance</code> ist jetzt die erste Stufe. <code>wmic</code>
+            bleibt als späte Rückfallebene erhalten (für Rechner, auf denen PowerShell
+            per Richtlinie gesperrt ist), wird ab Windows 11 24H2 aber ohnehin nicht
+            mehr mitgeliefert.</li>
+        <li class="note"><span class="highlight">Zeitgrenzen erhöht</span> –
+            auf einem langsamen Gerät brauchte die Abfrage gemessene 14,3 Sekunden; die
+            Grenze lag bei 15. Jetzt großzügiger bemessen. Zusätzlich verhindert eine
+            Sperre, dass sich die Aktualisierungen stapeln, wenn ein Durchlauf länger als
+            der 10-Sekunden-Takt dauert.</li>
+        <li class="note"><span class="highlight">WLAN ohne Positionsdienste</span> –
+            Windows 11 gibt SSID, Signalstärke und Kanal nur heraus, wenn die
+            Ortungsdienste eingeschaltet sind. Die WLAN-Kachel erklärt das jetzt, statt
+            leer zu bleiben.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.05.20</h3>
       <ul>
         <li class="new"><span class="highlight">Vollständige UI-Skalierung (sc/fs)</span> –
             alle 255 Schriftgrößen und 191 Pixel-Werte automatisch skaliert.
@@ -97,7 +180,7 @@
       </ul>
     </div>
     <div class="section">
-      <h3>⚑ Fehlerbehebungen</h3>
+      <h3>⚑ Fehlerbehebungen – Build 2026.05.20</h3>
       <ul>
         <li class="fix"><span class="highlight">HTML-Report öffnet doppelt</span> –
             nach jedem Scan wurden zwei Browser-Tabs geöffnet.
@@ -159,7 +242,7 @@
             als echte LAN-Verbindung angezeigt. Dreifacher Filter:
             Interface-Name, MAC-Adresse (OUI) und wmic-Beschreibung.</li>
         <li class="fix"><span class="highlight">Hardcodierter NAS-Pfad entfernt</span> –
-            <code>\\192.168.0.53\share</code> erschien auf allen PCs als
+            <code>\\192.168.X.XX\share</code> erschien auf allen PCs als
             Vorschlag im Geschwindigkeitstest. Feld startet jetzt leer.</li>
         <li class="fix"><span class="highlight">Verbindungskachel Orange statt Lila</span> –
             Farbe der Verbindungskachel von Lila (#8E44AD) auf
@@ -508,8 +591,14 @@
 </div>
 
 <footer>
-  S-IT LAN Device Scanner &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp;
-  Sattler IT-Service, Greifenstein
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.19 (Build 2026.07.17)
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Autor: Hans Udo Sattler<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>
+  &nbsp;•&nbsp;
+  <a href="Disclaimer.txt">Haftungsausschluss</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
 </footer>
 </body>
 </html>
