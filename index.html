@@ -399,6 +399,11 @@
       <h3>Skalierbare Oberfläche</h3>
       <p>Darstellungsgröße von 100–300 % im Konfig-Dialog – für HiDPI-, UHD- und Hochkant-Monitore. Alle Schriften und Abstände skalieren proportional mit.</p>
     </div>
+    <div class="card">
+      <div class="card-icon">🔧</div>
+      <h3>Diagnose (DIAG)</h3>
+      <p>Für Tester und Support: erstellt auf Wunsch eine anonymisierte Diagnosedatei (MAC-Adressen gekürzt) und zeigt den Klartext direkt im Tool an – einschaltbar unter ⚙ Konfig, Details in der Hilfe.</p>
+    </div>
   </div>
 
   <!-- SCREENSHOTS -->
@@ -482,7 +487,19 @@
   <div class="section-title">📋 Changelog</div>
   <div class="changelog">
     <div class="changelog-entry">
-      <div class="changelog-version">v3.22.19 <span>Mai 2026</span></div>
+      <div class="changelog-version">v3.22.19 – Überarbeitung <span>Juli 2026 · Build 2026.07.17</span></div>
+      <ul>
+        <li>LAN-/WLAN-Erkennung überarbeitet: zeigt jetzt den echten Hardware-Namen des Adapters statt des Windows-Verbindungsnamens – auch, wenn gerade keine Verbindung besteht</li>
+        <li>Keine geschätzten Geschwindigkeiten mehr: wo Windows keinen Wert liefert, steht „unbekannt“ statt einer angenommenen Zahl</li>
+        <li>VPN-Adapter werden zuverlässig als virtuell erkannt; WLAN-Adapter unabhängig von der Schreibweise (Wi-Fi, WiFi)</li>
+        <li>Zuverlässige Erkennung jetzt auch auf langsamen Rechnern; Hinweis, wenn Windows die WLAN-Details wegen ausgeschalteter Positionsdienste sperrt</li>
+        <li>LAN-Performance mit ⓘ-Erklärung und Prüfung des Zielpfads vor dem Start; SMB1-Umschaltung fordert den erforderlichen Neustart an</li>
+        <li>Neue Diagnose-Funktion 🔧 DIAG für Tester – anonymisierte Diagnosedatei mit gekürzten MAC-Adressen</li>
+        <li>Diverse Korrekturen: Programm-Skalierung bleibt nach Performance-Tests erhalten, Button-Beschriftungen in den Netzwerk-Einstellungen gekürzt, Neustart mit Administratorrechten repariert</li>
+      </ul>
+    </div>
+    <div class="changelog-entry">
+      <div class="changelog-version">v3.22.19 <span>Mai 2026 · Build 2026.05.20</span></div>
       <ul>
         <li>⚙ Konfig, ? Hilfe, F11 und ✖ Beenden liegen jetzt dauerhaft oben rechts im Header – in jedem Tab erreichbar, unabhängig von der aktiven Ansicht. Die Toolbar zeigt nur noch Scan-relevante Funktionen</li>
         <li>Vollständige UI-Skalierung von 100–300 % für HiDPI und UHD, direkt im ⚙ Konfig-Dialog einstellbar – alle Schriften und Pixelwerte skalieren proportional mit</li>
