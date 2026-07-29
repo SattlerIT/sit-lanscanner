@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – ChangeLog</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  .container { max-width: 860px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  .version-block { background: #fff; border-radius: 8px; margin-bottom: 24px;
+                   box-shadow: 0 2px 6px rgba(0,0,0,.08); overflow: hidden; }
+  .version-header { padding: 14px 22px; display: flex; align-items: center; gap: 14px; }
+  .version-header.current { background: #2C3E50; color: #fff; }
+  .version-header.older   { background: #ECF0F1; color: #2C3E50; }
+  .v-badge { font-size: 18px; font-weight: 700; min-width: 90px; }
+  .v-date  { font-size: 12px; opacity: .7; }
+  .v-tag   { font-size: 11px; background: #27AE60; color: #fff;
+             padding: 2px 10px; border-radius: 12px; font-weight: 600; }
+  .v-tag.older { background: #95A5A6; }
+  .section { padding: 16px 22px; border-top: 1px solid #ECF0F1; }
+  .section h3 { font-size: 11px; font-weight: 700; text-transform: uppercase;
+                letter-spacing: .08em; color: #7F8C8D; margin-bottom: 10px; }
+  ul { padding-left: 0; list-style: none; }
+  li { padding: 5px 0 5px 22px; position: relative; line-height: 1.5; }
+  li::before { content: '✓'; position: absolute; left: 0;
+               color: #27AE60; font-weight: 700; }
+  li.fix::before  { content: '⚑'; color: #E74C3C; }
+  li.new::before  { content: '★'; color: #3498DB; }
+  li.note::before { content: '●'; color: #F39C12; }
+  .highlight { color: #2980B9; font-weight: 600; }
+  .tag-user { display: inline-block; font-size: 10px; background: #D6EAF8;
+              color: #1A5276; padding: 1px 7px; border-radius: 10px;
+              margin-left: 6px; font-weight: 600; vertical-align: middle; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .intro { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 14px 18px; border-radius: 4px; margin-bottom: 24px;
+           font-size: 13px; line-height: 1.6; color: #1A252F; }
+</style>
+</head>
+<body>
+<header>
+  <h1>S-IT LAN Device Scanner – ChangeLog</h1>
+  <p>Aktuell: Version 3.22.21 (Build 2026.07.27d) &nbsp;•&nbsp;
+     © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<div class="container">
+
+  <!-- v3.22.21 -->
+  <div class="version-block">
+    <div class="version-header current">
+      <div class="v-badge">v 3.22.21</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Firewall-Ausnahmen direkt im Scanner, Start als Administrator &amp; feineres Skalieren</div>
+        <div class="v-date">Juli 2026</div>
+      </div>
+      <div class="v-tag">Aktuell</div>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.07.27</h3>
+      <ul>
+        <li class="new"><span class="highlight">🛡 Firewall-Tab</span> –
+            neuer fünfter Tab. Ist ein Gerät im LAN nicht erreichbar, obwohl es läuft,
+            liegt das oft an der Windows-Firewall. Der Tab prüft ein Ziel (IP oder
+            Subnetz) auf Ping, offene Ports und Firewall-Status und trägt auf Wunsch
+            eine passende Ausnahme ein – wahlweise für alle Ports, nur die Dateifreigabe
+            (SMB) oder Dateifreigabe samt Weboberfläche. Alle vom Programm gesetzten
+            Regeln stehen in einer eigenen Liste und lassen sich einzeln oder komplett
+            wieder entfernen; fremde Firewall-Regeln bleiben unangetastet. Übernommen
+            aus dem bewährten Werkzeug <em>S-IT-FWModify</em>.</li>
+        <li class="new"><span class="highlight">Als Administrator starten</span> –
+            der Scanner braucht für Netzwerk-Reparatur, ARP-Cache, den Scapy-Scan und
+            den neuen Firewall-Tab Administratorrechte. Neue Einstellung unter
+            ⚙ Konfig → „Programmstart" (Voreinstellung an): das Programm fordert die
+            Rechte gleich beim Start an. Wer bewusst ohne arbeitet, nimmt den Haken
+            heraus – dann entfällt die Windows-Abfrage. Unten links in der Statuszeile
+            zeigt eine dauerhafte Anzeige den <em>tatsächlichen</em> Zustand:
+            <strong>🛡 Admin</strong> (grün) oder <strong>🛡 kein Admin</strong> (grau).</li>
+        <li class="new"><span class="highlight">Skalierungsstufe 90 %</span> –
+            neue kompakte Stufe für mehr Platz bei Tabellen, oft von Vorteil bei
+            Full-HD mit 125 % Windows-Skalierung. Wählbar wie die anderen Stufen unter
+            ⚙ Konfig → „Darstellungsgröße / Skalierung".</li>
+        <li class="new"><span class="highlight">Fenstergröße speichern</span> –
+            neues Kästchen unter ⚙ Konfig → „Fenster". Mit Haken merkt sich das
+            Programm beim Beenden die Fenstergröße und stellt sie beim nächsten Start
+            wieder her. Gilt je Skalierungsstufe: nach einem Wechsel der Skalierung
+            startet das Fenster einmal in Standardgröße und merkt sich die Größe dann
+            neu, damit alte Größe und neuer Platzbedarf nie kollidieren.</li>
+        <li class="new"><span class="highlight">Aufgeräumter Konfig-Dialog</span> –
+            die Skalierungsstufen stehen jetzt in zwei schmalen Spalten, die langen
+            Erklärungen sind in ⓘ-Knöpfe neben die jeweilige Einstellung gewandert.
+            Das Fenster ist dadurch deutlich niedriger und zusätzlich scrollbar –
+            waagerecht und senkrecht –, sodass bei hoher Skalierung alle Einstellungen
+            erreichbar bleiben.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen – Build 2026.07.27</h3>
+      <ul>
+        <li class="fix"><span class="highlight">Firewall-Tab bremste kurzzeitig das System</span> –
+            beim ersten Firewall-Build liefen die 10-Sekunden-Statusabfrage des
+            Scanners und die Firewall-Prüfung gleichzeitig über denselben
+            Windows-Dienst (WMI) und stauten sich. Auf langsameren Geräten bremste das
+            kurzzeitig das ganze System, und die Prüfergebnisse liefen in
+            Zeitüberschreitungen (fälschlich „rot"). Die automatische Aktualisierung
+            setzt jetzt aus, solange eine Firewall-Aktion läuft.</li>
+        <li class="fix"><span class="highlight">Firewall-Regelliste blieb leer</span> –
+            nach jeder Prüfung brach die Aktualisierung der Regelliste im Hintergrund
+            ab. Behoben; die Liste füllt sich außerdem wenige Sekunden nach dem
+            Programmstart von selbst.</li>
+        <li class="fix"><span class="highlight">Mausrad wirkte nur in einem Tab</span> –
+            die scrollbaren Tabs hatten sich beim Einrichten des Mausrads gegenseitig
+            überschrieben, sodass das Rad in Wahrheit nur einen einzigen Tab drehte.
+            Jetzt scrollt es zuverlässig immer den gerade aktiven Tab – und auch das
+            Konfig-Fenster.</li>
+        <li class="fix"><span class="highlight">Abgeschnittene Texte bei 125 %</span> –
+            im LAN-Performance-Tab wurden „(pro Messzyklus)" und ein zu langer
+            Statustext beschnitten; der Firewall-Tab zeigte bei 125 % unten weder
+            Regelliste noch Knöpfe. Texte gekürzt bzw. umgehängt, Befund-Bereich
+            gestrafft und der Firewall-Tab in einen Scrollrahmen gelegt.</li>
+        <li class="fix"><span class="highlight">Fenster zu groß bei 200–300 %</span> –
+            bei sehr hoher Skalierung ragte das Hauptfenster über den Bildschirmrand
+            (auf FHD bis auf einen zweiten Monitor), und im Konfig-Fenster war die
+            Skalierungsstufe rechts außerhalb nicht mehr erreichbar – ein Zurückstellen
+            war nur noch über die INI-Datei möglich. Fenstergröße und Mindestgröße
+            werden jetzt am Bildschirm gedeckelt, das Konfig-Fenster ist waagerecht
+            scrollbar.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.22.19 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.22.19</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Zuverlässige LAN/WLAN-Erkennung, Diagnose &amp; vollständige UI-Skalierung</div>
+        <div class="v-date">Mai 2026 &nbsp;·&nbsp; überarbeitet Juli 2026</div>
+      </div>
+      <div class="v-tag older">Vorgänger</div>
+    </div>
+
+    <div class="section">
+      <h3>◆ Überarbeitung – Build 2026.07.17</h3>
+      <p style="font-size:12px;color:#7F8C8D;margin:0 0 10px 0;">
+        Gleiche Versionsnummer, neuer Build. Wer den Mai-Build (2026.05.20) einsetzt,
+        sollte austauschen – die LAN/WLAN-Erkennung zeigte dort auf manchen Geräten
+        falsche Werte an. Die Build-Nummer steht in der Titelzeile des Programms.
+      </p>
+      <ul>
+        <li class="fix"><span class="highlight">Falsche LAN/WLAN-Anzeige auf manchen Geräten</span> –
+            der Hauptfehler. Sobald <em>keine</em> Verbindung aktiv war, überschrieb die
+            letzte Erkennungsstufe (<code>netsh</code>) die längst korrekt ermittelten
+            Daten mit dem Windows-Verbindungsnamen („Ethernet 3“) und einem Schätzwert
+            („100 Mbit/s“). Die Stufe greift jetzt nur noch, wenn ein Adapter überhaupt
+            nicht gefunden wurde.</li>
+        <li class="fix"><span class="highlight">„9.223.372.036.854 Mbit/s“</span> –
+            Windows meldet eine unbekannte Geschwindigkeit je nach Datentyp mit
+            verschiedenen Kennwerten; der 64-Bit-Wert wurde nicht erkannt und als
+            Geschwindigkeit ausgerechnet. Zusätzlich greift jetzt eine
+            Plausibilitätsgrenze.</li>
+        <li class="fix"><span class="highlight">Adapter mit „WiFi“ im Namen</span> –
+            wurden als LAN einsortiert, weil nur die Schreibweise „Wi-Fi“ geprüft wurde.
+            Bindestriche und Leerzeichen werden jetzt vor dem Vergleich entfernt –
+            Wi-Fi, WiFi und WLAN greifen gleichermaßen.</li>
+        <li class="fix"><span class="highlight">VPN-Adapter als LAN angezeigt</span> –
+            z.B. „Symantec TAP Driver“. Software-Adapter werden jetzt an ihrer
+            PNPDeviceID erkannt (<code>ROOT\</code> statt <code>PCI\</code> /
+            <code>USB\</code>) und herausgefiltert – auch solche, die namentlich nicht
+            bekannt sind.</li>
+        <li class="fix"><span class="highlight">Keine erfundenen Geschwindigkeiten mehr</span> –
+            konnte keine Abfrage eine Rate liefern, wurden bisher „typische“ Werte
+            eingesetzt (100 / 130 / 300 Mbit/s). Das sah aus wie eine Messung, war aber
+            geraten. Jetzt steht dort <strong>„unbekannt“</strong>.</li>
+        <li class="fix"><span class="highlight">Neustart als Administrator</span> –
+            beim Start aus der .py-Datei öffnete sich die Python-Konsole als
+            Administrator statt des Programms. Außerdem beendete sich das Programm,
+            wenn die Windows-Rückfrage mit „Nein“ beantwortet wurde – es läuft jetzt
+            ohne Adminrechte weiter.</li>
+        <li class="fix"><span class="highlight">Einstellungen gingen verloren</span> –
+            beim Speichern wurde die komplette Sektion neu geschrieben und nicht
+            übergebene Werte mit Vorgaben gefüllt. Folge: der Start des Dauertests
+            setzte die <strong>Skalierung still auf 100 % zurück</strong>, das Speichern
+            der Konfiguration löschte den gemerkten Testpfad, und die eigenen
+            Diagnose-Ziele fielen auf die Standardliste zurück.</li>
+        <li class="fix"><span class="highlight">SMB1-Umschaltung ohne Neustart-Hinweis</span> –
+            SMB1 ist ein Windows-Feature: Windows lädt die Dateien nach bzw. entfernt sie.
+            Der Dialog behauptete „wird sofort übernommen“. Jetzt wird der Neustart
+            erklärt und angeboten.</li>
+        <li class="fix"><span class="highlight">Abgeschnittene Button-Texte</span> –
+            in den Netzwerk-Einstellungen waren 12 von 13 Reparatur-Schaltflächen zu
+            lang für den Knopf. Kurztext am Knopf, ausführliche Erklärung im
+            Bestätigungsdialog.</li>
+        <li class="fix"><span class="highlight">Log-Manager zeigte nur einen Eintrag</span> –
+            ältere Scans, zu denen nur HTML- oder CSV-Dateien vorliegen, wurden
+            übersprungen. Sie erscheinen jetzt mit.</li>
+        <li class="new"><span class="highlight">🔧 Diagnose (DIAG)</span> –
+            neu für Tester: erzeugt auf Klick <strong>genau eine</strong> Datei mit den
+            Rohantworten aller Erkennungswege. Damit lässt sich auf einem fremden Rechner
+            nachvollziehen, warum die Anzeige dort abweicht. Einzuschalten unter
+            ⚙ Konfig → Diagnose; im Normalbetrieb ausgeblendet. MAC-Adressen werden
+            gekürzt, der Inhalt ist im Programm im Klartext einsehbar.</li>
+        <li class="new"><span class="highlight">Zielpfad wird vor dem Start geprüft</span> –
+            im LAN-Geschwindigkeitstest. Ein häufiger Fall wird jetzt erklärt statt nur
+            bemängelt: <code>\\NAS-Name</code> ist nur der Servername, dort lässt sich
+            keine Datei anlegen – nötig ist <code>\\NAS-Name\Freigabe</code>. Dazu ein
+            ⓘ-Knopf am Eingabefeld und eine Bereitschaftsanzeige.</li>
+        <li class="note"><span class="highlight">Erkennung neu geordnet</span> –
+            <code>Get-CimInstance</code> ist jetzt die erste Stufe. <code>wmic</code>
+            bleibt als späte Rückfallebene erhalten (für Rechner, auf denen PowerShell
+            per Richtlinie gesperrt ist), wird ab Windows 11 24H2 aber ohnehin nicht
+            mehr mitgeliefert.</li>
+        <li class="note"><span class="highlight">Zeitgrenzen erhöht</span> –
+            auf einem langsamen Gerät brauchte die Abfrage gemessene 14,3 Sekunden; die
+            Grenze lag bei 15. Jetzt großzügiger bemessen. Zusätzlich verhindert eine
+            Sperre, dass sich die Aktualisierungen stapeln, wenn ein Durchlauf länger als
+            der 10-Sekunden-Takt dauert.</li>
+        <li class="note"><span class="highlight">WLAN ohne Positionsdienste</span> –
+            Windows 11 gibt SSID, Signalstärke und Kanal nur heraus, wenn die
+            Ortungsdienste eingeschaltet sind. Die WLAN-Kachel erklärt das jetzt, statt
+            leer zu bleiben.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.05.20</h3>
+      <ul>
+        <li class="new"><span class="highlight">Vollständige UI-Skalierung (sc/fs)</span> –
+            alle 255 Schriftgrößen und 191 Pixel-Werte automatisch skaliert.
+            Stufen 100 / 125 / 150 / 175 / 200 / 250 / 300 % wählbar –
+            direkt im ⚙ Konfig-Dialog, dritte Spalte „Darstellungsgröße / Skalierung".</li>
+        <li class="new"><span class="highlight">Automatische DPI-Erkennung</span> –
+            Windows-Skalierung wird beim Start erkannt und als Info angezeigt.
+            Kein automatischer Eingriff – der Nutzer stellt manuell ein.
+            Empfehlung bei UHD/4K: Windows 150 % + Programm 150 %.</li>
+        <li class="new"><span class="highlight">Scrollbarer LAN-Performance Tab</span> –
+            bei kleinen Fenstern und hoher Skalierung ist das Messprotokoll
+            jetzt per Scrollbalken und Mausrad erreichbar.</li>
+        <li class="new"><span class="highlight">Scrollbarer Internet-Erreichbarkeit Tab</span> –
+            auch Tab 2 ist jetzt vollständig scrollbar – Diagnose-Detail
+            bei hoher Skalierung immer erreichbar.</li>
+        <li class="new"><span class="highlight">Proportionale Verbindungskacheln</span> –
+            Verbindung, IPv4/Gateway und WLAN-Kachel passen sich jetzt
+            automatisch der Fensterbreite an – kein Abschneiden mehr.</li>
+        <li class="new"><span class="highlight">Dynamische Treeview-Zeilenhöhe</span> –
+            Zeilenhöhe im Scan-Ergebnis wird aus der logischen Auflösung
+            berechnet – auf UHD-Monitoren deutlich größer und lesbarer.</li>
+        <li class="new"><span class="highlight">⚙ Konfig, ? Hilfe, F11, ✖ Beenden im Header</span> –
+            diese Buttons sind jetzt dauerhaft oben rechts im Header sichtbar
+            und in jedem Tab erreichbar – unabhängig vom aktiven Tab.
+            Die Toolbar zeigt nur noch Scan-relevante Funktionen.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen – Build 2026.05.20</h3>
+      <ul>
+        <li class="fix"><span class="highlight">HTML-Report öffnet doppelt</span> –
+            nach jedem Scan wurden zwei Browser-Tabs geöffnet.
+            <code>webbrowser.open()</code> aus <code>_write_html_report()</code>
+            entfernt – Öffnen jetzt ausschließlich über Auto-HTML-Einstellung gesteuert.</li>
+        <li class="fix"><span class="highlight">Checkbox „Nach Scan automatisch öffnen"</span> –
+            funktioniert jetzt zuverlässig.</li>
+        <li class="fix"><span class="highlight">Header auf UHD-Monitoren</span> –
+            von fester place()-Positionierung auf pack() umgestellt –
+            kein Überlappen der Titelzeilen mehr.</li>
+        <li class="fix"><span class="highlight">Konfig-Fenster immer erreichbar</span> –
+            resizable + maxsize begrenzt auf Bildschirmgröße, damit das
+            Fenster bei jeder Skalierung bedienbar bleibt.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.22.17 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.22.17</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Verbindungserkennung, UI &amp; Fehlerbehebungen</div>
+        <div class="v-date">Mai 2026</div>
+      </div>
+      <div class="v-tag older">Vorgänger</div>
+    </div>
+    <div class="section">
+      <h3>★ Neue Funktionen</h3>
+      <ul>
+        <li class="new"><span class="highlight">DPI-Schalter (🖥 DPI)</span> –
+            neuer Button in der Toolbar öffnet ein Fenster mit An/Aus-Schiebeschalter.
+            Schaltet die Windows-eigene Hochskalierung über die Registry um –
+            nützlich auf UHD/4K-Bildschirmen. Programm startet nach Änderung
+            automatisch neu. Einstellung bleibt dauerhaft erhalten.</li>
+        <li class="new"><span class="highlight">LAN + WLAN gleichzeitig erkannt</span> –
+            die Verbindungskachel zeigt jetzt beide Adapter gleichzeitig.
+            Aktive Verbindung wird als Hauptverbindung angezeigt,
+            inaktive Hardware als Zusatzinfo (z.B. „LAN verfügbar: 1 Gbps").</li>
+        <li class="new"><span class="highlight">Auto-Refresh Verbindungsstatus</span> –
+            Verbindungsstatus wird automatisch alle 15 Sekunden aktualisiert –
+            Wechsel von LAN auf WLAN wird ohne Neustart erkannt.
+            Manuell per 🔄 Aktualisieren-Button in der WLAN-Kachel.</li>
+        <li class="new"><span class="highlight">WLAN-Geschwindigkeits-Fallback</span> –
+            wenn die Hardware-Rate nicht ausgelesen werden kann, wird ein
+            typischer Richtwert angezeigt: 300 Mbit/s (typ.) für 5 GHz,
+            130 Mbit/s (typ.) für 2,4 GHz.</li>
+        <li class="new"><span class="highlight">Netzwerk-Einstellungen 2-spaltig</span> –
+            Tab 3 zeigt Checks und Reparatur-Bereiche jetzt in zwei Spalten.
+            Links: Netzwerkprofil &amp; Dienste; Rechts: SMB &amp; Firewall.
+            Reparatur-Bereich ebenfalls 2×2: Spooler / Cache / TCP-IP / SMB.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen</h3>
+      <ul>
+        <li class="fix"><span class="highlight">VirtualBox-Adapter als LAN erkannt</span> –
+            Adapter mit generischem Namen wie „Ethernet 5" wurden fälschlich
+            als echte LAN-Verbindung angezeigt. Dreifacher Filter:
+            Interface-Name, MAC-Adresse (OUI) und wmic-Beschreibung.</li>
+        <li class="fix"><span class="highlight">Hardcodierter NAS-Pfad entfernt</span> –
+            <code>\\192.168.X.XX\share</code> erschien auf allen PCs als
+            Vorschlag im Geschwindigkeitstest. Feld startet jetzt leer.</li>
+        <li class="fix"><span class="highlight">Verbindungskachel Orange statt Lila</span> –
+            Farbe der Verbindungskachel von Lila (#8E44AD) auf
+            warmes Orange (#D35400) geändert.</li>
+        <li class="fix"><span class="highlight">„(pro Messzyklus)" abgeschnitten</span> –
+            Label neben den Chunk-Größen-Radiobuttons war abgeschnitten.
+            Breite und Abstand korrigiert.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.22.14 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.22.14</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Optimierungen &amp; Fehlerbehebungen</div>
+        <div class="v-date">April 2026</div>
+      </div>
+      <div class="v-tag older">Vorgänger</div>
+    </div>
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen</h3>
+      <ul>
+        <li class="fix"><span class="highlight">HTML-Report öffnet doppelt</span> –
+            nach jedem Scan wurden zwei Browser-Tabs geöffnet. Guard-Flag
+            verhindert jetzt mehrfachen Aufruf von <code>_auto_create_html()</code></li>
+        <li class="fix"><span class="highlight">HTML öffnet obwohl deaktiviert</span> –
+            <code>auto_html=False</code> wurde durch fehlerhafte String/Bool-Konvertierung
+            ignoriert. Speicherung und Prüfung jetzt wasserdicht</li>
+        <li class="fix"><span class="highlight">WLAN-Kachel leer auf reinen WLAN-Geräten</span> –
+            <code>&#39;LAN&#39; in &#39;WLAN&#39;</code> war True, deshalb wurde WLAN-Adapter
+            fälschlich als LAN erkannt. Explizites Ausschließen von WLAN beim LAN-Test</li>
+        <li class="fix"><span class="highlight">Verbindungsrate leer auf WLAN-Laptops</span> –
+            cp850-Dekodierung verstümmelte Umlaute in Feldnamen. Wechsel auf utf-8
+            für netsh wlan-Ausgaben</li>
+        <li class="fix"><span class="highlight">Senden/Empfangen leer in WLAN-Kachel</span> –
+            Key-Mismatch zwischen <code>tx/rx</code> und <code>tx_rate/rx_rate</code>.
+            Fallback: wenn Senderate fehlt, wird Empfangsrate verwendet</li>
+        <li class="fix"><span class="highlight">Verbindungssymbol falsch bei WLAN</span> –
+            Stecker-Symbol 🔌 erschien auch bei WLAN-Verbindungen.
+            Jetzt dynamisch: 🔌 für LAN, 📶 für WLAN</li>
+        <li class="fix"><span class="highlight">Netzwerkfreigabe-Vorgabe entfernt</span> –
+            privater NAS-Pfad <code>\192.168.0.53\share</code> war hart kodiert.
+            Feld ist jetzt leer wenn keine INI-gespeicherte Freigabe vorhanden</li>
+        <li class="fix"><span class="highlight">Schreiben/Lesen MB/s abgeschnitten</span> –
+            zu wenig Abstand zwischen Titel und Wert. Kachelhöhe und Abstände optimiert</li>
+        <li class="fix"><span class="highlight">Browser-Zugriff: schlechter Zeilenumbruch</span> –
+            „HTTP/HTTPS-Response" brach nach „Respo" um. Text auf
+            „HTTP · HTTPS-Response" geändert</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.22.0 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.22.0</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Großes UI-Update – LAN-Performance &amp; WLAN komplett überarbeitet</div>
+        <div class="v-date">April 2026</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen</h3>
+      <ul>
+        <li class="new"><span class="highlight">LAN-Performance: Neues 2-Spalten-Layout</span> –
+            der Tab ist jetzt zweigeteilt: links Zielpfad, Steuerung und die großen
+            Schreiben/Lesen-Kacheln; rechts Verbindungsstatus und WLAN-Übersicht.
+            Senkrechte Trennlinie direkt rechts von „(pro Messzyklus)"</li>
+        <li class="new"><span class="highlight">WLAN-Übersicht in LAN-Performance integriert</span> –
+            großer dunkelgrauer WLAN-Kasten mit SSID, farbigem Signalbalken,
+            Kanal, Band, Wi-Fi-Standard, Sende- und Empfangsrate (aus netsh).
+            Der separate WLAN-Umgebungs-Tab entfällt</li>
+        <li class="new"><span class="highlight">Verbindungskacheln überarbeitet</span> –
+            Verbindung (lila) und IPv4/Gateway (dunkelblau) gestapelt,
+            höhenbündig mit dem WLAN-Kasten. Green-Ethernet entfernt</li>
+        <li class="new"><span class="highlight">Einheitliche Fenster-Header</span> –
+            alle Popup-Fenster (Konfiguration, OUI-Verwaltung, Gerät beschriften,
+            Doku &amp; Kontakt) haben jetzt einen einheitlichen dunklen Header-Balken
+            mit Symbol und Titel</li>
+        <li class="new"><span class="highlight">Konfig-Fenster 2-spaltig</span> –
+            Scan-Optionen, Intensität und Npcap-Status links;
+            Darstellung, Schrift, HTML-Report, Timeout und Log-Verzeichnis rechts.
+            Deutlich kompakter, passt auch auf Laptop-Bildschirme</li>
+        <li class="new"><span class="highlight">„Gerät beschriften" vereinfacht</span> –
+            Rechtsklick-Dialog mit getrennten Feldern für Hersteller und Gerät-Typ.
+            Klare Auswahl: gilt für diese IP / alle Geräte dieses Herstellers /
+            alle Geräte mit ähnlichem Namen</li>
+        <li class="new"><span class="highlight">Npcap-Status in Konfiguration</span> –
+            zeigt ob Npcap installiert ist (grün) oder fehlt (gelbe Box mit
+            Download-Link zu npcap.com)</li>
+        <li class="new"><span class="highlight">Netzwerkprofil W11 24H2</span> –
+            Registry als zweite Quelle bei öffentlichem Profil. Erkennt NLA-Konflikt
+            und bietet NLA-Cache-Reset direkt an</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen</h3>
+      <ul>
+        <li class="fix"><span class="highlight">Eigene Zuordnung: doppelter Typ-Eintrag</span> –
+            nach Setzen eines Custom-OS (z.B. „Internet-Radio") wurde der Typ
+            durch die automatische Erkennung nochmals eingetragen.
+            Custom-Einträge sperren jetzt die automatische Typ-Erkennung</li>
+        <li class="fix"><span class="highlight">LAN-Geschwindigkeit: leere Kachel</span> –
+            netsh lieferte auf manchen Systemen keinen Zahlenwert.
+            Jetzt via wmic (Speed in Bytes, normalisiert zu Gbps/Mbit/s)
+            mit netsh als Fallback</li>
+        <li class="fix"><span class="highlight">Fensterposition auf nicht mehr vorhandenem Monitor</span> –
+            Hauptfenster öffnet jetzt immer im sichtbaren Desktop-Bereich</li>
+        <li class="fix"><span class="highlight">Konfig-Fenster zu hoch</span> –
+            Speichern/Abbrechen wurden auf Laptops und bei 125% Skalierung
+            abgeschnitten. 2-spaltiges Layout behebt das Problem</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>● Verbesserungen</h3>
+      <ul>
+        <li class="note">Button „Konfigurieren" → „Konfig" (kürzer)</li>
+        <li class="note">Hilfe-Fenster breiter, „Herzlichen Dank" in eigener Zeile,
+            Header „📖 Doku &amp; Kontakt"</li>
+        <li class="note">OUI-Verwaltung: Titel „OUI-Verwaltung" im Header,
+            Untertitel „Hersteller-Datenbank &amp; Eigene Zuordnungen"</li>
+        <li class="note">WLAN-Verbindungskarte kompakter (weniger Höhe),
+            jetzt in LAN-Performance integriert statt eigenem Tab</li>
+        <li class="note">Hilfe-Datei Abschnitt 8: Kurzcheckliste „Was mitnehmen",
+            Logs-Ordner als „✔ Empfohlen", PC-Wechsel als Schritt-für-Schritt</li>
+        <li class="note">Versionsnummer auf 3.22.0, Build 2026.04.03</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.21.0 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.21.0</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Zwischenversion – Korrekturen &amp; Verbesserungen</div>
+        <div class="v-date">April 2026</div>
+      </div>
+    </div>
+    <div class="section">
+      <ul>
+        <li class="fix">Scan-Start-Robustheit: Log-Verzeichnis nicht erreichbar
+            führte zum Einfrieren – Fallback auf App-Verzeichnis\Logs</li>
+        <li class="fix">_ensure_scapy() aus Haupt-Thread entfernt (blockierte GUI)</li>
+        <li class="fix">PowerShell aus find_networks() entfernt (blockierte auf Fremd-PCs)</li>
+        <li class="note">Splash-Screen mit determinater Progressbar und Statustext</li>
+        <li class="note">F11 blendet Header ein/aus</li>
+        <li class="note">MB/s zusätzlich zu Mbit/s in Schreiben/Lesen-Kacheln</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.20.0 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.20.5</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Großes Update – Neue Funktionen &amp; Fehlerbehebungen</div>
+        <div class="v-date">April 2026</div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen</h3>
+      <ul>
+        <li class="new"><span class="highlight">Tab 4: LAN-Performance &amp; WLAN</span> –
+            komplett neuer Tab mit zwei Unterbereichen</li>
+        <li class="new"><span class="highlight">LAN-Geschwindigkeitstest mit Live-Kurve</span> –
+            Dauertest mit Start/Stopp, misst Schreib- und Leserate zu einer Netzwerkfreigabe,
+            zeigt zwei farbige Echtzeit-Kurven (blau = Schreiben, grün = Lesen).
+            Kein Server-Tool nötig – nur eine erreichbare Freigabe
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="new"><span class="highlight">WLAN-Verbindungskarte</span> –
+            zeigt SSID, Signalstärke mit farbigem Balken (grün/gelb/rot),
+            Kanal, Band (2,4/5 GHz), Wi-Fi-Standard (Wi-Fi 4/5/6),
+            Verschlüsselung, BSSID, Empfangs- und Senderate.
+            Hinweis wenn LAN-Kabel aktiv (beeinflusst WLAN-Messungen)</li>
+        <li class="new"><span class="highlight">WLAN-Umgebungsscan</span> –
+            listet alle WLAN-Netze in Reichweite mit Signal, Kanal,
+            Band, Verschlüsselung und BSSID. Eigenes Netz mit ★ markiert.
+            Kanalauslastung 2,4 GHz und 5 GHz als farbige Balkendiagramme</li>
+        <li class="new"><span class="highlight">Eigene Zuordnungen (S-IT-Custom.ini)</span> –
+            Nutzer können eigene Hersteller- und OS-Bezeichnungen dauerhaft
+            hinterlegen. Drei Ebenen: OUI → Hersteller, Hostname-Pattern → OS,
+            IP-Adresse → OS. Wird bei OUI-Updates <em>nie</em> überschrieben</li>
+        <li class="new"><span class="highlight">Rechtsklick → „Eigene Zuordnung setzen"</span> –
+            direkt aus der Geräteliste heraus falsche Erkennungen korrigieren
+            und dauerhaft in der Custom.ini speichern</li>
+        <li class="new"><span class="highlight">Scan-Intensität</span> –
+            wählbar in den Einstellungen: Sicher (nur Ping, kein ARP-Flood),
+            Standard (Ping + ARP), Intensiv (Ping + ARP + Scapy).
+            Warnung bei Intensiv-Modus
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="new"><span class="highlight">HTML-Autostart deaktivierbar</span> –
+            HTML-Report öffnet nach dem Scan nicht mehr automatisch im Browser,
+            wenn in den Einstellungen deaktiviert
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="new"><span class="highlight">Schriftgröße einstellbar</span> –
+            Klein (8 pt), Normal (9 pt), Groß (11 pt) – für hohe Auflösungen
+            und 4K-Bildschirme
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="new"><span class="highlight">Spenden-Button in der Hilfe</span> –
+            wer das Tool nützlich findet, kann den Entwickler via PayPal unterstützen</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen</h3>
+      <ul>
+        <li class="fix"><span class="highlight">OS-Bezeichnungen bereinigt</span> –
+            „Android/iOS" und „Linux/macOS" als kombinierte Labels entfernt.
+            Geräte werden jetzt eindeutig als Android, Linux, Apple iOS usw. erkannt
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="fix"><span class="highlight">Frontier Silicon Internet-Radios</span> –
+            wurden fälschlich als „Linux (Hop entfernt)" angezeigt,
+            jetzt korrekt als „Internet-Radio (Embedded)"</li>
+        <li class="fix"><span class="highlight">Cubot-Smartphones (T65Plus, X100)</span> –
+            wurden als „Linux" erkannt, jetzt korrekt als „Android"</li>
+        <li class="fix"><span class="highlight">Unterfenster hinter Taskleiste</span> –
+            alle Popup-Fenster (Details, Ping-Monitor, Einstellungen usw.)
+            öffnen jetzt zentriert über dem Hauptfenster
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="fix"><span class="highlight">Log-Verzeichnis: Slash statt Backslash</span> –
+            Pfade werden jetzt immer korrekt mit Backslash gespeichert</li>
+        <li class="fix"><span class="highlight">HTML-Report öffnete trotz Deaktivierung</span> –
+            Einstellung wurde durch eine falsche Bool-Konvertierung ignoriert</li>
+        <li class="fix"><span class="highlight">Versionsnummer im Splash-Screen</span> –
+            zeigte nach Update noch die alte Version an. Alle Versionstexte
+            werden jetzt aus einer zentralen Variable gespeist</li>
+        <li class="fix"><span class="highlight">Splash-Screen zu schmal</span> –
+            Text wurde rechts abgeschnitten, Fenster jetzt breiter
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+        <li class="fix"><span class="highlight">Netzwerkabbruch nach Scan</span> –
+            mit der neuen Scan-Intensität „Sicher" kann der ARP-Flood
+            für empfindliche Netzwerke und ältere Drucker deaktiviert werden
+            <span class="tag-user">Nutzer-Wunsch</span></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>● Verbesserungen</h3>
+      <ul>
+        <li class="note">Autorenangabe vollständig:
+            „© 2026 Hans Udo Sattler · Sattler IT-Service · Greifenstein"
+            in Splash-Screen, Header, Footer und HTML-Report</li>
+        <li class="note">OUI-Verwaltung zusammengefasst: OUI-Update und
+            Eigene Zuordnungen jetzt in einem gemeinsamen Fenster</li>
+        <li class="note">Einstellungsdialog überarbeitet und erweitert</li>
+        <li class="note">Werkzeugaufruf „Hilfe" öffnet jetzt ein
+            übersichtliches Fenster statt direkt den Browser</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.18 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.18</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;">Grundlegende Überarbeitung</div>
+        <div class="v-date">April 2026</div>
+      </div>
+      <div class="v-tag older">Vorgänger</div>
+    </div>
+    <div class="section">
+      <ul>
+        <li>HTML-Report wird automatisch beim Scan-Ende erstellt (gleicher Timestamp wie .log)</li>
+        <li>OUI-Datenbank nach Update sofort neu eingelesen ohne Neustart</li>
+        <li>Logs &amp; Reports in einem gemeinsamen Verwaltungsfenster</li>
+        <li>Farbpaletten (Dezent / Kontrastreich) eingeführt</li>
+        <li>S-IT-Icon im Titelbalken</li>
+        <li>DPI-aware Fenstergröße für 125%/150% Windows-Skalierung</li>
+        <li>Medion Internet-Radios korrekt erkannt</li>
+        <li>Geschwindigkeitstest im Netzwerk-Diagnose-Tab</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.6 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.6</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;">NetDiag-Tab &amp; Diagnose-Kacheln</div>
+        <div class="v-date">Februar 2026</div>
+      </div>
+      <div class="v-tag older">Archiv</div>
+    </div>
+    <div class="section">
+      <ul>
+        <li>Netzwerk-Diagnose-Tab neu: 7 Kacheln mit Ampelfarben</li>
+        <li>Konfigurierbare Schnellziele für Ping-Tests</li>
+        <li>VirtualBox/Hyper-V IP-Filter</li>
+        <li>Ziel-History (Dropdown)</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.4 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.4</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;">Details, WoL, Ping-Monitor</div>
+        <div class="v-date">Februar 2026</div>
+      </div>
+      <div class="v-tag older">Archiv</div>
+    </div>
+    <div class="section">
+      <ul>
+        <li>Gerät-Detail-Fenster (Doppelklick auf Gerät)</li>
+        <li>Rechtsklick-Kontextmenü: Web, WoL, Ping-Monitor, Details, Export</li>
+        <li>Wake-on-LAN</li>
+        <li>Ping-Monitor (Dauerpinging mit Verlaufsanzeige)</li>
+        <li>Netzwerk-Vergleich (Scan-Differenz: neu/verschwunden)</li>
+        <li>HTML-Report Export im S-IT Corporate Design</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.2 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 3.2</div>
+      <div>
+        <div style="font-size:14px;font-weight:600;">Persistente Konfiguration</div>
+        <div class="v-date">Februar 2026</div>
+      </div>
+      <div class="v-tag older">Archiv</div>
+    </div>
+    <div class="section">
+      <ul>
+        <li>Konfiguration persistent in INI gespeichert</li>
+        <li>Log-Verzeichnis frei wählbar</li>
+        <li>Keine Dateien mehr auf dem Desktop</li>
+        <li>.cache/.config beim Beenden automatisch bereinigt</li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.21 (Build 2026.07.27d)
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Autor: Hans Udo Sattler<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>
+  &nbsp;•&nbsp;
+  <a href="Disclaimer.txt">Haftungsausschluss</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+</body>
+</html>

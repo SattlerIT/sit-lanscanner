@@ -344,8 +344,8 @@
   <div class="hero-inner">
     <div>
       <h1>Der professionelle LAN- und WLAN-Scanner<br>&ndash; Netzwerkgeräte erkennen, analysieren und dokumentieren</h1>
-      <p>Der S-IT LAN Device Scanner findet alle Geräte im Netzwerk und zeigt Hersteller, Betriebssystem und offene Ports – inklusive Intensiv-Scan mit Npcap. Dazu Internet-Erreichbarkeit, LAN-Durchsatztest mit Live-Kurve, WLAN-Analyse und ein Diagnose-Tab für die Windows-Netzwerkeinstellungen. Jeder Scan lässt sich als HTML-Report speichern, archivieren und mit früheren Scans vergleichen.</p>
-      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v3.22.19/sit-lanscanner_v3-22-19.zip" class="btn-download">⬇ Download v3.22.19</a>
+      <p>Der S-IT LAN Device Scanner findet alle Geräte im Netzwerk und zeigt Hersteller, Betriebssystem und offene Ports – inklusive Intensiv-Scan mit Npcap. Dazu Internet-Erreichbarkeit, LAN-Durchsatztest mit Live-Kurve, WLAN-Analyse, ein Diagnose-Tab für die Windows-Netzwerkeinstellungen und – neu – ein Firewall-Tab, der Ausnahmen für nicht erreichbare Geräte direkt einträgt. Jeder Scan lässt sich als HTML-Report speichern, archivieren und mit früheren Scans vergleichen.</p>
+      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v3.22.21/sit-lanscanner_v3-22-21.zip" class="btn-download">⬇ Download v3.22.21</a>
       <a href="https://github.com/SattlerIT/sit-lanscanner/releases" class="btn-secondary">Alle Versionen</a>
     </div>
     <div class="hero-screenshot">
@@ -385,6 +385,11 @@
       <p>Prüft Netzwerkprofil, Freigaben, SMB-Versionen, Dienste und Firewall-Regeln – mit Reparatur-Funktionen für DNS-, NetBIOS- und ARP-Cache, TCP/IP-Stack und Winsock.</p>
     </div>
     <div class="card">
+      <div class="card-icon">🛡</div>
+      <h3>Firewall-Ausnahmen</h3>
+      <p>Ist ein Gerät sichtbar, aber nicht erreichbar? Der neue Tab prüft Ping, offene Ports und Firewall-Status eines Ziels und trägt auf Wunsch eine passende Ausnahme ein – für alle Ports, nur Dateifreigabe oder samt Weboberfläche. Eigene Regeln lassen sich jederzeit wieder entfernen, fremde bleiben unangetastet.</p>
+    </div>
+    <div class="card">
       <div class="card-icon">📋</div>
       <h3>Log-Manager</h3>
       <p>Alle Scans an einem Ort: anzeigen, vergleichen, löschen. Der Vergleich zweier Scans zeigt neu hinzugekommene und verschwundene Geräte auf einen Blick.</p>
@@ -397,7 +402,7 @@
     <div class="card">
       <div class="card-icon">🖥</div>
       <h3>Skalierbare Oberfläche</h3>
-      <p>Darstellungsgröße von 100–300 % im Konfig-Dialog – für HiDPI-, UHD- und Hochkant-Monitore. Alle Schriften und Abstände skalieren proportional mit.</p>
+      <p>Darstellungsgröße von 90–300 % im Konfig-Dialog – für kompakte Ansichten, HiDPI-, UHD- und Hochkant-Monitore. Alle Schriften und Abstände skalieren proportional mit; die Fenstergröße lässt sich auf Wunsch dauerhaft merken.</p>
     </div>
     <div class="card">
       <div class="card-icon">🔧</div>
@@ -486,6 +491,17 @@
   <!-- CHANGELOG -->
   <div class="section-title">📋 Changelog</div>
   <div class="changelog">
+    <div class="changelog-entry">
+      <div class="changelog-version">v3.22.21 <span>Juli 2026 · Build 2026.07.27</span></div>
+      <ul>
+        <li>🛡 Neuer Firewall-Tab: prüft Ping, offene Ports und Firewall-Status eines Ziels und trägt auf Wunsch eine passende Ausnahme ein – für alle Ports, nur Dateifreigabe oder samt Weboberfläche. Vom Programm gesetzte Regeln lassen sich einzeln oder komplett entfernen, fremde bleiben unangetastet</li>
+        <li>Start als Administrator: einstellbar im Konfig, mit Statusanzeige in der Fußzeile – nötig für Netzwerk-Reparatur, ARP-Cache, Scapy-Scan und den Firewall-Tab</li>
+        <li>Neue kompakte Skalierungsstufe 90 % – mehr Platz bei Tabellen, besonders auf Full-HD mit 125 % Windows-Skalierung</li>
+        <li>Fenstergröße lässt sich dauerhaft speichern; das Programm öffnet beim nächsten Start in der gewohnten Größe</li>
+        <li>Aufgeräumter Konfig-Dialog: übersichtlicher gegliedert, lange Erklärungen in Info-Knöpfen, bei hoher Skalierung scrollbar</li>
+        <li>Zahlreiche Feinkorrekturen bei hoher Skalierung: Texte, Schaltflächen und Tabellen bleiben auf jeder Bildschirmgröße vollständig sichtbar; flüssiges Arbeiten auch auf langsameren Geräten</li>
+      </ul>
+    </div>
     <div class="changelog-entry">
       <div class="changelog-version">v3.22.19 – Überarbeitung <span>Juli 2026 · Build 2026.07.17</span></div>
       <ul>
