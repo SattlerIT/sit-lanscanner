@@ -171,6 +171,21 @@
       box-shadow: 0 2px 8px rgba(0,0,0,.08);
       cursor: pointer;
       transition: box-shadow .2s;
+      position: relative;
+    }
+    .gallery-item .badge-neu {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #27ae60;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      z-index: 2;
     }
     .gallery-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.16); }
     .gallery-item img   {
@@ -414,6 +429,16 @@
   <!-- SCREENSHOTS -->
   <div class="section-title">📸 Screenshots</div>
   <div class="gallery">
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <span class="badge-neu">NEU</span>
+      <img src="L7-Firewall-Befund.png" alt="Firewall-Tab mit Prüfergebnis und gesetzten Regeln">
+      <div class="gallery-caption">Firewall-Ausnahmen: Ziel geprüft, alle Punkte grün – vier gesetzte Regeln in der Liste</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <span class="badge-neu">NEU</span>
+      <img src="L8-Firewall-Eintragen.png" alt="Firewall-Tab: Bestätigung vor dem Eintragen der Ausnahme">
+      <div class="gallery-caption">Vor dem Eintragen: klare Übersicht, welche Regeln angelegt werden</div>
+    </div>
     <div class="gallery-item" onclick="openLightbox(this)">
       <img src="L1_Screenshot__819_.png" alt="LAN-Scanner Geräteliste mit Kontextmenü">
       <div class="gallery-caption">Geräteliste mit Hersteller, Betriebssystem und offenen Ports – Rechtsklick für Aktionen</div>
