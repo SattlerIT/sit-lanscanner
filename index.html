@@ -397,7 +397,7 @@
     <div class="card">
       <div class="card-icon">🛠</div>
       <h3>Netzwerk-Einstellungen</h3>
-      <p>Prüft Netzwerkprofil, Freigaben, SMB-Versionen, Dienste und Firewall-Regeln – mit Reparatur-Funktionen für DNS-, NetBIOS- und ARP-Cache, TCP/IP-Stack und Winsock.</p>
+      <p>Prüft Netzwerkprofil, Freigaben, SMB-Versionen, Dienste und Firewall-Regeln – SMB1 getrennt nach Client und Server, mit Reparatur-Funktionen für DNS-, NetBIOS- und ARP-Cache, TCP/IP-Stack und Winsock.</p>
     </div>
     <div class="card">
       <div class="card-icon">🛡</div>
@@ -516,6 +516,17 @@
   <!-- CHANGELOG -->
   <div class="section-title">📋 Changelog</div>
   <div class="changelog">
+    <div class="changelog-entry">
+      <div class="changelog-version">v3.22.21 – Überarbeitung <span>August 2026 · Build 2026.08.17</span></div>
+      <ul>
+        <li>🔀 SMB1 getrennt nach Client und Server: bisher eine einzige Zeile, jetzt zwei einzeln schaltbare – <strong>Client</strong> für den Zugriff auf alte NAS und Drucker, <strong>Server</strong> für alte Geräte, die auf Freigaben dieses PCs zugreifen. Behoben: SMB1 ließ sich nicht wirklich einschalten, und die Anzeige konnte in beide Richtungen falsch sein</li>
+        <li>⏳ Neue Zeile „SMB1 dauerhaft halten": Windows entfernt SMB1 nach 15 Tagen ohne Nutzung selbstständig wieder – nach Betriebspausen liefen alte Geräte deshalb plötzlich ins Leere. Die Automatik lässt sich jetzt abschalten</li>
+        <li>🎯 Einfachere Eingabe des Scanbereichs: statt CIDR genügt auch 192.168.0.1-192.168.0.50, die Kurzform 192.168.0.1-50 oder eine einzelne Adresse – mit verständlicher Meldung bei Fehleingaben</li>
+        <li>📐 Netze mit abweichender Subnetzmaske werden korrekt ausgewertet; bisher wurden stets 254 Adressen angenommen und dadurch Geräte übersehen</li>
+        <li>⏸ Kein automatischer Neustart mehr nach Änderungen an Windows-Funktionen – das Programm weist nur noch darauf hin, der Zeitpunkt bleibt dem Anwender überlassen</li>
+        <li>📄 Scan-Protokoll und HTML-Bericht nennen jetzt Version und Build-Nummer</li>
+      </ul>
+    </div>
     <div class="changelog-entry">
       <div class="changelog-version">v3.22.21 <span>Juli 2026 · Build 2026.07.27</span></div>
       <ul>
