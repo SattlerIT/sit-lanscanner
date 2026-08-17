@@ -47,7 +47,7 @@
 <body>
 <header>
   <h1>S-IT LAN Device Scanner – ChangeLog</h1>
-  <p>Aktuell: Version 3.22.21 (Build 2026.07.27d) &nbsp;•&nbsp;
+  <p>Aktuell: Version 3.22.21 (Build 2026.08.17) &nbsp;•&nbsp;
      © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
 </header>
 
@@ -58,10 +58,103 @@
     <div class="version-header current">
       <div class="v-badge">v 3.22.21</div>
       <div>
-        <div style="font-size:15px;font-weight:600;">Firewall-Ausnahmen direkt im Scanner, Start als Administrator &amp; feineres Skalieren</div>
-        <div class="v-date">Juli 2026</div>
+        <div style="font-size:15px;font-weight:600;">Firewall-Ausnahmen direkt im Scanner, SMB1 nach Client und Server getrennt &amp; einfachere Bereichseingabe</div>
+        <div class="v-date">Juli – August 2026</div>
       </div>
       <div class="v-tag">Aktuell</div>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.08.17</h3>
+      <ul>
+        <li class="new"><span class="highlight">SMB1 getrennt nach Client und Server</span> –
+            in den Netzwerk-Einstellungen stand SMB1 bisher als eine einzige Zeile.
+            Tatsächlich sind es zwei voneinander unabhängige Teile:
+            <strong>SMB1-Client</strong> (damit dieser PC auf alte NAS und Drucker
+            zugreifen kann) und <strong>SMB1-Server</strong> (damit alte Geräte, etwa
+            ein Kopierer, auf die Freigaben dieses PCs zugreifen können). Beide werden
+            jetzt einzeln angezeigt und einzeln geschaltet. Der Client ist der häufige
+            Fall und wird als Hinweis geführt, der Server als Warnung – er ist die
+            sicherheitskritische Seite.</li>
+        <li class="new"><span class="highlight">SMB1 dauerhaft halten</span> –
+            neue Zeile darunter. Windows entfernt SMB1 selbstständig wieder, wenn es
+            15 Tage lang nicht benutzt wurde. Nach längeren Betriebspausen war SMB1
+            deshalb plötzlich weg und alte Geräte liefen ins Leere. Die neue Zeile
+            schaltet diese Automatik ab und wieder ein. Sie meldet sich nur, wenn SMB1
+            überhaupt aktiv ist, und bleibt sonst still.</li>
+        <li class="new"><span class="highlight">Von-bis-Eingabe für den Scanbereich</span> –
+            der Scanbereich musste bisher in der Fachschreibweise CIDR eingegeben
+            werden. Jetzt geht auch <code>192.168.0.1-192.168.0.50</code>, die Kurzform
+            <code>192.168.0.1-50</code> oder eine einzelne Adresse. Neben dem Feld steht
+            ein Hinweis auf die Schreibweise, und bei einer Fehleingabe erscheint eine
+            verständliche Meldung statt einer technischen Fehlermeldung.</li>
+        <li class="new"><span class="highlight">Versionsangabe in allen Protokollen</span> –
+            Scan-Protokoll und HTML-Bericht nennen jetzt Version <em>und</em>
+            Build-Nummer. Bei Rückfragen ist damit eindeutig nachvollziehbar, welche
+            Programmfassung ein Protokoll erzeugt hat.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen – Build 2026.08.17</h3>
+      <ul>
+        <li class="fix"><span class="highlight">SMB1 ließ sich nicht wirklich einschalten</span> –
+            das Programm meldete nach dem Aktivieren Erfolg, SMB1 blieb aber
+            abgeschaltet. Ursache: Es wurde nur der übergeordnete Windows-Eintrag
+            gesetzt, nicht das eigentliche Server-Teil, und der Protokollschalter des
+            SMB-Servers wurde gar nicht angefasst. Beide Schritte laufen jetzt
+            vollständig ab.</li>
+        <li class="fix"><span class="highlight">Falsche SMB1-Anzeige in beide Richtungen</span> –
+            die Prüfung las nur, ob das Windows-Feature vorhanden ist. Dadurch konnte
+            „SMB1 aktiv – Sicherheitsrisiko“ erscheinen, obwohl SMB1 gar nicht lief,
+            und umgekehrt. Beide Ebenen werden jetzt getrennt geprüft und ein
+            unvollständiger Zustand wird als solcher benannt, mit einem Knopf zum
+            Abschließen.</li>
+        <li class="fix"><span class="highlight">„Befehl fehlgeschlagen“ beim Aktivieren</span> –
+            das Nachladen des Windows-Features und das Umlegen des Protokollschalters
+            steckten in einem Arbeitsschritt. Der zweite Teil kann vor dem Neustart
+            noch nicht greifen, weshalb der gesamte Vorgang als Fehler gemeldet wurde,
+            obwohl er zur Hälfte erfolgreich war. Jetzt ist es ein sauberer Zweischritt
+            mit passender Rückmeldung.</li>
+        <li class="fix"><span class="highlight">Kein automatischer Neustart mehr</span> –
+            nach Änderungen an Windows-Features startete das Programm den Rechner nach
+            einer einzigen Rückfrage mit fünf Sekunden Vorlauf neu. Das ist zu wenig
+            Zeit, um Arbeit zu sichern, und auf fremden Rechnern grundsätzlich
+            unangebracht. Das Programm weist jetzt nur noch auf den nötigen Neustart
+            hin – wann neu gestartet wird, entscheiden Sie.</li>
+        <li class="fix"><span class="highlight">Veraltete Versionsangabe im Protokoll</span> –
+            der Kopf der Protokolldatei nannte über mehrere Versionen hinweg eine alte
+            Versionsnummer. Die Angabe wird jetzt direkt aus dem Programm übernommen
+            und kann nicht mehr zurückbleiben.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebung – Build 2026.07.30</h3>
+      <ul>
+        <li class="fix"><span class="highlight">Subnetzmaske wird jetzt korrekt ausgewertet</span> –
+            bisher nahm der Scanner immer ein /24-Netz an (die ersten drei
+            Adressblöcke). Bei abweichenden Masken wie 255.255.252.0 (/22) wurde dadurch
+            nur ein Teil des Netzes erfasst. Der Scanbereich wird jetzt aus IP-Adresse
+            <em>und</em> tatsächlicher Subnetzmaske des Adapters berechnet – etwa
+            172.16.35.5 / 255.255.252.0 → 172.16.32.0/22 (1.024 Adressen statt 256).
+            Danke für den Hinweis aus der Nutzerschaft.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Ergänzt – Build 2026.07.30</h3>
+      <ul>
+        <li class="new"><span class="highlight">Frei wählbarer Scanbereich</span> –
+            das Netzwerk-Feld lässt sich jetzt direkt bearbeiten: neben den automatisch
+            erkannten Netzen kann ein eigener Bereich in CIDR-Schreibweise eingetragen
+            werden (z.B. 192.168.10.0/24 oder 10.0.0.0/22). Die einfachere
+            Von-bis-Schreibweise kam mit Build 2026.08.17 dazu.</li>
+        <li class="new"><span class="highlight">Sicherheitsabfrage bei großen Bereichen</span> –
+            umfasst der gewählte Bereich sehr viele Adressen (z.B. ein /16 mit über
+            65.000), erscheint vor dem Start ein Hinweis, damit kein versehentlicher
+            Riesen-Scan das Netzwerk lange belastet.</li>
+      </ul>
     </div>
 
     <div class="section">
@@ -672,7 +765,7 @@
 </div>
 
 <footer>
-  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.21 (Build 2026.07.27d)
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.21 (Build 2026.08.17)
   &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
   Autor: Hans Udo Sattler<br>
   <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>
