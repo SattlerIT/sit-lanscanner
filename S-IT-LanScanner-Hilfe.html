@@ -1,0 +1,1010 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Hilfe</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Hilfe</h1>
+  <p>Version 3.22.21 &nbsp;•&nbsp; Build 2026.08.17 &nbsp;•&nbsp;
+     © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Schnellstart</a>
+  <a href="#oberflaeche">Oberfläche</a>
+  <a href="#scan">Scan durchführen</a>
+  <a href="#ergebnisse">Ergebnisse verstehen</a>
+  <a href="#einstellungen">Einstellungen</a>
+  <a href="#custom">Eigene Zuordnungen</a>
+  <a href="#netzwerk-einstellungen">Netzwerk-Einstellungen</a>
+  <a href="#lan-performance">LAN-Performance</a>
+  <a href="#firewall">Firewall</a>
+  <a href="#diag">Diagnose</a>
+  <a href="#dateien">Dateien &amp; Updates</a>
+  <a href="#faq">Häufige Fragen</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Inhaltsverzeichnis</h3>
+    <ol>
+      <li><a href="#schnellstart">Schnellstart</a></li>
+      <li><a href="#oberflaeche">Programmoberfläche im Überblick</a></li>
+      <li><a href="#scan">Scan durchführen</a></li>
+      <li><a href="#ergebnisse">Scan-Ergebnisse verstehen</a></li>
+      <li><a href="#einstellungen">Einstellungen</a></li>
+      <li><a href="#custom">Eigene Gerätezuordnungen (S-IT-Custom.ini)</a></li>
+      <li><a href="#lan-performance">Tab 4: LAN-Performance &amp; WLAN</a></li>
+      <li><a href="#firewall">Tab 5: Firewall-Ausnahmen</a></li>
+      <li><a href="#diag">Diagnose (DIAG) – für Tester</a></li>
+      <li><a href="#dateien">Dateien, Updates und Sicherung</a></li>
+      <li><a href="#faq">Häufige Fragen (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Schnellstart</h2>
+  <div class="box">
+    <h3>Erster Scan in 3 Schritten</h3>
+    <ol>
+      <li><strong>Programm starten</strong> – <code>S-IT-LanScanner.exe</code> doppelklicken.
+          Bei Bedarf Administratorrechte bestätigen (für ARP-Scan empfohlen).</li>
+      <li><strong>Netzwerk wählen</strong> – Im Dropdown oben links das gewünschte
+          Netzwerk auswählen (wird automatisch erkannt).</li>
+      <li><strong>Scan starten</strong> – Auf <span class="btn-demo btn-green">▶ Scan starten</span>
+          klicken. Nach dem Scan erscheinen alle gefundenen Geräte in der Liste.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tipp:</strong> Aktivieren Sie in den Einstellungen den <strong>Port-Scan</strong>,
+      um Dienste und das Betriebssystem genauer zu erkennen. Der Scan dauert dann länger,
+      liefert aber deutlich mehr Informationen.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. Programmoberfläche im Überblick</h2>
+  <div class="box">
+    <h3>Schaltflächen in der Toolbar</h3>
+    <p>Die Toolbar im Tab „LAN-Scanner" enthält die Scan-Funktionen:</p>
+    <table>
+      <tr><th>Schaltfläche</th><th>Funktion</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Scan starten</span></td>
+          <td>Startet den Netzwerkscan im gewählten Netzwerk</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Scan stoppen</span></td>
+          <td>Bricht einen laufenden Scan ab</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Logs &amp; Reports</span></td>
+          <td>Öffnet die Log-Verwaltung mit allen gespeicherten Scans</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 OUI-Update</span></td>
+          <td>Öffnet die OUI-Verwaltung: Hersteller-DB aktualisieren
+              und eigene Zuordnungen pflegen</td></tr>
+    </table>
+
+    <h3>Buttons im Header (immer sichtbar)</h3>
+    <p>Diese Buttons sind dauerhaft oben rechts im Header sichtbar –
+       unabhängig vom aktiven Tab immer erreichbar:</p>
+    <table>
+      <tr><th>Schaltfläche</th><th>Funktion</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Öffnet die Diagnose-Werkzeuge. Nur sichtbar, wenn unter
+              <strong>⚙ Konfig → Diagnose</strong> eingeschaltet – im Normalbetrieb
+              ausgeblendet. Siehe Abschnitt 10.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Konfig</span></td>
+          <td>Öffnet die Einstellungen – enthält rechts die <strong>Darstellungsgröße / Skalierung</strong>
+              (90–300 %) für HiDPI- und UHD-Monitore.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Hilfe</span></td>
+          <td>Öffnet dieses Hilfefenster</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Blendet den Header ein oder aus – mehr Platz für die Geräteliste</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Beenden</span></td>
+          <td>Beendet das Programm</td></tr>
+    </table>
+
+    <h3>Tabs</h3>
+    <ul>
+      <li><strong>LAN-Scanner</strong> – Hauptansicht mit der Geräteliste</li>
+      <li><strong>Internet-Erreichbarkeit</strong> – Ping-Diagnose zu konfigurierbaren Zielen</li>
+      <li><strong>Netzwerk-Einstellungen</strong> – Netzwerk-Tools und Diagnose</li>
+      <li><strong>LAN-Performance &amp; WLAN</strong> – Geschwindigkeitstest, Verbindungsstatus und WLAN-Übersicht</li>
+      <li><strong>🛡 Firewall</strong> – prüft die Erreichbarkeit eines Geräts und trägt bei Bedarf Firewall-Ausnahmen ein (Adminrechte nötig)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Scan durchführen</h2>
+  <div class="box">
+    <h3>Welchen Bereich soll ich scannen?</h3>
+    <p>Das <strong>Netzwerk-Feld</strong> oben links bestimmt, welche Adressen geprüft
+       werden. Es ist eine Auswahlliste <em>und</em> ein Eingabefeld: Die automatisch
+       erkannten Netze stehen zur Auswahl bereit – Sie können aber auch einfach
+       hineintippen.</p>
+    <table>
+      <tr><th>Schreibweise</th><th>Beispiel</th><th>Bedeutung</th></tr>
+      <tr><td><strong>Von–bis</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>Alle Adressen von der ersten bis zur letzten – die einfachste
+              Schreibweise</td></tr>
+      <tr><td><strong>Kurzform</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>Dasselbe, nur der letzte Adressblock wird angegeben</td></tr>
+      <tr><td><strong>Ganzes Netz</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Fachschreibweise (CIDR) für ein komplettes Netz</td></tr>
+      <tr><td><strong>Einzelnes Gerät</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Nur diese eine Adresse prüfen</td></tr>
+    </table>
+    <p>Ein kleinerer Bereich ist deutlich schneller: Statt 254 Adressen werden nur die
+       geprüft, die Sie wirklich interessieren. Bei sehr großen Bereichen fragt das
+       Programm vorher nach, damit ein Scan nicht versehentlich stundenlang läuft.</p>
+    <div class="warn">
+      <strong>Wenn eine Eingabe nicht angenommen wird:</strong> Das Programm sagt in
+      verständlichem Deutsch, was nicht stimmt – etwa wenn die zweite Adresse vor der
+      ersten liegt. Kontrollieren Sie Punkte und Bindestrich; Leerzeichen sind
+      unkritisch.
+    </div>
+
+    <h3>Scan-Intensität</h3>
+    <p>Die Scan-Intensität bestimmt wie aggressiv das Netzwerk abgefragt wird.
+       Einstellbar unter <strong>⚙ Konfigurieren → Scan-Intensität</strong>:</p>
+    <table>
+      <tr><th>Modus</th><th>Methode</th><th>Empfehlung</th></tr>
+      <tr><td><strong>Sicher</strong></td>
+          <td>Nur Ping (ICMP)</td>
+          <td>Für empfindliche Netzwerke, ältere Drucker oder
+              wenn nach dem Scan Geräte nicht mehr erreichbar waren</td></tr>
+      <tr><td><strong>Standard</strong></td>
+          <td>Ping + ARP-Scan</td>
+          <td>Für Heimnetzwerke – findet mehr Geräte als der sichere Modus</td></tr>
+      <tr><td><strong>Intensiv</strong></td>
+          <td>Ping + ARP + Scapy</td>
+          <td>Für professionelle Umgebungen. Benötigt Administratorrechte.
+              Kann auf manchen Routern die Verbindung kurzzeitig unterbrechen</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Hinweis zu Druckern:</strong> Ältere Netzwerkdrucker (z.B. Brother HL-Modelle)
+      können auf aggressive ARP-Floods mit einem Verbindungsausfall reagieren.
+      Nutzen Sie in solchen Netzwerken den Modus <strong>Sicher</strong>.
+    </div>
+
+    <h3>Port-Scan</h3>
+    <p>Der optionale Port-Scan (aktivierbar in den Einstellungen) prüft bekannte
+       Dienste-Ports pro Gerät und verbessert die Betriebssystem-Erkennung erheblich.
+       Er verlängert die Scan-Zeit, liefert aber deutlich mehr Informationen –
+       besonders welche Dienste ein Gerät anbietet (Web-Interface, SSH, RDP usw.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Scan-Ergebnisse verstehen</h2>
+  <div class="box">
+    <h3>Spalten in der Geräteliste</h3>
+    <table>
+      <tr><th>Spalte</th><th>Bedeutung</th></tr>
+      <tr><td>🌐</td><td>Web-Interface verfügbar – anklicken öffnet den Browser</td></tr>
+      <tr><td>IP-Adresse</td><td>Aktuelle IP im Netzwerk</td></tr>
+      <tr><td>Hostname</td><td>Name des Geräts (per DNS/NetBIOS aufgelöst)</td></tr>
+      <tr><td>MAC-Adresse</td><td>Hardware-Adresse der Netzwerkkarte</td></tr>
+      <tr><td>Hersteller</td><td>Aus der OUI-Datenbank ermittelt</td></tr>
+      <tr><td>Offene Ports</td><td>Gefundene Dienste (nur bei aktiviertem Port-Scan)</td></tr>
+      <tr><td>Betriebssystem</td><td>Erkanntes OS (TTL + Hostname + Hersteller + Ports)</td></tr>
+      <tr><td>Info</td><td>Zusätzliche Geräteinformationen</td></tr>
+    </table>
+
+    <h3>Zeilenfarben</h3>
+    <table>
+      <tr><th>Farbe</th><th>Bedeutung</th></tr>
+      <tr><td style="background:#CCE5F5">Blau</td><td>Windows-PC oder Windows-Server</td></tr>
+      <tr><td style="background:#B8EDD0">Grün</td><td>Linux, Unix oder ähnliche Systeme</td></tr>
+      <tr><td style="background:#F5C6C3">Rosa</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Lila</td><td>Mobiles Gerät (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Gelb</td><td>Netzwerkgerät (Router, Switch, Access Point)</td></tr>
+      <tr><td style="background:#FDDCB0">Orange</td><td>Drucker oder MFP</td></tr>
+      <tr><td style="background:#BEE3F5">Hellblau</td><td>NAS-Gerät</td></tr>
+      <tr><td style="background:#D8E8E8">Grau</td><td>Virtuelle Maschine</td></tr>
+    </table>
+
+    
+    <h3>Tastenkürzel</h3>
+    <table>
+      <tr><th>Taste</th><th>Funktion</th></tr>
+      <tr><td><code>F11</code></td><td>Kopfbereich ein-/ausblenden – mehr Platz für die Geräteliste (auch als Button im Header)</td></tr>
+      <tr><td><code>Doppelklick</code></td><td>Geräte-Details anzeigen</td></tr>
+      <tr><td><code>Rechtsklick</code></td><td>Kontextmenü mit Aktionen</td></tr>
+    </table>
+
+    <h3>Aktionen per Doppel- und Rechtsklick</h3>
+    <p><strong>Doppelklick</strong> auf ein Gerät öffnet das Detail-Fenster mit
+       allen Informationen, Port-Details und Schnellaktionen.</p>
+    <p><strong>Rechtsklick</strong> öffnet das Kontextmenü mit folgenden Optionen:</p>
+    <ul>
+      <li>Details anzeigen</li>
+      <li>Web-Interface öffnen (falls verfügbar)</li>
+      <li>Ping-Monitor starten (Dauerpinging mit Verlaufsanzeige)</li>
+      <li>Wake-on-LAN senden</li>
+      <li>IP oder MAC kopieren</li>
+      <li>Gerät einzeln neu scannen</li>
+      <li><strong>Eigene Zuordnung setzen</strong> – falsche Erkennung dauerhaft korrigieren</li>
+    </ul>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Einstellungen</h2>
+  <div class="box">
+    <p>Die Einstellungen erreichen Sie über <span class="btn-demo btn-orange">⚙ Konfigurieren</span>.
+       Alle Einstellungen werden automatisch in der Datei
+       <code>S-IT-LanScanner.ini</code> gespeichert.</p>
+
+    <h3>Scan-Optionen</h3>
+    <ul>
+      <li><strong>Port-Scan</strong> – findet Dienste und verbessert OS-Erkennung (langsamer)</li>
+      <li><strong>ARP-Scan</strong> – findet mehr Geräte durch ARP-Broadcasts</li>
+      <li><strong>OS-Erkennung</strong> – analysiert TTL, Hostname und Hersteller</li>
+    </ul>
+
+    <h3>Scan-Intensität</h3>
+    <p>Sicher / Standard / Intensiv – siehe Abschnitt 3.</p>
+
+    <h3>Darstellung</h3>
+    <ul>
+      <li><strong>Dezent</strong> – ruhige Pastelltöne, für professionellen Einsatz</li>
+      <li><strong>Kontrastreich</strong> – kräftigere Farben, besser unterscheidbar</li>
+      <li><strong>Schriftgröße</strong> – Klein (8 pt), Normal (9 pt), Groß (11 pt).
+          Bei 4K-Bildschirmen oder hohen Auflösungen empfiehlt sich „Groß"</li>
+    </ul>
+
+    <h3>HTML-Report</h3>
+    <p>Wenn <strong>„HTML-Report nach Scan automatisch im Browser öffnen"</strong>
+       aktiviert ist, öffnet sich der Scan-Report nach jedem Scan automatisch im
+       Standard-Browser. Dies kann hier deaktiviert werden.</p>
+
+    <h3>Log-Verzeichnis</h3>
+    <p>Hier können Sie festlegen, wo Scan-Logs und HTML-Reports gespeichert werden.
+       Standard: <code>[Programmverzeichnis]\Logs</code></p>
+
+    <h3>Darstellungsgröße / Skalierung</h3>
+    <p>Skaliert die gesamte Oberfläche. Wählbar sind <strong>90 / 100 / 125 / 150 /
+       175 / 200 / 250 / 300 %</strong>. Die Stufe <strong>90 %</strong> ist kompakt
+       und schafft mehr Platz bei Tabellen – oft von Vorteil bei Full-HD mit 125 %
+       Windows-Skalierung. Welche Stufe wofür geeignet ist, steht im ⓘ-Knopf neben der
+       Überschrift. Eine Änderung wirkt nach einem Neustart, der beim Speichern
+       angeboten wird.</p>
+
+    <h3>Programmstart</h3>
+    <p>Das Kästchen <strong>„🛡 Als Administrator starten"</strong> (Voreinstellung
+       <strong>an</strong>) fordert die Administratorrechte gleich beim Programmstart
+       an. Der Scanner braucht sie für die Netzwerk-Reparatur, den ARP-Cache, den
+       Scapy-Scan und den Firewall-Tab. Beim Start erscheint dann die Windows-Abfrage
+       (Benutzerkontensteuerung, UAC). Wer bewusst ohne Adminrechte arbeitet, nimmt den
+       Haken heraus – dann entfällt die Abfrage, und die genannten Funktionen melden
+       bei Bedarf selbst, dass sie Rechte brauchen. Unten links in der Statuszeile zeigt
+       eine dauerhafte Anzeige den tatsächlichen Zustand:
+       <span class="btn-demo btn-green">🛡 Admin</span> oder
+       <span class="btn-demo" style="background:#95A5A6;">🛡 kein Admin</span>.</p>
+
+    <h3>Fenster</h3>
+    <p>Mit <strong>„🗖 Fenstergröße speichern"</strong> merkt sich das Programm beim
+       Beenden die Größe des Hauptfensters und stellt sie beim nächsten Start wieder
+       her. Die gespeicherte Größe gilt je Skalierungsstufe: nach einem Wechsel der
+       Skalierung startet das Fenster einmal in Standardgröße und merkt sich die Größe
+       danach neu – so passen Größe und Platzbedarf immer zusammen.</p>
+
+    <div class="info">
+      <strong>ℹ Konfig-Fenster:</strong> Bei hoher Skalierung wird das
+      Einstellungsfenster größer als der Bildschirm. Es ist deshalb in beide Richtungen
+      scrollbar (Mausrad senkrecht, <code>Umschalt</code>+Mausrad waagerecht); die
+      Knöpfe <strong>Speichern</strong> und <strong>Abbrechen</strong> bleiben dabei
+      immer unten sichtbar.
+    </div>
+
+    <h3>Diagnose</h3>
+    <p>Das Kästchen <strong>„🔧 DIAG-Werkzeuge anzeigen"</strong> blendet oben im
+       Header den Knopf <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>
+       ein. Standardmäßig ist es <strong>aus</strong> – für den normalen Betrieb wird
+       die Diagnose nicht gebraucht. Näheres in Abschnitt 10.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Eigene Gerätezuordnungen (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>Manchmal erkennt der Scanner ein Gerät nicht korrekt – zum Beispiel
+       weil ein neues Gerät noch nicht in der OUI-Datenbank ist, oder weil
+       ein Gerät einen ungewöhnlichen TTL-Wert hat. Mit der <strong>S-IT-Custom.ini</strong>
+       können Sie eigene Zuordnungen dauerhaft hinterlegen.</p>
+
+    <div class="info">
+      <strong>Wichtig:</strong> Die S-IT-Custom.ini hat <strong>höchste Priorität</strong> –
+      sie überschreibt die OUI-Datenbank und alle automatischen Erkennungen.
+      Sie wird bei OUI-Updates <strong>niemals</strong> überschrieben.
+    </div>
+
+    <h3>Methode 1: Rechtsklick direkt in der Geräteliste</h3>
+    <p>Das ist der einfachste Weg:</p>
+    <ol>
+      <li>Scan durchführen</li>
+      <li>Gerät mit falscher Erkennung <strong>rechts anklicken</strong></li>
+      <li><strong>„✏ Eigene Zuordnung setzen …"</strong> wählen</li>
+      <li>Den richtigen Wert eingeben und die gewünschte Speichermethode wählen:
+          <ul>
+            <li><strong>IP-Adresse</strong> – gilt nur für diese eine IP (ideal für feste IPs)</li>
+            <li><strong>Hostname-Pattern</strong> – gilt für alle Geräte mit diesem
+                Hostname-Muster (ideal für Geräte-Typen)</li>
+            <li><strong>OUI / Hersteller</strong> – gilt für alle Geräte dieses Herstellers
+                (ideal wenn alle Geräte einer MAC-Serie falsch erkannt werden)</li>
+          </ul>
+      </li>
+      <li>Auf <strong>„✔ Speichern"</strong> klicken – gilt ab dem nächsten Scan</li>
+    </ol>
+
+    <h3>Methode 2: OUI-Verwaltungsfenster</h3>
+    <p>Über <span class="btn-demo btn-dark">🔄 OUI-Update</span> → Tab
+       <strong>„✏ Eigene Zuordnungen"</strong> können Sie alle Einträge
+       übersichtlich verwalten: hinzufügen, bearbeiten und löschen.</p>
+    <p>Der Editor hat drei Unter-Tabs:</p>
+    <ul>
+      <li><strong>OUI → Hersteller</strong> – MAC-Präfix (6 Hex-Zeichen) → Hersteller-Name</li>
+      <li><strong>Hostname → OS</strong> – Hostname-Pattern → OS-Bezeichnung</li>
+      <li><strong>IP → OS</strong> – IP-Adresse → OS-Bezeichnung</li>
+    </ul>
+
+    <h3>Dateiformat S-IT-Custom.ini</h3>
+    <p>Die Datei liegt im Programmordner und kann auch manuell bearbeitet werden:</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – Eigene Prioritäts-Zuordnungen</span><br>
+<span class="comment">; Wird vom OUI-Updater NICHT überschrieben.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; MAC-Präfix (6 Hex) = Hersteller-Bezeichnung</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<span class="key">B4ADA3</span> = <span class="val">CVTE Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; Hostname-Pattern = OS-Bezeichnung</span><br>
+<span class="key">T65Plus</span> = <span class="val">Android</span><br>
+<span class="key">TL-WPA</span> = <span class="val">TP-Link Powerline</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; IP-Adresse = OS-Bezeichnung (höchste Priorität)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Embedded (Smartboard)</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Prioritätsreihenfolge:</strong> IP-Zuordnung &gt; Hostname-Pattern &gt;
+      OUI-Zuordnung &gt; Automatische Erkennung
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="netzwerk-einstellungen">7. Tab 3: Netzwerk-Einstellungen</h2>
+  <div class="box">
+    <p>Dieser Tab prüft die <strong>Windows-Einstellungen des eigenen Rechners</strong>,
+       die darüber entscheiden, ob Freigaben, NAS-Geräte, Netzwerkdrucker und der
+       FritzBox-USB-Speicher überhaupt erreichbar sind. Er scannt also nicht das
+       Netzwerk, sondern schaut nach innen: Woran liegt es, dass ein Gerät zwar da ist,
+       aber nicht funktioniert?</p>
+    <p>Ein Klick auf <strong>„Alle Einstellungen prüfen"</strong> geht sämtliche Punkte
+       durch. Wo etwas nicht stimmt, steht rechts ein Knopf, der es in Ordnung bringt.</p>
+
+    <h3>Die Farben verstehen</h3>
+    <table>
+      <tr><th>Farbe</th><th>Bedeutung</th></tr>
+      <tr><td><strong>Grün</strong></td>
+          <td>Alles in Ordnung – hier ist nichts zu tun.</td></tr>
+      <tr><td><strong>Gelb</strong></td>
+          <td>Hinweis. Kein Fehler, aber etwas, das man bewusst so eingestellt haben
+              sollte – etwa ein aktiver SMB1-Client.</td></tr>
+      <tr><td><strong>Rot</strong></td>
+          <td>Warnung. Entweder eine Funktion fehlt, die für Freigaben gebraucht wird,
+              oder eine Einstellung ist ein echtes Sicherheitsrisiko.</td></tr>
+      <tr><td><strong>Grau</strong></td>
+          <td>Nur zur Information, kein Handlungsbedarf.</td></tr>
+    </table>
+    <div class="tip">
+      <strong>Warum ist ein Knopf manchmal grau?</strong> Ein Knopf auf einer grünen
+      Zeile führt immer <em>zurück</em> in den weniger sicheren Zustand, etwa
+      „← Aktivieren" bei einem abgeschalteten SMB1-Server. Solche Rücksetz-Knöpfe sind
+      bewusst dezent gehalten, damit man nicht versehentlich daraufklickt. Sie
+      funktionieren ganz normal.
+    </div>
+
+    <h3>Was geprüft wird</h3>
+    <p><strong>Netzwerkprofil &amp; Sichtbarkeit</strong> – Steht das Netzwerk auf
+       „Privat"? In einem als „Öffentlich" eingestuften Netz blockiert Windows
+       Freigaben grundsätzlich. Dazu Netzwerkerkennung sowie Datei- und
+       Druckerfreigabe.</p>
+    <p><strong>Windows-Dienste</strong> – Laufen die Dienste, die für Freigaben nötig
+       sind? Geprüft werden Server, Workstation, Funktionssuche-Ressourcenveröffentlichung
+       und DNS-Client.</p>
+    <p><strong>SMB / Dateifreigaben</strong> – Der umfangreichste Bereich: SMB1-Client,
+       SMB1-Server und die 15-Tage-Automatik (siehe unten), SMB2/SMB3, unsichere
+       Gastzugänge, NTLM-Kompatibilität und die SMB-Signierung.</p>
+    <p><strong>Firewall &amp; Ports</strong> – Ist der SMB-Port 445 eingehend geöffnet,
+       sind die NetBIOS-Regeln aktiv, und in welchem Zustand ist die Windows-Firewall?</p>
+
+    <h3>SMB1: warum drei Zeilen?</h3>
+    <p>SMB1 ist das alte Dateifreigabe-Protokoll, das viele ältere NAS-Geräte,
+       Netzwerkdrucker und Kopierer noch brauchen. Es besteht aus mehreren
+       voneinander unabhängigen Teilen, und deshalb gibt es drei getrennte Zeilen:</p>
+    <table>
+      <tr><th>Zeile</th><th>Wofür</th></tr>
+      <tr><td><strong>SMB1-Client</strong></td>
+          <td>Damit <em>dieser PC</em> auf alte Geräte zugreifen kann. Der häufige
+              Fall.</td></tr>
+      <tr><td><strong>SMB1-Server</strong></td>
+          <td>Damit <em>alte Geräte</em> auf die Freigaben dieses PCs zugreifen können,
+              etwa ein Kopierer, der Scans ablegt. Die gefährlichere Seite.</td></tr>
+      <tr><td><strong>SMB1 dauerhaft halten</strong></td>
+          <td>Windows entfernt SMB1 nach 15 Tagen ohne Nutzung von selbst. Diese Zeile
+              schaltet die Automatik ab – wichtig bei längeren Betriebspausen.</td></tr>
+    </table>
+    <div class="warn">
+      <strong>SMB1 ist ein Sicherheitsrisiko.</strong> Über diese Lücke verbreitete sich
+      seinerzeit WannaCry. Schalten Sie SMB1 nur ein, solange ein Altgerät es wirklich
+      braucht – und schalten Sie es wieder ab, sobald das Gerät ersetzt ist. Der
+      SMB1-Server ist dabei kritischer als der Client.
+    </div>
+
+    <h3>Reparatur-Werkzeuge</h3>
+    <p>Unterhalb der Prüfliste stehen Werkzeuge für Fälle, in denen die Einstellungen
+       stimmen, aber trotzdem nichts geht. Jedes erklärt vor der Ausführung in einem
+       eigenen Fenster, was es macht, wann es sinnvoll ist und welches Risiko besteht.</p>
+    <table>
+      <tr><th>Werkzeug</th><th>Typischer Anlass</th></tr>
+      <tr><td>DNS-Cache leeren</td>
+          <td>Gerät hat eine neue IP bekommen, der Hostname zeigt noch auf die alte</td></tr>
+      <tr><td>NetBIOS-Cache leeren</td><td>Alter Rechnername taucht weiter auf</td></tr>
+      <tr><td>ARP-Cache leeren</td><td>Gerät antwortet nicht mehr, obwohl es online ist</td></tr>
+      <tr><td>LLDP-Topologie-Cache</td><td>Netzwerkkarte zeigt veraltete Verbindungen</td></tr>
+      <tr><td>TCP/IP-Stack zurücksetzen</td><td>Netzwerk funktioniert grundsätzlich nicht mehr</td></tr>
+      <tr><td>Winsock zurücksetzen</td><td>Programme bauen keine Verbindungen mehr auf</td></tr>
+      <tr><td>NLA-Cache zurücksetzen</td><td>Netzwerk bleibt „Öffentlich", obwohl es privat ist</td></tr>
+      <tr><td>Drucker-Spooler zurücksetzen</td><td>Druckaufträge hängen fest</td></tr>
+      <tr><td>Netzlaufwerke anzeigen</td><td>Übersicht der gespeicherten Verbindungen</td></tr>
+      <tr><td>Alle Verbindungen trennen</td><td>Anmeldung an einem NAS mit falschem Konto lösen</td></tr>
+    </table>
+
+    <h3>Administratorrechte und Neustart</h3>
+    <p>Die <strong>Prüfung</strong> läuft immer. Die <strong>Reparatur-Knöpfe</strong>
+       brauchen Administratorrechte – ohne sie erscheint ein Hinweis oben im Tab. Am
+       einfachsten ist es, den Scanner grundsätzlich als Administrator zu starten
+       (⚙ Konfigurieren → Programmstart).</p>
+    <div class="warn">
+      <strong>Änderungen an Windows-Funktionen wirken erst nach einem Neustart.</strong>
+      Das betrifft vor allem SMB1: Windows lädt die Dateien beim Einschalten nach.
+      Bis zum Neustart zeigt die Prüfung weiterhin den bisherigen Zustand – das ist
+      kein Fehler. Das Programm startet Ihren Rechner <strong>nicht</strong> von sich
+      aus neu; es weist nur darauf hin.
+    </div>
+  </div>
+
+  <h2 id="lan-performance">8. Tab 4: LAN-Performance &amp; WLAN</h2>
+  <div class="box">
+    <h3>LAN-Geschwindigkeitstest</h3>
+    <p>Misst die tatsächliche Schreib- und Lesegeschwindigkeit zu einer
+       Netzwerkfreigabe – ohne Server-Software auf der Gegenseite.</p>
+
+    <h4>Voraussetzungen</h4>
+    <ul>
+      <li>Eine erreichbare Netzwerkfreigabe (z.B. <code>\\192.168.0.53\share</code>)</li>
+      <li>Schreibrechte auf der Freigabe</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Wichtig: Der Servername allein genügt nicht.</strong><br>
+      <code>\\NAS-Name</code> zeigt im Explorer nur die <em>Liste</em> der Freigaben –
+      dort lässt sich keine Datei anlegen, der Test schlägt fehl. Es muss die Freigabe
+      selbst angegeben werden, also z.B. <code>\\NAS-Name\Daten</code>.
+      Am einfachsten über <strong>📁</strong> auswählen, dann stimmt der Pfad immer.
+      Neben dem Eingabefeld erklärt das auch der <strong>ⓘ</strong>-Knopf.
+    </div>
+
+    <p>Auch ein <strong>lokaler Ordner</strong> (z.B. <code>C:\Temp</code>) ist als Ziel
+       erlaubt – das zeigt zum Vergleich, wie schnell der PC ohne Netzwerk ist.</p>
+
+    <h4>Bedienung</h4>
+    <ol>
+      <li>Ziel eingeben oder über <strong>📁</strong> auswählen. Der Pfad wird
+          <strong>vor</strong> dem Start geprüft; stimmt etwas nicht, erklärt eine
+          Meldung genau was fehlt.</li>
+      <li>Chunk-Größe wählen (1–64 MB pro Messzyklus)</li>
+      <li><span class="btn-demo btn-green">▶ Dauertest starten</span> – der Test läuft
+          kontinuierlich und aktualisiert die Live-Kurve</li>
+      <li><span class="btn-demo btn-red">⏹ Stoppen</span> – beendet den Test</li>
+    </ol>
+
+    <h4>Ergebnisse</h4>
+    <ul>
+      <li><strong>Blaue Linie</strong> – Schreibgeschwindigkeit</li>
+      <li><strong>Grüne Linie</strong> – Lesegeschwindigkeit</li>
+      <li>Die Kacheln zeigen immer den aktuellen Messwert</li>
+      <li>Das Messprotokoll listet jeden einzelnen Zyklus</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Lokale Laufwerke:</strong> Bei lokalen Laufwerken (z.B. C:\, D:\) können
+      die Messwerte durch den <strong>Windows-Dateisystem-Cache</strong> erheblich
+      verfälscht sein – der Cache meldet „fertig" bevor die Daten wirklich
+      auf der Platte sind. Werte von mehreren tausend Mbit/s auf einer normalen
+      HDD sind daher kein realistisches Ergebnis. Für aussagekräftige Messungen
+      immer einen <strong>Netzwerkpfad</strong> (UNC-Pfad wie
+      <code>\\Server\Freigabe</code>) verwenden.
+    </div>
+
+    <div class="tip">
+      <strong>Typische Richtwerte:</strong><br>
+      Gigabit-LAN: 400–900 Mbit/s &nbsp;|&nbsp;
+      100 Mbit-LAN: 60–90 Mbit/s &nbsp;|&nbsp;
+      WLAN (802.11ac): 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Kleinere Chunk-Größen (1–4 MB) zeigen mehr Schwankungen, da Overhead und
+      Latenz stärker ins Gewicht fallen. Für stabile Messwerte empfehlen sich 16–64 MB.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>WLAN-Verbindungsübersicht</h3>
+    <p>Im dunkelgrauen WLAN-Kasten rechts sehen Sie die aktuelle WLAN-Verbindung:</p>
+    <ul>
+      <li>SSID und Verbindungsstatus</li>
+      <li>Signalstärke als farbiger Balken (grün ≥ 70%, gelb ≥ 40%, rot &lt; 40%)</li>
+      <li>Kanal, Frequenzband (2,4 / 5 GHz), Wi-Fi-Standard</li>
+      <li>Senderate (⬆) und Empfangsrate (⬇) der WLAN-Verbindung</li>
+    </ul>
+    <div class="info">
+      <strong>ℹ LAN + WLAN gleichzeitig:</strong> Das Programm erkennt beide Verbindungswege
+      gleichzeitig. Die aktive Verbindung wird als Hauptverbindung angezeigt; verfügbare,
+      aber gerade inaktive Hardware erscheint als Zusatzinfo (z.B. „LAN verfügbar: 1 Gbps").
+      Der Verbindungsstatus wird automatisch alle 15 Sekunden aktualisiert –
+      ein Wechsel von LAN auf WLAN wird ohne Neustart erkannt.
+      Über den <strong>🔄 Aktualisieren</strong>-Button in der WLAN-Kachel kann
+      sofort manuell aktualisiert werden.
+    </div>
+    <div class="info">
+      <strong>ℹ Hinweis zum WLAN-Empfang:</strong> Der Scanner zeigt nur Netze,
+      die der WLAN-Adapter aktuell empfängt. Bei einer 5-GHz-Verbindung können
+      2,4-GHz-Netze je nach Treiber fehlen – das ist keine Fehlfunktion.
+    </div>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">9. Tab 5: Firewall-Ausnahmen</h2>
+  <div class="box">
+    <p>Ein Gerät ist im Netzwerk sichtbar, lässt sich aber nicht erreichen –
+       kein Ping, keine Dateifreigabe? Häufig blockiert die Windows-Firewall die
+       Verbindung. Dieser Tab prüft die Erreichbarkeit eines Ziels und trägt auf
+       Wunsch eine passende Ausnahme ein. Er ist aus dem eigenständigen Werkzeug
+       <strong>S-IT-FWModify</strong> übernommen.</p>
+
+    <div class="warn">
+      <strong>⚠ Adminrechte nötig:</strong> Firewall-Regeln zu lesen und zu setzen
+      geht nur mit Administratorrechten. Am einfachsten lassen Sie
+      <strong>„Als Administrator starten"</strong> aktiviert (siehe Abschnitt 5,
+      Voreinstellung an). Läuft das Programm ohne Adminrechte, meldet der Tab das beim
+      Prüfen oder Eintragen.
+    </div>
+
+    <h3>Ablauf in drei Schritten</h3>
+    <ol>
+      <li><strong>Ziel eingeben</strong> – eine IP-Adresse (z.B.
+          <code>192.168.0.21</code>) oder ein ganzes Subnetz
+          (<code>192.168.0.0/24</code>).</li>
+      <li><strong>Umfang wählen</strong> – <em>Alle Ports</em> für ein einzelnes,
+          bekanntes Gerät; <em>Nur Dateifreigabe</em> (SMB, Ports 445/139 und UDP
+          137/138); oder <em>Dateifreigabe + Weboberfläche</em> (zusätzlich TCP
+          5000/5001, z.B. für NAS-Oberflächen).</li>
+      <li><strong>Prüfen</strong> – der Tab testet Ping, offene Ports, den
+          Firewall-Grundzustand, das Netzwerkprofil dieses PCs und ob bereits eine
+          S-IT-Regel für das Ziel besteht. Anschließend
+          <strong>Ausnahme eintragen</strong>.</li>
+    </ol>
+
+    <h3>Der Befund</h3>
+    <p>Jede Prüfzeile zeigt ein Ergebnis: <strong>grün</strong> in Ordnung,
+       <strong>gelb</strong> ein Hinweis, <strong>rot</strong> ein Problem. Wo es
+       sinnvoll ist, bietet die Zeile rechts einen kleinen Knopf zur direkten Abhilfe
+       an (etwa das Netzwerkprofil auf „privat" umstellen, damit Freigaben überhaupt
+       zugelassen werden).</p>
+
+    <h3>Von diesem Tool gesetzte Regeln</h3>
+    <p>Alle Ausnahmen, die das Programm anlegt, tragen einen eigenen Namen
+       (Präfix <code>S-IT-FW-</code>) und erscheinen in der Liste unten. Pro Eintrag
+       entstehen in der Regel mehrere Firewall-Regeln (je Richtung eingehend/ausgehend
+       und Protokoll). Über die Knöpfe darunter lassen sich <strong>markierte</strong>
+       oder <strong>alle S-IT-Regeln</strong> wieder entfernen.</p>
+
+    <div class="tip">
+      <strong>Ihre übrigen Firewall-Regeln bleiben unangetastet.</strong> Das Programm
+      sieht und verändert ausschließlich seine eigenen Regeln mit dem Präfix
+      <code>S-IT-FW-</code>. Fremde Regeln von Windows oder anderer Software werden
+      weder angezeigt noch gelöscht.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Aufräumen leicht gemacht:</strong> Wurde eine Ausnahme nur zum Testen
+      gesetzt, entfernen Sie sie später mit einem Klick wieder über die Regelliste –
+      so bleibt die Firewall sauber.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">10. Diagnose (DIAG) – für Tester</h2>
+  <div class="box">
+    <p>Dieser Abschnitt richtet sich an Tester und an alle, die ein
+       Erkennungsproblem melden möchten. Für den normalen Betrieb wird
+       nichts davon gebraucht.</p>
+
+    <h3>Wozu?</h3>
+    <p>Windows liefert Netzwerk-Informationen über mehrere Wege. Welcher davon
+       antwortet, ist von Rechner zu Rechner verschieden – je nach Windows-Ausgabe,
+       Treiber und Firmen-Richtlinien. Zeigt das Programm auf einem Gerät falsche
+       Werte, sieht man der Anzeige nicht an, woran es liegt. Die Diagnose fragt
+       deshalb <strong>jeden Weg einzeln</strong> ab und hält fest, was er
+       geantwortet hat – auch wenn er gar nicht geantwortet hat.</p>
+
+    <h3>Einschalten</h3>
+    <p><strong>⚙ Konfig → Diagnose → „🔧 DIAG-Werkzeuge anzeigen"</strong>.
+       Danach erscheint oben im Header der Knopf
+       <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>.
+       Kein Neustart nötig. Häkchen wieder entfernen blendet ihn aus.</p>
+
+    <h3>Die drei Werkzeuge</h3>
+    <table>
+      <tr><th>Schaltfläche</th><th>Funktion</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ DIAG erstellen</span></td>
+          <td>Erzeugt <strong>genau eine Datei</strong> im Ordner
+              <code>S-IT-Diagnose</code> neben dem Programm. Nichts passiert von
+              allein – nur auf Klick.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Klartext anzeigen</span></td>
+          <td>Zeigt den Inhalt lesbar an – <strong>genau das, was verschickt
+              würde</strong>. Auf Wunsch auch als Klartext speicherbar.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Ordner öffnen</span></td>
+          <td>Öffnet den Ablageordner im Explorer.</td></tr>
+    </table>
+
+    <h3>Was steht drin?</h3>
+    <ul>
+      <li>Die Rohantworten aller Abfragen (PowerShell, wmic, Registry, netsh, ipconfig)</li>
+      <li>Windows- und Programmversion, Skalierung, Adminrechte</li>
+      <li>Was das Programm aus den Antworten gemacht hat</li>
+    </ul>
+    <p><strong>Keine Passwörter, keine Zugangsdaten.</strong> MAC-Adressen werden
+       gekürzt: der Herstellerteil bleibt stehen – den braucht die Erkennung –,
+       der geräte-eindeutige Teil wird durch <code>XX</code> ersetzt
+       (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>Warum ist die Datei nicht lesbar?</strong><br>
+      Sie ist <em>verschleiert</em>, damit sie nicht versehentlich mitgelesen oder
+      von einem Mail-Filter zerlegt wird. Das ist ausdrücklich
+      <strong>keine Verschlüsselung</strong> und soll auch keine sein – deshalb steht
+      dort auch nichts Vertrauliches drin. Mit <strong>🔍 Klartext anzeigen</strong>
+      sehen Sie jederzeit selbst, was drinsteht.
+    </div>
+
+    <h3>Einsenden</h3>
+    <p>Freiwillig und nur bei einem Erkennungsproblem: die Datei an
+       <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+       senden. Hilfreich ist ein Satz dazu, was falsch angezeigt wurde.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">11. Dateien, Updates und Sicherung</h2>
+  <div class="box">
+
+    <div class="tip">
+      <strong>Kurzcheckliste – Was mitnehmen?</strong><br>
+      Bei PC-Wechsel oder Neuinstallation diese Dateien/Ordner sichern:
+      <ul style="margin:6px 0 0 0">
+        <li><code>S-IT-LanScanner.ini</code> – alle Einstellungen</li>
+        <li><code>S-IT-Custom.ini</code> – eigene Gerätezuordnungen</li>
+        <li><code>Logs\</code> – kompletter Ordner, wenn alte Scans erhalten bleiben sollen</li>
+        <li><code>S-IT-OUI.ini</code> – optional, spart den ersten OUI-Update</li>
+      </ul>
+      Nach dem Kopieren das Programm starten – alle Einstellungen, Zuordnungen
+      und bisherigen Scan-Ergebnisse sind sofort wieder verfügbar.
+    </div>
+
+    <h3>Dateien im Programmordner</h3>
+    <table>
+      <tr><th>Datei</th><th>Inhalt</th><th>Sichern?</th></tr>
+      <tr><td><code>S-IT-LanScanner.exe</code></td>
+          <td>Hauptprogramm</td><td>–</td></tr>
+      <tr><td><code>S-IT-LanScanner.ini</code></td>
+          <td>Alle Einstellungen (Scan-Optionen, Log-Verzeichnis, Darstellung usw.)</td>
+          <td><strong>✔ Ja</strong></td></tr>
+      <tr><td><code>S-IT-Custom.ini</code></td>
+          <td>Eigene Gerätezuordnungen – wird bei Updates nie überschrieben</td>
+          <td><strong>✔ Ja</strong></td></tr>
+      <tr><td><code>S-IT-OUI.ini</code></td>
+          <td>Hersteller-Datenbank (wird bei OUI-Update neu erstellt)</td>
+          <td>Optional</td></tr>
+      <tr><td><code>S-IT-LanScanner-Hilfe.html</code></td>
+          <td>Diese Hilfe-Datei</td><td>–</td></tr>
+      <tr><td><code>S-IT-LanScanner-ChangeLog.html</code></td>
+          <td>Versionshistorie</td><td>–</td></tr>
+      <tr><td><code>S-IT-OUI-Update.exe</code></td>
+          <td>OUI-Updater (separates Tool)</td><td>–</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Scan-Logs (.log), HTML-Reports (.html) und CSV-Dateien (.csv).<br>
+              <em>Mitnehmen wenn alte Scan-Ergebnisse im Log-Manager erhalten bleiben sollen.</em></td>
+          <td><strong>✔ Empfohlen</strong></td></tr>
+    </table>
+
+    <h3>Update durchführen</h3>
+    <ol>
+      <li>Neue Version herunterladen und entpacken</li>
+      <li><strong>Wichtig:</strong> Die Dateien <code>S-IT-LanScanner.ini</code> und
+          <code>S-IT-Custom.ini</code> aus dem alten Ordner in den neuen Ordner kopieren</li>
+      <li>Neue <code>S-IT-LanScanner.exe</code> starten</li>
+      <li>Alle Einstellungen und eigenen Zuordnungen sind wieder vorhanden</li>
+    </ol>
+
+    <h3>Neuinstallation / PC-Wechsel</h3>
+    <p>Empfohlene Vorgehensweise:</p>
+    <ol>
+      <li>Gesicherte Dateien in den neuen Programmordner kopieren
+          (<code>S-IT-LanScanner.ini</code>, <code>S-IT-Custom.ini</code>,
+          optional <code>S-IT-OUI.ini</code>)</li>
+      <li>Gesicherten <code>Logs\</code>-Ordner in den Programmordner kopieren
+          (oder in das konfigurierte Log-Verzeichnis)</li>
+      <li>Programm starten – alle Einstellungen, Zuordnungen und bisherigen
+          Scans sind sofort im Log-Manager verfügbar</li>
+      <li>Optional: OUI-Update durchführen um die neueste Hersteller-Datenbank zu laden</li>
+    </ol>
+    <div class="info">
+      Werden keine Dateien gesichert: <code>S-IT-LanScanner.ini</code> und
+      <code>S-IT-Custom.ini</code> werden beim ersten Start automatisch mit
+      Standardwerten neu angelegt. Eigene Gerätezuordnungen müssen dann
+      neu eingetragen werden.
+    </div>
+
+    <h3>OUI-Datenbank aktualisieren</h3>
+    <p>Über <span class="btn-demo btn-dark">🔄 OUI-Update</span> → Tab
+       <strong>„OUI-Datenbank Update"</strong> kann die Hersteller-Datenbank
+       aus IEEE-Quellen aktualisiert werden. Nach dem Update wird die Datenbank
+       automatisch neu eingelesen – kein Neustart nötig.</p>
+    <div class="info">
+      Die Datei <code>S-IT-Custom.ini</code> mit Ihren eigenen Zuordnungen wird
+      beim OUI-Update <strong>niemals</strong> verändert oder überschrieben.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">12. Häufige Fragen (FAQ)</h2>
+  <div class="box">
+
+    <h3>Ein Gerät wird nicht gefunden</h3>
+    <p>Mögliche Ursachen:</p>
+    <ul>
+      <li>Gerät ist ausgeschaltet oder im Energiesparmodus</li>
+      <li>Gerät antwortet nicht auf ICMP-Ping (Firewall) → Port-Scan aktivieren hilft</li>
+      <li>Gerät ist in einem anderen Netzwerksegment</li>
+      <li>Scan-Modus „Sicher" wählen und erneut scannen</li>
+    </ul>
+
+    <h3>Ein Gerät wird mit falschem Betriebssystem angezeigt</h3>
+    <p>Rechtsklick auf das Gerät → <strong>„✏ Eigene Zuordnung setzen"</strong> →
+       korrekten Wert eingeben → Speichern. Ab dem nächsten Scan wird die
+       korrekte Bezeichnung angezeigt.</p>
+
+    <h3>Mein Drucker war nach dem Scan nicht mehr erreichbar</h3>
+    <p>Wechseln Sie in den Einstellungen zu Scan-Modus <strong>„Sicher"</strong>.
+       Dieser verzichtet auf ARP-Flood und Port-Scans auf Drucker-Ports,
+       die ältere Firmware-Versionen überlasten können.</p>
+
+    <h3>Antiviren-Programm meldet eine Bedrohung</h3>
+    <p>Da der LAN-Scanner das Netzwerk aktiv scannt, stufen manche Antiviren-Programme
+       ihn fälschlicherweise als verdächtig ein (False Positive). Das Programm enthält
+       keinerlei Schadsoftware. Lösung: Die Programmdatei und das Verzeichnis
+       in die Ausnahmeliste / Whitelist des Antiviren-Programms aufnehmen.</p>
+
+    <h3>Der LAN-Geschwindigkeitstest zeigt „Kein Schreibzugriff"</h3>
+    <p>Die Freigabe ist vermutlich nur lesend eingebunden oder die Zugangsdaten
+       reichen nicht aus. Prüfen Sie Ihre Schreibrechte auf der Freigabe.</p>
+
+    <h3>Der Test sagt „Freigabe fehlt"</h3>
+    <p>Es wurde nur der <strong>Servername</strong> angegeben, z.B.
+       <code>\\NAS-Name</code>. Dort lässt sich keine Datei anlegen – nötig ist die
+       Freigabe selbst: <code>\\NAS-Name\Daten</code>. Siehe Abschnitt 8.</p>
+
+    <h3>Die WLAN-Karte zeigt „Verbunden", aber keine Signalstärke und keinen Kanal</h3>
+    <p>Das ist fast immer die Windows-11-Standortsperre und <strong>kein Fehler des
+       Programms</strong>: Windows gibt SSID, Signalstärke, Kanal und Verbindungsrate
+       nur heraus, wenn die <strong>Positionsdienste</strong> eingeschaltet sind.
+       Sind sie aus, verweigert Windows die Auskunft – der Adapter selbst wird
+       trotzdem korrekt erkannt.</p>
+    <div class="tip">
+      <strong>Abhilfe:</strong> Einstellungen → Datenschutz und Sicherheit → Standort →
+      <strong>Ortungsdienste</strong> einschalten. Danach in der WLAN-Kachel auf
+      <strong>🔄 Aktualisieren</strong> klicken.<br>
+      Die Kachel weist auf diesen Fall auch selbst hin.
+    </div>
+
+    <h3>Die WLAN-Verbindungskarte zeigt gar nichts an</h3>
+    <p>Wenn kein WLAN-Adapter vorhanden oder kein WLAN aktiv ist, bleibt die Karte leer.
+       Klicken Sie nach dem Verbinden auf <strong>🔄 Aktualisieren</strong>.
+       Der Status wird auch automatisch alle 10 Sekunden aktualisiert – ein
+       nachträglich eingesteckter USB-WLAN-Stick wird dabei von selbst erkannt.</p>
+
+    <h3>Bei der Geschwindigkeit steht „unbekannt"</h3>
+    <p>Dann konnte <strong>keine</strong> der Abfragen eine Geschwindigkeit liefern –
+       typisch bei einem <strong>deaktivierten Adapter</strong>, für den Windows keine
+       Rate meldet. Das Programm zeigt in diesem Fall bewusst „unbekannt" statt einer
+       geschätzten Zahl: In einem Diagnose-Werkzeug hat ein Wert, den niemand gemessen
+       hat, nichts zu suchen. Der Adaptername wird trotzdem angezeigt.</p>
+
+    <h3>Das Programm wirkt auf meinem UHD/4K-Monitor zu klein</h3>
+    <p>Öffnen Sie <strong>⚙ Konfigurieren</strong> und wählen Sie in der rechten Spalte
+       <strong>„Darstellungsgröße / Skalierung"</strong> einen höheren Wert.
+       Das Programm startet nach dem Speichern automatisch neu.</p>
+    <div class="tip">
+      <strong>Empfehlung für UHD/4K:</strong> Stellen Sie sowohl die
+      <strong>Windows-Skalierung</strong> (Einstellungen → System → Bildschirm → Skalierung)
+      als auch die <strong>Programm-Skalierung</strong> auf <strong>150 %</strong> –
+      das ergibt auf den meisten UHD-Monitoren eine gut lesbare Darstellung.<br><br>
+      Beide Werte addieren sich in ihrer Wirkung. Tasten Sie sich am besten langsam vor:
+      z.B. erst Windows 125 % + Programm 125 %, dann schrittweise höher –
+      bis Text und Elemente für Sie optimal lesbar sind.
+    </div>
+    <p>Mögliche Skalierungsstufen im Programm: 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>Wo finde ich den Haftungsausschluss?</h3>
+    <p>In der Datei <a href="Disclaimer.txt"><code>Disclaimer.txt</code></a> im
+       Programmordner und auf der
+       <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>.
+       Kurz gefasst: Die Ergebnisse sind unverbindliche Anhaltspunkte und eine
+       Momentaufnahme – sie ersetzen keine fachliche Sicherheitsprüfung.</p>
+
+    <h3>Ich habe SMB1 umgeschaltet – warum steht da immer noch der alte Zustand?</h3>
+    <p>SMB1 ist ein <strong>Windows-Feature</strong>, kein einfacher Schalter: Windows
+       lädt die Dateien beim Aktivieren nach bzw. entfernt sie beim Deaktivieren. Erst
+       nach einem <strong>Neustart</strong> ist die Änderung wirksam – bis dahin meldet
+       die Prüfung weiterhin den bisherigen Zustand. Das Programm startet den Rechner
+       <strong>nicht</strong> von sich aus neu; es weist nur darauf hin. Starten Sie
+       Windows selbst neu, wenn es Ihnen passt.</p>
+
+    <h3>Warum gibt es drei SMB1-Zeilen?</h3>
+    <p>Weil SMB1 aus mehreren, voneinander unabhängigen Teilen besteht. Wer nur eine
+       Zeile sieht, bekommt leicht ein falsches Bild vom eigenen Rechner:</p>
+    <table>
+      <tr><th>Zeile</th><th>Wofür</th></tr>
+      <tr><td><strong>SMB1-Client</strong></td>
+          <td>Damit <em>dieser PC</em> auf alte Geräte zugreifen kann – etwa ein
+              älteres NAS oder einen Netzwerkdrucker, der kein SMB2/3 beherrscht.
+              Das ist der häufigste Fall.</td></tr>
+      <tr><td><strong>SMB1-Server</strong></td>
+          <td>Damit <em>alte Geräte</em> auf die Freigaben dieses PCs zugreifen
+              können – etwa ein Kopierer, der Scans in einen freigegebenen Ordner
+              legt. Diese Seite ist die gefährlichere und sollte nur so lange an
+              sein, wie das Altgerät sie braucht.</td></tr>
+      <tr><td><strong>SMB1 dauerhaft halten</strong></td>
+          <td>Windows entfernt SMB1 selbstständig wieder, wenn es 15 Tage lang nicht
+              benutzt wurde. Diese Zeile schaltet die Automatik ab. Sinnvoll, wenn
+              der Betrieb längere Pausen hat – nach zwei Wochen Betriebsferien wäre
+              SMB1 sonst plötzlich weg und der Scanner läge still.</td></tr>
+    </table>
+    <p>Die Zeile <strong>SMB1 dauerhaft halten</strong> meldet sich nur, wenn Client
+       oder Server tatsächlich aktiv sind. Ist SMB1 komplett aus, steht sie grau da
+       und braucht keine Beachtung.</p>
+
+    <h3>Beim SMB1-Server steht „Feature vorhanden, Protokoll aber aus“ – was heißt das?</h3>
+    <p>Die Serverseite hat zwei Ebenen: das nachgeladene Windows-Feature und den
+       Protokollschalter im SMB-Server. Nach dem Einschalten ist zunächst nur das
+       Feature da – der Schalter lässt sich erst nach dem Neustart setzen. Genau dafür
+       ist der Knopf <strong>„→ Abschließen“</strong> da: Er legt den zweiten Schalter
+       um und wirkt sofort, ohne weiteren Neustart. Wird der SMB1-Server doch nicht
+       gebraucht, schalten Sie ihn stattdessen ganz ab.</p>
+
+    <h3>Warum ist der Knopf auf einer grünen Zeile grau?</h3>
+    <p>Ein Knopf auf einer grünen Zeile führt immer <em>zurück</em> in den weniger
+       sicheren Zustand – etwa „← Aktivieren“ bei einem abgeschalteten SMB1-Server.
+       Solche Rücksetz-Knöpfe sind bewusst dezent gehalten, damit sie nicht zum
+       versehentlichen Klicken einladen. Sie funktionieren ganz normal.</p>
+
+    <h3>Wo werden die Logs gespeichert?</h3>
+    <p>Standard: <code>[Programmverzeichnis]\Logs\</code>. Das Verzeichnis kann
+       unter <strong>⚙ Konfigurieren → Log-Verzeichnis</strong> geändert werden.</p>
+
+    <h3>Kann ich das Tool auf einem USB-Stick verwenden?</h3>
+    <p>Ja, das Tool ist portabel. Kopieren Sie alle Dateien aus dem Programmordner
+       auf den USB-Stick. Die INI-Dateien werden neben der EXE gespeichert.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Hat Ihnen dieses Tool geholfen?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      Der S-IT LAN Device Scanner wird kostenlos entwickelt und gepflegt.<br>
+      Eine kleine Spende hilft dabei, das Tool weiterzuentwickeln. Herzlichen Dank! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Spende via PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.21 (Build 2026.08.17)
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Autor: Hans Udo Sattler<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>
+  &nbsp;•&nbsp;
+  <a href="Disclaimer.txt">Haftungsausschluss</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>

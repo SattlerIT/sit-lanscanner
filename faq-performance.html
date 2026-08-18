@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance-Test und Scan-Last – S-IT LAN Device Scanner</title>
+  <meta name="description" content="Wie der LAN-Performance-Test des S-IT LAN Device Scanners arbeitet, was er auf dem Zielgerät tut und wie sich die Scan-Intensität einstellen lässt.">
+  <link rel="icon" type="image/x-icon" href="s-it-icon140.ico">
+  <style>
+    :root {
+      --primary:   #2C3E50;
+      --red:       #E74C3C;
+      --green:     #27AE60;
+      --blue:      #2980B9;
+      --orange:    #E67E22;
+      --yellow:    #F1C40F;
+      --light:     #ECF0F1;
+      --bg:        #F5F5F5;
+      --card:      #FFFFFF;
+      --border:    #BDC3C7;
+      --text:      #2C3E50;
+      --muted:     #7F8C8D;
+      --font:      'Segoe UI', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--primary);
+      padding: 28px 40px 24px;
+    }
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo { display: flex; align-items: baseline; gap: 0; }
+    .logo-sit  { color: var(--red);   font-size: 36px; font-weight: 700; line-height: 1; }
+    .logo-name { color: #fff;         font-size: 36px; font-weight: 300; line-height: 1; }
+    .header-sub {
+      color: var(--border);
+      font-size: 13px;
+      padding-bottom: 4px;
+    }
+    .header-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--light);
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* Rote Trennlinie */
+    .divider { height: 3px; background: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--primary);
+      padding: 0 40px 36px;
+    }
+    .hero-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding-top: 32px;
+    }
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .hero p {
+      color: var(--border);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .btn-download {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-download:hover { background: #219a52; }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--light);
+      font-size: 13px;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 4px;
+      text-decoration: none;
+      margin-left: 10px;
+      transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,.6); }
+
+    .hero-screenshot {
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    .hero-screenshot img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--red);
+      display: inline-block;
+    }
+
+    /* ── FEATURE CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; }
+    .card h3   { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .card p    { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── SCREENSHOT GALLERY ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .gallery-item {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      cursor: pointer;
+      transition: box-shadow .2s;
+      position: relative;
+    }
+    .gallery-item .badge-neu {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #27ae60;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      z-index: 2;
+    }
+    .gallery-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.16); }
+    .gallery-item img   {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .gallery-caption {
+      background: var(--primary);
+      color: var(--light);
+      font-size: 11px;
+      padding: 6px 10px;
+    }
+    .gallery-more {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .gallery-more a { color: var(--blue); text-decoration: none; }
+    .gallery-more a:hover { text-decoration: underline; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img  { max-width: 90vw; max-height: 90vh; border-radius: 4px; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 28px;
+      color: #fff; font-size: 32px; cursor: pointer; line-height: 1;
+    }
+
+    /* ── INFO-BOX ── */
+    .info-box {
+      background: #EBF5FB;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #1A5276;
+    }
+    .info-box a { color: var(--blue); }
+    .warn-box {
+      background: #FEF9E7;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #7D6608;
+    }
+    .warn-box a { color: #7D6608; }
+    .ok-box {
+      background: #EAFAF1;
+      border-left: 4px solid var(--green);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #1E7E45;
+    }
+
+    /* ── SYSREQ TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 32px;
+      font-size: 13px;
+      background: var(--card);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td { padding: 9px 16px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #F7F9FA; }
+
+    /* ── CHANGELOG ── */
+    .changelog {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .changelog-entry { margin-bottom: 20px; }
+    .changelog-entry:last-child { margin-bottom: 0; }
+    .changelog-version {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .changelog-version span {
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .changelog-entry ul {
+      list-style: none;
+      padding: 0;
+    }
+    .changelog-entry ul li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 2px 0 2px 16px;
+      position: relative;
+    }
+    .changelog-entry ul li::before {
+      content: "•";
+      position: absolute; left: 4px;
+      color: var(--blue);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary);
+      color: var(--border);
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 12px;
+    }
+    footer a { color: var(--border); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .gallery    { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      header { padding: 20px; }
+      .hero  { padding: 0 20px 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-sit">S-IT</span>
+      <span class="logo-name">&nbsp;LAN Device Scanner</span>
+    </div>
+    <span class="header-sub">Netzwerk-Analyse &amp; Geräteerkennung</span>
+    <span class="header-badge">Freeware · Setup &amp; Portable · Windows</span>
+  </div>
+</header>
+<div class="divider"></div>
+
+
+<main>
+
+  <div class="section-title">🔍 Performance-Test und Scan-Last</div>
+  <p style="font-size:14px; margin-bottom:20px;"><a href="index.html" style="color:var(--blue)">&larr; Zur&uuml;ck zur Projektseite des S-IT LAN Device Scanners</a></p>
+  <p style="font-size:15px; margin-bottom:22px;">Diese Seite beschreibt, wie der
+     <strong>LAN-Performance-Test</strong> arbeitet, was dabei auf dem ausgew&auml;hlten Ziel
+     geschieht und wie sich die Intensit&auml;t des Netzwerk-Scans einstellen l&auml;sst.
+     Die Angaben gelten ab Version 3.22.21.</p>
+
+    <h3>Was macht der LAN-Performance-Test mit dem Zielgerät?</h3>
+    <p>Er schreibt eine Testdatei in einen Ordner, den <em>Sie</em> auswählen,
+       liest sie sofort wieder zurück und misst dabei die Zeit. Technisch ist
+       das dasselbe, als würden Sie im Explorer eine Datei auf eine Freigabe
+       kopieren und wieder zurückholen. Es werden keine Rohdaten an einen
+       Netzwerkanschluss geschickt, keine Pakete erzeugt und keine Ports
+       beansprucht. Angesprochen wird ausschließlich das Ziel, das Sie
+       eingetragen haben – ein Gerät, auf das Sie nicht schreiben, bleibt vom
+       Test vollständig unberührt.</p>
+    <p>Die übertragene Datenmenge spielt für die Geräte dabei keine Rolle:
+       Netzwerkanschlüsse sind galvanisch getrennt aufgebaut, und die
+       Übertragungsrate gibt die Hardware fest vor. Mehr, als die Verbindung
+       hergibt, kann kein Programm hineinschicken – der Test bewegt sich also
+       immer innerhalb dessen, wofür die Geräte gebaut sind.</p>
+
+    <h3>Was genau passiert beim Performance-Test?</h3>
+    <p>Ein Messzyklus besteht aus vier Schritten, die sich wiederholen, bis Sie
+       auf <strong>⏹ STOPP</strong> drücken:</p>
+    <table>
+      <tr><th>Schritt</th><th>Was passiert</th></tr>
+      <tr><td>1. Schreiben</td>
+          <td>Eine Testdatei <code>_sit_lan_test.tmp</code> in der gewählten
+              Größe (1, 4, 16 oder 64 MB) wird in den Zielordner geschrieben,
+              die Dauer gestoppt</td></tr>
+      <tr><td>2. Lesen</td>
+          <td>Dieselbe Datei wird sofort wieder eingelesen, die Dauer erneut
+              gestoppt</td></tr>
+      <tr><td>3. Anzeigen</td>
+          <td>Aus Größe und Zeit ergeben sich Schreib- und Leserate, die in
+              der Kurve und im Protokoll erscheinen</td></tr>
+      <tr><td>4. Wiederholen</td>
+          <td>Der Zyklus beginnt von vorn, bis Sie ihn beenden; danach wird die
+              Testdatei gelöscht</td></tr>
+    </table>
+    <div class="info-box">
+      <strong>Kleine Datei, große Datei:</strong> 1 MB zeigt eher, wie schnell
+      das Netz reagiert; 64 MB zeigt eher die tatsächliche Dauergeschwindigkeit.
+      Für einen ersten Eindruck genügen 4 MB.
+    </div>
+
+    <h3>Belastet der Test mein NAS oder meinen Server?</h3>
+    <p>Für die Dauer der Messung erzeugt er eine fortlaufende Schreib- und
+       Lese-Aktivität – vergleichbar mit einem geplanten Backup-Lauf oder einer
+       nächtlichen Synchronisation. Der Unterschied ist nur, dass sie ohne Pause
+       weiterläuft, bis Sie den Test beenden. Auf einem Gerät, mit dem gerade
+       jemand arbeitet, können dessen Zugriffe dadurch langsamer werden. Auf
+       einem produktiv genutzten Server sollten Sie den Test deshalb nicht über
+       Stunden laufen lassen.</p>
+    <p>Man sollte wissen: Es wird tatsächlich geschrieben. Auf
+       Flash-Speicher – etwa einem SSD-NAS oder einem USB-Stick am Router –
+       bedeutet jeder Schreibvorgang einen minimalen Verschleiß. Bei einigen
+       Minuten Messung fällt das nicht ins Gewicht; für einen tagelangen
+       Dauerlauf ist das Werkzeug nicht gedacht.</p>
+    <p>Das ist keine Eigenheit dieses Programms, sondern liegt in der Sache:
+       Wer wissen will, wie schnell Dateien tatsächlich ankommen, muss Dateien
+       schreiben und wieder lesen – das Laufwerk am anderen Ende muss antworten.
+       Die Datenträgerprüfung von Windows und die Prüfprogramme der
+       Laufwerkshersteller arbeiten genauso. Messungen ganz ohne Schreibvorgang
+       gibt es zwar, sie prüfen aber nur die Leitung und nicht die Strecke, die
+       Ihre Daten in der Praxis nehmen.</p>
+
+    <h3>Im Zielordner liegt eine Datei <code>_sit_lan_test.tmp</code> – was ist das?</h3>
+    <p>Das ist die Testdatei der Geschwindigkeitsmessung. Normalerweise wird sie
+       nach dem Test automatisch gelöscht. Bricht die Verbindung während einer
+       Messung ab oder wird das Programm hart beendet, kann sie zurückbleiben.
+       Sie können sie bedenkenlos löschen.</p>
+
+    <h3>Können intensive Scans Drucker oder Router beeinträchtigen?</h3>
+    <p>Kurzzeitig ausbremsen: ja, das kommt vor. Bleibende Folgen hat es nicht.
+       Kleine eingebettete Geräte wie Drucker, Netzwerkkameras oder ältere
+       Router haben nur einen sehr schlanken Netzwerk-Baustein. Viele
+       gleichzeitige Verbindungsversuche können sie ausbremsen; in seltenen
+       Fällen hilft ein Neustart des Geräts, damit es wieder zügig antwortet.</p>
+    <p>Das ist keine Eigenheit dieses Programms – dieselbe Reaktion kann die
+       Netzwerkerkennung von Windows oder ein Bordmittel wie <code>ping</code>
+       auslösen. Weil uns bewusst war, dass Netzwerkgeräte unterschiedlich
+       empfindlich auf Anfragen reagieren, bietet der Scanner von vornherein
+       mehrere Intensitätsstufen an, zwischen denen Sie in den Einstellungen
+       frei wählen.</p>
+    <div class="info-box">
+      <strong>Sie entscheiden, wie gründlich geprüft wird.</strong> Weil Geräte
+      im Netz unterschiedlich empfindlich reagieren, legt der Scanner die
+      Intensität nicht selbst fest, sondern überlässt sie Ihnen. Die Stufe
+      <strong>„Sicher"</strong> spricht jedes Gerät nur per Ping an, „Standard"
+      ergänzt die ARP-Abfrage. Der Port-Scan ist ein eigener Schalter. Weniger
+      Verfahren bedeutet weniger Anfragen pro Gerät – und nebenbei einen
+      zügigeren Durchlauf. Der Preis ist die Trefferquote: Ein Gerät, das auf
+      Ping nicht antwortet, kann dabei unentdeckt bleiben.
+    </div>
+
+  <p style="font-size:14px; margin-bottom:20px;"><a href="index.html" style="color:var(--blue)">&larr; Zur&uuml;ck zur Projektseite des S-IT LAN Device Scanners</a></p>
+
+</main>
+
+<footer>
+  © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp; Autor: Hans Udo Sattler &nbsp;•&nbsp;
+  <a href="https://sattlerit.github.io/sattlerit-tools/">Tool-Übersicht</a> &nbsp;•&nbsp;
+  <a href="Disclaimer.txt">Haftungsausschluss</a> &nbsp;•&nbsp;
+  <a href="https://sattlerit.github.io/sattlerit-tools/impressum.html">Impressum</a>
+</footer>
+
+</body>
+</html>
