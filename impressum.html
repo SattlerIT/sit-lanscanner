@@ -2,126 +2,240 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Impressum – Sattler IT-Service</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Impressum &ndash; Sattler IT-Service</title>
   <link rel="icon" type="image/x-icon" href="s-it-icon140.ico">
   <style>
     :root {
-      --primary: #2C3E50;
-      --info:    #3498DB;
-      --light:   #ECF0F1;
-      --bg:      #F5F5F5;
-      --white:   #FFFFFF;
-      --muted:   #7F8C8D;
-      --border:  #BDC3C7;
+      --primary:   #2C3E50;
+      --red:       #E74C3C;
+      --blue:      #2980B9;
+      --light:     #ECF0F1;
+      --bg:        #F5F5F5;
+      --card:      #FFFFFF;
+      --border:    #BDC3C7;
+      --text:      #2C3E50;
+      --muted:     #7F8C8D;
+      --font:      'Segoe UI', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--primary);
+      padding: 28px 40px 24px;
+    }
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo { display: flex; align-items: baseline; gap: 0; }
+    .logo-sit  { color: var(--red); font-size: 36px; font-weight: 700; line-height: 1; }
+    .logo-name { color: #fff;       font-size: 36px; font-weight: 300; line-height: 1; }
+    .header-sub {
+      color: var(--border);
+      font-size: 13px;
+      padding-bottom: 4px;
+    }
+    .header-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--light);
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    /* ── NAV ── */
+    nav {
+      background: #34495E;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    nav a {
+      color: var(--light);
+      text-decoration: none;
+      padding: 11px 22px;
+      font-size: 13px;
+      transition: background .2s;
+    }
+    nav a:hover { background: var(--primary); color: #fff; }
+    nav a.active { background: var(--primary); color: #fff; font-weight: 600; }
 
-    body {
-      font-family: "Segoe UI", Arial, sans-serif;
-      font-size: 15px;
-      background: var(--bg);
-      color: var(--primary);
+    /* Rote Trennlinie */
+    .divider { height: 3px; background: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--primary);
+      padding: 0 40px 36px;
+    }
+    .hero-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      padding-top: 32px;
+    }
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .hero p {
+      color: var(--border);
+      font-size: 14px;
       line-height: 1.7;
     }
 
-    header {
-      background: var(--primary);
-      color: var(--white);
-      padding: 40px;
-      text-align: center;
-    }
-    header h1 {
-      font-size: 36px;
-      font-weight: 700;
-      margin-bottom: 6px;
-    }
-    header p {
-      font-size: 14px;
-      color: var(--light);
-    }
-
+    /* ── MAIN ── */
     main {
-      max-width: 700px;
-      margin: 48px auto;
-      padding: 0 24px 80px;
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
     }
 
-    .card {
-      background: var(--white);
-      border-radius: 6px;
-      border-top: 4px solid var(--info);
-      box-shadow: 0 1px 4px rgba(0,0,0,0.07);
-      padding: 32px 36px;
-      margin-bottom: 20px;
-    }
-
-    h2 {
-      font-size: 13px;
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 15px;
       font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.8px;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--red);
+      display: inline-block;
+    }
+    .section-block { margin-bottom: 32px; }
+
+    /* ── KARTEN ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .card p { font-size: 14px; line-height: 1.8; }
+    .card .label {
+      display: block;
+      font-size: 12px;
       color: var(--muted);
-      margin-bottom: 12px;
+      margin-top: 10px;
     }
+    .card .label:first-child { margin-top: 0; }
+    .card a { color: var(--blue); text-decoration: none; font-weight: 600; }
+    .card a:hover { text-decoration: underline; }
+    .intl { font-size: 12px; color: var(--muted); font-weight: 400; }
 
-    p { margin-bottom: 6px; }
-
-    a { color: var(--info); text-decoration: none; }
-    a:hover { text-decoration: underline; }
-
-    .back {
-      text-align: center;
-      margin-top: 32px;
-      font-size: 14px;
-    }
-
+    /* ── FOOTER ── */
     footer {
       background: var(--primary);
-      color: var(--light);
+      color: var(--border);
       text-align: center;
-      padding: 20px 40px;
-      font-size: 13px;
+      padding: 14px 20px;
+      font-size: 12px;
     }
-    footer a { color: var(--light); }
+    footer a { color: var(--border); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      header { padding: 20px; }
+      .hero  { padding: 0 20px 28px; }
+      .header-badge { margin-left: 0; }
+    }
   </style>
 </head>
 <body>
 
+<!-- HEADER -->
 <header>
-  <h1>Impressum</h1>
-  <p>Angaben gemäß § 5 DDG</p>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-sit">S-IT</span>
+      <span class="logo-name">&nbsp;Sattler IT-Service</span>
+    </div>
+    <span class="header-sub">Greifenstein, Mittelhessen</span>
+    <span class="header-badge">Impressum &amp; Kontakt</span>
+  </div>
 </header>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html">Software-Tools</a>
+  <a href="ueber-uns.html">Über uns</a>
+  <a href="impressum.html" class="active">Impressum &amp; Kontakt</a>
+</nav>
+<div class="divider"></div>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <h1>Impressum</h1>
+    <p>Angaben gemäß § 5 DDG &nbsp;·&nbsp; Legal notice according to German law (§ 5 DDG)</p>
+  </div>
+</div>
 
 <main>
 
-  <div class="card">
-    <h2>Anbieter</h2>
-    <p>Hans Udo Sattler</p>
-    <p>Sattler IT-Service</p>
-    <p>Gartenstr. 4</p>
-    <p>35753 Greifenstein</p>
+  <!-- ANBIETER UND KONTAKT -->
+  <div class="section-block">
+    <div class="section-title">📇 Anbieter und Kontakt</div>
+    <div class="cards">
+
+      <div class="card">
+        <span class="label">Anbieter <span class="intl">· Provider</span></span>
+        <p>
+          Hans Udo Sattler<br>
+          Sattler IT-Service<br>
+          Gartenstr. 4<br>
+          35753 Greifenstein<br>
+          Germany
+        </p>
+      </div>
+
+      <div class="card">
+        <span class="label">Kontakt <span class="intl">· Contact</span></span>
+        <p>
+          Telefon: <a href="tel:+4927792270009">+49 2779 2270009</a><br>
+          E-Mail: <a href="mailto:kontakt@sattler-it.de">kontakt@sattler-it.de</a>
+        </p>
+        <span class="label">Aus dem Inland <span class="intl">· within Germany</span></span>
+        <p>02779 2270009</p>
+        <span class="label">Fragen zu den Tools <span class="intl">· about the software tools</span></span>
+        <p><a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a></p>
+      </div>
+
+    </div>
   </div>
 
-  <div class="card">
-    <h2>Kontakt</h2>
-    <p>E-Mail: <a href="mailto:kontakt@sattler-it.de">kontakt@sattler-it.de</a></p>
-  </div>
-
-  <div class="card">
-    <h2>Verantwortlich für den Inhalt</h2>
-    <p>Hans Udo Sattler, Gartenstr. 4, 35753 Greifenstein</p>
-  </div>
-
-  <div class="back">
-    <a href="index.html">← Zurück zur Startseite</a>
+  <!-- VERANTWORTLICH -->
+  <div class="section-block">
+    <div class="section-title">📝 Verantwortlich für den Inhalt</div>
+    <div class="card">
+      <p>Hans Udo Sattler, Gartenstr. 4, 35753 Greifenstein, Germany</p>
+    </div>
   </div>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-  © 2026 Hans Udo Sattler &nbsp;·&nbsp; Sattler IT-Service
+  © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service &nbsp;•&nbsp;
+  <a href="index.html">Tool-Übersicht</a> &nbsp;•&nbsp;
+  <a href="ueber-uns.html">Über uns</a>
 </footer>
 
 </body>
