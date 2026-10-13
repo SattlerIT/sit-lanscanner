@@ -359,12 +359,12 @@
   <div class="hero-inner">
     <div>
       <h1>Der professionelle LAN- und WLAN-Scanner<br>&ndash; Netzwerkgeräte erkennen, analysieren und dokumentieren</h1>
-      <p>Der S-IT LAN Device Scanner findet alle Geräte im Netzwerk und zeigt Hersteller, Betriebssystem und offene Ports – inklusive Intensiv-Scan mit Npcap. Dazu Internet-Erreichbarkeit, LAN-Durchsatztest mit Live-Kurve, WLAN-Analyse, ein Diagnose-Tab für die Windows-Netzwerkeinstellungen und – neu – ein Firewall-Tab, der Ausnahmen für nicht erreichbare Geräte direkt einträgt. Jeder Scan lässt sich als HTML-Report speichern, archivieren und mit früheren Scans vergleichen.</p>
-      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v3.22.21/sit-lanscanner_v3-22-21.zip" class="btn-download">⬇ Download v3.22.21</a>
+      <p>Der S-IT LAN Device Scanner findet alle Geräte im Netzwerk und zeigt Hersteller, Betriebssystem und offene Ports – inklusive Intensiv-Scan mit Npcap. Dazu Internet-Erreichbarkeit, LAN-Durchsatztest mit Live-Kurve, WLAN-Analyse, ein Diagnose-Tab für die Windows-Netzwerkeinstellungen und der Tab „Firewall &amp; Ports“: Er trägt Ausnahmen für nicht erreichbare Geräte ein und – neu – prüft und öffnet Ports auf diesem PC. Jeder Scan lässt sich als HTML-Report speichern, archivieren und mit früheren Scans vergleichen.</p>
+      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v4.0/sit-lanscanner_v4-0.zip" class="btn-download">⬇ Download v4.0</a>
       <a href="https://github.com/SattlerIT/sit-lanscanner/releases" class="btn-secondary">Alle Versionen</a>
     </div>
     <div class="hero-screenshot">
-      <img src="L1_Screenshot__819_.png" alt="S-IT LAN Device Scanner Hauptfenster mit Geräteliste">
+      <img src="Screenshots/geraeteliste.png" alt="S-IT LAN Device Scanner Hauptfenster mit Geräteliste">
     </div>
   </div>
 </div>
@@ -401,8 +401,8 @@
     </div>
     <div class="card">
       <div class="card-icon">🛡</div>
-      <h3>Firewall-Ausnahmen</h3>
-      <p>Ist ein Gerät sichtbar, aber nicht erreichbar? Der neue Tab prüft Ping, offene Ports und Firewall-Status eines Ziels und trägt auf Wunsch eine passende Ausnahme ein – für alle Ports, nur Dateifreigabe oder samt Weboberfläche. Eigene Regeln lassen sich jederzeit wieder entfernen, fremde bleiben unangetastet.</p>
+      <h3>Firewall &amp; Ports</h3>
+      <p>Ist ein Gerät sichtbar, aber nicht erreichbar? Der Tab prüft Ping, offene Ports und Firewall-Status eines Ziels und trägt auf Wunsch eine passende Ausnahme ein. Neu: Ports auf diesem PC freigeben, etwa für Warenwirtschaft, Kassensystem oder Datenbank – mit Vorlagen und vorheriger Prüfung, ob ein Programm am Port lauscht. Eigene Regeln lassen sich jederzeit wieder entfernen, fremde bleiben unangetastet.</p>
     </div>
     <div class="card">
       <div class="card-icon">📋</div>
@@ -417,7 +417,7 @@
     <div class="card">
       <div class="card-icon">🖥</div>
       <h3>Skalierbare Oberfläche</h3>
-      <p>Darstellungsgröße von 90–300 % im Konfig-Dialog – für kompakte Ansichten, HiDPI-, UHD- und Hochkant-Monitore. Alle Schriften und Abstände skalieren proportional mit; die Fenstergröße lässt sich auf Wunsch dauerhaft merken.</p>
+      <p>Darstellungsgröße von 90–300 % im Konfig-Dialog – für kompakte Ansichten, HiDPI-, UHD- und Hochkant-Monitore. Die gewählte Stufe gilt unabhängig von der Windows-Skalierung; die Schriftgröße Klein / Normal / Groß wirkt auch in der Geräteliste. Die Fenstergröße lässt sich auf Wunsch dauerhaft merken.</p>
     </div>
     <div class="card">
       <div class="card-icon">🔧</div>
@@ -430,36 +430,49 @@
   <div class="section-title">📸 Screenshots</div>
   <div class="gallery">
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="L1_Screenshot__819_.png" alt="LAN-Scanner Geräteliste mit Kontextmenü">
+      <img src="Screenshots/geraeteliste.png" alt="LAN-Scanner Geräteliste">
       <div class="gallery-caption">Geräteliste mit Hersteller, Betriebssystem und offenen Ports – Rechtsklick für Aktionen</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="L2-Screenshot__824_.png" alt="Log-Manager mit Netzwerk-Vergleich">
+      <img src="Screenshots/log-vergleich.png" alt="Log-Manager mit Netzwerk-Vergleich">
       <div class="gallery-caption">Log-Manager: zwei Scans vergleichen – neu, verschwunden, unverändert</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="L3-Screenshot__821_.png" alt="Internet-Erreichbarkeit mit Diagnose-Kacheln">
+      <img src="Screenshots/internet-erreichbarkeit.png" alt="Internet-Erreichbarkeit mit Diagnose-Kacheln">
       <div class="gallery-caption">Internet-Erreichbarkeit: DNS, Routing, TCP 443, HTTPS, IPv6, Browser-Zugriff</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="L4-Screenshot__820_.png" alt="LAN-Performance und WLAN mit Live-Kurve">
+      <img src="Screenshots/lan-performance-wlan.png" alt="LAN-Performance und WLAN mit Live-Kurve">
       <div class="gallery-caption">LAN-Performance &amp; WLAN: Dauertest mit Live-Kurve und Verbindungsstatus</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <span class="badge-neu">NEU</span>
-      <img src="L7-Firewall-Befund.png" alt="Firewall-Tab mit Prüfergebnis und gesetzten Regeln">
-      <div class="gallery-caption">Firewall-Ausnahmen: Ziel geprüft, alle Punkte grün – vier gesetzte Regeln in der Liste</div>
+      <img src="Screenshots/netzwerk-einstellungen.png" alt="Netzwerk-Einstellungen mit Prüfergebnissen">
+      <div class="gallery-caption">Netzwerk-Einstellungen: Profil, Dienste, SMB und Firewall – SMB1 getrennt nach Client und Server</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
       <span class="badge-neu">NEU</span>
-      <img src="L8-Firewall-Eintragen.png" alt="Firewall-Tab: Bestätigung vor dem Eintragen der Ausnahme">
-      <div class="gallery-caption">Vor dem Eintragen: klare Übersicht, welche Regeln angelegt werden</div>
+      <img src="Screenshots/firewall-ports.png" alt="Tab Firewall und Ports mit zwei Spalten">
+      <div class="gallery-caption">Firewall &amp; Ports: links ein Gerät im Netz erreichen, rechts einen Port auf diesem PC freigeben</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <span class="badge-neu">NEU</span>
+      <img src="Screenshots/firewall-port-freigeben.png" alt="Port freigeben: Bestätigung vor dem Eintragen">
+      <div class="gallery-caption">Port freigeben: Vorlage wählen, prüfen, vor dem Eintragen bestätigen</div>
+    </div>
+    <div class="gallery-item" onclick="openLightbox(this)">
+      <span class="badge-neu">NEU</span>
+      <img src="Screenshots/firewall-port-gesetzt.png" alt="Port-Regel gesetzt mit Prüfergebnis">
+      <div class="gallery-caption">Regel gesetzt – die Prüfung zeigt zugleich, ob ein Programm am Port lauscht</div>
     </div>
   </div>
   <p class="gallery-more">
     Weitere Ansichten:
-    <a href="L_5_Screenshot__825_.png" target="_blank">OUI-Updater v1.1</a> &nbsp;·&nbsp;
-    <a href="L-6_Screenshot__826_.png" target="_blank">Netzwerk-Einstellungen auf Hochkant-Monitor</a>
+    <a href="Screenshots/geschwindigkeitstest.png" target="_blank">Geschwindigkeitstest</a> &nbsp;·&nbsp;
+    <a href="Screenshots/netzwerk-reparatur.png" target="_blank">Netzwerk-Reparatur</a> &nbsp;·&nbsp;
+    <a href="Screenshots/konfiguration-skalierung.png" target="_blank">Konfiguration und Skalierung</a> &nbsp;·&nbsp;
+    <a href="Screenshots/oui-updater.png" target="_blank">OUI-Updater v1.2</a> &nbsp;·&nbsp;
+    <a href="Screenshots/diagnose.png" target="_blank">Diagnose (DIAG)</a> &nbsp;·&nbsp;
+    <a href="Screenshots/hilfe-doku.png" target="_blank">Doku &amp; Kontakt</a>
   </p>
 
   <!-- DOWNLOAD -->
@@ -467,7 +480,7 @@
   <p style="font-size:14px; margin-bottom:16px;">Die aktuelle Version, Hilfe-Datei und Changelog findest du im <a href="https://github.com/SattlerIT/sit-lanscanner/releases" style="color:var(--blue)">Release-Bereich auf GitHub</a>.</p>
 
   <div class="ok-box">
-    <strong>Setup inklusive:</strong> Das Paket enthält einen Installer und Deinstaller für eine saubere Windows-Integration – inklusive Eintrag in der Systemsteuerung unter „Programme und Features“. Alternativ läuft das Tool auch portabel vom USB-Stick.
+    <strong>Setup inklusive:</strong> Das Setup installiert wahlweise auf die Festplatte – mit Verknüpfungen und Eintrag in der Systemsteuerung unter „Programme und Features“ – oder portabel auf einen USB-Stick bzw. in einen eigenen Ordner. Bei einem Update bleiben Einstellungen, eigene Zuordnungen und Logs erhalten. Der Deinstaller sichert diese Daten auf Wunsch; bei einer späteren Neuinstallation bietet das Setup an, sie zurückzuholen.
   </div>
 
   <div class="info-box">
@@ -497,7 +510,7 @@
     <tr><td>Betriebssystem</td><td>Windows 10 / Windows 11 (64-Bit)</td></tr>
     <tr><td>Rechte</td><td>Administratorrechte für den Intensivmodus erforderlich</td></tr>
     <tr><td>Optional</td><td>Npcap für erweiterten ARP- und Intensiv-Scan</td></tr>
-    <tr><td>Lieferumfang</td><td>Setup, Deinstaller, OUI-Updater, Hilfe-Datei und ChangeLog</td></tr>
+    <tr><td>Lieferumfang</td><td>Setup, Deinstaller, OUI-Updater, Hilfe-Datei, ChangeLog, Lizenz und Haftungsausschluss (Deutsch/Englisch)</td></tr>
   </table>
 
   <!-- SICHERHEITSHINWEIS -->
@@ -530,6 +543,17 @@
   <!-- CHANGELOG -->
   <div class="section-title">📋 Changelog</div>
   <div class="changelog">
+    <div class="changelog-entry">
+      <div class="changelog-version">v4.0 <span>Oktober 2026 · Build 2026.10.09</span></div>
+      <ul>
+        <li>🔌 Firewall-Tab erweitert zu „Firewall &amp; Ports“: neue Spalte, um einen Port auf diesem PC freizugeben – frei eingetragen oder per Vorlage (SQL Server, MySQL/MariaDB, PostgreSQL, Remotedesktop, VNC, HTTP, HTTPS), auch als Portbereich. Die Freigabe gilt eingehend und nur aus dem lokalen Netz</li>
+        <li>🔍 Port-Prüfung vor der Freigabe: lauscht ein Programm am Port, besteht bereits eine eingehende Regel, lässt das Firewall-Profil die Freigabe zu</li>
+        <li>📐 Skalierung vereinfacht: Die im Programm gewählte Stufe gilt allein, die Windows-Skalierung wirkt nicht mehr zusätzlich</li>
+        <li>🔤 Die Schriftgröße Klein / Normal / Groß gilt jetzt auch für die Geräteliste; die Zeilenhöhe folgt der Schrift – auch auf 4K-Bildschirmen gut lesbar</li>
+        <li>📦 Neues Setup: Installation oder portabel; der Deinstaller sichert auf Wunsch die eigenen Daten, das Setup holt sie bei einer Neuinstallation zurück</li>
+        <li>Korrekturen im LAN-Performance-Tab und im Dialog für die Ping-Ziele, richtige Umlaute und Windows-Profilnamen, genauere Bewertung programmgebundener Firewall-Regeln; S-IT-Symbol in allen Fenstern</li>
+      </ul>
+    </div>
     <div class="changelog-entry">
       <div class="changelog-version">v3.22.21 – Überarbeitung <span>August 2026 · Build 2026.08.17</span></div>
       <ul>
