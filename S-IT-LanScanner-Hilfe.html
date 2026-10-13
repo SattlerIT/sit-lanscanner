@@ -68,7 +68,7 @@
 <body>
 <header>
   <h1>📖 S-IT LAN Device Scanner – Hilfe</h1>
-  <p>Version 3.22.21 &nbsp;•&nbsp; Build 2026.08.17 &nbsp;•&nbsp;
+  <p>Version 4.0 &nbsp;•&nbsp; Build 2026.10.09 &nbsp;•&nbsp;
      © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
 </header>
 
@@ -79,9 +79,8 @@
   <a href="#ergebnisse">Ergebnisse verstehen</a>
   <a href="#einstellungen">Einstellungen</a>
   <a href="#custom">Eigene Zuordnungen</a>
-  <a href="#netzwerk-einstellungen">Netzwerk-Einstellungen</a>
   <a href="#lan-performance">LAN-Performance</a>
-  <a href="#firewall">Firewall</a>
+  <a href="#firewall">Firewall &amp; Ports</a>
   <a href="#diag">Diagnose</a>
   <a href="#dateien">Dateien &amp; Updates</a>
   <a href="#faq">Häufige Fragen</a>
@@ -99,7 +98,7 @@
       <li><a href="#einstellungen">Einstellungen</a></li>
       <li><a href="#custom">Eigene Gerätezuordnungen (S-IT-Custom.ini)</a></li>
       <li><a href="#lan-performance">Tab 4: LAN-Performance &amp; WLAN</a></li>
-      <li><a href="#firewall">Tab 5: Firewall-Ausnahmen</a></li>
+      <li><a href="#firewall">Tab 5: Firewall &amp; Ports</a></li>
       <li><a href="#diag">Diagnose (DIAG) – für Tester</a></li>
       <li><a href="#dateien">Dateien, Updates und Sicherung</a></li>
       <li><a href="#faq">Häufige Fragen (FAQ)</a></li>
@@ -151,7 +150,7 @@
       <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
           <td>Öffnet die Diagnose-Werkzeuge. Nur sichtbar, wenn unter
               <strong>⚙ Konfig → Diagnose</strong> eingeschaltet – im Normalbetrieb
-              ausgeblendet. Siehe Abschnitt 10.</td></tr>
+              ausgeblendet. Siehe Abschnitt 9.</td></tr>
       <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Konfig</span></td>
           <td>Öffnet die Einstellungen – enthält rechts die <strong>Darstellungsgröße / Skalierung</strong>
               (90–300 %) für HiDPI- und UHD-Monitore.</td></tr>
@@ -169,7 +168,7 @@
       <li><strong>Internet-Erreichbarkeit</strong> – Ping-Diagnose zu konfigurierbaren Zielen</li>
       <li><strong>Netzwerk-Einstellungen</strong> – Netzwerk-Tools und Diagnose</li>
       <li><strong>LAN-Performance &amp; WLAN</strong> – Geschwindigkeitstest, Verbindungsstatus und WLAN-Übersicht</li>
-      <li><strong>🛡 Firewall</strong> – prüft die Erreichbarkeit eines Geräts und trägt bei Bedarf Firewall-Ausnahmen ein (Adminrechte nötig)</li>
+      <li><strong>🛡 Firewall &amp; Ports</strong> – zwei Spalten: links die Erreichbarkeit eines Geräts im Netz prüfen und bei Bedarf eine Ausnahme eintragen, rechts einen Port auf diesem PC prüfen und freigeben (Adminrechte nötig)</li>
     </ul>
   </div>
 
@@ -326,11 +325,17 @@
 
     <h3>Darstellungsgröße / Skalierung</h3>
     <p>Skaliert die gesamte Oberfläche. Wählbar sind <strong>90 / 100 / 125 / 150 /
-       175 / 200 / 250 / 300 %</strong>. Die Stufe <strong>90 %</strong> ist kompakt
-       und schafft mehr Platz bei Tabellen – oft von Vorteil bei Full-HD mit 125 %
-       Windows-Skalierung. Welche Stufe wofür geeignet ist, steht im ⓘ-Knopf neben der
-       Überschrift. Eine Änderung wirkt nach einem Neustart, der beim Speichern
-       angeboten wird.</p>
+       175 / 200 / 250 / 300 %</strong>. Die gewählte Stufe bestimmt die Größe allein –
+       die Windows-Skalierung wirkt dann nicht zusätzlich. Die Stufe
+       <strong>90 %</strong> ist kompakt und schafft mehr Platz bei Tabellen. Welche
+       Stufe wofür geeignet ist, steht im ⓘ-Knopf neben der Überschrift. Eine Änderung
+       wirkt nach einem Neustart, der beim Speichern angeboten wird.</p>
+    <div class="info">
+      <strong>ℹ Verhältnis zur Windows-Skalierung:</strong> Solange hier eine Stufe
+      gewählt ist, gibt sie die Darstellungsgröße vor – unabhängig davon, was Windows
+      eingestellt hat. Ist keine Stufe gewählt, richtet sich das Programm nach der
+      Windows-Skalierung.
+    </div>
 
     <h3>Programmstart</h3>
     <p>Das Kästchen <strong>„🛡 Als Administrator starten"</strong> (Voreinstellung
@@ -363,7 +368,7 @@
     <p>Das Kästchen <strong>„🔧 DIAG-Werkzeuge anzeigen"</strong> blendet oben im
        Header den Knopf <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>
        ein. Standardmäßig ist es <strong>aus</strong> – für den normalen Betrieb wird
-       die Diagnose nicht gebraucht. Näheres in Abschnitt 10.</p>
+       die Diagnose nicht gebraucht. Näheres in Abschnitt 9.</p>
   </div>
 
   <!-- CUSTOM -->
@@ -437,109 +442,7 @@
   </div>
 
   <!-- LAN-PERFORMANCE -->
-  <h2 id="netzwerk-einstellungen">7. Tab 3: Netzwerk-Einstellungen</h2>
-  <div class="box">
-    <p>Dieser Tab prüft die <strong>Windows-Einstellungen des eigenen Rechners</strong>,
-       die darüber entscheiden, ob Freigaben, NAS-Geräte, Netzwerkdrucker und der
-       FritzBox-USB-Speicher überhaupt erreichbar sind. Er scannt also nicht das
-       Netzwerk, sondern schaut nach innen: Woran liegt es, dass ein Gerät zwar da ist,
-       aber nicht funktioniert?</p>
-    <p>Ein Klick auf <strong>„Alle Einstellungen prüfen"</strong> geht sämtliche Punkte
-       durch. Wo etwas nicht stimmt, steht rechts ein Knopf, der es in Ordnung bringt.</p>
-
-    <h3>Die Farben verstehen</h3>
-    <table>
-      <tr><th>Farbe</th><th>Bedeutung</th></tr>
-      <tr><td><strong>Grün</strong></td>
-          <td>Alles in Ordnung – hier ist nichts zu tun.</td></tr>
-      <tr><td><strong>Gelb</strong></td>
-          <td>Hinweis. Kein Fehler, aber etwas, das man bewusst so eingestellt haben
-              sollte – etwa ein aktiver SMB1-Client.</td></tr>
-      <tr><td><strong>Rot</strong></td>
-          <td>Warnung. Entweder eine Funktion fehlt, die für Freigaben gebraucht wird,
-              oder eine Einstellung ist ein echtes Sicherheitsrisiko.</td></tr>
-      <tr><td><strong>Grau</strong></td>
-          <td>Nur zur Information, kein Handlungsbedarf.</td></tr>
-    </table>
-    <div class="tip">
-      <strong>Warum ist ein Knopf manchmal grau?</strong> Ein Knopf auf einer grünen
-      Zeile führt immer <em>zurück</em> in den weniger sicheren Zustand, etwa
-      „← Aktivieren" bei einem abgeschalteten SMB1-Server. Solche Rücksetz-Knöpfe sind
-      bewusst dezent gehalten, damit man nicht versehentlich daraufklickt. Sie
-      funktionieren ganz normal.
-    </div>
-
-    <h3>Was geprüft wird</h3>
-    <p><strong>Netzwerkprofil &amp; Sichtbarkeit</strong> – Steht das Netzwerk auf
-       „Privat"? In einem als „Öffentlich" eingestuften Netz blockiert Windows
-       Freigaben grundsätzlich. Dazu Netzwerkerkennung sowie Datei- und
-       Druckerfreigabe.</p>
-    <p><strong>Windows-Dienste</strong> – Laufen die Dienste, die für Freigaben nötig
-       sind? Geprüft werden Server, Workstation, Funktionssuche-Ressourcenveröffentlichung
-       und DNS-Client.</p>
-    <p><strong>SMB / Dateifreigaben</strong> – Der umfangreichste Bereich: SMB1-Client,
-       SMB1-Server und die 15-Tage-Automatik (siehe unten), SMB2/SMB3, unsichere
-       Gastzugänge, NTLM-Kompatibilität und die SMB-Signierung.</p>
-    <p><strong>Firewall &amp; Ports</strong> – Ist der SMB-Port 445 eingehend geöffnet,
-       sind die NetBIOS-Regeln aktiv, und in welchem Zustand ist die Windows-Firewall?</p>
-
-    <h3>SMB1: warum drei Zeilen?</h3>
-    <p>SMB1 ist das alte Dateifreigabe-Protokoll, das viele ältere NAS-Geräte,
-       Netzwerkdrucker und Kopierer noch brauchen. Es besteht aus mehreren
-       voneinander unabhängigen Teilen, und deshalb gibt es drei getrennte Zeilen:</p>
-    <table>
-      <tr><th>Zeile</th><th>Wofür</th></tr>
-      <tr><td><strong>SMB1-Client</strong></td>
-          <td>Damit <em>dieser PC</em> auf alte Geräte zugreifen kann. Der häufige
-              Fall.</td></tr>
-      <tr><td><strong>SMB1-Server</strong></td>
-          <td>Damit <em>alte Geräte</em> auf die Freigaben dieses PCs zugreifen können,
-              etwa ein Kopierer, der Scans ablegt. Die gefährlichere Seite.</td></tr>
-      <tr><td><strong>SMB1 dauerhaft halten</strong></td>
-          <td>Windows entfernt SMB1 nach 15 Tagen ohne Nutzung von selbst. Diese Zeile
-              schaltet die Automatik ab – wichtig bei längeren Betriebspausen.</td></tr>
-    </table>
-    <div class="warn">
-      <strong>SMB1 ist ein Sicherheitsrisiko.</strong> Über diese Lücke verbreitete sich
-      seinerzeit WannaCry. Schalten Sie SMB1 nur ein, solange ein Altgerät es wirklich
-      braucht – und schalten Sie es wieder ab, sobald das Gerät ersetzt ist. Der
-      SMB1-Server ist dabei kritischer als der Client.
-    </div>
-
-    <h3>Reparatur-Werkzeuge</h3>
-    <p>Unterhalb der Prüfliste stehen Werkzeuge für Fälle, in denen die Einstellungen
-       stimmen, aber trotzdem nichts geht. Jedes erklärt vor der Ausführung in einem
-       eigenen Fenster, was es macht, wann es sinnvoll ist und welches Risiko besteht.</p>
-    <table>
-      <tr><th>Werkzeug</th><th>Typischer Anlass</th></tr>
-      <tr><td>DNS-Cache leeren</td>
-          <td>Gerät hat eine neue IP bekommen, der Hostname zeigt noch auf die alte</td></tr>
-      <tr><td>NetBIOS-Cache leeren</td><td>Alter Rechnername taucht weiter auf</td></tr>
-      <tr><td>ARP-Cache leeren</td><td>Gerät antwortet nicht mehr, obwohl es online ist</td></tr>
-      <tr><td>LLDP-Topologie-Cache</td><td>Netzwerkkarte zeigt veraltete Verbindungen</td></tr>
-      <tr><td>TCP/IP-Stack zurücksetzen</td><td>Netzwerk funktioniert grundsätzlich nicht mehr</td></tr>
-      <tr><td>Winsock zurücksetzen</td><td>Programme bauen keine Verbindungen mehr auf</td></tr>
-      <tr><td>NLA-Cache zurücksetzen</td><td>Netzwerk bleibt „Öffentlich", obwohl es privat ist</td></tr>
-      <tr><td>Drucker-Spooler zurücksetzen</td><td>Druckaufträge hängen fest</td></tr>
-      <tr><td>Netzlaufwerke anzeigen</td><td>Übersicht der gespeicherten Verbindungen</td></tr>
-      <tr><td>Alle Verbindungen trennen</td><td>Anmeldung an einem NAS mit falschem Konto lösen</td></tr>
-    </table>
-
-    <h3>Administratorrechte und Neustart</h3>
-    <p>Die <strong>Prüfung</strong> läuft immer. Die <strong>Reparatur-Knöpfe</strong>
-       brauchen Administratorrechte – ohne sie erscheint ein Hinweis oben im Tab. Am
-       einfachsten ist es, den Scanner grundsätzlich als Administrator zu starten
-       (⚙ Konfigurieren → Programmstart).</p>
-    <div class="warn">
-      <strong>Änderungen an Windows-Funktionen wirken erst nach einem Neustart.</strong>
-      Das betrifft vor allem SMB1: Windows lädt die Dateien beim Einschalten nach.
-      Bis zum Neustart zeigt die Prüfung weiterhin den bisherigen Zustand – das ist
-      kein Fehler. Das Programm startet Ihren Rechner <strong>nicht</strong> von sich
-      aus neu; es weist nur darauf hin.
-    </div>
-  </div>
-
-  <h2 id="lan-performance">8. Tab 4: LAN-Performance &amp; WLAN</h2>
+  <h2 id="lan-performance">7. Tab 4: LAN-Performance &amp; WLAN</h2>
   <div class="box">
     <h3>LAN-Geschwindigkeitstest</h3>
     <p>Misst die tatsächliche Schreib- und Lesegeschwindigkeit zu einer
@@ -631,13 +534,20 @@
   </div>
 
   <!-- FIREWALL -->
-  <h2 id="firewall">9. Tab 5: Firewall-Ausnahmen</h2>
+  <h2 id="firewall">8. Tab 5: Firewall &amp; Ports</h2>
   <div class="box">
-    <p>Ein Gerät ist im Netzwerk sichtbar, lässt sich aber nicht erreichen –
-       kein Ping, keine Dateifreigabe? Häufig blockiert die Windows-Firewall die
-       Verbindung. Dieser Tab prüft die Erreichbarkeit eines Ziels und trägt auf
-       Wunsch eine passende Ausnahme ein. Er ist aus dem eigenständigen Werkzeug
-       <strong>S-IT-FWModify</strong> übernommen.</p>
+    <p>Dieser Tab behandelt zwei getrennte Fälle, deshalb ist er in zwei Spalten
+       aufgeteilt. Beide greifen auf dieselbe Windows-Firewall zu, schauen sie aber
+       aus entgegengesetzter Richtung an:</p>
+    <ul>
+      <li><strong>Links – „Gerät im Netz erreichen":</strong> Ein anderes Gerät im
+          LAN (NAS, Drucker, FritzBox-USB) ist von diesem PC aus nicht erreichbar.</li>
+      <li><strong>Rechts – „Port auf diesem PC":</strong> Ein Programm auf diesem PC
+          braucht einen bestimmten Port, auf den andere aus dem Netz zugreifen
+          (Warenwirtschaft, Kassensystem, Datenbank, Fernwartung).</li>
+    </ul>
+    <p>Unter beiden Spalten liegt über die volle Breite die gemeinsame
+       <strong>Regelliste</strong>; sie zeigt die Einträge aus beiden Spalten.</p>
 
     <div class="warn">
       <strong>⚠ Adminrechte nötig:</strong> Firewall-Regeln zu lesen und zu setzen
@@ -647,33 +557,89 @@
       Prüfen oder Eintragen.
     </div>
 
-    <h3>Ablauf in drei Schritten</h3>
+    <h3>Linke Spalte: Gerät im Netz erreichen</h3>
+    <p>Das verwenden Sie, wenn ein Gerät im Scan sichtbar ist (oder sichtbar sein
+       sollte), sich aber nicht erreichen lässt – kein Ping, keine Dateifreigabe.
+       Häufig blockiert die Windows-Firewall dieses PCs die Verbindung. Diese Spalte
+       ist aus dem eigenständigen Werkzeug <strong>S-IT-FWModify</strong> übernommen.</p>
     <ol>
-      <li><strong>Ziel eingeben</strong> – eine IP-Adresse (z.B.
-          <code>192.168.0.21</code>) oder ein ganzes Subnetz
-          (<code>192.168.0.0/24</code>).</li>
-      <li><strong>Umfang wählen</strong> – <em>Alle Ports</em> für ein einzelnes,
-          bekanntes Gerät; <em>Nur Dateifreigabe</em> (SMB, Ports 445/139 und UDP
-          137/138); oder <em>Dateifreigabe + Weboberfläche</em> (zusätzlich TCP
-          5000/5001, z.B. für NAS-Oberflächen).</li>
-      <li><strong>Prüfen</strong> – der Tab testet Ping, offene Ports, den
-          Firewall-Grundzustand, das Netzwerkprofil dieses PCs und ob bereits eine
-          S-IT-Regel für das Ziel besteht. Anschließend
-          <strong>Ausnahme eintragen</strong>.</li>
+      <li><strong>IP-Adresse oder Subnetz eingeben</strong> – eine einzelne Adresse
+          (z.B. <code>192.168.178.60</code>) oder ein ganzes Subnetz
+          (<code>192.168.178.0/24</code>). Zuletzt verwendete Ziele stehen im
+          Auswahlfeld bereit.</li>
+      <li><strong>Umfang der Ausnahme wählen:</strong>
+          <ul>
+            <li><strong>Alle Ports</strong> – für ein einzelnes, bekanntes Gerät</li>
+            <li><strong>Nur Dateifreigabe</strong> – TCP 445, 139 und UDP 137, 138 (SMB)</li>
+            <li><strong>Dateifreigabe + Weboberfläche</strong> – zusätzlich TCP 5000,
+                5001 (z.B. für NAS-Oberflächen)</li>
+          </ul>
+      </li>
+      <li><strong>Prüfen</strong> – der Befund erscheint in fünf Zeilen (siehe unten).</li>
+      <li><strong>Ausnahme eintragen</strong> – legt die passende Firewall-Ausnahme an.</li>
     </ol>
+    <p>Die fünf Prüfzeilen:</p>
+    <ul>
+      <li><strong>Gerät antwortet auf Ping</strong> – grundsätzliche Erreichbarkeit im Netz</li>
+      <li><strong>Offene Ports am Ziel</strong> – was bietet das Gerät an, ist
+          Dateifreigabe darunter?</li>
+      <li><strong>Firewall-Grundeinstellung</strong> – kann eine Ausnahme hier
+          überhaupt etwas bewirken?</li>
+      <li><strong>Netzwerkprofil dieses PCs</strong> – Privat = Freigaben möglich,
+          Öffentlich = alles geblockt</li>
+      <li><strong>S-IT-Regel für dieses Ziel</strong> – besteht bereits eine von
+          diesem Tool gesetzte Ausnahme?</li>
+    </ul>
 
-    <h3>Der Befund</h3>
+    <h3>Rechte Spalte: Port auf diesem PC</h3>
+    <p>Das verwenden Sie umgekehrt, wenn ein Programm <em>auf diesem PC</em> läuft und
+       einen bestimmten Port öffnen muss, damit andere Rechner im Netz darauf
+       zugreifen – etwa eine Warenwirtschaft, ein Kassensystem oder eine Datenbank,
+       die ihren Dienst auf einem festen Port anbietet. Die Freigabe gilt
+       <strong>eingehend</strong> und <strong>nur aus dem lokalen Netz</strong>.</p>
+    <ol>
+      <li><strong>Vorlage wählen</strong> (optional) – häufige Fälle sind
+          hinterlegt und füllen Port, Protokoll und Bezeichnung automatisch aus:
+          SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432),
+          Remotedesktop (3389), VNC (5900), HTTP (80), HTTPS (443),
+          HTTP alternativ (8080), HTTPS alternativ (8443). Mit
+          <em>„– eigene Eingabe –"</em> tragen Sie einen beliebigen Port selbst ein.</li>
+      <li><strong>Port (oder Bereich) und Protokoll</strong> – eine einzelne Nummer
+          (z.B. <code>1433</code>) oder ein Bereich (z.B. <code>5000-5010</code>,
+          höchstens 200 Ports), dazu <strong>TCP</strong> oder <strong>UDP</strong>.</li>
+      <li><strong>Bezeichnung</strong> – ein Name, unter dem die Regel später in der
+          Liste wiederzufinden ist (z.B. „Warenwirtschaft, Kassensystem").</li>
+      <li><strong>Prüfen</strong> – der Befund erscheint in drei Zeilen (siehe unten).</li>
+      <li><strong>Port freigeben</strong> – legt eine eingehende Regel für das lokale
+          Subnetz an.</li>
+    </ol>
+    <p>Die drei Prüfzeilen:</p>
+    <ul>
+      <li><strong>Programm lauscht am Port</strong> – ohne ein lauschendes Programm
+          bewirkt keine Firewall-Regel etwas. Lauscht das Programm nur auf
+          <code>127.0.0.1</code>, ist es aus dem Netz auch mit Regel nicht erreichbar –
+          dann muss das Programm selbst auf die LAN-Adresse gebunden werden.</li>
+      <li><strong>Eingehende Firewall-Regel</strong> – vorhandene Regeln für diesen
+          Port, auch fremde (z.B. vom Installer der Fachanwendung). Regeln, die nur
+          für ein einzelnes anderes Programm gelten, werden als wirkungslos
+          ausgewiesen.</li>
+      <li><strong>Firewall-Profil dieses PCs</strong> – die Regel gilt für das private
+          Profil; im Profil „Öffentlich" blockt Windows trotzdem.</li>
+    </ul>
+
+    <h3>Der Befund (beide Spalten)</h3>
     <p>Jede Prüfzeile zeigt ein Ergebnis: <strong>grün</strong> in Ordnung,
        <strong>gelb</strong> ein Hinweis, <strong>rot</strong> ein Problem. Wo es
        sinnvoll ist, bietet die Zeile rechts einen kleinen Knopf zur direkten Abhilfe
-       an (etwa das Netzwerkprofil auf „privat" umstellen, damit Freigaben überhaupt
-       zugelassen werden).</p>
+       an – etwa das Netzwerkprofil auf „privat" umstellen (damit Freigaben überhaupt
+       zugelassen werden) oder den Port gleich freigeben. Der ausführliche Hinweistext
+       zu jeder Zeile erscheint, wenn Sie mit der Maus darüber stehen bleiben.</p>
 
-    <h3>Von diesem Tool gesetzte Regeln</h3>
-    <p>Alle Ausnahmen, die das Programm anlegt, tragen einen eigenen Namen
-       (Präfix <code>S-IT-FW-</code>) und erscheinen in der Liste unten. Pro Eintrag
-       entstehen in der Regel mehrere Firewall-Regeln (je Richtung eingehend/ausgehend
-       und Protokoll). Über die Knöpfe darunter lassen sich <strong>markierte</strong>
+    <h3>Die gemeinsame Regelliste</h3>
+    <p>Alle Ausnahmen, die das Programm anlegt – aus beiden Spalten –, tragen einen
+       eigenen Namen (Präfix <code>S-IT-FW-</code>) und erscheinen in der Liste unten.
+       Pro Eintrag entstehen in der Regel mehrere Firewall-Regeln (je Richtung und
+       Protokoll). Über die Knöpfe darunter lassen sich <strong>markierte</strong>
        oder <strong>alle S-IT-Regeln</strong> wieder entfernen.</p>
 
     <div class="tip">
@@ -684,14 +650,14 @@
     </div>
 
     <div class="info">
-      <strong>ℹ Aufräumen leicht gemacht:</strong> Wurde eine Ausnahme nur zum Testen
-      gesetzt, entfernen Sie sie später mit einem Klick wieder über die Regelliste –
-      so bleibt die Firewall sauber.
+      <strong>ℹ Aufräumen leicht gemacht:</strong> Wurde eine Ausnahme oder eine
+      Port-Freigabe nur zum Testen gesetzt, entfernen Sie sie später mit einem Klick
+      wieder über die Regelliste – so bleibt die Firewall sauber.
     </div>
   </div>
 
   <!-- DIAGNOSE -->
-  <h2 id="diag">10. Diagnose (DIAG) – für Tester</h2>
+  <h2 id="diag">9. Diagnose (DIAG) – für Tester</h2>
   <div class="box">
     <p>Dieser Abschnitt richtet sich an Tester und an alle, die ein
        Erkennungsproblem melden möchten. Für den normalen Betrieb wird
@@ -752,7 +718,7 @@
   </div>
 
   <!-- DATEIEN -->
-  <h2 id="dateien">11. Dateien, Updates und Sicherung</h2>
+  <h2 id="dateien">10. Dateien, Updates und Sicherung</h2>
   <div class="box">
 
     <div class="tip">
@@ -834,7 +800,7 @@
   </div>
 
   <!-- FAQ -->
-  <h2 id="faq">12. Häufige Fragen (FAQ)</h2>
+  <h2 id="faq">11. Häufige Fragen (FAQ)</h2>
   <div class="box">
 
     <h3>Ein Gerät wird nicht gefunden</h3>
@@ -869,7 +835,7 @@
     <h3>Der Test sagt „Freigabe fehlt"</h3>
     <p>Es wurde nur der <strong>Servername</strong> angegeben, z.B.
        <code>\\NAS-Name</code>. Dort lässt sich keine Datei anlegen – nötig ist die
-       Freigabe selbst: <code>\\NAS-Name\Daten</code>. Siehe Abschnitt 8.</p>
+       Freigabe selbst: <code>\\NAS-Name\Daten</code>. Siehe Abschnitt 7.</p>
 
     <h3>Die WLAN-Karte zeigt „Verbunden", aber keine Signalstärke und keinen Kanal</h3>
     <p>Das ist fast immer die Windows-11-Standortsperre und <strong>kein Fehler des
@@ -902,15 +868,13 @@
        <strong>„Darstellungsgröße / Skalierung"</strong> einen höheren Wert.
        Das Programm startet nach dem Speichern automatisch neu.</p>
     <div class="tip">
-      <strong>Empfehlung für UHD/4K:</strong> Stellen Sie sowohl die
-      <strong>Windows-Skalierung</strong> (Einstellungen → System → Bildschirm → Skalierung)
-      als auch die <strong>Programm-Skalierung</strong> auf <strong>150 %</strong> –
-      das ergibt auf den meisten UHD-Monitoren eine gut lesbare Darstellung.<br><br>
-      Beide Werte addieren sich in ihrer Wirkung. Tasten Sie sich am besten langsam vor:
-      z.B. erst Windows 125 % + Programm 125 %, dann schrittweise höher –
-      bis Text und Elemente für Sie optimal lesbar sind.
+      <strong>Empfehlung für UHD/4K:</strong> Die Programm-Skalierung gibt die Größe
+      allein vor – die Windows-Skalierung müssen Sie dafür nicht ändern. Beginnen Sie
+      mit <strong>150 %</strong>; das ergibt auf den meisten UHD-Monitoren eine gut
+      lesbare Darstellung. Ist es noch zu klein oder zu groß, wählen Sie die nächste
+      Stufe, bis Text und Elemente für Sie optimal lesbar sind.
     </div>
-    <p>Mögliche Skalierungsstufen im Programm: 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+    <p>Mögliche Skalierungsstufen im Programm: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
 
     <h3>Wo finde ich den Haftungsausschluss?</h3>
     <p>In der Datei <a href="Disclaimer.txt"><code>Disclaimer.txt</code></a> im
@@ -996,7 +960,7 @@
 </div>
 
 <footer>
-  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.21 (Build 2026.08.17)
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.0 (Build 2026.10.09)
   &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
   Autor: Hans Udo Sattler<br>
   <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>

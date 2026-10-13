@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>S-IT OUI-Updater – Hilfe</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>S-IT OUI-Updater – Hilfe</h1>
+  <p>Version 1.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp;
+     Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#ueberblick">Überblick</a>
+  <a href="#bedienung">Bedienung</a>
+  <a href="#quellen">IEEE-Quellen</a>
+  <a href="#manual">Manuelle Einträge</a>
+  <a href="#ini">INI-Datei</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<div class="container">
+
+  <!-- ÜBERBLICK -->
+  <h2 id="ueberblick">1. Überblick</h2>
+  <div class="box">
+    <p>Der <strong>S-IT OUI-Updater</strong> lädt die offiziellen IEEE-Herstellerdatenbanken
+       herunter und erzeugt daraus die Datei <code>S-IT-OUI.ini</code> für den
+       S-IT LAN Device Scanner.</p>
+    <p>OUI steht für <em>Organizationally Unique Identifier</em> – die ersten 6 Zeichen
+       einer MAC-Adresse identifizieren den Hersteller des Netzwerkadapters.
+       Der LAN Scanner nutzt diese Datenbank um bei gefundenen Geräten den
+       Hersteller anzuzeigen (z.B. „AVM", „Brother", „Synology").</p>
+    <div class="info">
+      <strong>ℹ Internetverbindung erforderlich:</strong> Der Updater lädt die Daten
+      direkt von den IEEE-Servern herunter. Eine aktive Internetverbindung
+      ist beim Update notwendig.
+    </div>
+  </div>
+
+  <!-- BEDIENUNG -->
+  <h2 id="bedienung">2. Bedienung</h2>
+
+  <h3>Checkboxen – Quellen und Optionen</h3>
+  <table>
+    <tr><th>Option</th><th>Beschreibung</th></tr>
+    <tr><td><strong>MA-L (6-stellig, Hauptliste)</strong></td>
+        <td>Haupt-Datenbank mit ca. 35.000 Einträgen. Enthält die meisten
+            bekannten Hersteller. Voreinstellung: an.</td></tr>
+    <tr><td><strong>MA-M (7-stellig)</strong></td>
+        <td>Mittlere Datenbank für neuere Hersteller-Registrierungen.
+            Voreinstellung: an.</td></tr>
+    <tr><td><strong>MA-S (9-stellig)</strong></td>
+        <td>Kleinere Datenbank mit sehr spezifischen Hersteller-Registrierungen.
+            Voreinstellung: an.</td></tr>
+    <tr><td><strong>Alle MA-L-Einträge übernehmen (ohne Hersteller-Filter)</strong></td>
+        <td>Ist dieses Kästchen <strong>an</strong>, werden alle Einträge der
+            ausgewählten Quellen übernommen (~35.000) – so bleibt kein Gerät eines
+            unbekannten Herstellers ohne Namen in der Geräteliste. Das ist die
+            Voreinstellung und für den Praxiseinsatz empfohlen. Ist das Kästchen
+            <strong>aus</strong>, filtert der Updater auf praxisrelevante Hersteller
+            (Router, Drucker, NAS, PCs, Smartphones usw.) – die INI-Datei wird dadurch
+            kleiner.</td></tr>
+    <tr><td><strong>Datei nach Update im Editor öffnen</strong></td>
+        <td>Öffnet nach dem Update automatisch den integrierten INI-Editor
+            zum Prüfen und Anpassen der Einträge. Voreinstellung: aus.</td></tr>
+  </table>
+  <div class="info">
+    <strong>ℹ Voreinstellung:</strong> Beim Start sind die ersten vier Kästchen an
+    (MA-L, MA-M, MA-S und „Alle MA-L-Einträge übernehmen"). Für den Einsatz beim Kunden
+    ist die vollständige Datenbank am sinnvollsten; sie bleibt auch ungefiltert klein
+    genug. Nur „Datei nach Update im Editor öffnen" ist aus.
+  </div>
+
+  <h3>Buttons</h3>
+  <table>
+    <tr><th>Button</th><th>Funktion</th></tr>
+    <tr><td><span class="btn-demo btn-green">▶ Update starten</span></td>
+        <td>Startet den Download und die Verarbeitung der IEEE-Daten.
+            Fortschritt und Details werden im Protokoll-Fenster angezeigt.</td></tr>
+    <tr><td><span class="btn-demo btn-blue">✎ INI bearbeiten</span></td>
+        <td>Öffnet die vorhandene <code>S-IT-OUI.ini</code> im integrierten Editor.
+            Nur verfügbar wenn die Datei bereits existiert.</td></tr>
+    <tr><td><span class="btn-demo btn-orange">➕ Eintrag hinzufügen</span></td>
+        <td>Schnell-Dialog zum Hinzufügen eines einzelnen OUI-Eintrags
+            in den <code>[Manual]</code>-Abschnitt der INI.</td></tr>
+  </table>
+
+  <h3>Protokoll-Fenster</h3>
+  <p>Das dunkle Fenster zeigt während des Updates den Fortschritt –
+     welche Quellen geladen werden, wie viele Einträge gefunden wurden
+     und ob Fehler aufgetreten sind. Grüne Meldungen = OK,
+     rote Meldungen = Fehler.</p>
+
+  <!-- IEEE-QUELLEN -->
+  <h2 id="quellen">3. IEEE-Quellen</h2>
+  <div class="box">
+    <p>Die Daten stammen direkt von der offiziellen IEEE-Website:</p>
+    <table>
+      <tr><th>Typ</th><th>Länge</th><th>Einträge (ca.)</th><th>URL</th></tr>
+      <tr><td><strong>MA-L</strong></td><td>6-stellig</td><td>~35.000</td>
+          <td><code>standards-oui.ieee.org/oui/oui.csv</code></td></tr>
+      <tr><td><strong>MA-M</strong></td><td>7-stellig</td><td>~5.000</td>
+          <td><code>standards-oui.ieee.org/oui28/mam.csv</code></td></tr>
+      <tr><td><strong>MA-S</strong></td><td>9-stellig</td><td>~5.000</td>
+          <td><code>standards-oui.ieee.org/oui36/oui36.csv</code></td></tr>
+    </table>
+    <div class="tip">
+      <strong>Empfehlung:</strong> Die Voreinstellung (MA-L, MA-M und MA-S, ohne
+      Filter) deckt den Praxiseinsatz vollständig ab und sorgt dafür, dass möglichst
+      wenige Geräte ohne Hersteller-Namen bleiben. Die INI-Datei bleibt dabei klein
+      genug für einen schnellen Scanner-Start.
+    </div>
+  </div>
+
+  <!-- MANUELLE EINTRÄGE -->
+  <h2 id="manual">4. Manuelle Einträge</h2>
+  <p>Im <code>[Manual]</code>-Abschnitt der INI-Datei können eigene
+     Hersteller-Zuordnungen hinterlegt werden. Diese haben <strong>höchste
+     Priorität</strong> und werden bei einem Update nicht überschrieben.</p>
+
+  <div class="box">
+    <p><strong>Format:</strong></p>
+    <code>AABBCC = Hersteller-Bezeichnung</code>
+    <p style="margin-top:10px;"><strong>Beispiele:</strong></p>
+    <code>DC15C8 = AVM FRITZ!Box</code><br>
+    <code>1CBFC0 = Brother Drucker</code><br>
+    <code>B827EB = Raspberry Pi</code>
+  </div>
+
+  <p>Eigene Einträge hinzufügen über:</p>
+  <ul>
+    <li><span class="btn-demo btn-orange">➕ Eintrag hinzufügen</span> –
+        Schnell-Dialog für einzelne Einträge</li>
+    <li><span class="btn-demo btn-blue">✎ INI bearbeiten</span> –
+        direktes Bearbeiten der kompletten INI-Datei</li>
+  </ul>
+
+  <div class="warn">
+    <strong>⚠ Hinweis:</strong> Die OUI muss genau 6 Hexadezimalzeichen ohne
+    Trennzeichen enthalten (z.B. <code>DC15C8</code>, nicht <code>DC:15:C8</code>).
+    Groß- und Kleinschreibung ist egal.
+  </div>
+
+  <!-- INI-DATEI -->
+  <h2 id="ini">5. INI-Datei</h2>
+  <div class="box">
+    <p>Die erzeugte Datei <code>S-IT-OUI.ini</code> liegt <strong>neben der EXE</strong>
+       im Programmverzeichnis – normalerweise:</p>
+    <code>C:\S-IT-Tools\S-IT-LanScanner\S-IT-OUI.ini</code>
+    <p style="margin-top:10px;">Der LAN Scanner liest diese Datei beim Start automatisch ein.
+       Nach einem Update wird die neue INI beim nächsten Scan-Start verwendet –
+       ein Neustart des Scanners ist nicht zwingend erforderlich, aber empfohlen.</p>
+  </div>
+
+  <p>Die INI hat zwei Abschnitte:</p>
+  <table>
+    <tr><th>Abschnitt</th><th>Inhalt</th></tr>
+    <tr><td><code>[OUI]</code></td>
+        <td>Automatisch aus IEEE-Daten generiert – bitte nicht manuell bearbeiten</td></tr>
+    <tr><td><code>[Manual]</code></td>
+        <td>Eigene Einträge – bleiben bei Updates erhalten</td></tr>
+  </table>
+
+  <!-- FAQ -->
+  <h2 id="faq">6. Häufige Fragen (FAQ)</h2>
+
+  <h3>Wie oft sollte ich die Datenbank aktualisieren?</h3>
+  <p>Die IEEE-Datenbank wächst kontinuierlich. Ein Update alle 3–6 Monate
+     reicht für den Praxiseinsatz vollkommen aus. Bei unbekannten Geräten
+     im Scan lohnt sich ein frisches Update.</p>
+
+  <h3>Das Update schlägt fehl – was tun?</h3>
+  <p>Prüfen Sie die Internetverbindung und ob die IEEE-Server erreichbar sind.
+     Gelegentlich sind die Server vorübergehend überlastet – einfach
+     etwas später erneut versuchen. Das Protokoll-Fenster zeigt den genauen Fehler.</p>
+
+  <h3>Meine eigenen Einträge sind nach dem Update weg</h3>
+  <p>Eigene Einträge müssen im <code>[Manual]</code>-Abschnitt stehen –
+     nur dort bleiben sie bei einem Update erhalten. Einträge im
+     <code>[OUI]</code>-Abschnitt werden bei jedem Update überschrieben.</p>
+
+  <h3>Der LAN Scanner erkennt einen Hersteller nicht</h3>
+  <p>Führen Sie zuerst ein frisches Update durch. Falls der Hersteller
+     danach immer noch nicht erkannt wird, fügen Sie ihn manuell über
+     <span class="btn-demo btn-orange">➕ Eintrag hinzufügen</span> hinzu.
+     Die ersten 6 Zeichen der MAC-Adresse (ohne Trennzeichen) sind der OUI-Schlüssel.</p>
+
+  <h3>Wie finde ich die OUI eines Geräts?</h3>
+  <p>Im S-IT LAN Scanner: Doppelklick auf das Gerät → MAC-Adresse ablesen →
+     erste 6 Zeichen ohne Doppelpunkte = OUI.<br>
+     Beispiel: MAC <code>DC:15:C8:xx:xx:xx</code> → OUI = <code>DC15C8</code></p>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px; margin-top:36px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Hat Ihnen dieses Tool geholfen?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      Der S-IT OUI-Updater wird kostenlos entwickelt und gepflegt.<br>
+      Eine kleine Spende hilft dabei, die Tools weiterzuentwickeln. Herzlichen Dank! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Spende via PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      tool-entwicklung@sattler-it.de</p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT OUI-Updater v1.2 &nbsp;•&nbsp;
+  © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein
+</footer>
+
+</body>
+</html>

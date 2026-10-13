@@ -1,0 +1,30 @@
+============================================================
+ S-IT LAN Device Scanner – Lizenz
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+============================================================
+
+Freeware – kostenlose Nutzung und Weitergabe erlaubt.
+
+Kommerzielle Weiterverwendung oder Modifikation ohne
+Genehmigung nicht gestattet.
+
+------------------------------------------------------------
+Autor:    Hans Udo Sattler
+Kontakt:  tool-entwicklung@sattler-it.de
+------------------------------------------------------------
+
+
+============================================================
+ S-IT LAN Device Scanner – License
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+============================================================
+
+Freeware – free to use and distribute.
+
+Commercial reuse or modification without permission is not
+allowed.
+
+------------------------------------------------------------
+Author:   Hans Udo Sattler
+Contact:  tool-entwicklung@sattler-it.de
+------------------------------------------------------------

@@ -47,21 +47,113 @@
 <body>
 <header>
   <h1>S-IT LAN Device Scanner – ChangeLog</h1>
-  <p>Aktuell: Version 3.22.21 (Build 2026.08.17) &nbsp;•&nbsp;
+  <p>Aktuell: Version 4.0 (Build 2026.10.09) &nbsp;•&nbsp;
      © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
 </header>
 
 <div class="container">
 
-  <!-- v3.22.21 -->
+  <!-- v4.0 -->
   <div class="version-block">
     <div class="version-header current">
+      <div class="v-badge">v 4.0</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Firewall &amp; Ports: Ports auf diesem PC freigeben &middot; Skalierung vereinfacht &middot; Schriftgröße in der Geräteliste</div>
+        <div class="v-date">Oktober 2026</div>
+      </div>
+      <div class="v-tag">Aktuell</div>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.10.09</h3>
+      <ul>
+        <li class="new"><span class="highlight">Firewall-Tab erweitert zu „Firewall &amp; Ports"</span> –
+            der fünfte Tab deckt jetzt beide Richtungen ab und ist dafür in zwei Spalten
+            geteilt. Links wie bisher: ein <strong>Gerät im Netz erreichen</strong>, wenn
+            es von diesem PC aus blockiert wird. Rechts neu: <strong>einen Port auf diesem
+            PC freigeben</strong> – für den Fall, dass ein Programm hier einen bestimmten
+            Port öffnen muss, auf den andere Rechner zugreifen (Warenwirtschaft,
+            Kassensystem, Datenbank, Fernwartung). Darunter liegt eine gemeinsame
+            Regelliste für beide Spalten.</li>
+        <li class="new"><span class="highlight">Vorlagen für häufige Ports</span> –
+            in der neuen Spalte lässt sich der Port frei eintragen oder aus einer Liste
+            wählen: SQL Server, MySQL/MariaDB, PostgreSQL, Remotedesktop, VNC, HTTP und
+            HTTPS. Die Vorlage füllt Port, Protokoll und Bezeichnung aus; ein Portbereich
+            (z.B. 5000-5010) ist ebenfalls möglich. Die Freigabe gilt eingehend und nur
+            aus dem lokalen Netz.</li>
+        <li class="new"><span class="highlight">Port-Prüfung vor der Freigabe</span> –
+            „Prüfen" zeigt in drei Zeilen, ob überhaupt ein Programm am Port lauscht
+            (ohne das bewirkt keine Regel etwas), ob bereits eine eingehende Regel
+            besteht – auch fremde, etwa vom Installer der Fachanwendung – und ob das
+            Firewall-Profil die Freigabe zulässt. So ist vor dem Eintragen klar, woran
+            eine Verbindung wirklich hängt.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>● Verbesserungen – Build 2026.10.09</h3>
+      <ul>
+        <li class="note"><span class="highlight">Skalierung vereinfacht</span> –
+            die im Programm gewählte Stufe gibt die Darstellungsgröße jetzt allein vor;
+            die Windows-Skalierung wirkt nicht mehr zusätzlich dazu. Bisher addierten sich
+            beide, sodass z.B. „90 %" in Wahrheit eine Mischung aus Programm- und
+            Windows-Wert war. Eine gewählte Stufe bedeutet jetzt genau diese Stufe. Ist
+            keine Stufe gewählt, richtet sich das Programm nach der Windows-Skalierung.</li>
+        <li class="note"><span class="highlight">Schriftgröße wirkt in der Geräteliste</span> –
+            die Einstellung Klein / Normal / Groß (8 / 9 / 11 pt) gilt jetzt auch für die
+            Scan-Ergebnisliste, und die Zeilenhöhe folgt der tatsächlichen Schrifthöhe.
+            Auf 4K-Bildschirmen ist die Liste damit zuverlässig lesbar.</li>
+        <li class="note"><span class="highlight">Ankreuzfelder im Konfig-Fenster skalieren mit</span> –
+            bei hoher Skalierung waren die Kästchen und ihre Beschriftungen winzig. Sie
+            folgen jetzt der eingestellten Größe wie die übrigen Elemente.</li>
+        <li class="note"><span class="highlight">S-IT-Symbol in allen Fenstern</span> –
+            alle Fenster tragen jetzt das S-IT-Symbol statt des allgemeinen
+            Standard-Symbols.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen – Build 2026.10.09</h3>
+      <ul>
+        <li class="fix"><span class="highlight">Darstellung bei hoher Auflösung</span> –
+            auf Bildschirmen mit hoher Auflösung und Skalierung war die Geräteliste schwer
+            lesbar und Elemente überlappten. Mit der neuen Schrift- und
+            Skalierungsbehandlung ist die Darstellung jetzt auch bei 4K und hohen
+            Prozentstufen sauber. Danke für den Hinweis aus der Nutzerschaft.</li>
+        <li class="fix"><span class="highlight">LAN-Performance-Tab: Kästen und Pfadeingabe</span> –
+            die Kästen am oberen Rand waren bei manchen Größen ungünstig angeordnet, der
+            erste Kasten links war unvollständig und die Pfadeingabe nicht erreichbar.
+            Die festen Höhen sind entfernt; der Tab ordnet sich jetzt der Fensterbreite
+            an.</li>
+        <li class="fix"><span class="highlight">„Ziele"-Dialog: Speichern-Knopf abgeschnitten</span> –
+            der Dialog zum Bearbeiten der Ping-Ziele hatte eine feste Größe, bei der der
+            Speichern-Knopf nicht sichtbar war. Die feste Größe ist entfernt, der Dialog
+            passt sich dem Inhalt an.</li>
+        <li class="fix"><span class="highlight">Umlaute in mehreren Anzeigetexten</span> –
+            in den Firewall- und Netzwerk-Texten erschienen stellenweise ae/oe/ue oder
+            verstümmelte Zeichen. Die Texte sind durchgehend auf richtige Umlaute
+            umgestellt.</li>
+        <li class="fix"><span class="highlight">Profilnamen richtig dargestellt</span> –
+            Begriffe aus der Windows-Ausgabe wie „Domäne" oder „öffentlich" wurden je nach
+            Codepage falsch angezeigt. Die Ausgaben werden jetzt in der richtigen
+            Zeichensatz-Variante gelesen.</li>
+        <li class="fix"><span class="highlight">Firewall-Regeln je Programm getrennt bewertet</span> –
+            Regeln, die nur für ein einzelnes Programm gelten, wurden beim Port-Befund für
+            jeden Port gleich mitgezählt. Sie zählen jetzt nur noch für das Programm, das
+            tatsächlich am Port lauscht; andere werden als wirkungslos ausgewiesen.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v3.22.21 -->
+  <div class="version-block">
+    <div class="version-header older">
       <div class="v-badge">v 3.22.21</div>
       <div>
         <div style="font-size:15px;font-weight:600;">Firewall-Ausnahmen direkt im Scanner, SMB1 nach Client und Server getrennt &amp; einfachere Bereichseingabe</div>
         <div class="v-date">Juli – August 2026</div>
       </div>
-      <div class="v-tag">Aktuell</div>
+      <div class="v-tag older">Vorgänger</div>
     </div>
 
     <div class="section">
@@ -765,7 +857,7 @@
 </div>
 
 <footer>
-  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 3.22.21 (Build 2026.08.17)
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.0 (Build 2026.10.09)
   &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
   Autor: Hans Udo Sattler<br>
   <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>

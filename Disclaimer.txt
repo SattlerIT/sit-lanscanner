@@ -51,3 +51,53 @@ nie ganz auszuschließen.
 Kontakt:       tool-entwicklung@sattler-it.de
 Projektseite:  https://sattlerit.github.io/sit-lanscanner/
 ------------------------------------------------------------
+
+
+============================================================
+ S-IT LAN Device Scanner – Disclaimer
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+============================================================
+
+All information provided without warranty. Errors excepted.
+
+S-IT LAN Device Scanner is a free diagnostic tool for detecting
+and analysing network devices. The results shown (detected
+devices, manufacturers, operating systems, open ports, signal and
+throughput values, etc.) are determined automatically from network
+protocols, the OUI database and system interfaces (e.g. netsh,
+ARP). These sources may be incomplete, outdated or inaccurate, so
+a misinterpretation can never be fully ruled out.
+
+1. Non-binding estimate
+   The results are non-binding indications and a snapshot at the
+   time of the check. They are not an assurance regarding actual
+   network security, the completeness of the detected devices or
+   the stability of the connection, and they replace neither an
+   expert review nor a professional security analysis.
+
+2. No security or reachability guarantee
+   Despite successful detection, a device may be classified
+   incorrectly or may no longer appear in a later scan. Likewise,
+   the internet and LAN performance tests do not replace
+   measurement by certified measuring systems.
+
+3. Use at your own risk
+   Use of the tool and its results is at your own risk. No
+   responsibility is accepted for decisions (e.g. changes to
+   network, firewall or security settings) made on the basis of
+   the scan results.
+
+4. Limitation of liability
+   Liability for damage, data loss, downtime or financial loss
+   arising from the use of the tool or its results is excluded to
+   the extent permitted by law.
+
+5. Independent protection remains essential
+   Regardless of the scan result, do not rely on this tool alone
+   to secure your network. No diagnostic tool can replace a
+   complete security audit or professional network consulting.
+
+------------------------------------------------------------
+Contact:       tool-entwicklung@sattler-it.de
+Project page:  https://sattlerit.github.io/sit-lanscanner/
+------------------------------------------------------------
