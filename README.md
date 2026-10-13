@@ -6,6 +6,8 @@ Entwickelt von **Hans Udo Sattler · Sattler IT-Service, Greifenstein**
 
 Projektseite: https://sattlerit.github.io/sit-lanscanner/
 
+![S-IT LAN Device Scanner – Geräteliste mit Hersteller, Betriebssystem und offenen Ports](https://sattlerit.github.io/sit-lanscanner/Screenshots/geraeteliste.png)
+
 ---
 
 ## Funktionen
