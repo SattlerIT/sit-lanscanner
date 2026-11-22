@@ -1,4 +1,4 @@
-S-IT LAN Device Scanner v4.0 – Setup
+S-IT LAN Device Scanner v4.2 – Setup und Programm
 Lizenzen von Drittanbieter-Komponenten / Third-party licenses
 © 2026 Sattler IT-Service, Greifenstein | Autor: Hans Udo Sattler
 
@@ -16,9 +16,12 @@ erhältlich. Die unter der LGPL stehenden Bibliotheken werden unverändert
 verwendet und lassen sich durch eigene Fassungen ersetzen, indem das Setup
 aus seinem Quelltext mit PyInstaller neu erstellt wird.
 
-Die Setup-EXE enthält außerdem die Python-Laufzeitumgebung
-(PSF License, https://docs.python.org/3/license.html) und Tcl/Tk
-(BSD-artige Lizenz, https://www.tcl.tk/software/tcltk/license.html).
+Das Programm (sit-lsc_program\S-IT-LanScanner.exe) und der Deinstaller
+verwenden keine weiteren Bibliotheken von Drittanbietern.
+
+Setup, Programm und Deinstaller enthalten außerdem die Python-
+Laufzeitumgebung (PSF License, https://docs.python.org/3/license.html) und
+Tcl/Tk (BSD-artige Lizenz, https://www.tcl.tk/software/tcltk/license.html).
 
 ===============================================================================
 ENGLISH
@@ -34,7 +37,10 @@ given. The LGPL-licensed libraries are used unmodified and can be replaced
 with other versions by rebuilding the setup from its source code with
 PyInstaller.
 
-The setup EXE also contains the Python runtime
+The program (sit-lsc_program\S-IT-LanScanner.exe) and the uninstaller do not
+use any further third-party libraries.
+
+The setup, the program and the uninstaller also contain the Python runtime
 (PSF License, https://docs.python.org/3/license.html) and Tcl/Tk
 (BSD-style license, https://www.tcl.tk/software/tcltk/license.html).
 
