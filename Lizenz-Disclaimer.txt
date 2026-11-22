@@ -1,0 +1,786 @@
+﻿================================================================
+ S-IT LAN Device Scanner
+ Lizenz und Haftungsausschluss / License and Disclaimer
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+  1. DEUTSCH
+  2. ENGLISH
+  3. NEDERLANDS
+  4. ESPAÑOL
+  5. FRANÇAIS
+  6. ITALIANO
+  7. POLSKI
+  8. HRVATSKI
+  9. ČEŠTINA
+
+
+
+================================================================
+ DEUTSCH
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Lizenz
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – kostenlose Nutzung und Weitergabe erlaubt.
+
+Kommerzielle Weiterverwendung oder Modifikation ohne Genehmigung
+nicht gestattet.
+
+----------------------------------------------------------------
+Autor:         Hans Udo Sattler
+Kontakt:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Haftungsausschluss (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Alle Angaben ohne Gewähr. Irrtümer vorbehalten.
+
+S-IT LAN Device Scanner ist ein kostenloses Diagnose-Werkzeug
+zur Erkennung und Analyse von Netzwerkgeräten. Die angezeigten
+Ergebnisse (erkannte Geräte, Gerätetypen, Hersteller,
+Betriebssysteme, offene Ports, Signal-, Verbindungs- und
+Durchsatzwerte usw.) werden automatisch aus Netzwerkprotokollen,
+der OUI-Datenbank und Systemschnittstellen (z. B. netsh, ARP)
+ermittelt. Diese Quellen können unvollständig, veraltet oder
+fehlerhaft sein – eine Fehleinschätzung ist deshalb nie ganz
+auszuschließen.
+
+1. Unverbindliche Schätzung
+   Die Ergebnisse sind unverbindliche Anhaltspunkte und eine
+   Momentaufnahme zum Zeitpunkt der Prüfung. Sie sind keine
+   Zusicherung über die tatsächliche Netzwerksicherheit, die
+   Vollständigkeit der erkannten Geräte oder die Stabilität der
+   Verbindung und ersetzen weder eine fachliche Prüfung noch
+   eine professionelle Sicherheitsanalyse.
+
+2. Keine Sicherheits- oder Erreichbarkeitsgarantie
+   Ein Gerät kann trotz erfolgreicher Erkennung falsch
+   zugeordnet werden oder bei einem späteren Scan nicht mehr
+   erscheinen. Ebenso ersetzen die Internet- und
+   LAN-Performance-Tests sowie die Messung der
+   Verbindungsqualität keine Messung durch zertifizierte
+   Mess-Systeme.
+
+3. Nutzung auf eigene Verantwortung
+   Die Verwendung des Tools und seiner Ergebnisse erfolgt auf
+   eigene Verantwortung. Für Entscheidungen (z. B. Änderungen an
+   Netzwerk-, Firewall- oder Sicherheitseinstellungen), die auf
+   Basis der Scan-Ergebnisse getroffen werden, wird keine
+   Verantwortung übernommen.
+
+4. Haftungsausschluss
+   Eine Haftung für Schäden, Datenverluste, Ausfälle oder
+   Vermögensschäden, die aus der Nutzung des Tools oder seiner
+   Ergebnisse entstehen, ist – soweit gesetzlich zulässig –
+   ausgeschlossen.
+
+5. WLAN-Passwörter und Sicherungen
+   Der Reiter „WLAN-Profile“ zeigt die auf dem PC gespeicherten
+   WLAN-Passwörter an und sichert sie auf Wunsch in Dateien, die
+   die Passwörter im Klartext enthalten. Verwenden Sie diese
+   Funktion nur auf Rechnern, für die Sie dazu berechtigt sind.
+   Bewahren Sie Sicherungen und Ausdrucke sorgfältig auf und
+   löschen Sie sie nach Gebrauch. Für die Weitergabe oder den
+   Verlust solcher Dateien wird keine Verantwortung übernommen.
+
+6. Eigenständige Absicherung bleibt unerlässlich
+   Verlassen Sie sich unabhängig vom Scan-Ergebnis nicht allein
+   auf dieses Tool für die Absicherung Ihres Netzwerks. Kein
+   Diagnose-Tool kann eine vollständige Sicherheitsprüfung oder
+   professionelle Netzwerkberatung ersetzen.
+
+----------------------------------------------------------------
+Kontakt:       tool-entwicklung@sattler-it.de
+Projektseite:  https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ ENGLISH
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – License
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – free to use and distribute.
+
+Commercial reuse or modification without permission is not
+allowed.
+
+----------------------------------------------------------------
+Author:        Hans Udo Sattler
+Contact:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Disclaimer
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+All information provided without warranty. Errors excepted.
+
+S-IT LAN Device Scanner is a free diagnostic tool for detecting
+and analysing network devices. The results shown (detected
+devices, device types, manufacturers, operating systems, open
+ports, signal, connection and throughput values, etc.) are
+determined automatically from network protocols, the OUI
+database and system interfaces (e.g. netsh, ARP). These sources
+may be incomplete, outdated or inaccurate, so a
+misinterpretation can never be fully ruled out.
+
+1. Non-binding estimate
+   The results are non-binding indications and a snapshot at the
+   time of the check. They are not an assurance regarding actual
+   network security, the completeness of the detected devices or
+   the stability of the connection, and they replace neither an
+   expert review nor a professional security analysis.
+
+2. No security or reachability guarantee
+   Despite successful detection, a device may be classified
+   incorrectly or may no longer appear in a later scan.
+   Likewise, the internet and LAN performance tests and the
+   connection quality measurement do not replace measurement by
+   certified measuring systems.
+
+3. Use at your own risk
+   Use of the tool and its results is at your own risk. No
+   responsibility is accepted for decisions (e.g. changes to
+   network, firewall or security settings) made on the basis of
+   the scan results.
+
+4. Limitation of liability
+   Liability for damage, data loss, downtime or financial loss
+   arising from the use of the tool or its results is excluded
+   to the extent permitted by law.
+
+5. Wi-Fi passwords and backups
+   The "Wi-Fi Profiles" tab shows the Wi-Fi passwords stored on
+   the PC and, on request, backs them up to files that contain
+   the passwords in plain text. Only use this function on
+   computers for which you are authorised. Keep backups and
+   printouts safe and delete them after use. No responsibility
+   is accepted for the disclosure or loss of such files.
+
+6. Independent protection remains essential
+   Regardless of the scan result, do not rely on this tool alone
+   to secure your network. No diagnostic tool can replace a
+   complete security audit or professional network consulting.
+
+----------------------------------------------------------------
+Contact:       tool-entwicklung@sattler-it.de
+Project page:  https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ NEDERLANDS
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licentie
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – gratis gebruik en verspreiding toegestaan.
+
+Commercieel hergebruik of wijziging zonder toestemming is niet
+toegestaan.
+
+----------------------------------------------------------------
+Auteur:        Hans Udo Sattler
+Contact:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Disclaimer
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Alle informatie zonder garantie. Vergissingen voorbehouden.
+
+S-IT LAN Device Scanner is een gratis diagnosehulpmiddel voor
+het herkennen en analyseren van netwerkapparaten. De getoonde
+resultaten (herkende apparaten, apparaattypen, fabrikanten,
+besturingssystemen, open poorten, signaal-, verbindings- en
+doorvoerwaarden enz.) worden automatisch bepaald uit
+netwerkprotocollen, de OUI-database en systeeminterfaces (bijv.
+netsh, ARP). Deze bronnen kunnen onvolledig, verouderd of
+onjuist zijn – een verkeerde inschatting is daarom nooit
+helemaal uit te sluiten.
+
+1. Vrijblijvende inschatting
+   De resultaten zijn vrijblijvende aanwijzingen en een
+   momentopname op het tijdstip van de controle. Ze zijn geen
+   garantie voor de werkelijke netwerkbeveiliging, de
+   volledigheid van de herkende apparaten of de stabiliteit van
+   de verbinding, en vervangen geen vakkundige controle of
+   professionele beveiligingsanalyse.
+
+2. Geen garantie voor beveiliging of bereikbaarheid
+   Een apparaat kan ondanks een geslaagde herkenning verkeerd
+   worden ingedeeld of bij een latere scan niet meer
+   verschijnen. Evenmin vervangen de internet- en
+   LAN-prestatietests en de meting van de verbindingskwaliteit
+   een meting met gecertificeerde meetsystemen.
+
+3. Gebruik op eigen verantwoordelijkheid
+   Het gebruik van het hulpmiddel en de resultaten ervan is op
+   eigen verantwoordelijkheid. Voor beslissingen (bijv.
+   wijzigingen aan netwerk-, firewall- of
+   beveiligingsinstellingen) die op basis van de scanresultaten
+   worden genomen, wordt geen verantwoordelijkheid aanvaard.
+
+4. Uitsluiting van aansprakelijkheid
+   Aansprakelijkheid voor schade, gegevensverlies, uitval of
+   financiële schade die voortvloeit uit het gebruik van het
+   hulpmiddel of de resultaten ervan is uitgesloten, voor zover
+   wettelijk toegestaan.
+
+5. Wi-Fi-wachtwoorden en back-ups
+   Het tabblad “Wi-Fi-profielen” toont de op de pc opgeslagen
+   Wi-Fi-wachtwoorden en slaat ze desgewenst op in bestanden die
+   de wachtwoorden als leesbare tekst bevatten. Gebruik deze
+   functie alleen op computers waarvoor u daartoe bevoegd bent.
+   Bewaar back-ups en afdrukken zorgvuldig en verwijder ze na
+   gebruik. Voor het doorgeven of verlies van zulke bestanden
+   wordt geen verantwoordelijkheid aanvaard.
+
+6. Eigen beveiliging blijft onmisbaar
+   Vertrouw, ongeacht het scanresultaat, niet alleen op dit
+   hulpmiddel voor de beveiliging van uw netwerk. Geen enkel
+   diagnosehulpmiddel kan een volledige beveiligingscontrole of
+   professioneel netwerkadvies vervangen.
+
+----------------------------------------------------------------
+Contact:       tool-entwicklung@sattler-it.de
+Projectpagina: https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ ESPAÑOL
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licencia
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – uso y distribución gratuitos permitidos.
+
+No se permite la reutilización comercial ni la modificación sin
+autorización.
+
+----------------------------------------------------------------
+Autor:         Hans Udo Sattler
+Contacto:      tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Exención de responsabilidad (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Toda la información se facilita sin garantía. Salvo error.
+
+S-IT LAN Device Scanner es una herramienta de diagnóstico
+gratuita para detectar y analizar dispositivos de red. Los
+resultados mostrados (dispositivos detectados, tipos de
+dispositivo, fabricantes, sistemas operativos, puertos abiertos,
+valores de señal, conexión y rendimiento, etc.) se determinan
+automáticamente a partir de protocolos de red, la base de datos
+OUI e interfaces del sistema (p. ej. netsh, ARP). Estas fuentes
+pueden ser incompletas, estar desactualizadas o ser erróneas;
+por ello nunca puede descartarse por completo una valoración
+incorrecta.
+
+1. Estimación sin compromiso
+   Los resultados son indicaciones sin compromiso y una
+   instantánea en el momento de la comprobación. No constituyen
+   ninguna garantía sobre la seguridad real de la red, la
+   integridad de los dispositivos detectados ni la estabilidad
+   de la conexión, y no sustituyen una revisión especializada ni
+   un análisis de seguridad profesional.
+
+2. Sin garantía de seguridad ni de accesibilidad
+   Aunque se haya detectado correctamente, un dispositivo puede
+   clasificarse de forma errónea o no aparecer en un escaneo
+   posterior. Del mismo modo, las pruebas de rendimiento de
+   Internet y LAN y la medición de la calidad de la conexión no
+   sustituyen una medición con sistemas de medición
+   certificados.
+
+3. Uso bajo su propia responsabilidad
+   El uso de la herramienta y de sus resultados se realiza bajo
+   su propia responsabilidad. No se asume ninguna
+   responsabilidad por las decisiones (p. ej. cambios en la
+   configuración de red, firewall o seguridad) tomadas a partir
+   de los resultados del escaneo.
+
+4. Exclusión de responsabilidad
+   Queda excluida, en la medida en que la ley lo permita, toda
+   responsabilidad por daños, pérdidas de datos, interrupciones
+   o perjuicios económicos derivados del uso de la herramienta o
+   de sus resultados.
+
+5. Contraseñas Wi-Fi y copias de seguridad
+   La pestaña «Perfiles Wi-Fi» muestra las contraseñas Wi-Fi
+   guardadas en el PC y, si se desea, las guarda en archivos que
+   contienen las contraseñas sin cifrar. Utilice esta función
+   solo en equipos para los que esté autorizado. Guarde con
+   cuidado las copias y las impresiones y elimínelas después de
+   usarlas. No se asume ninguna responsabilidad por la
+   divulgación o la pérdida de dichos archivos.
+
+6. La protección propia sigue siendo imprescindible
+   Independientemente del resultado del escaneo, no confíe
+   únicamente en esta herramienta para proteger su red. Ninguna
+   herramienta de diagnóstico puede sustituir una auditoría de
+   seguridad completa ni un asesoramiento profesional en redes.
+
+----------------------------------------------------------------
+Contacto:      tool-entwicklung@sattler-it.de
+Página del proyecto:https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ FRANÇAIS
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licence
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – utilisation et diffusion gratuites autorisées.
+
+La réutilisation commerciale ou la modification sans
+autorisation n'est pas permise.
+
+----------------------------------------------------------------
+Auteur:        Hans Udo Sattler
+Contact:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Clause de non-responsabilité (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Toutes les informations sont fournies sans garantie. Sous
+réserve d'erreurs.
+
+S-IT LAN Device Scanner est un outil de diagnostic gratuit
+permettant de détecter et d'analyser les appareils d'un réseau.
+Les résultats affichés (appareils détectés, types d'appareil,
+fabricants, systèmes d'exploitation, ports ouverts, valeurs de
+signal, de connexion et de débit, etc.) sont déterminés
+automatiquement à partir des protocoles réseau, de la base de
+données OUI et des interfaces du système (p. ex. netsh, ARP).
+Ces sources peuvent être incomplètes, obsolètes ou erronées ;
+une erreur d'appréciation ne peut donc jamais être totalement
+exclue.
+
+1. Estimation sans engagement
+   Les résultats sont des indications sans engagement et un
+   instantané au moment de la vérification. Ils ne constituent
+   aucune garantie quant à la sécurité réelle du réseau, à
+   l'exhaustivité des appareils détectés ou à la stabilité de la
+   connexion, et ne remplacent ni un contrôle par un spécialiste
+   ni une analyse de sécurité professionnelle.
+
+2. Aucune garantie de sécurité ou d'accessibilité
+   Même après une détection réussie, un appareil peut être mal
+   classé ou ne plus apparaître lors d'une analyse ultérieure.
+   De même, les tests de performance Internet et LAN ainsi que
+   la mesure de la qualité de connexion ne remplacent pas une
+   mesure effectuée avec des systèmes de mesure certifiés.
+
+3. Utilisation sous votre propre responsabilité
+   L'utilisation de l'outil et de ses résultats se fait sous
+   votre propre responsabilité. Aucune responsabilité n'est
+   assumée pour les décisions (p. ex. modifications des
+   paramètres réseau, pare-feu ou sécurité) prises sur la base
+   des résultats de l'analyse.
+
+4. Exclusion de responsabilité
+   Toute responsabilité pour les dommages, pertes de données,
+   interruptions ou préjudices financiers résultant de
+   l'utilisation de l'outil ou de ses résultats est exclue dans
+   la mesure permise par la loi.
+
+5. Mots de passe Wi-Fi et sauvegardes
+   L'onglet « Profils Wi-Fi » affiche les mots de passe Wi-Fi
+   enregistrés sur le PC et, sur demande, les sauvegarde dans
+   des fichiers qui contiennent les mots de passe en clair.
+   N'utilisez cette fonction que sur des ordinateurs pour
+   lesquels vous y êtes autorisé. Conservez soigneusement les
+   sauvegardes et les impressions et supprimez-les après usage.
+   Aucune responsabilité n'est assumée pour la divulgation ou la
+   perte de tels fichiers.
+
+6. Une protection propre reste indispensable
+   Quel que soit le résultat de l'analyse, ne vous fiez pas
+   uniquement à cet outil pour sécuriser votre réseau. Aucun
+   outil de diagnostic ne peut remplacer un audit de sécurité
+   complet ou un conseil réseau professionnel.
+
+----------------------------------------------------------------
+Contact:       tool-entwicklung@sattler-it.de
+Page du projet:https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ ITALIANO
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licenza
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – uso e distribuzione gratuiti consentiti.
+
+Il riutilizzo commerciale o la modifica senza autorizzazione non
+sono consentiti.
+
+----------------------------------------------------------------
+Autore:        Hans Udo Sattler
+Contatto:      tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Esclusione di responsabilità (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Tutte le informazioni sono fornite senza garanzia. Salvo errori.
+
+S-IT LAN Device Scanner è uno strumento di diagnostica gratuito
+per il riconoscimento e l'analisi dei dispositivi di rete. I
+risultati mostrati (dispositivi riconosciuti, tipi di
+dispositivo, produttori, sistemi operativi, porte aperte, valori
+di segnale, connessione e velocità, ecc.) vengono determinati
+automaticamente da protocolli di rete, dal database OUI e da
+interfacce di sistema (ad es. netsh, ARP). Queste fonti possono
+essere incomplete, obsolete o errate: una valutazione sbagliata
+non può quindi mai essere esclusa del tutto.
+
+1. Stima non vincolante
+   I risultati sono indicazioni non vincolanti e un'istantanea
+   al momento del controllo. Non costituiscono alcuna garanzia
+   sulla reale sicurezza della rete, sulla completezza dei
+   dispositivi riconosciuti o sulla stabilità della connessione
+   e non sostituiscono né una verifica specialistica né
+   un'analisi di sicurezza professionale.
+
+2. Nessuna garanzia di sicurezza o raggiungibilità
+   Anche se riconosciuto correttamente, un dispositivo può
+   essere classificato in modo errato o non comparire più in una
+   scansione successiva. Allo stesso modo, i test delle
+   prestazioni Internet e LAN e la misurazione della qualità
+   della connessione non sostituiscono una misurazione con
+   sistemi di misura certificati.
+
+3. Uso sotto la propria responsabilità
+   L'uso dello strumento e dei suoi risultati avviene sotto la
+   propria responsabilità. Non si assume alcuna responsabilità
+   per le decisioni (ad es. modifiche alle impostazioni di rete,
+   firewall o sicurezza) prese sulla base dei risultati della
+   scansione.
+
+4. Esclusione di responsabilità
+   È esclusa, nella misura consentita dalla legge, qualsiasi
+   responsabilità per danni, perdite di dati, interruzioni o
+   danni patrimoniali derivanti dall'uso dello strumento o dei
+   suoi risultati.
+
+5. Password Wi-Fi e backup
+   La scheda «Profili Wi-Fi» mostra le password Wi-Fi
+   memorizzate sul PC e, su richiesta, le salva in file che
+   contengono le password in chiaro. Utilizzare questa funzione
+   solo su computer per i quali si è autorizzati. Conservare con
+   cura backup e stampe ed eliminarli dopo l'uso. Non si assume
+   alcuna responsabilità per la divulgazione o la perdita di
+   tali file.
+
+6. Una protezione propria resta indispensabile
+   Indipendentemente dal risultato della scansione, non
+   affidarsi esclusivamente a questo strumento per la protezione
+   della propria rete. Nessuno strumento di diagnostica può
+   sostituire una verifica di sicurezza completa o una
+   consulenza di rete professionale.
+
+----------------------------------------------------------------
+Contatto:      tool-entwicklung@sattler-it.de
+Pagina del progetto:https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ POLSKI
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licencja
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – bezpłatne używanie i rozpowszechnianie dozwolone.
+
+Komercyjne wykorzystanie lub modyfikacja bez zgody są
+niedozwolone.
+
+----------------------------------------------------------------
+Autor:         Hans Udo Sattler
+Kontakt:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Wyłączenie odpowiedzialności (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Wszystkie informacje bez gwarancji. Błędy zastrzeżone.
+
+S-IT LAN Device Scanner to bezpłatne narzędzie diagnostyczne do
+rozpoznawania i analizy urządzeń sieciowych. Wyświetlane wyniki
+(rozpoznane urządzenia, typy urządzeń, producenci, systemy
+operacyjne, otwarte porty, wartości sygnału, połączenia i
+przepustowości itp.) są ustalane automatycznie na podstawie
+protokołów sieciowych, bazy danych OUI i interfejsów systemowych
+(np. netsh, ARP). Źródła te mogą być niekompletne, nieaktualne
+lub błędne – dlatego błędnej oceny nigdy nie można całkowicie
+wykluczyć.
+
+1. Niewiążąca ocena
+   Wyniki są niewiążącymi wskazówkami i migawką z chwili
+   sprawdzenia. Nie stanowią zapewnienia co do rzeczywistego
+   bezpieczeństwa sieci, kompletności rozpoznanych urządzeń ani
+   stabilności połączenia i nie zastępują ani fachowej kontroli,
+   ani profesjonalnej analizy bezpieczeństwa.
+
+2. Brak gwarancji bezpieczeństwa i dostępności
+   Mimo poprawnego rozpoznania urządzenie może zostać błędnie
+   przypisane lub nie pojawić się przy późniejszym skanowaniu.
+   Podobnie testy wydajności internetu i LAN oraz pomiar jakości
+   połączenia nie zastępują pomiaru certyfikowanymi systemami
+   pomiarowymi.
+
+3. Używanie na własną odpowiedzialność
+   Korzystanie z narzędzia i jego wyników odbywa się na własną
+   odpowiedzialność. Nie ponosi się odpowiedzialności za decyzje
+   (np. zmiany ustawień sieci, zapory lub zabezpieczeń) podjęte
+   na podstawie wyników skanowania.
+
+4. Wyłączenie odpowiedzialności
+   Odpowiedzialność za szkody, utratę danych, przestoje lub
+   straty majątkowe wynikające z korzystania z narzędzia lub
+   jego wyników jest wyłączona w zakresie dopuszczalnym przez
+   prawo.
+
+5. Hasła Wi-Fi i kopie zapasowe
+   Karta „Profile Wi-Fi” wyświetla hasła Wi-Fi zapisane na
+   komputerze i na życzenie zapisuje je w plikach zawierających
+   hasła jawnym tekstem. Używaj tej funkcji tylko na
+   komputerach, do których masz uprawnienia. Przechowuj kopie
+   zapasowe i wydruki starannie i usuwaj je po użyciu. Nie
+   ponosi się odpowiedzialności za przekazanie lub utratę takich
+   plików.
+
+6. Własne zabezpieczenia pozostają niezbędne
+   Niezależnie od wyniku skanowania nie polegaj wyłącznie na tym
+   narzędziu przy zabezpieczaniu sieci. Żadne narzędzie
+   diagnostyczne nie zastąpi pełnego audytu bezpieczeństwa ani
+   profesjonalnego doradztwa sieciowego.
+
+----------------------------------------------------------------
+Kontakt:       tool-entwicklung@sattler-it.de
+Strona projektu:https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ HRVATSKI
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licencija
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – besplatno korištenje i dijeljenje dopušteni.
+
+Komercijalna ponovna uporaba ili izmjena bez dopuštenja nije
+dopuštena.
+
+----------------------------------------------------------------
+Autor:         Hans Udo Sattler
+Kontakt:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Izjava o odricanju odgovornosti (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Svi podaci bez jamstva. Pogreške su moguće.
+
+S-IT LAN Device Scanner besplatan je dijagnostički alat za
+prepoznavanje i analizu mrežnih uređaja. Prikazani rezultati
+(prepoznati uređaji, vrste uređaja, proizvođači, operacijski
+sustavi, otvoreni priključci, vrijednosti signala, veze i
+propusnosti itd.) automatski se utvrđuju iz mrežnih protokola,
+OUI baze podataka i sučelja sustava (npr. netsh, ARP). Ti izvori
+mogu biti nepotpuni, zastarjeli ili netočni – zato se pogrešna
+procjena nikada ne može potpuno isključiti.
+
+1. Neobvezujuća procjena
+   Rezultati su neobvezujuće smjernice i trenutačna snimka u
+   vrijeme provjere. Oni nisu jamstvo stvarne sigurnosti mreže,
+   potpunosti prepoznatih uređaja ni stabilnosti veze i ne
+   zamjenjuju ni stručnu provjeru ni profesionalnu sigurnosnu
+   analizu.
+
+2. Bez jamstva sigurnosti ili dostupnosti
+   Unatoč uspješnom prepoznavanju uređaj može biti pogrešno
+   razvrstan ili se pri kasnijem skeniranju više ne pojaviti.
+   Isto tako testovi performansi interneta i LAN-a te mjerenje
+   kvalitete veze ne zamjenjuju mjerenje certificiranim mjernim
+   sustavima.
+
+3. Korištenje na vlastitu odgovornost
+   Korištenje alata i njegovih rezultata na Vašu je vlastitu
+   odgovornost. Ne preuzima se odgovornost za odluke (npr.
+   promjene mrežnih, vatrozidnih ili sigurnosnih postavki)
+   donesene na temelju rezultata skeniranja.
+
+4. Isključenje odgovornosti
+   Odgovornost za štete, gubitak podataka, prekide rada ili
+   imovinske štete nastale korištenjem alata ili njegovih
+   rezultata isključena je u mjeri u kojoj to zakon dopušta.
+
+5. Wi-Fi lozinke i sigurnosne kopije
+   Kartica „Wi-Fi profili“ prikazuje Wi-Fi lozinke spremljene na
+   računalu i na zahtjev ih sprema u datoteke koje sadrže
+   lozinke kao čisti tekst. Koristite ovu funkciju samo na
+   računalima za koja ste ovlašteni. Sigurnosne kopije i ispise
+   pažljivo čuvajte i izbrišite ih nakon upotrebe. Ne preuzima
+   se odgovornost za prosljeđivanje ili gubitak takvih datoteka.
+
+6. Vlastita zaštita i dalje je neophodna
+   Bez obzira na rezultat skeniranja, nemojte se oslanjati samo
+   na ovaj alat pri zaštiti svoje mreže. Nijedan dijagnostički
+   alat ne može zamijeniti potpunu sigurnosnu provjeru ni
+   profesionalno mrežno savjetovanje.
+
+----------------------------------------------------------------
+Kontakt:       tool-entwicklung@sattler-it.de
+Stranica projekta:https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------
+
+
+================================================================
+ ČEŠTINA
+================================================================
+
+
+================================================================
+ S-IT LAN Device Scanner – Licence
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Freeware – bezplatné používání a šíření povoleno.
+
+Komerční další využití nebo úpravy bez svolení nejsou povoleny.
+
+----------------------------------------------------------------
+Autor:         Hans Udo Sattler
+Kontakt:       tool-entwicklung@sattler-it.de
+----------------------------------------------------------------
+
+
+================================================================
+ S-IT LAN Device Scanner – Vyloučení odpovědnosti (Disclaimer)
+ © 2026 Sattler IT-Service, Greifenstein · Hans Udo Sattler
+================================================================
+
+Všechny údaje bez záruky. Omyly vyhrazeny.
+
+S-IT LAN Device Scanner je bezplatný diagnostický nástroj pro
+rozpoznávání a analýzu síťových zařízení. Zobrazené výsledky
+(rozpoznaná zařízení, typy zařízení, výrobci, operační systémy,
+otevřené porty, hodnoty signálu, připojení a propustnosti atd.)
+se zjišťují automaticky ze síťových protokolů, databáze OUI a
+systémových rozhraní (např. netsh, ARP). Tyto zdroje mohou být
+neúplné, zastaralé nebo chybné – chybné vyhodnocení proto nelze
+nikdy zcela vyloučit.
+
+1. Nezávazný odhad
+   Výsledky jsou nezávazná vodítka a okamžitý snímek v době
+   kontroly. Nejsou zárukou skutečné bezpečnosti sítě, úplnosti
+   rozpoznaných zařízení ani stability připojení a nenahrazují
+   odbornou kontrolu ani profesionální bezpečnostní analýzu.
+
+2. Žádná záruka bezpečnosti ani dostupnosti
+   Zařízení může být i přes úspěšné rozpoznání chybně zařazeno
+   nebo se při pozdějším skenu již neobjevit. Stejně tak testy
+   výkonu internetu a LAN a měření kvality připojení nenahrazují
+   měření certifikovanými měřicími systémy.
+
+3. Používání na vlastní odpovědnost
+   Používání nástroje a jeho výsledků je na vaši vlastní
+   odpovědnost. Za rozhodnutí (např. změny nastavení sítě, brány
+   firewall nebo zabezpečení) učiněná na základě výsledků skenu
+   se nepřebírá žádná odpovědnost.
+
+4. Vyloučení odpovědnosti
+   Odpovědnost za škody, ztrátu dat, výpadky nebo majetkové
+   škody vzniklé používáním nástroje nebo jeho výsledků je
+   vyloučena v rozsahu, který zákon připouští.
+
+5. Hesla Wi-Fi a zálohy
+   Karta „Profily Wi-Fi“ zobrazuje hesla Wi-Fi uložená v
+   počítači a na přání je zálohuje do souborů, které obsahují
+   hesla jako prostý text. Tuto funkci používejte jen na
+   počítačích, k nimž máte oprávnění. Zálohy a výtisky pečlivě
+   uchovávejte a po použití je smažte. Za předání nebo ztrátu
+   takových souborů se nepřebírá žádná odpovědnost.
+
+6. Vlastní zabezpečení zůstává nezbytné
+   Bez ohledu na výsledek skenu nespoléhejte při zabezpečení své
+   sítě pouze na tento nástroj. Žádný diagnostický nástroj
+   nemůže nahradit úplnou bezpečnostní kontrolu ani
+   profesionální síťové poradenství.
+
+----------------------------------------------------------------
+Kontakt:       tool-entwicklung@sattler-it.de
+Stránka projektu:https://sattlerit.github.io/sit-lanscanner/
+----------------------------------------------------------------

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Nápověda</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Nápověda</h1>
+  <p>Verze 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Rychlý start</a>
+  <a href="#oberflaeche">Rozhraní</a>
+  <a href="#scan">Skenování</a>
+  <a href="#ergebnisse">Výsledky</a>
+  <a href="#einstellungen">Nastavení</a>
+  <a href="#custom">Vlastní přiřazení</a>
+  <a href="#internet">Dostupnost internetu</a>
+  <a href="#lan-performance">Výkon LAN</a>
+  <a href="#wlan-profile">Profily Wi-Fi</a>
+  <a href="#firewall">Firewall a porty</a>
+  <a href="#diag">Diagnostika</a>
+  <a href="#dateien">Soubory a aktualizace</a>
+  <a href="#faq">Časté dotazy</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Obsah</h3>
+    <ol>
+      <li><a href="#schnellstart">Rychlý start</a></li>
+      <li><a href="#oberflaeche">Přehled rozhraní programu</a></li>
+      <li><a href="#scan">Provedení skenu</a></li>
+      <li><a href="#ergebnisse">Porozumění výsledkům skenu</a></li>
+      <li><a href="#einstellungen">Nastavení</a></li>
+      <li><a href="#custom">Vlastní údaje o zařízeních (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Karta 2: Dostupnost internetu</a></li>
+      <li><a href="#lan-performance">Karta 4: Výkon LAN a Wi-Fi</a></li>
+      <li><a href="#wlan-profile">Karta 5: Profily Wi-Fi</a></li>
+      <li><a href="#firewall">Karta 6: Firewall a porty</a></li>
+      <li><a href="#diag">Diagnostika (DIAG) – pro testery</a></li>
+      <li><a href="#dateien">Soubory, aktualizace a zálohy</a></li>
+      <li><a href="#faq">Časté dotazy (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Rychlý start</h2>
+  <div class="box">
+    <h3>První sken ve 3 krocích</h3>
+    <ol>
+      <li><strong>Spusťte program</strong> – poklepejte na <code>sit-lsc-start.exe</code>. V případě dotazu potvrďte oprávnění správce (doporučeno pro sken ARP).</li>
+      <li><strong>Vyberte síť</strong> – v rozevíracím seznamu vlevo nahoře vyberte požadovanou síť (rozpozná se automaticky).</li>
+      <li><strong>Spusťte sken</strong> – klepněte na <span class="btn-demo btn-green">▶ Spustit sken</span>. Po skenu se všechna nalezená zařízení zobrazí v seznamu.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> v nastavení zapněte <strong>sken portů</strong>, aby se služby a operační systém rozpoznávaly přesněji. Sken pak trvá déle, ale přináší výrazně více informací.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. Přehled rozhraní programu</h2>
+  <div class="box">
+    <h3>Tlačítka na panelu nástrojů</h3>
+    <p>Panel nástrojů na kartě „LAN skener“ obsahuje funkce skenování:</p>
+    <table>
+      <tr><th>Tlačítko</th><th>Funkce</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Spustit sken</span></td>
+          <td>Spustí sken vybrané sítě</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Zastavit sken</span></td>
+          <td>Zruší probíhající sken</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Protokoly a zprávy</span></td>
+          <td>Otevře správce protokolů se všemi uloženými skeny</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 Aktualizace OUI</span></td>
+          <td>Otevře správu OUI: aktualizace databáze výrobců a úprava vlastních přiřazení</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Kvalita připojení</span></td>
+          <td>Měří ztrátu paketů, dobu odezvy a kolísání k cíli a k bráně (viz oddíl 4)</td></tr>
+    </table>
+
+    <h3>Tlačítka v záhlaví (vždy viditelná)</h3>
+    <p>Tato tlačítka jsou vždy viditelná vpravo nahoře v záhlaví – dostupná bez ohledu na aktivní kartu:</p>
+    <table>
+      <tr><th>Tlačítko</th><th>Funkce</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Otevře diagnostické nástroje. Viditelné jen po zapnutí v <strong>⚙ Konfig → Diagnostika</strong> – v běžném provozu skryté. Viz oddíl 11.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Konfig</span></td>
+          <td>Otevře nastavení – vpravo je <strong>velikost zobrazení / měřítko</strong> (90–300 %) pro monitory HiDPI a UHD.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Nápověda</span></td>
+          <td>Otevře toto okno nápovědy</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Zobrazí nebo skryje záhlaví – více místa pro seznam zařízení</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Konec</span></td>
+          <td>Ukončí program</td></tr>
+    </table>
+
+    <h3>Karty</h3>
+    <ul>
+      <li><strong>LAN skener</strong> – hlavní zobrazení se seznamem zařízení</li>
+      <li><strong>Dostupnost internetu</strong> – kontrola internetového připojení, cesta připojení LAN, test rychlosti a informace o doméně (viz oddíl 7)</li>
+      <li><strong>Nastavení sítě</strong> – síťové nástroje a diagnostika</li>
+      <li><strong>Výkon LAN a Wi-Fi</strong> – test rychlosti, stav připojení a přehled Wi-Fi</li>
+      <li><strong>📶 Profily Wi-Fi</strong> – zobrazení uložených sítí Wi-Fi včetně hesla, jejich záloha a obnovení v jiném počítači; navíc vlastní připojení ve srovnání se standardy Wi-Fi, sítě Wi-Fi v dosahu a zpráva Wi-Fi</li>
+      <li><strong>🛡 Firewall a porty</strong> – dva sloupce: vlevo kontrola dostupnosti zařízení v síti a v případě potřeby zápis výjimky, vpravo kontrola a otevření portu v tomto počítači (nutná oprávnění správce)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Provedení skenu</h2>
+  <div class="box">
+    <h3>Jaký rozsah mám skenovat?</h3>
+    <p><strong>Pole sítě</strong> vlevo nahoře určuje, které adresy se kontrolují. Je to rozevírací seznam <em>i</em> vstupní pole: automaticky rozpoznané sítě jsou k dispozici k výběru – ale můžete do něj i přímo psát.</p>
+    <table>
+      <tr><th>Zápis</th><th>Příklad</th><th>Význam</th></tr>
+      <tr><td><strong>Od–do</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>Všechny adresy od první po poslední – nejjednodušší zápis</td></tr>
+      <tr><td><strong>Zkrácený tvar</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>Totéž, uvádí se jen poslední blok adresy</td></tr>
+      <tr><td><strong>Celá síť</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Odborný zápis (CIDR) pro celou síť</td></tr>
+      <tr><td><strong>Jednotlivé zařízení</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Kontrola jen této jedné adresy</td></tr>
+    </table>
+    <p>Menší rozsah je výrazně rychlejší: místo 254 adres se kontrolují jen ty, které vás skutečně zajímají. U velmi velkých rozsahů se program nejprve zeptá, aby sken omylem neběžel celé hodiny.</p>
+    <div class="warn">
+      <strong>Pokud zadání není přijato:</strong> program srozumitelně vysvětlí, co nesouhlasí – například když je druhá adresa před první. Zkontrolujte tečky a pomlčku; mezery nevadí.
+    </div>
+
+    <h3>Intenzita skenu</h3>
+    <p>Intenzita skenu určuje, jak agresivně program síť prověřuje. Nastavuje se v <strong>⚙ Konfig → Intenzita skenu</strong>:</p>
+    <table>
+      <tr><th>Režim</th><th>Metoda</th><th>Doporučení</th></tr>
+      <tr><td><strong>Bezpečná</strong></td>
+          <td>Pouze ping (ICMP)</td>
+          <td>Pro citlivé sítě, starší tiskárny nebo když po skenu přestala být zařízení dostupná</td></tr>
+      <tr><td><strong>Standardní</strong></td>
+          <td>Ping + sken ARP</td>
+          <td>Pro domácí sítě – najde více zařízení než bezpečný režim</td></tr>
+      <tr><td><strong>Intenzivní</strong></td>
+          <td>Ping + sken ARP ve dvou průchodech</td>
+          <td>Pro profesionální prostředí. Na některých routerech může krátce přerušit spojení</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Poznámka k tiskárnám:</strong> starší síťové tiskárny (např. modely Brother HL) mohou na agresivní zahlcení ARP reagovat výpadkem spojení. V takových sítích používejte intenzitu skenu <strong>Bezpečná</strong>.
+    </div>
+
+    <h3>Dodatečné hledání chybějících zařízení</h3>
+    <p>Některá zařízení neodpovědí napoprvé, například v úsporném režimu nebo při slabém bezdrátovém signálu, a některá na ping neodpovídají vůbec. Dodatečné hledání se proto cíleně zeptá znovu – jen na adresách, které ještě neodpověděly. Nastavení v <strong>⚙ Konfig → Dodatečné hledání chybějících zařízení</strong>:</p>
+    <ul>
+      <li><strong>Vypnuto</strong> – bez dodatečného hledání.</li>
+      <li><strong>Známé adresy</strong> (výchozí) – adresy, na kterých bylo při dřívějších skenech zařízení, se podruhé zkontrolují s větší trpělivostí. Zařízení bez otevřeného portu dostanou druhý pokus na svém webovém rozhraní. Trvá několik sekund.</li>
+      <li><strong>Všechny tiché adresy</strong> – navíc se u všech adres bez odpovědi zkontrolují obvyklé porty. Objeví se tak i zařízení, která neodpovídají na ping, například hlasoví asistenti nebo počítače s Windows se zavřeným firewallem. Trvá znatelně déle.</li>
+    </ul>
+
+    <h3>Sken portů</h3>
+    <p>Volitelný sken portů (zapíná se v nastavení) kontroluje u každého zařízení známé porty služeb a výrazně zlepšuje rozpoznání operačního systému. Prodlužuje dobu skenu, ale přináší výrazně více informací – zejména jaké služby zařízení nabízí (webové rozhraní, SSH, RDP atd.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Porozumění výsledkům skenu</h2>
+  <div class="box">
+    <h3>Sloupce seznamu zařízení</h3>
+    <table>
+      <tr><th>Sloupec</th><th>Význam</th></tr>
+      <tr><td>🌐</td><td>Webové rozhraní k dispozici – klepnutí otevře prohlížeč</td></tr>
+      <tr><td>IP adresa</td><td>Aktuální IP v síti</td></tr>
+      <tr><td>Název hostitele</td><td>Název zařízení (zjištěný přes DNS/NetBIOS)</td></tr>
+      <tr><td>Název zařízení</td><td>Název nebo model, který hlásí samo zařízení (např. zařízení FRITZ!, tiskárny, televizory, NAS) – nebo váš vlastní název, např. „Kamera dvůr“</td></tr>
+      <tr><td>MAC adresa</td><td>Hardwarová adresa síťové karty</td></tr>
+      <tr><td>Výrobce</td><td>Zjištěn z databáze OUI</td></tr>
+      <tr><td>Otevřené porty</td><td>Nalezené služby (jen se zapnutým skenem portů)</td></tr>
+      <tr><td>Operační systém</td><td>Rozpoznaný OS (TTL + název hostitele + výrobce + porty)</td></tr>
+      <tr><td>Typ zařízení</td><td>Router, tiskárna, NAS, kamera, chytrý telefon/tablet atd. – viz níže</td></tr>
+    </table>
+
+    <h3>Typ zařízení</h3>
+    <p>Program přiřadí každému zařízení typ podle několika vodítek: výrobce, názvu hostitele, způsobu odpovědi a – se zapnutým skenem portů – otevřených portů. Možné typy jsou router, síťové zařízení, počítač s Windows, server, Mac, počítač s Linuxem, tiskárna, NAS, chytrý telefon/tablet, kamera, zařízení chytré domácnosti, TV/média, telefon VoIP a virtuální počítač.</p>
+    <p>Není-li zařazení jednoznačné, zůstane pole <strong>prázdné</strong> – chybějící údaj je zde lepší než chybný. Víte-li sami, o jaké zařízení jde, zadejte to přes <strong>pravé tlačítko → „Popsat zařízení …“</strong> (oddíl 6). Vlastní údaje mají vždy přednost a jsou v seznamu označeny symbolem <strong>✏</strong>.</p>
+
+    <h3>Zobrazení a skrytí sloupců</h3>
+    <p>Tlačítkem <strong>„☰ Sloupce …“</strong> nad seznamem zařízení lze jednotlivé sloupce skrýt a znovu zobrazit. Platí to jen pro zobrazení: protokol, CSV i zpráva HTML obsahují vždy všechny sloupce.</p>
+
+    <h3>Barvy řádků</h3>
+    <p>Barva se řídí typem zařízení. Není-li typ znám, řídí se operačním systémem, výrobcem a otevřenými porty.</p>
+    <table>
+      <tr><th>Barva</th><th>Význam</th></tr>
+      <tr><td style="background:#CCE5F5">Modrá</td><td>Počítač s Windows nebo server Windows</td></tr>
+      <tr><td style="background:#B8EDD0">Zelená</td><td>Linux, Unix nebo podobné systémy</td></tr>
+      <tr><td style="background:#F5C6C3">Růžová</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Fialová</td><td>Mobilní zařízení (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Žlutá</td><td>Síťové zařízení (router, switch, přístupový bod)</td></tr>
+      <tr><td style="background:#FDDCB0">Oranžová</td><td>Tiskárna nebo multifunkční zařízení</td></tr>
+      <tr><td style="background:#BEE3F5">Světle modrá</td><td>Zařízení NAS</td></tr>
+      <tr><td style="background:#D8E8E8">Šedá</td><td>Virtuální počítač</td></tr>
+    </table>
+
+    
+    <h3>Klávesové zkratky</h3>
+    <table>
+      <tr><th>Klávesa</th><th>Funkce</th></tr>
+      <tr><td><code>F11</code></td><td>Zobrazení/skrytí záhlaví – více místa pro seznam zařízení (také jako tlačítko v záhlaví)</td></tr>
+      <tr><td><code>Poklepání</code></td><td>Zobrazení podrobností o zařízení</td></tr>
+      <tr><td><code>Klepnutí pravým tlačítkem</code></td><td>Místní nabídka s akcemi</td></tr>
+    </table>
+
+    <h3>Akce poklepáním a pravým tlačítkem</h3>
+    <p><strong>Poklepání</strong> na zařízení otevře okno podrobností se všemi informacemi, podrobnostmi o portech a rychlými akcemi.</p>
+    <p><strong>Klepnutí pravým tlačítkem</strong> otevře místní nabídku s těmito možnostmi:</p>
+    <ul>
+      <li>Zobrazit podrobnosti</li>
+      <li>Otevřít webové rozhraní (je-li k dispozici)</li>
+      <li>Spustit monitor pingu (nepřetržitý ping s průběhem)</li>
+      <li>Změřit kvalitu připojení …</li>
+      <li>Odeslat Wake-on-LAN</li>
+      <li>Kopírovat IP nebo MAC</li>
+      <li>Znovu skenovat zařízení</li>
+      <li><strong>Popsat zařízení …</strong> – trvale určit název, výrobce a typ zařízení (oddíl 6)</li>
+    </ul>
+
+    <h3>📶 Kvalita připojení</h3>
+    <p>Když telefonie nebo video zadrhávají nebo je zařízení dostupné jen občas, toto měření ukáže, zda je porucha ve vlastní síti, nebo za ní. Otevírá se tlačítkem <span class="btn-demo" style="background:#16A085;">📶 Kvalita připojení</span> na kartě LAN skener, pravým tlačítkem na zařízení nebo v podrobnostech zařízení.</p>
+    <ol>
+      <li><strong>Vyberte cíl</strong> – internet (8.8.8.8), bránu nebo zařízení z posledního skenu.</li>
+      <li><strong>Vyberte dobu měření</strong> – 30, 60 nebo 120 sekund.</li>
+      <li><span class="btn-demo btn-green">▶ Spustit měření</span> – měří se současně k cíli i k bráně.</li>
+    </ol>
+    <p>Výsledek uvádí pro oba úseky ztrátu paketů, dobu odezvy a její kolísání a hodnotí je ve dvou částech: <strong>připojení</strong> (podle ztráty paketů) a vhodnost pro <strong>telefonii a video</strong> (podle doby odezvy a kolísání). Jsou-li hodnoty k bráně dobré a k cíli špatné, je příčina za routerem. Tlačítkem <strong>📋 Kopírovat výsledek</strong> jej lze předat dál.</p>
+    <div class="info">
+      <strong>ℹ Kamery a podobná zařízení:</strong> mnoho zařízení odpovídá na ping jen okrajově. Vysoké kolísání tam často ukazuje vytížení zařízení, nikoli kvalitu sítě. U takových zařízení je rozhodující ztráta paketů.
+    </div>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Nastavení</h2>
+  <div class="box">
+    <p>Nastavení otevřete tlačítkem <span class="btn-demo btn-orange">⚙ Konfig</span>. Všechna nastavení se automaticky ukládají do souboru <code>S-IT-LanScanner.ini</code>.</p>
+
+    <h3>Možnosti skenu</h3>
+    <ul>
+      <li><strong>Sken portů</strong> – najde služby a zlepší rozpoznání OS (pomalejší)</li>
+      <li><strong>Sken ARP</strong> – najde více zařízení pomocí vysílání ARP</li>
+      <li><strong>Rozpoznání OS</strong> – analyzuje TTL, název hostitele a výrobce</li>
+    </ul>
+
+    <h3>Intenzita skenu</h3>
+    <p>Bezpečná / Standardní / Intenzivní – viz oddíl 3.</p>
+
+    <h3>Jazyk</h3>
+    <p>V <strong>⚙ Konfig → Sprache / Language</strong> zvolíte jazyk rozhraní programu: němčinu, angličtinu, nizozemštinu, španělštinu, francouzštinu, italštinu, polštinu, chorvatštinu nebo češtinu. Nový jazyk se projeví po restartu programu; program ho nabídne při uložení. Nápověda se pak také otevře ve zvoleném jazyce.</p>
+
+    <h3>Vzhled</h3>
+    <ul>
+      <li><strong>Decentní</strong> – klidné pastelové tóny, pro profesionální použití</li>
+      <li><strong>Vysoký kontrast</strong> – sytější barvy, lépe rozlišitelné</li>
+      <li><strong>🌙 Tmavý vzhled</strong> – tmavé pozadí a světlé písmo ve všech oknech programu, příjemnější při dlouhé práci u obrazovky. Řádky seznamu zařízení si ponechají barvu podle typu zařízení, jen tmavší. Projeví se po restartu, který program nabídne při uložení. Okna zpráv systému Windows a zprávy v prohlížeči zůstanou světlé.</li>
+      <li><strong>Velikost písma</strong> – Malé (8 pt), Normální (9 pt), Velké (11 pt). U obrazovek 4K nebo vysokých rozlišení se doporučuje „Velké“</li>
+    </ul>
+
+    <h3>Zpráva HTML</h3>
+    <p>Je-li u zprávy HTML zapnuto <strong>„Po skenu automaticky otevřít“</strong>, otevře se zpráva po každém skenu automaticky ve výchozím prohlížeči. Zde to lze vypnout.</p>
+
+    <h3>Složka protokolů</h3>
+    <p>Zde určíte, kam se ukládají protokoly skenů a zprávy HTML. Výchozí: <code>Logs</code> vedle souboru <code>sit-lsc-start.exe</code></p>
+
+    <h3>Čekací doba pro síťové jednotky</h3>
+    <p>Platí pro trvalý test LAN s cílem v síti (<code>\\NAS\sdilena_slozka</code> nebo připojená síťová jednotka jako <code>U:</code>). NAS, jehož disky jsou v klidovém režimu, potřebuje po prvním dotazu několik sekund, než je sdílená složka dostupná. Program se proto až do nastavené doby ptá každé 3 sekundy znovu a teprve potom ohlásí, že cíl není dostupný. Lze zvolit 0, 30, 60 nebo 120 sekund; výchozí je 60.</p>
+
+    <h3>Velikost zobrazení / měřítko</h3>
+    <p>Mění měřítko celého rozhraní. Lze zvolit <strong>90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %</strong>. Zvolený stupeň sám určuje velikost – měřítko systému Windows se pak nepřičítá. Stupeň <strong>90 %</strong> je kompaktní a dává více místa tabulkám. Který stupeň je k čemu vhodný, vysvětluje tlačítko ⓘ vedle nadpisu. Změna se projeví po restartu, který se nabídne při uložení.</p>
+    <div class="info">
+      <strong>ℹ Vztah k měřítku Windows:</strong> dokud je zde zvolen stupeň, určuje velikost zobrazení on – bez ohledu na nastavení Windows. Není-li zvolen žádný stupeň, řídí se program měřítkem Windows.
+    </div>
+
+    <h3>Spuštění programu</h3>
+    <p>Políčko <strong>„🛡 Spouštět jako správce“</strong> (ve výchozím stavu <strong>zapnuté</strong>) vyžádá oprávnění správce hned při spuštění programu. Skener je potřebuje pro opravu sítě, mezipaměť ARP a kartu firewallu. Při spuštění se pak zobrazí dotaz Windows (Řízení uživatelských účtů, UAC). Kdo vědomě pracuje bez oprávnění správce, zruší zaškrtnutí – dotaz pak odpadne a uvedené funkce samy ohlásí, když oprávnění potřebují. Vlevo dole ve stavovém řádku ukazuje trvalý ukazatel skutečný stav: <span class="btn-demo btn-green">🛡 Správce</span> nebo <span class="btn-demo" style="background:#95A5A6;">🛡 není správce</span>.</p>
+
+    <h3>Okno</h3>
+    <p>Volbou <strong>„🗖 Pamatovat velikost okna“</strong> si program při ukončení zapamatuje velikost a polohu hlavního okna – včetně monitoru, na kterém bylo – a zda bylo maximalizované. Při příštím spuštění se otevře přesně tak. Pokud tento monitor už není připojen, okno se otevře na hlavní obrazovce. Uložená velikost platí pro každý stupeň měřítka: po změně měřítka se okno jednou spustí ve standardní velikosti a pak si velikost zapamatuje znovu – velikost a potřebné místo tak vždy odpovídají.</p>
+
+    <div class="info">
+      <strong>ℹ Okno Konfig:</strong> při vysokém měřítku je okno nastavení větší než obrazovka. Lze jím proto posouvat v obou směrech (kolečko myši svisle, <code>Shift</code>+kolečko myši vodorovně); tlačítka <strong>Uložit</strong> a <strong>Zrušit</strong> přitom zůstávají vždy viditelná dole.
+    </div>
+
+    <h3>Diagnostika</h3>
+    <p>Políčko <strong>„🔧 Zobrazit nástroje DIAG“</strong> zobrazí nahoře v záhlaví tlačítko <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Ve výchozím stavu je <strong>vypnuté</strong> – pro běžný provoz není diagnostika potřeba. Více v oddílu 11.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Vlastní údaje o zařízeních (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>Ne každé zařízení lze automaticky spolehlivě zařadit – nové zařízení ještě chybí v databázi výrobců, kamera se hlásí jako počítač s Linuxem nebo u více stejných zařízení má být poznat, které je kde. K tomu zadáváte vlastní údaje. Ukládají se do souboru <strong>S-IT-Custom.ini</strong> a platí trvale.</p>
+
+    <div class="info">
+      <strong>Důležité:</strong> vlastní údaje mají <strong>vždy přednost</strong> před automatickým rozpoznáním. Soubor S-IT-Custom.ini se při aktualizacích OUI <strong>nikdy</strong> nepřepisuje.
+    </div>
+
+    <h3>Metoda 1: pravé tlačítko → „Popsat zařízení …“</h3>
+    <p>To je nejjednodušší způsob:</p>
+    <ol>
+      <li>Proveďte sken</li>
+      <li>Na zařízení v seznamu <strong>klepněte pravým tlačítkem</strong></li>
+      <li>Zvolte <strong>„✏ Popsat zařízení …“</strong></li>
+      <li>Vyplňte požadovaná pole:
+          <ul>
+            <li><strong>Název zařízení</strong> – platí pro toto zařízení, např. umístění nebo místnost („Kamera dvůr“, „Tiskárna kancelář 2“)</li>
+            <li><strong>Výrobce</strong> – platí pro všechna zařízení se stejnou předponou MAC</li>
+            <li><strong>Typ zařízení</strong> – vyberte ze seznamu nebo zadejte volně</li>
+          </ul>
+      </li>
+      <li>Určete, pro co typ zařízení platí:
+          <ul>
+            <li><strong>pouze toto zařízení</strong> – podle MAC adresy (bez MAC podle IP adresy)</li>
+            <li><strong>všechna zařízení s touto předponou MAC</strong> – např. všechny kamery jednoho výrobce</li>
+            <li><strong>všechna zařízení s touto částí názvu</strong> – např. všechna zařízení, jejichž název hostitele obsahuje „SmartPlug“</li>
+          </ul>
+      </li>
+      <li>Uložte – údaj se ihned zobrazí v seznamu.</li>
+    </ol>
+    <p>Prázdné pole nebo <strong>„– zjistit automaticky –“</strong> vlastní údaj opět odstraní; pak platí automatické zařazení.</p>
+
+    <h3>Metoda 2: okno správy OUI</h3>
+    <p>Přes <span class="btn-demo btn-dark">🔄 Aktualizace OUI</span> → karta <strong>„✏ Vlastní přiřazení“</strong> se dostanete k přehledu všech záznamů a můžete je přidávat, měnit a mazat. Podkarty:</p>
+    <ul>
+      <li><strong>OUI → výrobce</strong> – předpona MAC (6 šestnáctkových znaků) → název výrobce</li>
+      <li><strong>MAC → název</strong> – MAC adresa → vlastní název zařízení</li>
+      <li><strong>MAC → typ</strong> – MAC adresa → typ zařízení (jednotlivé zařízení)</li>
+      <li><strong>IP → typ</strong> – IP adresa → typ zařízení (zařízení bez MAC adresy)</li>
+      <li><strong>Název hostitele → typ</strong> – část názvu → typ zařízení (všechna zařízení s touto částí názvu)</li>
+      <li><strong>Předpona MAC → typ</strong> – předpona MAC → typ zařízení (všechna zařízení jednoho výrobce)</li>
+    </ul>
+
+    <h3>Formát souboru S-IT-Custom.ini</h3>
+    <p>Soubor je ve složce <code>Config</code> vedle souboru <code>sit-lsc-start.exe</code> a lze jej upravovat i textovým editorem. MAC adresy se píší s pomlčkami. Názvy oddílů a typy zařízení jsou v něm německy, tak jak je program ukládá (např. Kamera = kamera); program zobrazuje typy zařízení v nastaveném jazyce.</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – vlastní přiřazení s předností</span><br>
+<span class="comment">; Aktualizace OUI jej NEPŘEPISUJE.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; předpona MAC (6 hex) = výrobce</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; MAC adresa = vlastní název zařízení</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera dvůr</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; MAC adresa = typ zařízení (toto zařízení)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; IP adresa = typ zařízení (zařízení bez MAC)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; část názvu = typ zařízení (všechna zařízení s touto částí názvu)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; předpona MAC (6 hex) = typ zařízení (všechna zařízení jednoho výrobce)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Pořadí u typu zařízení:</strong> jednotlivé zařízení (MAC nebo IP) &gt; část názvu &gt; předpona MAC &gt; automatické zařazení
+    </div>
+    <div class="info">
+      <strong>ℹ Starší záznamy:</strong> do verze 4.0 určovaly oddíly <code>[IP]</code> a <code>[Hostname]</code> operační systém. Nyní určují typ zařízení; stávající záznamy zůstávají platné a zobrazují se ve sloupci „Typ zařízení“.
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Karta 2: Dostupnost internetu</h2>
+  <div class="box">
+    <p>Nahoře na kartě zvolíte jednu ze čtyř kontrol:</p>
+    <table>
+      <tr><th>Dlaždice</th><th>K čemu</th></tr>
+      <tr><td><strong>🌐 Dostupnost internetu</strong></td>
+          <td>Kontroluje, zda se tento počítač dostane do internetu: DNS, směrování, TCP 443, HTTPS, IPv6 a prohlížeč.</td></tr>
+      <tr><td><strong>🔗 Cesta připojení LAN</strong></td>
+          <td>Kontroluje cestu od počítače přes bránu k cíli ve vlastní síti, např. přes powerline k NAS nebo k routeru.</td></tr>
+      <tr><td><strong>📶 Test rychlosti</strong></td>
+          <td>Měří stahování, odesílání a ping internetového připojení.</td></tr>
+      <tr><td><strong>🏷 Informace o doméně</strong></td>
+          <td>Ukazuje, u kterého poskytovatele se spravují záznamy DNS domény, kdo přijímá její e-maily a kde jsou webové stránky.</td></tr>
+    </table>
+
+    <h3>🏷 Informace o doméně</h3>
+    <p>Typická situace: poskytovatel služeb má změnit záznam firemní domény, například kvůli novému poštovnímu serveru nebo ověření u cloudové služby, a nikdo už neví, kde se doména spravuje. Informace o doméně to ukážou jediným dotazem. Oprávnění správce k tomu nejsou potřeba, připojení k internetu ano.</p>
+
+    <h4>Ovládání</h4>
+    <ol>
+      <li>Zvolte dlaždici <strong>🏷 Informace o doméně</strong>.</li>
+      <li>Zadejte doménu, např. <code>firma.cz</code>. Funguje i webová adresa (<code>https://www.firma.cz/kontakt</code>) nebo e-mailová adresa (<code>info@firma.cz</code>), stejně jako domény s diakritikou.</li>
+      <li>Klepněte na <span class="btn-demo btn-green">▶ Zkontrolovat</span> nebo stiskněte Enter.</li>
+    </ol>
+    <p>Pokud zadaná podadresa jako <code>obchod.firma.cz</code> nemá vlastní jmenné servery, program zkontroluje nadřazenou doménu <code>firma.cz</code> a uvede to v řádku nad výsledkem.</p>
+
+    <h4>Výsledky</h4>
+    <table>
+      <tr><th>Řádek</th><th>Význam</th></tr>
+      <tr><td><strong>Jmenné servery</strong></td>
+          <td>Servery, které jsou v DNS za doménu odpovědné.</td></tr>
+      <tr><td><strong>DNS se spravuje u</strong></td>
+          <td>Poskytovatel těchto jmenných serverů. Tam se mění záznamy DNS domény.</td></tr>
+      <tr><td><strong>Poštovní servery</strong></td>
+          <td>Servery, které přijímají e-maily pro doménu, s jejich prioritou: nejprve se zkouší server s menším číslem. Je-li uvedeno „žádný není zapsán“, doména nepřijímá e-maily.</td></tr>
+      <tr><td><strong>E-mail u</strong></td>
+          <td>Poskytovatel poštovního serveru. Je-li za ním uvedeno „filtrační služba“, přijímá e-maily filtr spamu a virů a předává je do skutečné poštovní schránky.</td></tr>
+      <tr><td><strong>Webový server</strong></td>
+          <td>Adresa webových stránek (<code>www.firma.cz</code>, jinak <code>firma.cz</code>) a jejich IP adresy.</td></tr>
+      <tr><td><strong>Webové stránky u</strong></td>
+          <td>Poskytovatel, u kterého jsou webové stránky.</td></tr>
+    </table>
+    <p>Pod každým poskytovatelem je šedým písmem uvedena adresa serveru, jeho název hostitele, název jeho sítě a její rozsah adres.</p>
+
+    <h4>Odkud údaje pocházejí</h4>
+    <ul>
+      <li><strong>Poskytovatel:</strong> program zná jmenné a poštovní servery běžných poskytovatelů, např. IONOS, Strato, Cloudflare, Microsoft 365 a Google Workspace. Není-li server uveden, uvede provozovatele jeho sítě podle příslušného registru, např. RIPE pro Evropu nebo ARIN pro Severní Ameriku. V závorce je pak „provozovatel sítě podle RIPE“.</li>
+      <li><strong>Země:</strong> země, ve které je síť serveru zaregistrována u registru. Obvykle je to umístění datového centra, ale ne vždy: velké firmy často registrují své sítě na sídlo společnosti.</li>
+      <li><strong>„nepřiřazeno“:</strong> server není v seznamu a registr nebyl dostupný nebo neuvedl žádného provozovatele.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Jmenné servery a registrace:</strong> tam, kde se spravují záznamy DNS, je obvykle i poskytovatel, u kterého je doména registrována. U služeb DNS jako Cloudflare může být doména registrována u jiného poskytovatele.
+    </div>
+    <div class="tip">
+      <strong>Tip:</strong> <span class="btn-demo btn-blue">📋 Kopírovat výsledek</span> vloží výsledek jako text s datem a časem do schránky, např. pro e-mail zákazníkovi nebo poskytovateli služeb.
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="lan-performance">8. Karta 4: Výkon LAN a Wi-Fi</h2>
+  <div class="box">
+    <h3>Test rychlosti LAN</h3>
+    <p>Měří skutečnou rychlost zápisu a čtení na sdílenou síťovou složku – bez serverového softwaru na druhé straně.</p>
+
+    <h4>Předpoklady</h4>
+    <ul>
+      <li>Dostupná sdílená síťová složka (např. <code>\\Nazev-NAS\Data</code>) nebo připojená síťová jednotka (např. <code>U:</code>)</li>
+      <li>Oprávnění k zápisu do sdílené složky</li>
+    </ul>
+    <p>Spí-li NAS, program čeká až do nastavené <strong>čekací doby pro síťové jednotky</strong> (oddíl 5), než ohlásí, že cíl není dostupný. Označuje-li Windows síťovou jednotku jako „nedostupnou“ (červený křížek v Průzkumníku), program ji znovu připojí, jako to dělá Průzkumník při klepnutí.</p>
+
+    <div class="warn">
+      <strong>Důležité: samotný název serveru nestačí.</strong><br> <code>\\Nazev-NAS</code> zobrazí v Průzkumníku jen <em>seznam</em> sdílených složek – tam nelze vytvořit soubor a test selže. Je nutné zadat samotnou sdílenou složku, např. <code>\\Nazev-NAS\Data</code>. Nejjednodušší je vybrat ji přes <strong>📂</strong>, pak je cesta vždy správná. Vysvětluje to i tlačítko <strong>ⓘ</strong> vedle vstupního pole.
+    </div>
+
+    <p>Jako cíl je povolena i <strong>místní složka</strong> (např. <code>C:\Temp</code>) – pro srovnání ukáže, jak rychlý je počítač bez sítě.</p>
+
+    <h4>Ovládání</h4>
+    <ol>
+      <li>Zadejte cíl nebo jej vyberte přes <strong>📂</strong>. Cesta se kontroluje <strong>před</strong> spuštěním; pokud něco nesouhlasí, zpráva přesně vysvětlí, co chybí.</li>
+      <li>Zvolte velikost bloku (1–64 MB na cyklus měření)</li>
+      <li><span class="btn-demo btn-green">▶ Spustit trvalý test</span> – test běží nepřetržitě a aktualizuje živou křivku</li>
+      <li><span class="btn-demo btn-red">⏹ Zastavit</span> – ukončí test</li>
+    </ol>
+    <p>Otevře-li se během testu jiná karta, program se zeptá, zda má test zastavit. Při volbě <strong>Ne</strong> zůstane karta Výkon LAN a Wi-Fi otevřená a test pokračuje. Při ukončení programu se test zastaví a testovací soubor se smaže.</p>
+
+    <h4>Výsledky</h4>
+    <ul>
+      <li><strong>Modrá čára</strong> – rychlost zápisu</li>
+      <li><strong>Zelená čára</strong> – rychlost čtení</li>
+      <li>Dlaždice vždy ukazují aktuální naměřenou hodnotu</li>
+      <li>Protokol měření uvádí každý jednotlivý cyklus</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Místní jednotky:</strong> u místních jednotek (např. C:\, D:\) mohou být naměřené hodnoty výrazně zkresleny <strong>mezipamětí souborového systému Windows</strong> – mezipaměť hlásí „hotovo“ dříve, než jsou data skutečně na disku. Hodnoty několika tisíc Mbit/s na běžném pevném disku proto nejsou realistický výsledek. Pro vypovídající měření vždy používejte <strong>síťovou cestu</strong> (cestu UNC jako <code>\\Server\Slozka</code> nebo síťovou jednotku).
+    </div>
+
+    <div class="tip">
+      <strong>Typické orientační hodnoty:</strong><br> Gigabitová LAN: 400–900 Mbit/s &nbsp;|&nbsp; 100Mbit LAN: 60–90 Mbit/s &nbsp;|&nbsp; Wi-Fi (802.11ac): 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Menší velikosti bloku (1–4 MB) vykazují větší kolísání, protože režie a latence mají větší váhu. Pro stabilní hodnoty se doporučuje 16–64 MB.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>Dlaždice Wi-Fi a LAN</h3>
+    <p>Vpravo na kartě jsou vedle sebe <strong>dlaždice Wi-Fi</strong> a <strong>dlaždice LAN</strong>, pod nimi adresa IPv4 a brána. Obě dlaždice jsou uspořádány stejně: nahoře stav, pod ním adaptér s názvem, pod kterým je uveden i ve Správci zařízení.</p>
+    <p>Je-li připojení navázáno, dlaždice Wi-Fi ukazuje:</p>
+    <ul>
+      <li>Název sítě a stav připojení</li>
+      <li>Sílu signálu jako barevný pruh (zelená dobrý, žlutá střední, červená slabý)</li>
+      <li>Kanál, frekvenční pásmo a standard Wi-Fi (např. Wi-Fi 6)</li>
+      <li><strong>⬆ Rychlost připojení</strong> – rychlost, kterou Windows pro připojení hlásí</li>
+      <li><strong>⬇ Rychlost příjmu</strong> – jen během trvalého testu LAN (viz níže)</li>
+    </ul>
+    <p>Není-li připojení k dispozici, dlaždice uvede důvod: <strong>Adaptér deaktivován</strong> (vypnutý ve Správci zařízení nebo v Síťových připojeních), <strong>Nepřipojeno</strong> nebo <strong>Žádný adaptér Wi-Fi</strong>. Dlaždice LAN navíc rozlišuje <strong>Kabel není připojen</strong>.</p>
+    <div class="info">
+      <strong>ℹ Rychlost příjmu jen během trvalého testu:</strong> rychlost příjmu, kterou hlásí Windows, má vypovídací hodnotu jen tehdy, když proudí data. Bez provozu klesá na nízké hodnoty, i když je připojení dobré. Dlaždice ji proto zobrazuje jen během trvalého testu LAN – pak lze rychlost příjmu a naměřené rychlosti zápisu a čtení přímo porovnat. Při spuštění a zastavení testu se dlaždice ihned aktualizuje.
+    </div>
+    <div class="info">
+      <strong>ℹ Přístup k poloze:</strong> sílu signálu, kanál a standard Wi-Fi poskytuje Windows 11 jen tehdy, mají-li desktopové aplikace přístup k poloze. Chybí-li toto povolení, zobrazí dlaždice upozornění s tlačítkem <strong>„→ Otevřít nastavení polohy“</strong>. Název sítě pak program převezme ze seznamu sítí Windows a upozorní, že se může lišit od názvu sítě Wi-Fi (např. „Domácí síť 2“).
+    </div>
+    <div class="info">
+      <strong>ℹ Aktualizace:</strong> obě dlaždice se aktualizují každých 10 sekund; přechod z LAN na Wi-Fi nebo dodatečně připojený USB adaptér Wi-Fi se rozpozná bez restartu. Tlačítkem <strong>🔄 Aktualizovat</strong> se aktualizují ihned.
+    </div>
+  </div>
+
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Karta 5: Profily Wi-Fi</h2>
+  <div class="box">
+    <p>Tato karta zobrazuje sítě Wi-Fi uložené v tomto počítači včetně hesla a přenáší je do jiného počítače – například při přechodu na nový počítač. Vpravo vidíte, jak dobré je vaše připojení Wi-Fi ve srovnání se standardy Wi-Fi a které sítě Wi-Fi jsou v dosahu.</p>
+
+    <div class="warn">
+      <strong>⚠ Nutná oprávnění správce:</strong> načtení, zálohování a obnovení profilů funguje jen s oprávněními správce. Běží-li program bez nich, zobrazí se nahoře na kartě upozornění a příslušná tlačítka jsou zablokována.
+    </div>
+
+    <h3>Levý sloupec: tlačítka a uložené profily</h3>
+    <table>
+      <tr><th>Tlačítko</th><th>Funkce</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  Načíst hesla Wi-Fi</span></td>
+          <td>Načte všechny uložené profily Wi-Fi včetně hesla a naplní seznam pod tlačítky.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Zobrazit protokol</span></td>
+          <td>Otevře protokol načtení. Hesla v něm nejsou. Nachází se ve složce protokolů (<code>WLAN-Profile_&lt;datum&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Zobrazit heslo</span></td>
+          <td>Zobrazí heslo sítě vybrané v seznamu – s kopírováním a tiskem. Poklepání na síť udělá totéž.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Zálohovat profily</span></td>
+          <td>Zálohuje všechny profily včetně hesla do složky, např. na USB disk. Vznikne tam podsložka <code>WLAN-Profile_&lt;název PC&gt;_&lt;datum&gt;</code>.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Obnovit profily</span></td>
+          <td>Obnoví takovou zálohu v tomto počítači, pro všechny uživatele. Poté se nabídne smazání zálohy.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  Zpráva Wi-Fi (HTML)</span></td>
+          <td>Vytvoří zprávu Wi-Fi (viz níže).</td></tr>
+    </table>
+    <p>Seznam <strong>„Uložené profily“</strong> uvádí u každé sítě její stav: <strong>připojeno</strong>, <strong>v dosahu</strong> nebo <strong>mimo dosah</strong>. Sítě bez hesla jsou jako takové označeny.</p>
+
+    <div class="danger">
+      <strong>Záloha obsahuje hesla jako prostý text.</strong> Složku nebo USB disk uchovávejte odpovídajícím způsobem a zálohu po obnovení smažte – program to nabídne po ⑤. Vytištěná stránka s heslem se jako soubor smaže po jedné minutě a při ukončení programu.
+    </div>
+
+    <h3>Přechod na nový počítač</h3>
+    <ol>
+      <li>Na starém počítači klepněte na <strong>④ Zálohovat profily</strong> a jako cíl zvolte USB disk.</li>
+      <li>Na novém počítači spusťte LanScanner, otevřete kartu Profily Wi-Fi, klepněte na <strong>⑤ Obnovit profily</strong> a zvolte složku <code>WLAN-Profile_…</code> na USB disku.</li>
+      <li>Na dotaz, zda se má záloha smazat, odpovězte <strong>Ano</strong>.</li>
+    </ol>
+    <p>Obnovené sítě se pak zobrazí v seznamu „Uložené profily“.</p>
+
+    <h3>Vpravo nahoře: vaše připojení ve srovnání se standardy Wi-Fi</h3>
+    <p>Graf ukazuje jako <strong>šedé pruhy</strong> obvyklé rychlosti připojení počítačů a notebooků pro Wi-Fi 4 (802.11n) až Wi-Fi 7 (802.11be), vždy s frekvenčním pásmem. <strong>Barevný pruh</strong> je vaše rychlost připojení podle Windows, obarvená podle síly signálu (zelená dobrý, žlutá střední, červená slabý). Leží-li na spodním konci svého standardu, vyplatí se zkontrolovat vzdálenost od routeru, kanál a pásmo.</p>
+    <div class="info">
+      <strong>ℹ Rychlost připojení a datová propustnost:</strong> rychlost připojení je hrubá rychlost rádiového spojení. Ze zkušenosti se z toho skutečně přenese zhruba polovina až dvě třetiny. Skutečnou propustnost měří trvalý test LAN na kartě 4.
+    </div>
+
+    <h3>Vpravo dole: sítě Wi-Fi v dosahu</h3>
+    <p>Tabulka uvádí sítě Wi-Fi, které adaptér právě přijímá, se signálem, názvem sítě, pásmem a kanálem, standardem, šifrováním a údajem, zda je síť uložena v tomto počítači. U uložených sítí zobrazí odkaz <strong>„Zobrazit heslo“</strong> heslo přímo. Při prvním otevření karty se okolí jednou naskenuje; tlačítko <strong>„Skenovat okolí“</strong> vyhledá sítě znovu.</p>
+    <div class="info">
+      <strong>ℹ Přístup k poloze:</strong> sítě Wi-Fi v dosahu, sílu signálu a standard Wi-Fi poskytuje Windows 11 jen tehdy, mají-li desktopové aplikace přístup k poloze. Chybí-li toto povolení, zobrazí se místo tabulky upozornění s tlačítkem <strong>„→ Otevřít nastavení polohy“</strong>.
+    </div>
+
+    <h3>Zpráva Wi-Fi</h3>
+    <p>Tlačítko <strong>⑥</strong> shrne stav do barevného souboru HTML – vhodného k předání, do dokumentace zákazníka nebo ke srovnání před a po:</p>
+    <ul>
+      <li>Připojení Wi-Fi s adaptérem, signálem, pásmem, kanálem a rychlostí připojení</li>
+      <li>Přípojka LAN</li>
+      <li>Adresa IPv4 a brána</li>
+      <li>Zařazení vlastního připojení mezi standardy Wi-Fi</li>
+      <li>Sítě Wi-Fi v dosahu</li>
+      <li>Uložené profily</li>
+    </ul>
+    <p><strong>Hesla ve zprávě nejsou.</strong> Ukládá se do složky protokolů jako <code>WLAN-Bericht_&lt;název PC&gt;_&lt;datum&gt;.html</code> a otevře se v prohlížeči.</p>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">10. Karta 6: Firewall a porty</h2>
+  <div class="box">
+    <p>Tato karta řeší dva oddělené případy, proto je rozdělena do dvou sloupců. Oba přistupují ke stejné bráně firewall systému Windows, ale dívají se na ni z opačných směrů:</p>
+    <ul>
+      <li><strong>Vlevo – „Přístup k zařízení v síti“:</strong> jiné zařízení v LAN (NAS, tiskárna, FritzBox USB) není z tohoto počítače dostupné.</li>
+      <li><strong>Vpravo – „Port v tomto počítači“:</strong> program v tomto počítači potřebuje určitý port, ke kterému přistupují jiní ze sítě (skladové hospodářství, pokladní systém, databáze, vzdálená údržba).</li>
+    </ul>
+    <p>Pod oběma sloupci je přes celou šířku společný <strong>seznam pravidel</strong>; zobrazuje záznamy z obou sloupců.</p>
+
+    <div class="warn">
+      <strong>⚠ Nutná oprávnění správce:</strong> číst a nastavovat pravidla firewallu lze jen s oprávněními správce. Nejjednodušší je nechat zapnuté <strong>„Spouštět jako správce“</strong> (viz oddíl 5, ve výchozím stavu zapnuto). Běží-li program bez oprávnění správce, karta to ohlásí při kontrole nebo zápisu.
+    </div>
+
+    <h3>Levý sloupec: přístup k zařízení v síti</h3>
+    <p>Použijete jej, když je zařízení ve skenu vidět (nebo by mělo být), ale nelze se k němu připojit – žádný ping, žádné sdílení souborů. Často spojení blokuje brána firewall systému Windows tohoto počítače. Tento sloupec je převzat ze samostatného nástroje <strong>S-IT-FWModify</strong>.</p>
+    <ol>
+      <li><strong>Zadejte IP adresu nebo podsíť</strong> – jednu adresu (např. <code>192.168.178.60</code>) nebo celou podsíť (<code>192.168.178.0/24</code>). Naposledy použité cíle jsou k dispozici v rozevíracím poli.</li>
+      <li><strong>Zvolte rozsah výjimky:</strong>
+          <ul>
+            <li><strong>Všechny porty</strong> – pro jediné známé zařízení</li>
+            <li><strong>Jen sdílení souborů</strong> – TCP 445, 139 a UDP 137, 138 (SMB)</li>
+            <li><strong>Sdílení souborů + webové rozhraní</strong> – navíc TCP 5000, 5001 (např. pro rozhraní NAS)</li>
+          </ul>
+      </li>
+      <li><strong>Zkontrolovat</strong> – nález se zobrazí v pěti řádcích (viz níže).</li>
+      <li><strong>Zapsat výjimku</strong> – vytvoří odpovídající výjimku firewallu.</li>
+    </ol>
+    <p>Pět kontrolních řádků:</p>
+    <ul>
+      <li><strong>Zařízení odpovídá na ping</strong> – základní dostupnost v síti</li>
+      <li><strong>Otevřené porty na cíli</strong> – co zařízení nabízí, je mezi nimi sdílení souborů?</li>
+      <li><strong>Základní nastavení firewallu</strong> – může zde výjimka vůbec něco způsobit?</li>
+      <li><strong>Profil sítě tohoto počítače</strong> – Soukromá = sdílení možné, Veřejná = vše blokováno</li>
+      <li><strong>Pravidlo S-IT pro tento cíl</strong> – existuje již výjimka nastavená tímto nástrojem?</li>
+    </ul>
+
+    <h3>Pravý sloupec: port v tomto počítači</h3>
+    <p>Použijete jej v opačném případě, když program běží <em>v tomto počítači</em> a musí otevřít určitý port, aby k němu mohly přistupovat jiné počítače v síti – například skladové hospodářství, pokladní systém nebo databáze, která nabízí svou službu na pevném portu. Pravidlo platí pro <strong>příchozí provoz</strong> a <strong>jen z místní sítě</strong>.</p>
+    <ol>
+      <li><strong>Zvolte předlohu</strong> (volitelně) – časté případy jsou uloženy a automaticky vyplní port, protokol a označení: SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432), Vzdálená plocha (3389), VNC (5900), HTTP (80), HTTPS (443), HTTP alternativní (8080), HTTPS alternativní (8443). Volbou <em>„– vlastní zadání –“</em> zadáte libovolný port sami.</li>
+      <li><strong>Port (nebo rozsah) a protokol</strong> – jedno číslo (např. <code>1433</code>) nebo rozsah (např. <code>5000-5010</code>, nejvýše 200 portů), k tomu <strong>TCP</strong> nebo <strong>UDP</strong>.</li>
+      <li><strong>Označení</strong> – název, pod kterým lze pravidlo později najít v seznamu (např. „skladové hospodářství, pokladní systém“).</li>
+      <li><strong>Zkontrolovat</strong> – nález se zobrazí ve třech řádcích (viz níže).</li>
+      <li><strong>Otevřít port</strong> – vytvoří příchozí pravidlo pro místní podsíť.</li>
+    </ol>
+    <p>Tři kontrolní řádky:</p>
+    <ul>
+      <li><strong>Program naslouchá na portu</strong> – bez naslouchajícího programu nemá žádné pravidlo firewallu účinek. Naslouchá-li program jen na <code>127.0.0.1</code>, není ze sítě dostupný ani s pravidlem – pak musí být samotný program vázán na adresu LAN.</li>
+      <li><strong>Příchozí pravidlo firewallu</strong> – existující pravidla pro tento port, i cizí (např. od instalačního programu oborové aplikace). Pravidla, která platí jen pro jeden jiný program nebo jinou službu Windows, jsou označena jako bez účinku.</li>
+      <li><strong>Profil firewallu tohoto počítače</strong> – pravidlo platí pro soukromý profil; v profilu „Veřejná“ Windows stejně blokuje.</li>
+    </ul>
+
+    <h3>Nález (oba sloupce)</h3>
+    <p>Každý kontrolní řádek ukazuje výsledek: <strong>zelená</strong> v pořádku, <strong>žlutá</strong> upozornění, <strong>červená</strong> problém. Kde to má smysl, nabízí řádek vpravo malé tlačítko pro přímou nápravu – například přepnutí profilu sítě na „Soukromá“ (aby sdílení bylo vůbec povoleno) nebo okamžité otevření portu. Podrobný vysvětlující text ke každému řádku se zobrazí, když nad ním podržíte myš.</p>
+
+    <h3>Společný seznam pravidel</h3>
+    <p>Všechny výjimky, které program vytvoří – z obou sloupců –, mají vlastní název (předpona <code>S-IT-FW-</code>) a zobrazují se v seznamu dole. Pro každý záznam obvykle vznikne několik pravidel firewallu (pro každý směr a protokol). Tlačítky pod ním lze <strong>označená</strong> nebo <strong>všechna pravidla S-IT</strong> opět odstranit.</p>
+
+    <div class="tip">
+      <strong>Vaše ostatní pravidla firewallu zůstanou nedotčena.</strong> Program vidí a mění výhradně svá vlastní pravidla s předponou <code>S-IT-FW-</code>. Cizí pravidla systému Windows nebo jiného softwaru se nezobrazují ani nemažou.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Snadný úklid:</strong> byla-li výjimka nebo otevřený port nastaveny jen pro test, odstraňte je později jedním klepnutím přes seznam pravidel – firewall tak zůstane čistý.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">11. Diagnostika (DIAG) – pro testery</h2>
+  <div class="box">
+    <p>Tento oddíl je určen testerům a všem, kdo chtějí nahlásit problém s rozpoznáváním. Pro běžný provoz z toho není nic potřeba.</p>
+
+    <h3>K čemu?</h3>
+    <p>Windows poskytuje informace o síti několika cestami. Která z nich odpoví, se liší počítač od počítače – podle edice Windows, ovladačů a firemních zásad. Zobrazuje-li program na některém zařízení chybné hodnoty, nelze ze zobrazení poznat, čím to je. Diagnostika se proto dotazuje <strong>každé cesty zvlášť</strong> a zaznamená, co odpověděla – i když vůbec neodpověděla.</p>
+
+    <h3>Zapnutí</h3>
+    <p><strong>⚙ Konfig → Diagnostika → „🔧 Zobrazit nástroje DIAG“</strong>. Poté se nahoře v záhlaví zobrazí tlačítko <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Restart není nutný. Zrušením zaškrtnutí se opět skryje.</p>
+
+    <h3>Tři nástroje</h3>
+    <table>
+      <tr><th>Tlačítko</th><th>Funkce</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ Vytvořit DIAG</span></td>
+          <td>Vytvoří <strong>přesně jeden soubor</strong> ve složce <code>Diag</code> vedle souboru <code>sit-lsc-start.exe</code>. Nic se neděje samo – jen po klepnutí.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Zobrazit prostý text</span></td>
+          <td>Zobrazí obsah v čitelné podobě – <strong>přesně to, co by se odeslalo</strong>. Na přání jej lze uložit i jako prostý text. Obsah má ve všech jazykových verzích stejnou strukturu a nepřekládá se.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Otevřít složku</span></td>
+          <td>Otevře v Průzkumníku složku, do které se soubory DIAG ukládají.</td></tr>
+    </table>
+
+    <h3>Co obsahuje?</h3>
+    <ul>
+      <li>Surové odpovědi všech dotazů (PowerShell, wmic, registr, netsh, ipconfig), včetně sítí Wi-Fi v dosahu</li>
+      <li>Jak dlaždice LAN a Wi-Fi tyto odpovědi zobrazují</li>
+      <li>Verze Windows a programu, měřítko, oprávnění správce</li>
+      <li>Co program z odpovědí vyvodil</li>
+      <li>Po skenu sítě navíc seznam zařízení tohoto skenu: u každého zařízení název, IP adresa, výrobce, otevřené porty a zařazení programem se zdůvodněním</li>
+    </ul>
+    <p><strong>Žádná hesla, žádné přihlašovací údaje.</strong> MAC adresy se zkracují: část výrobce zůstává – potřebuje ji rozpoznávání –, část jedinečná pro zařízení se nahradí znaky <code>XX</code> (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>Proč soubor není čitelný?</strong><br> Je <em>zamaskovaný</em>, aby si jej nikdo omylem nepřečetl a aby ho nerozebral poštovní filtr. Výslovně to <strong>není šifrování</strong> a ani to nemá být. Tlačítkem <strong>🔍 Zobrazit prostý text</strong> kdykoli sami uvidíte, co obsahuje.
+    </div>
+
+    <h3>Odeslání</h3>
+    <p>Dobrovolně a jen při problému s rozpoznáváním: soubor pošlete na <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>. Užitečná je jedna věta o tom, co bylo zobrazeno chybně.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">12. Soubory, aktualizace a zálohy</h2>
+  <div class="box">
+
+    <h3>Struktura složky programu</h3>
+    <p>Vše, co sami potřebujete, je nahoře vedle spouštěcího programu. Podsložka <code>sit-lsc_program</code> obsahuje jen samotný program a není nutné ji otevírat:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← tímto se program spouští</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← nastavení, vlastní údaje, databáze výrobců</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← protokoly skenů, zprávy a záznamy</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← diagnostické soubory</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← nápověda, ChangeLog, vyloučení odpovědnosti a licence</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← program</span>
+    </div>
+    <p>Složky <code>Config</code>, <code>Logs</code> a <code>Diag</code> si program podle potřeby vytvoří sám.</p>
+
+    <div class="tip">
+      <strong>Krátký kontrolní seznam – co vzít s sebou?</strong><br> Při změně počítače nebo nové instalaci zálohujte tyto složky vedle souboru <code>sit-lsc-start.exe</code>:
+      <ul style="margin:6px 0 0 0">
+        <li><code>Config\</code> – nastavení, vlastní údaje o zařízeních a databáze výrobců</li>
+        <li><code>Logs\</code> – celou složku, mají-li se zachovat staré skeny, protokoly a zprávy Wi-Fi</li>
+      </ul>
+      Po zkopírování spusťte program – všechna nastavení, přiřazení a dosavadní výsledky skenů jsou ihned opět k dispozici.
+    </div>
+
+    <h3>Přehled souborů a složek</h3>
+    <table>
+      <tr><th>Soubor</th><th>Obsah</th><th>Zálohovat?</th></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
+          <td>Všechna nastavení (možnosti skenu, složka protokolů, vzhled atd.)</td>
+          <td><strong>✔ Ano</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Vlastní názvy, typy a výrobci zařízení – při aktualizacích se nikdy nepřepisuje</td>
+          <td><strong>✔ Ano</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
+          <td>Databáze výrobců (při aktualizaci OUI se vytvoří znovu)</td>
+          <td>Volitelně</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Protokoly skenů (.log), zprávy HTML (.html) a soubory CSV (.csv), k tomu protokoly karty Profily Wi-Fi a zprávy Wi-Fi.<br> Soubory CSV jsou určeny jen pro interní použití programem: z nich tlačítko <strong>„Načíst do skeneru“</strong> ve správci protokolů (📋 Protokoly a zprávy) načte dřívější sken zpět do seznamu zařízení. Názvy jejich sloupců jsou proto v každém jazyce německé. Ke čtení a předávání slouží zpráva HTML a protokol.<br> <em>Vezměte s sebou, mají-li staré výsledky skenů zůstat ve správci protokolů.</em></td>
+          <td><strong>✔ Doporučeno</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Diagnostické soubory – vznikají jen při vytvoření DIAG</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>Nápověda (německy) a její překlady (<code>S-IT-LanScanner-Hilfe_cs.html</code> atd.), historie verzí <code>S-IT-LanScanner-ChangeLog.html</code>, vyloučení odpovědnosti a licence (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>Program: hlavní program <code>S-IT-LanScanner.exe</code> (spouští se přes <code>sit-lsc-start.exe</code>) a knihovny programu</td>
+          <td>–</td></tr>
+    </table>
+
+    <h3>Provedení aktualizace</h3>
+    <ol>
+      <li>Stáhněte a rozbalte novou verzi</li>
+      <li><strong>Důležité:</strong> zkopírujte složku <code>Config</code> ze staré složky programu do nové</li>
+      <li>Spusťte program přes <code>sit-lsc-start.exe</code></li>
+      <li>Všechna nastavení a vlastní údaje jsou opět k dispozici</li>
+    </ol>
+    <div class="info">
+      Dřívější verze ještě neměly složku <code>Config</code>. V tom případě zkopírujte soubory <code>S-IT-LanScanner.ini</code> a <code>S-IT-Custom.ini</code> do nové složky programu vedle souboru <code>sit-lsc-start.exe</code>. Při prvním spuštění je program jednorázově přesune do složky <code>Config</code>, stejně jako protokoly a diagnostické soubory, které jsou ještě ve složce <code>sit-lsc_program</code>. Nic se přitom nepřepíše. Co bylo přesunuto, je uvedeno v souboru <code>Ordnerumzug.log</code> ve složce protokolů.
+    </div>
+
+    <h3>Nová instalace / změna počítače</h3>
+    <p>Doporučený postup:</p>
+    <ol>
+      <li>Zálohovanou složku <code>Config</code> zkopírujte do nové složky programu vedle souboru <code>sit-lsc-start.exe</code></li>
+      <li>Zálohovanou složku <code>Logs\</code> zkopírujte také tam (nebo do nastavené složky protokolů)</li>
+      <li>Spusťte program – všechna nastavení, přiřazení a dřívější skeny jsou ihned k dispozici ve správci protokolů</li>
+      <li>Volitelně: proveďte aktualizaci OUI, abyste načetli nejnovější databázi výrobců</li>
+    </ol>
+    <div class="info">
+      Nezálohujete-li žádné soubory: <code>S-IT-LanScanner.ini</code> a <code>S-IT-Custom.ini</code> se při prvním spuštění automaticky vytvoří znovu s výchozími hodnotami. Vlastní údaje o zařízeních je pak nutné zadat znovu.
+    </div>
+    <div class="tip">
+      <strong>Přenos sítí Wi-Fi:</strong> uložené sítě Wi-Fi starého počítače lze zálohovat na kartě <strong>Profily Wi-Fi</strong> a obnovit v novém počítači (oddíl 9).
+    </div>
+
+    <h3>Aktualizace databáze OUI</h3>
+    <p>Přes <span class="btn-demo btn-dark">🔄 Aktualizace OUI</span> → karta <strong>„Aktualizace databáze OUI“</strong> → <strong>„▶ Aktualizovat databázi OUI“</strong> program stáhne úplné seznamy výrobců IEEE (MA-L, MA-M a MA-S) a uloží je do <code>S-IT-OUI.ini</code>. K tomu je nutné připojení k internetu. Průběh a výsledek se zobrazí ve stejném okně. Poté se databáze ihned znovu načte – restart není nutný.</p>
+    <p>Nelze-li některý ze seznamů stáhnout, zobrazí se zpráva a stávající soubor <code>S-IT-OUI.ini</code> zůstane beze změny.</p>
+    <div class="info">
+      Soubor <code>S-IT-Custom.ini</code> s vašimi vlastními údaji se při aktualizaci OUI <strong>nikdy</strong> nemění ani nepřepisuje.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">13. Časté dotazy (FAQ)</h2>
+  <div class="box">
+
+    <h3>Zařízení nebylo nalezeno</h3>
+    <p>Možné příčiny:</p>
+    <ul>
+      <li>Zařízení je vypnuté nebo v úsporném režimu</li>
+      <li>Zařízení neodpovídá na ping ICMP (firewall) → pomůže zapnutí skenu portů</li>
+      <li>Zařízení je v jiném segmentu sítě</li>
+      <li>Zvolte intenzitu skenu „Bezpečná“ a skenujte znovu</li>
+    </ul>
+
+    <h3>Zařízení je zařazeno chybně nebo není zařazeno vůbec</h3>
+    <p>Pravé tlačítko na zařízení → <strong>„✏ Popsat zařízení …“</strong> → vyberte nebo zadejte typ zařízení → Uložit. Údaj se ihned zobrazí v seznamu a platí trvale (oddíl 6).</p>
+
+    <h3>Proč je sloupec „Typ zařízení“ u některých zařízení prázdný?</h3>
+    <p>Vodítka nestačila pro jednoznačné zařazení. Program pak pole záměrně nechá prázdné, místo aby hádal. Zapnutý sken portů často přinese dost dalších vodítek; jinak pomůže vlastní údaj přes <strong>„Popsat zařízení …“</strong>.</p>
+
+    <h3>Moje tiskárna po skenu přestala být dostupná</h3>
+    <p>V nastavení přepněte intenzitu skenu na <strong>„Bezpečná“</strong>. Ten vynechává zahlcení ARP a skeny portů tiskáren, které mohou přetížit starší verze firmwaru.</p>
+
+    <h3>Antivirový program hlásí hrozbu</h3>
+    <p>Protože LAN skener aktivně skenuje síť, některé antivirové programy jej chybně označí za podezřelý (falešně pozitivní nález). Program neobsahuje žádný škodlivý software. Řešení: přidejte soubor programu a složku do seznamu výjimek / povolených položek antivirového programu.</p>
+
+    <h3>Test rychlosti LAN ukazuje „Žádný přístup pro zápis“</h3>
+    <p>Sdílená složka je pravděpodobně připojena jen pro čtení nebo přihlašovací údaje nestačí. Zkontrolujte svá oprávnění k zápisu do sdílené složky.</p>
+
+    <h3>Test hlásí „Chybí sdílená složka“</h3>
+    <p>Byl zadán jen <strong>název serveru</strong>, např. <code>\\Nazev-NAS</code>. Tam nelze vytvořit soubor – je potřeba samotná sdílená složka: <code>\\Nazev-NAS\Data</code>. Viz oddíl 8.</p>
+
+    <h3>Dlaždice Wi-Fi ukazuje „Připojeno“, ale bez síly signálu a kanálu</h3>
+    <p>To je téměř vždy blokování polohy ve Windows 11, a <strong>ne chyba programu</strong>: Windows poskytuje sílu signálu, kanál a standard Wi-Fi jen tehdy, mají-li desktopové aplikace přístup k poloze. Totéž platí pro sítě Wi-Fi v dosahu na kartě Profily Wi-Fi. Samotný adaptér se přesto rozpozná správně.</p>
+    <div class="tip">
+      <strong>Náprava:</strong> v dlaždici klepněte na <strong>„→ Otevřít nastavení polohy“</strong> (nebo Nastavení → Ochrana osobních údajů a zabezpečení → Poloha). Tam zapněte <strong>služby určování polohy</strong> a níže povolte přístup k poloze pro <strong>desktopové aplikace</strong>. Pak v dlaždici klepněte na <strong>🔄 Aktualizovat</strong>.
+    </div>
+
+    <h3>Název sítě v dlaždici Wi-Fi se liší od názvu sítě Wi-Fi</h3>
+    <p>Bez přístupu k poloze převezme program název ze seznamu sítí Windows; dlaždice to uvádí. Windows tam pro tutéž síť Wi-Fi někdy vytváří číslované záznamy, např. „Domácí síť 2“, pokud se počítač přihlásil vícekrát nebo s různými adaptéry. S přístupem k poloze ukazuje dlaždice skutečný název sítě Wi-Fi.</p>
+
+    <h3>Proč dlaždice Wi-Fi neukazuje rychlost příjmu?</h3>
+    <p>Rychlost příjmu se zobrazuje jen během trvalého testu LAN. Bez provozu pro ni Windows hlásí nízké hodnoty, které nemají nic společného s kvalitou připojení. Rychlost připojení (⬆) je naopak zobrazena vždy.</p>
+
+    <h3>Dlaždice Wi-Fi hlásí „Adaptér deaktivován“</h3>
+    <p>Adaptér Wi-Fi je vypnutý ve Správci zařízení nebo v <em>Síťových připojeních</em>. Po zapnutí jej program rozpozná nejpozději za 10 sekund; tlačítkem <strong>🔄 Aktualizovat</strong> ihned. Dodatečně připojený USB adaptér Wi-Fi se rovněž rozpozná sám.</p>
+
+    <h3>U rychlosti je uvedeno „neznámá“</h3>
+    <p>Pak <strong>žádný</strong> z dotazů nemohl rychlost poskytnout – typické pro <strong>deaktivovaný adaptér</strong>, pro který Windows rychlost nehlásí. Program v tom případě záměrně ukazuje „neznámá“ místo odhadnutého čísla: v diagnostickém nástroji nemá hodnota, kterou nikdo nezměřil, co dělat. Název adaptéru se přesto zobrazí.</p>
+
+    <h3>Program vypadá na mém monitoru UHD/4K příliš malý</h3>
+    <p>Otevřete <strong>⚙ Konfig</strong> a v pravém sloupci zvolte u <strong>„Velikost zobrazení / měřítko“</strong> vyšší hodnotu. Program se po uložení automaticky restartuje.</p>
+    <div class="tip">
+      <strong>Doporučení pro UHD/4K:</strong> měřítko programu samo určuje velikost – měřítko Windows kvůli tomu měnit nemusíte. Začněte na <strong>150 %</strong>; to na většině monitorů UHD dává dobře čitelné zobrazení. Je-li to stále příliš malé nebo velké, zvolte další stupeň, dokud nejsou text a prvky pro vás optimálně čitelné.
+    </div>
+    <p>Možné stupně měřítka v programu: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>Kde najdu vyloučení odpovědnosti?</h3>
+    <p>V souboru <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> ve složce <code>Help</code> a na <a href="https://sattlerit.github.io/sit-lanscanner/">stránce projektu</a>. Stručně: výsledky jsou nezávazná vodítka a okamžitý snímek – nenahrazují odbornou bezpečnostní kontrolu.</p>
+
+    <h3>SMB1 bylo přepnuto – proč je stále uveden starý stav?</h3>
+    <p>SMB1 je <strong>funkce systému Windows</strong>, ne jednoduchý přepínač: Windows při zapnutí doinstaluje soubory a při vypnutí je odebere. Změna se projeví až po <strong>restartu</strong> – do té doby kontrola stále hlásí dosavadní stav. Program počítač <strong>nerestartuje</strong> sám od sebe; jen na to upozorní. Restartujte Windows sami, až se vám to bude hodit.</p>
+
+    <h3>Proč jsou tři řádky SMB1?</h3>
+    <p>Protože se SMB1 skládá z několika navzájem nezávislých částí. Kdo vidí jen jeden řádek, snadno získá chybný obraz o vlastním počítači:</p>
+    <table>
+      <tr><th>Řádek</th><th>K čemu</th></tr>
+      <tr><td><strong>Klient SMB1</strong></td>
+          <td>Aby <em>tento počítač</em> mohl přistupovat ke starým zařízením – například ke staršímu NAS nebo síťové tiskárně, která neumí SMB2/3. To je nejčastější případ.</td></tr>
+      <tr><td><strong>Server SMB1</strong></td>
+          <td>Aby <em>stará zařízení</em> mohla přistupovat ke sdíleným složkám tohoto počítače – například kopírka, která ukládá skeny do sdílené složky. Tato strana je nebezpečnější a měla by být zapnutá jen po dobu, kdy ji staré zařízení potřebuje.</td></tr>
+      <tr><td><strong>Trvale zachovat SMB1</strong></td>
+          <td>Windows SMB1 sám odebere, pokud se 15 dní nepoužíval. Tento řádek tuto automatiku vypíná. Užitečné, má-li provoz delší přestávky – po dvou týdnech celozávodní dovolené by SMB1 jinak náhle zmizelo a skenování do sdílené složky by přestalo fungovat.</td></tr>
+    </table>
+    <p>Řádek <strong>Trvale zachovat SMB1</strong> hlásí stav jen tehdy, je-li klient nebo server skutečně aktivní. Je-li SMB1 zcela vypnuté, je řádek šedý a nevyžaduje pozornost.</p>
+
+    <h3>U serveru SMB1 je uvedeno „Funkce je k dispozici, ale protokol je vypnutý“ – co to znamená?</h3>
+    <p>Strana serveru má dvě úrovně: doinstalovanou funkci Windows a přepínač protokolu v serveru SMB. Po zapnutí je nejprve k dispozici jen funkce – přepínač lze nastavit až po restartu. Právě k tomu slouží tlačítko <strong>„→ Dokončit“</strong>: přepne druhý přepínač a projeví se ihned, bez dalšího restartu. Není-li server SMB1 nakonec potřeba, vypněte jej místo toho úplně.</p>
+
+    <h3>Proč je tlačítko na zeleném řádku šedé?</h3>
+    <p>Tlačítko na zeleném řádku vede vždy <em>zpět</em> do méně bezpečného stavu – například „← Aktivovat“ u vypnutého serveru SMB1. Taková tlačítka pro návrat jsou záměrně nenápadná, aby nesváděla k nechtěnému klepnutí. Fungují zcela normálně.</p>
+
+    <h3>Kam se ukládají protokoly?</h3>
+    <p>Výchozí: <code>Logs\</code> vedle souboru <code>sit-lsc-start.exe</code>. Složku lze změnit v <strong>⚙ Konfig → Složka protokolů</strong>.</p>
+
+    <h3>Mohu nástroj používat na USB disku?</h3>
+    <p>Ano, nástroj je přenosný. Zkopírujte celou složku programu – tedy <code>sit-lsc-start.exe</code> spolu se složkou <code>sit-lsc_program</code> a ostatními složkami – na USB disk. Soubory INI se ukládají do složky <code>Config</code>.</p>
+
+    <h3>Kde najdu zprávy Wi-Fi a protokol profilů Wi-Fi?</h3>
+    <p>Obojí je ve složce protokolů, výchozí <code>Logs\</code> vedle souboru <code>sit-lsc-start.exe</code>. Zpráva Wi-Fi se navíc po vytvoření ihned otevře v prohlížeči.</p>
+
+    <h3>V informacích o doméně chybí země</h3>
+    <p>Země, síť a rozsah adres pocházejí z registru (např. RIPE). Není-li dostupný, například protože dotaz blokuje firewall nebo proxy, zobrazí program jen poskytovatele z vestavěného seznamu.</p>
+
+    <h3>V informacích o doméně země neodpovídá poskytovateli</h3>
+    <p>Země je země, ve které je síť serveru registrována. Velké firmy často registrují své sítě na sídlo společnosti, i když server stojí v datovém centru v jiné zemi. Viz oddíl 7.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Pomohl vám tento nástroj?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      S-IT LAN Device Scanner je vyvíjen a udržován zdarma.<br> Malý dar pomůže nástroj dále rozvíjet. Srdečně děkujeme! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Přispět přes PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Verze 4.2
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Autor: Hans Udo Sattler &nbsp;•&nbsp; Překlad do češtiny: RQ68 &nbsp;•&nbsp; Děkujeme všem uživatelům, kteří pomohli s testováním skeny svých vlastních sítí<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Stránka projektu</a>
+  &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Vyloučení odpovědnosti</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>

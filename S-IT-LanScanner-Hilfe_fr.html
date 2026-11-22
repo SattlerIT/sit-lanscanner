@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Aide</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Aide</h1>
+  <p>Version 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Démarrage rapide</a>
+  <a href="#oberflaeche">Interface</a>
+  <a href="#scan">Lancer une analyse</a>
+  <a href="#ergebnisse">Comprendre les résultats</a>
+  <a href="#einstellungen">Paramètres</a>
+  <a href="#custom">Attributions personnelles</a>
+  <a href="#internet">Accès Internet</a>
+  <a href="#lan-performance">Performances LAN</a>
+  <a href="#wlan-profile">Profils Wi-Fi</a>
+  <a href="#firewall">Pare-feu et ports</a>
+  <a href="#diag">Diagnostic</a>
+  <a href="#dateien">Fichiers et mises à jour</a>
+  <a href="#faq">Questions fréquentes</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Sommaire</h3>
+    <ol>
+      <li><a href="#schnellstart">Démarrage rapide</a></li>
+      <li><a href="#oberflaeche">L'interface du programme en un coup d'œil</a></li>
+      <li><a href="#scan">Lancer une analyse</a></li>
+      <li><a href="#ergebnisse">Comprendre les résultats de l'analyse</a></li>
+      <li><a href="#einstellungen">Paramètres</a></li>
+      <li><a href="#custom">Informations personnelles sur les appareils (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Onglet 2&nbsp;: Accès Internet</a></li>
+      <li><a href="#lan-performance">Onglet 4&nbsp;: Performances LAN et Wi-Fi</a></li>
+      <li><a href="#wlan-profile">Onglet 5&nbsp;: Profils Wi-Fi</a></li>
+      <li><a href="#firewall">Onglet 6&nbsp;: Pare-feu et ports</a></li>
+      <li><a href="#diag">Diagnostic (DIAG) – pour les testeurs</a></li>
+      <li><a href="#dateien">Fichiers, mises à jour et sauvegarde</a></li>
+      <li><a href="#faq">Questions fréquentes (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Démarrage rapide</h2>
+  <div class="box">
+    <h3>Première analyse en 3 étapes</h3>
+    <ol>
+      <li><strong>Démarrer le programme</strong> – double-cliquez sur <code>sit-lsc-start.exe</code>. Confirmez les droits d'administrateur si nécessaire (recommandé pour l'analyse ARP).</li>
+      <li><strong>Choisir le réseau</strong> – sélectionnez le réseau souhaité dans la liste déroulante en haut à gauche (il est détecté automatiquement).</li>
+      <li><strong>Lancer l'analyse</strong> – cliquez sur <span class="btn-demo btn-green">▶ Lancer l'analyse</span>. Après l'analyse, tous les appareils trouvés apparaissent dans la liste.</li>
+    </ol>
+    <div class="tip">
+      <strong>Conseil&nbsp;:</strong> activez l'<strong>analyse des ports</strong> dans les paramètres pour détecter plus précisément les services et le système d'exploitation. L'analyse dure alors plus longtemps, mais fournit nettement plus d'informations.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. L'interface du programme en un coup d'œil</h2>
+  <div class="box">
+    <h3>Boutons de la barre d'outils</h3>
+    <p>La barre d'outils de l'onglet «&nbsp;Scanner LAN&nbsp;» contient les fonctions d'analyse&nbsp;:</p>
+    <table>
+      <tr><th>Bouton</th><th>Fonction</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Lancer l'analyse</span></td>
+          <td>Lance l'analyse du réseau sélectionné</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Arrêter l'analyse</span></td>
+          <td>Interrompt une analyse en cours</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Journaux et rapports</span></td>
+          <td>Ouvre le gestionnaire de journaux avec toutes les analyses enregistrées</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 Mise à jour OUI</span></td>
+          <td>Ouvre la gestion OUI&nbsp;: mettre à jour la base des fabricants et gérer les attributions personnelles</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Qualité de connexion</span></td>
+          <td>Mesure la perte de paquets, le temps de réponse et la gigue vers une cible et vers la passerelle (voir section 4)</td></tr>
+    </table>
+
+    <h3>Boutons de l'en-tête (toujours visibles)</h3>
+    <p>Ces boutons sont toujours visibles en haut à droite de l'en-tête – accessibles quel que soit l'onglet actif&nbsp;:</p>
+    <table>
+      <tr><th>Bouton</th><th>Fonction</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Ouvre les outils de diagnostic. Visible uniquement s'il est activé sous <strong>⚙ Config → Diagnostic</strong> – masqué en utilisation normale. Voir section 11.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Config</span></td>
+          <td>Ouvre les paramètres – à droite se trouve la <strong>taille d'affichage / mise à l'échelle</strong> (90–300 %) pour les écrans HiDPI et UHD.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Aide</span></td>
+          <td>Ouvre cette fenêtre d'aide</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Affiche ou masque l'en-tête – plus de place pour la liste des appareils</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Quitter</span></td>
+          <td>Ferme le programme</td></tr>
+    </table>
+
+    <h3>Onglets</h3>
+    <ul>
+      <li><strong>Scanner LAN</strong> – vue principale avec la liste des appareils</li>
+      <li><strong>Accès Internet</strong> – vérifier la connexion Internet, chemin de connexion LAN, test de débit et informations sur le domaine (voir section 7)</li>
+      <li><strong>Paramètres réseau</strong> – outils réseau et diagnostic</li>
+      <li><strong>Performances LAN et Wi-Fi</strong> – test de débit, état de la connexion et aperçu Wi-Fi</li>
+      <li><strong>📶 Profils Wi-Fi</strong> – afficher les réseaux Wi-Fi enregistrés avec leur mot de passe, les sauvegarder et les importer sur un autre PC&nbsp;; en plus, votre connexion comparée aux normes Wi-Fi, les réseaux Wi-Fi à portée et le rapport Wi-Fi</li>
+      <li><strong>🛡 Pare-feu et ports</strong> – deux colonnes&nbsp;: à gauche, vérifier si un appareil du réseau est joignable et ajouter une exception si nécessaire&nbsp;; à droite, vérifier et ouvrir un port sur ce PC (droits d'administrateur requis)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Lancer une analyse</h2>
+  <div class="box">
+    <h3>Quelle plage dois-je analyser&nbsp;?</h3>
+    <p>Le <strong>champ Réseau</strong> en haut à gauche détermine les adresses vérifiées. C'est une liste déroulante <em>et</em> un champ de saisie&nbsp;: les réseaux détectés automatiquement sont proposés, mais vous pouvez aussi simplement y saisir une plage.</p>
+    <table>
+      <tr><th>Notation</th><th>Exemple</th><th>Signification</th></tr>
+      <tr><td><strong>De–à</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>Toutes les adresses de la première à la dernière – la notation la plus simple</td></tr>
+      <tr><td><strong>Forme courte</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>La même chose, seul le dernier bloc d'adresse est indiqué</td></tr>
+      <tr><td><strong>Réseau entier</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Notation technique (CIDR) pour un réseau complet</td></tr>
+      <tr><td><strong>Appareil unique</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Vérifier uniquement cette adresse</td></tr>
+    </table>
+    <p>Une plage plus petite est nettement plus rapide&nbsp;: au lieu de 254 adresses, seules celles qui vous intéressent vraiment sont vérifiées. Pour les très grandes plages, le programme demande d'abord confirmation afin qu'une analyse ne dure pas des heures par erreur.</p>
+    <div class="warn">
+      <strong>Si une saisie n'est pas acceptée&nbsp;:</strong> le programme explique clairement ce qui ne va pas – par exemple si la deuxième adresse est avant la première. Vérifiez les points et le trait d'union&nbsp;; les espaces ne posent pas de problème.
+    </div>
+
+    <h3>Intensité de l'analyse</h3>
+    <p>L'intensité de l'analyse détermine avec quelle agressivité le réseau est interrogé. Réglable sous <strong>⚙ Config → Intensité de l'analyse</strong>&nbsp;:</p>
+    <table>
+      <tr><th>Mode</th><th>Méthode</th><th>Recommandation</th></tr>
+      <tr><td><strong>Sûr</strong></td>
+          <td>Ping uniquement (ICMP)</td>
+          <td>Pour les réseaux sensibles, les imprimantes anciennes ou si des appareils n'étaient plus joignables après l'analyse</td></tr>
+      <tr><td><strong>Standard</strong></td>
+          <td>Ping + analyse ARP</td>
+          <td>Pour les réseaux domestiques – trouve plus d'appareils que le mode sûr</td></tr>
+      <tr><td><strong>Intensif</strong></td>
+          <td>Ping + analyse ARP en deux passes</td>
+          <td>Pour les environnements professionnels. Peut interrompre brièvement la connexion sur certains routeurs</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Remarque sur les imprimantes&nbsp;:</strong> les imprimantes réseau anciennes (par ex. modèles Brother HL) peuvent réagir à des inondations ARP agressives par une perte de connexion. Dans de tels réseaux, utilisez l'intensité de l'analyse <strong>Sûr</strong>.
+    </div>
+
+    <h3>Recherche complémentaire des appareils manquants</h3>
+    <p>Certains appareils ne répondent pas du premier coup, par exemple en mode d'économie d'énergie ou avec un signal sans fil faible, et certains ne répondent jamais au ping. La recherche complémentaire interroge donc à nouveau de manière ciblée – uniquement les adresses qui n'ont pas encore répondu. Réglage sous <strong>⚙ Config → Recherche complémentaire des appareils manquants</strong> :</p>
+    <ul>
+      <li><strong>Désactivée</strong> – pas de recherche complémentaire.</li>
+      <li><strong>Adresses connues</strong> (par défaut) – les adresses où se trouvait un appareil lors d'analyses précédentes sont interrogées une seconde fois avec plus de patience. Les appareils sans port ouvert bénéficient d'un second essai sur leur interface web. Prend quelques secondes.</li>
+      <li><strong>Toutes les adresses muettes</strong> – en plus, les ports courants de toutes les adresses sans réponse sont interrogés. Apparaissent ainsi aussi les appareils qui ne répondent pas au ping, par exemple les assistants vocaux ou les PC Windows avec un pare-feu fermé. Prend nettement plus de temps.</li>
+    </ul>
+
+    <h3>Analyse des ports</h3>
+    <p>L'analyse des ports facultative (activable dans les paramètres) vérifie les ports de services connus sur chaque appareil et améliore considérablement la détection du système d'exploitation. Elle allonge la durée de l'analyse, mais fournit nettement plus d'informations – notamment les services proposés par un appareil (interface web, SSH, RDP, etc.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Comprendre les résultats de l'analyse</h2>
+  <div class="box">
+    <h3>Colonnes de la liste des appareils</h3>
+    <table>
+      <tr><th>Colonne</th><th>Signification</th></tr>
+      <tr><td>🌐</td><td>Interface web disponible – un clic ouvre le navigateur</td></tr>
+      <tr><td>Adresse IP</td><td>IP actuelle dans le réseau</td></tr>
+      <tr><td>Nom d'hôte</td><td>Nom de l'appareil (résolu via DNS/NetBIOS)</td></tr>
+      <tr><td>Nom de l'appareil</td><td>Nom ou modèle communiqué par l'appareil lui-même (par ex. appareils FRITZ!, imprimantes, téléviseurs, NAS) – ou votre propre nom, comme «&nbsp;Caméra cour&nbsp;»</td></tr>
+      <tr><td>Adresse MAC</td><td>Adresse matérielle de la carte réseau</td></tr>
+      <tr><td>Fabricant</td><td>Déterminé à partir de la base OUI</td></tr>
+      <tr><td>Ports ouverts</td><td>Services trouvés (uniquement avec l'analyse des ports activée)</td></tr>
+      <tr><td>Système d'exploitation</td><td>OS détecté (TTL + nom d'hôte + fabricant + ports)</td></tr>
+      <tr><td>Type d'appareil</td><td>Routeur, imprimante, NAS, caméra, smartphone/tablette, etc. – voir ci-dessous</td></tr>
+    </table>
+
+    <h3>Type d'appareil</h3>
+    <p>Le programme attribue un type à chaque appareil à partir de plusieurs indices&nbsp;: fabricant, nom d'hôte, comportement de réponse et – avec l'analyse des ports activée – les ports ouverts. Les types possibles sont routeur, appareil réseau, PC Windows, serveur, Mac, ordinateur Linux, imprimante, NAS, smartphone/tablette, caméra, appareil domotique, TV/multimédia, téléphone VoIP et machine virtuelle.</p>
+    <p>Si le classement n'est pas clair, le champ reste <strong>vide</strong> – une information manquante vaut mieux qu'une information fausse. Si vous savez vous-même de quel appareil il s'agit, indiquez-le via <strong>clic droit → «&nbsp;Étiqueter l'appareil …&nbsp;»</strong> (section 6). Les informations personnelles ont toujours la priorité et sont marquées <strong>✏</strong> dans la liste.</p>
+
+    <h3>Afficher et masquer des colonnes</h3>
+    <p>Avec <strong>«&nbsp;☰ Colonnes …&nbsp;»</strong> au-dessus de la liste des appareils, vous pouvez masquer et réafficher certaines colonnes. Cela ne concerne que l'affichage&nbsp;: le journal, le CSV et le rapport HTML contiennent toujours toutes les colonnes.</p>
+
+    <h3>Couleurs des lignes</h3>
+    <p>La couleur dépend du type d'appareil. Si aucun type n'est connu, elle dépend du système d'exploitation, du fabricant et des ports ouverts.</p>
+    <table>
+      <tr><th>Couleur</th><th>Signification</th></tr>
+      <tr><td style="background:#CCE5F5">Bleu</td><td>PC Windows ou serveur Windows</td></tr>
+      <tr><td style="background:#B8EDD0">Vert</td><td>Linux, Unix ou systèmes similaires</td></tr>
+      <tr><td style="background:#F5C6C3">Rose</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Violet</td><td>Appareil mobile (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Jaune</td><td>Appareil réseau (routeur, switch, point d'accès)</td></tr>
+      <tr><td style="background:#FDDCB0">Orange</td><td>Imprimante ou multifonction</td></tr>
+      <tr><td style="background:#BEE3F5">Bleu clair</td><td>Appareil NAS</td></tr>
+      <tr><td style="background:#D8E8E8">Gris</td><td>Machine virtuelle</td></tr>
+    </table>
+
+    
+    <h3>Raccourcis clavier</h3>
+    <table>
+      <tr><th>Touche</th><th>Fonction</th></tr>
+      <tr><td><code>F11</code></td><td>Afficher/masquer l'en-tête – plus de place pour la liste des appareils (également disponible en bouton dans l'en-tête)</td></tr>
+      <tr><td><code>Double-clic</code></td><td>Afficher les détails de l'appareil</td></tr>
+      <tr><td><code>Clic droit</code></td><td>Menu contextuel avec actions</td></tr>
+    </table>
+
+    <h3>Actions par double-clic et clic droit</h3>
+    <p>Un <strong>double-clic</strong> sur un appareil ouvre la fenêtre de détails avec toutes les informations, le détail des ports et des actions rapides.</p>
+    <p>Le <strong>clic droit</strong> ouvre le menu contextuel avec les options suivantes&nbsp;:</p>
+    <ul>
+      <li>Afficher les détails</li>
+      <li>Ouvrir l'interface web (si disponible)</li>
+      <li>Lancer le moniteur ping (ping continu avec historique)</li>
+      <li>Mesurer la qualité de connexion …</li>
+      <li>Envoyer Wake-on-LAN</li>
+      <li>Copier l'IP ou la MAC</li>
+      <li>Réanalyser l'appareil</li>
+      <li><strong>Étiqueter l'appareil …</strong> – définir durablement le nom, le fabricant et le type de l'appareil (section 6)</li>
+    </ul>
+
+    <h3>📶 Qualité de connexion</h3>
+    <p>Si la téléphonie ou la vidéo saccade ou si un appareil n'est joignable que par moments, cette mesure montre si le problème se situe dans votre propre réseau ou au-delà. Elle s'ouvre via le bouton <span class="btn-demo" style="background:#16A085;">📶 Qualité de connexion</span> de l'onglet Scanner LAN, par un clic droit sur un appareil ou dans les détails de l'appareil.</p>
+    <ol>
+      <li><strong>Choisir la cible</strong> – Internet (8.8.8.8), la passerelle ou un appareil de la dernière analyse.</li>
+      <li><strong>Choisir la durée</strong> – 30, 60 ou 120 secondes.</li>
+      <li><span class="btn-demo btn-green">▶ Lancer la mesure</span> – la cible et la passerelle sont mesurées simultanément.</li>
+    </ol>
+    <p>Pour les deux trajets, le résultat indique la perte de paquets, le temps de réponse et sa gigue, et les évalue en deux parties&nbsp;: la <strong>connexion</strong> (d'après la perte de paquets) et l'aptitude à la <strong>téléphonie et la vidéo</strong> (d'après le temps de réponse et la gigue). Si les valeurs vers la passerelle sont bonnes et celles vers la cible mauvaises, la cause se situe derrière le routeur. <strong>📋 Copier le résultat</strong> permet de le transmettre.</p>
+    <div class="info">
+      <strong>ℹ Caméras et appareils similaires&nbsp;:</strong> de nombreux appareils ne répondent au ping qu'accessoirement. Une gigue élevée reflète alors souvent la charge de l'appareil et non la qualité du réseau. Pour ces appareils, c'est la perte de paquets qui compte.
+    </div>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Paramètres</h2>
+  <div class="box">
+    <p>Les paramètres s'ouvrent via <span class="btn-demo btn-orange">⚙ Config</span>. Tous les réglages sont enregistrés automatiquement dans le fichier <code>S-IT-LanScanner.ini</code>.</p>
+
+    <h3>Options d'analyse</h3>
+    <ul>
+      <li><strong>Analyse des ports</strong> – trouve les services et améliore la détection de l'OS (plus lent)</li>
+      <li><strong>Analyse ARP</strong> – trouve plus d'appareils grâce aux diffusions ARP</li>
+      <li><strong>Détection de l'OS</strong> – analyse le TTL, le nom d'hôte et le fabricant</li>
+    </ul>
+
+    <h3>Intensité de l'analyse</h3>
+    <p>Sûr / Standard / Intensif – voir section 3.</p>
+
+    <h3>Langue</h3>
+    <p>Sous <strong>⚙ Config → Sprache / Language</strong>, vous choisissez la langue de l'interface du programme : allemand, anglais, néerlandais, espagnol, français, italien, polonais, croate ou tchèque. La nouvelle langue s'applique après un redémarrage du programme ; le programme le propose lors de l'enregistrement. L'aide s'ouvre ensuite elle aussi dans la langue choisie.</p>
+
+    <h3>Apparence</h3>
+    <ul>
+      <li><strong>Discret</strong> – tons pastel calmes, pour un usage professionnel</li>
+      <li><strong>Contrasté</strong> – couleurs plus vives, plus faciles à distinguer</li>
+      <li><strong>🌙 Mode sombre</strong> – arrière-plans sombres et texte clair dans toutes les fenêtres du programme, plus agréable lors d'un long travail à l'écran. Les lignes de la liste des appareils gardent leur couleur selon le type d'appareil, en plus foncé. Prend effet après un redémarrage, que le programme propose lors de l'enregistrement. Les boîtes de message de Windows et les rapports dans le navigateur restent clairs.</li>
+      <li><strong>Taille de police</strong> – Petite (8 pt), Normale (9 pt), Grande (11 pt). Pour les écrans 4K ou les hautes résolutions, «&nbsp;Grande&nbsp;» est recommandée</li>
+    </ul>
+
+    <h3>Rapport HTML</h3>
+    <p>Si <strong>«&nbsp;Ouvrir automatiquement après l'analyse&nbsp;»</strong> est activé pour le rapport HTML, le rapport d'analyse s'ouvre automatiquement dans le navigateur par défaut après chaque analyse. Cette option peut être désactivée ici.</p>
+
+    <h3>Dossier des journaux</h3>
+    <p>Vous définissez ici où sont enregistrés les journaux d'analyse et les rapports HTML. Par défaut&nbsp;: <code>Logs</code> à côté de <code>sit-lsc-start.exe</code></p>
+
+    <h3>Attente pour les lecteurs réseau</h3>
+    <p>S'applique au test continu LAN avec une cible sur le réseau (<code>\\NAS\partage</code> ou un lecteur réseau connecté comme <code>U:</code>). Un NAS dont les disques sont en veille a besoin de quelques secondes après la première requête avant que le partage soit accessible. Le programme réessaie donc toutes les 3 secondes jusqu'au délai défini et ne signale qu'ensuite que la cible n'est pas joignable. Vous pouvez choisir 0, 30, 60 ou 120 secondes&nbsp;; la valeur par défaut est 60.</p>
+
+    <h3>Taille d'affichage / mise à l'échelle</h3>
+    <p>Met à l'échelle l'ensemble de l'interface. Niveaux disponibles&nbsp;: <strong>90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %</strong>. Le niveau choisi détermine seul la taille – la mise à l'échelle de Windows ne s'y ajoute pas. Le niveau <strong>90 %</strong> est compact et laisse plus de place aux tableaux. Le bouton ⓘ à côté du titre indique quel niveau convient à quel usage. Une modification prend effet après un redémarrage, proposé lors de l'enregistrement.</p>
+    <div class="info">
+      <strong>ℹ Rapport avec la mise à l'échelle de Windows&nbsp;:</strong> tant qu'un niveau est choisi ici, c'est lui qui détermine la taille d'affichage – quel que soit le réglage de Windows. Si aucun niveau n'est choisi, le programme suit la mise à l'échelle de Windows.
+    </div>
+
+    <h3>Démarrage du programme</h3>
+    <p>La case <strong>«&nbsp;🛡 Démarrer en tant qu'administrateur&nbsp;»</strong> (cochée <strong>par défaut</strong>) demande les droits d'administrateur dès le démarrage du programme. Le scanner en a besoin pour la réparation réseau, le cache ARP et l'onglet pare-feu. Windows affiche alors sa demande au démarrage (Contrôle de compte d'utilisateur, UAC). Si vous travaillez volontairement sans droits d'administrateur, décochez la case – la demande disparaît, et les fonctions citées signalent elles-mêmes, le cas échéant, qu'elles ont besoin de droits. En bas à gauche de la barre d'état, un indicateur permanent montre l'état réel&nbsp;: <span class="btn-demo btn-green">🛡 Admin</span> ou <span class="btn-demo" style="background:#95A5A6;">🛡 pas admin</span>.</p>
+
+    <h3>Fenêtre</h3>
+    <p>Avec <strong>«&nbsp;🗖 Mémoriser la taille de la fenêtre&nbsp;»</strong>, le programme mémorise à la fermeture la taille et la position de la fenêtre principale – y compris l'écran sur lequel elle se trouvait – et si elle était agrandie. Au démarrage suivant, elle s'ouvre exactement de la même façon. Si cet écran n'est plus branché, la fenêtre s'ouvre sur l'écran principal. La taille enregistrée s'applique par niveau de mise à l'échelle&nbsp;: après un changement de mise à l'échelle, la fenêtre démarre une fois en taille standard puis mémorise à nouveau la taille – ainsi, taille et place nécessaire concordent toujours.</p>
+
+    <div class="info">
+      <strong>ℹ Fenêtre Config&nbsp;:</strong> avec une mise à l'échelle élevée, la fenêtre des paramètres devient plus grande que l'écran. Elle peut donc défiler dans les deux sens (molette verticalement, <code>Maj</code>+molette horizontalement)&nbsp;; les boutons <strong>Enregistrer</strong> et <strong>Annuler</strong> restent toujours visibles en bas.
+    </div>
+
+    <h3>Diagnostic</h3>
+    <p>La case <strong>«&nbsp;🔧 Afficher les outils DIAG&nbsp;»</strong> affiche en haut de l'en-tête le bouton <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Par défaut, elle est <strong>décochée</strong> – le diagnostic n'est pas nécessaire en utilisation normale. Plus de détails à la section 11.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Informations personnelles sur les appareils (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>Tous les appareils ne peuvent pas être classés automatiquement avec certitude – un nouvel appareil manque encore dans la base des fabricants, une caméra s'annonce comme un ordinateur Linux, ou, avec plusieurs appareils identiques, on veut voir lequel se trouve où. Pour cela, vous saisissez vos propres informations. Elles sont enregistrées dans le fichier <strong>S-IT-Custom.ini</strong> et s'appliquent durablement.</p>
+
+    <div class="info">
+      <strong>Important&nbsp;:</strong> les informations personnelles ont <strong>toujours la priorité</strong> sur la détection automatique. Le fichier S-IT-Custom.ini n'est <strong>jamais</strong> écrasé par les mises à jour OUI.
+    </div>
+
+    <h3>Méthode 1&nbsp;: clic droit → «&nbsp;Étiqueter l'appareil …&nbsp;»</h3>
+    <p>C'est la méthode la plus simple&nbsp;:</p>
+    <ol>
+      <li>Lancer une analyse</li>
+      <li><strong>Cliquer avec le bouton droit</strong> sur l'appareil dans la liste</li>
+      <li>Choisir <strong>«&nbsp;✏ Étiqueter l'appareil …&nbsp;»</strong></li>
+      <li>Remplir les champs souhaités&nbsp;:
+          <ul>
+            <li><strong>Nom de l'appareil</strong> – s'applique à cet appareil, par ex. emplacement ou pièce («&nbsp;Caméra cour&nbsp;», «&nbsp;Imprimante bureau 2&nbsp;»)</li>
+            <li><strong>Fabricant</strong> – s'applique à tous les appareils ayant le même préfixe MAC</li>
+            <li><strong>Type d'appareil</strong> – choisir dans la liste ou saisir librement</li>
+          </ul>
+      </li>
+      <li>Définir à quoi s'applique le type d'appareil&nbsp;:
+          <ul>
+            <li><strong>uniquement cet appareil</strong> – via l'adresse MAC (sans MAC, via l'adresse IP)</li>
+            <li><strong>tous les appareils avec ce préfixe MAC</strong> – par ex. toutes les caméras d'un fabricant</li>
+            <li><strong>tous les appareils avec cette partie de nom</strong> – par ex. tous les appareils dont le nom d'hôte contient «&nbsp;SmartPlug&nbsp;»</li>
+          </ul>
+      </li>
+      <li>Enregistrer – l'information apparaît immédiatement dans la liste.</li>
+    </ol>
+    <p>Un champ vide ou <strong>«&nbsp;– déterminer automatiquement –&nbsp;»</strong> supprime à nouveau l'information personnelle&nbsp;; le classement automatique s'applique alors.</p>
+
+    <h3>Méthode 2&nbsp;: fenêtre de gestion OUI</h3>
+    <p>Via <span class="btn-demo btn-dark">🔄 Mise à jour OUI</span> → onglet <strong>«&nbsp;✏ Attributions personnelles&nbsp;»</strong>, vous voyez toutes les entrées dans une vue d'ensemble et pouvez les ajouter, modifier et supprimer. Les sous-onglets&nbsp;:</p>
+    <ul>
+      <li><strong>OUI → fabricant</strong> – préfixe MAC (6 caractères hexadécimaux) → nom du fabricant</li>
+      <li><strong>MAC → nom</strong> – adresse MAC → nom personnel de l'appareil</li>
+      <li><strong>MAC → type</strong> – adresse MAC → type d'appareil (un seul appareil)</li>
+      <li><strong>IP → type</strong> – adresse IP → type d'appareil (appareil sans adresse MAC)</li>
+      <li><strong>Nom d'hôte → type</strong> – partie de nom → type d'appareil (tous les appareils avec cette partie de nom)</li>
+      <li><strong>Préfixe MAC → type</strong> – préfixe MAC → type d'appareil (tous les appareils d'un fabricant)</li>
+    </ul>
+
+    <h3>Format du fichier S-IT-Custom.ini</h3>
+    <p>Le fichier se trouve dans le dossier <code>Config</code> à côté de <code>sit-lsc-start.exe</code> et peut aussi être modifié avec un éditeur de texte. Les adresses MAC s'écrivent avec des traits d'union. Les noms de section et les types d'appareil y figurent en allemand, tels que le programme les enregistre (par ex. Kamera = caméra)&nbsp;; le programme affiche les types d'appareil dans la langue choisie.</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – attributions personnelles prioritaires</span><br>
+<span class="comment">; N'est PAS écrasé par la mise à jour OUI.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; préfixe MAC (6 hex) = fabricant</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; adresse MAC = nom personnel de l'appareil</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Caméra cour</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; adresse MAC = type d'appareil (cet appareil)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; adresse IP = type d'appareil (appareil sans MAC)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; partie de nom = type d'appareil (tous les appareils avec cette partie de nom)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; préfixe MAC (6 hex) = type d'appareil (tous les appareils d'un fabricant)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Ordre pour le type d'appareil&nbsp;:</strong> appareil unique (MAC ou IP) &gt; partie de nom &gt; préfixe MAC &gt; classement automatique
+    </div>
+    <div class="info">
+      <strong>ℹ Anciennes entrées&nbsp;:</strong> jusqu'à la version 4.0, les sections <code>[IP]</code> et <code>[Hostname]</code> définissaient le système d'exploitation. Elles déterminent désormais le type d'appareil&nbsp;; les entrées existantes restent valables et apparaissent dans la colonne «&nbsp;Type d'appareil&nbsp;».
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Onglet 2&nbsp;: Accès Internet</h2>
+  <div class="box">
+    <p>En haut de l'onglet, vous choisissez l'une des quatre vérifications&nbsp;:</p>
+    <table>
+      <tr><th>Carte</th><th>À quoi sert-elle</th></tr>
+      <tr><td><strong>🌐 Accès Internet</strong></td>
+          <td>Vérifie si ce PC accède à Internet&nbsp;: DNS, routage, TCP 443, HTTPS, IPv6 et navigateur.</td></tr>
+      <tr><td><strong>🔗 Chemin de connexion LAN</strong></td>
+          <td>Vérifie le chemin du PC via la passerelle vers une cible du réseau local, par ex. via CPL vers le NAS ou le routeur.</td></tr>
+      <tr><td><strong>📶 Test de débit</strong></td>
+          <td>Mesure le téléchargement, l'envoi et le ping de la connexion Internet.</td></tr>
+      <tr><td><strong>🏷 Informations sur le domaine</strong></td>
+          <td>Indique chez quel fournisseur sont gérés les enregistrements DNS d'un domaine, qui reçoit ses e-mails et où est hébergé le site web.</td></tr>
+    </table>
+
+    <h3>🏷 Informations sur le domaine</h3>
+    <p>Cas typique&nbsp;: un prestataire doit modifier un enregistrement du domaine de l'entreprise, par exemple pour un nouveau serveur de messagerie ou une validation auprès d'un service cloud, et plus personne ne sait où le domaine est géré. Les informations sur le domaine l'indiquent en une seule requête. Aucun droit d'administrateur n'est nécessaire, mais une connexion Internet l'est.</p>
+
+    <h4>Utilisation</h4>
+    <ol>
+      <li>Choisir la carte <strong>🏷 Informations sur le domaine</strong>.</li>
+      <li>Saisir le domaine, par ex. <code>entreprise.fr</code>. Une adresse web (<code>https://www.entreprise.fr/contact</code>) ou une adresse e-mail (<code>info@entreprise.fr</code>) fonctionne aussi, de même que les domaines avec des caractères accentués.</li>
+      <li>Cliquer sur <span class="btn-demo btn-green">▶ Vérifier</span> ou appuyer sur Entrée.</li>
+    </ol>
+    <p>Si une sous-adresse saisie comme <code>boutique.entreprise.fr</code> n'a pas ses propres serveurs de noms, le programme vérifie le domaine parent <code>entreprise.fr</code> et l'indique dans la ligne au-dessus du résultat.</p>
+
+    <h4>Résultats</h4>
+    <table>
+      <tr><th>Ligne</th><th>Signification</th></tr>
+      <tr><td><strong>Serveurs de noms</strong></td>
+          <td>Les serveurs responsables du domaine dans le DNS.</td></tr>
+      <tr><td><strong>DNS géré chez</strong></td>
+          <td>Le fournisseur de ces serveurs de noms. C'est là que l'on modifie les enregistrements DNS du domaine.</td></tr>
+      <tr><td><strong>Serveurs de messagerie</strong></td>
+          <td>Les serveurs qui reçoivent les e-mails du domaine, avec leur priorité&nbsp;: le serveur au plus petit numéro est essayé en premier. S'il est indiqué «&nbsp;aucun enregistré&nbsp;», le domaine ne reçoit pas d'e-mails.</td></tr>
+      <tr><td><strong>E-mail chez</strong></td>
+          <td>Le fournisseur du serveur de messagerie. Si «&nbsp;service de filtrage&nbsp;» est indiqué, un filtre antispam et antivirus reçoit les e-mails et les transfère à la boîte aux lettres proprement dite.</td></tr>
+      <tr><td><strong>Serveur web</strong></td>
+          <td>L'adresse du site web (<code>www.entreprise.fr</code>, sinon <code>entreprise.fr</code>) et ses adresses IP.</td></tr>
+      <tr><td><strong>Site web chez</strong></td>
+          <td>Le fournisseur qui héberge le site web.</td></tr>
+    </table>
+    <p>Sous chaque fournisseur figurent en gris l'adresse du serveur, son nom d'hôte, le nom de son réseau et sa plage d'adresses.</p>
+
+    <h4>D'où viennent les informations</h4>
+    <ul>
+      <li><strong>Fournisseur&nbsp;:</strong> le programme connaît les serveurs de noms et de messagerie des fournisseurs courants, par ex. IONOS, Strato, Cloudflare, Microsoft 365 et Google Workspace. Si un serveur n'y figure pas, il indique l'exploitant de son réseau selon le registre compétent, par ex. RIPE pour l'Europe ou ARIN pour l'Amérique du Nord. Entre parenthèses figure alors «&nbsp;opérateur réseau selon RIPE&nbsp;».</li>
+      <li><strong>Pays&nbsp;:</strong> le pays dans lequel le réseau du serveur est enregistré auprès du registre. C'est généralement l'emplacement du centre de données, mais pas toujours&nbsp;: les grandes entreprises enregistrent souvent leurs réseaux à l'adresse de leur siège.</li>
+      <li><strong>«&nbsp;non attribué&nbsp;»&nbsp;:</strong> le serveur ne figure pas dans la liste, et le registre n'était pas joignable ou n'a indiqué aucun exploitant.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Serveurs de noms et enregistrement&nbsp;:</strong> l'endroit où sont gérés les enregistrements DNS est généralement aussi le fournisseur auprès duquel le domaine est enregistré. Avec des services DNS comme Cloudflare, le domaine peut être enregistré chez un autre fournisseur.
+    </div>
+    <div class="tip">
+      <strong>Conseil&nbsp;:</strong> <span class="btn-demo btn-blue">📋 Copier le résultat</span> place le résultat sous forme de texte avec la date et l'heure dans le presse-papiers, par ex. pour un e-mail au client ou au prestataire.
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="lan-performance">8. Onglet 4&nbsp;: Performances LAN et Wi-Fi</h2>
+  <div class="box">
+    <h3>Test de débit LAN</h3>
+    <p>Mesure la vitesse réelle d'écriture et de lecture vers un partage réseau – sans logiciel serveur de l'autre côté.</p>
+
+    <h4>Prérequis</h4>
+    <ul>
+      <li>Un partage réseau accessible (par ex. <code>\\nom-NAS\Donnees</code>) ou un lecteur réseau connecté (par ex. <code>U:</code>)</li>
+      <li>Droits d'écriture sur le partage</li>
+    </ul>
+    <p>Si le NAS est en veille, le programme attend jusqu'au <strong>délai d'attente pour les lecteurs réseau</strong> défini (section 5) avant de signaler que la cible n'est pas joignable. Si Windows indique un lecteur réseau comme «&nbsp;non disponible&nbsp;» (croix rouge dans l'Explorateur), le programme le reconnecte, comme le fait l'Explorateur lors d'un clic.</p>
+
+    <div class="warn">
+      <strong>Important&nbsp;: le nom du serveur seul ne suffit pas.</strong><br> <code>\\nom-NAS</code> n'affiche dans l'Explorateur que la <em>liste</em> des partages – aucun fichier ne peut y être créé, le test échoue. Il faut indiquer le partage lui-même, par ex. <code>\\nom-NAS\Donnees</code>. Le plus simple est de le sélectionner via <strong>📂</strong>&nbsp;: le chemin est alors toujours correct. Le bouton <strong>ⓘ</strong> à côté du champ de saisie l'explique aussi.
+    </div>
+
+    <p>Un <strong>dossier local</strong> (par ex. <code>C:\Temp</code>) est également autorisé comme cible – il montre à titre de comparaison la rapidité du PC sans réseau.</p>
+
+    <h4>Utilisation</h4>
+    <ol>
+      <li>Saisir la cible ou la sélectionner via <strong>📂</strong>. Le chemin est vérifié <strong>avant</strong> le démarrage&nbsp;; si quelque chose ne va pas, un message explique précisément ce qui manque.</li>
+      <li>Choisir la taille de bloc (1–64 Mo par cycle de mesure)</li>
+      <li><span class="btn-demo btn-green">▶ Lancer le test continu</span> – le test s'exécute en continu et met à jour la courbe en direct</li>
+      <li><span class="btn-demo btn-red">⏹ Arrêter</span> – termine le test</li>
+    </ol>
+    <p>Si un autre onglet est ouvert pendant le test, le programme demande s'il faut arrêter le test. Avec <strong>Non</strong>, l'onglet Performances LAN et Wi-Fi reste ouvert et le test continue. À la fermeture du programme, le test est arrêté et le fichier de test supprimé.</p>
+
+    <h4>Résultats</h4>
+    <ul>
+      <li><strong>Ligne bleue</strong> – vitesse d'écriture</li>
+      <li><strong>Ligne verte</strong> – vitesse de lecture</li>
+      <li>Les vignettes affichent toujours la valeur mesurée actuelle</li>
+      <li>Le journal de mesure liste chaque cycle</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Lecteurs locaux&nbsp;:</strong> sur les lecteurs locaux (par ex. C:\, D:\), les valeurs mesurées peuvent être fortement faussées par le <strong>cache du système de fichiers de Windows</strong> – le cache signale «&nbsp;terminé&nbsp;» avant que les données soient réellement sur le disque. Des valeurs de plusieurs milliers de Mbit/s sur un disque dur normal ne sont donc pas un résultat réaliste. Pour des mesures significatives, utilisez toujours un <strong>chemin réseau</strong> (chemin UNC comme <code>\\Serveur\Partage</code> ou un lecteur réseau).
+    </div>
+
+    <div class="tip">
+      <strong>Valeurs indicatives typiques&nbsp;:</strong><br> LAN Gigabit&nbsp;: 400–900 Mbit/s &nbsp;|&nbsp; LAN 100 Mbit&nbsp;: 60–90 Mbit/s &nbsp;|&nbsp; Wi-Fi (802.11ac)&nbsp;: 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Les petites tailles de bloc (1–4 Mo) montrent plus de fluctuations, car la surcharge et la latence pèsent davantage. Pour des valeurs stables, 16–64 Mo sont recommandés.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>Vignettes Wi-Fi et LAN</h3>
+    <p>À droite de l'onglet se trouvent côte à côte la <strong>vignette Wi-Fi</strong> et la <strong>vignette LAN</strong>, avec en dessous l'adresse IPv4 et la passerelle. Les deux vignettes ont la même structure&nbsp;: en haut l'état, en dessous l'adaptateur avec le nom sous lequel il apparaît aussi dans le Gestionnaire de périphériques.</p>
+    <p>Lorsqu'une connexion existe, la vignette Wi-Fi affiche&nbsp;:</p>
+    <ul>
+      <li>Nom du réseau et état de la connexion</li>
+      <li>Force du signal sous forme de barre colorée (vert bon, jaune moyen, rouge faible)</li>
+      <li>Canal, bande de fréquences et norme Wi-Fi (par ex. Wi-Fi 6)</li>
+      <li><strong>⬆ Débit de liaison</strong> – le débit que Windows indique pour la connexion</li>
+      <li><strong>⬇ Débit de réception</strong> – uniquement pendant le test continu LAN (voir ci-dessous)</li>
+    </ul>
+    <p>En l'absence de connexion, la vignette en indique la raison&nbsp;: <strong>Adaptateur désactivé</strong> (désactivé dans le Gestionnaire de périphériques ou dans les Connexions réseau), <strong>Non connecté</strong> ou <strong>Pas d'adaptateur Wi-Fi</strong>. La vignette LAN distingue en plus <strong>Aucun câble branché</strong>.</p>
+    <div class="info">
+      <strong>ℹ Débit de réception uniquement pendant le test continu&nbsp;:</strong> le débit de réception indiqué par Windows n'a de sens que lorsque des données circulent. Sans trafic, il retombe à des valeurs basses, même si la connexion est bonne. La vignette ne l'affiche donc que pendant le test continu LAN – le débit de réception et les débits d'écriture et de lecture mesurés peuvent alors être comparés directement. La vignette est mise à jour immédiatement au démarrage et à l'arrêt du test.
+    </div>
+    <div class="info">
+      <strong>ℹ Accès à la localisation&nbsp;:</strong> Windows 11 ne fournit la force du signal, le canal et la norme Wi-Fi que si les applications de bureau peuvent accéder à la localisation. Sans cette autorisation, la vignette affiche un message avec le bouton <strong>«&nbsp;→ Ouvrir les paramètres de localisation&nbsp;»</strong>. Le programme prend alors le nom du réseau dans la liste des réseaux de Windows et signale qu'il peut différer du nom du Wi-Fi (par ex. «&nbsp;Réseau maison 2&nbsp;»).
+    </div>
+    <div class="info">
+      <strong>ℹ Actualisation&nbsp;:</strong> les deux vignettes sont actualisées toutes les 10 secondes&nbsp;; un passage du LAN au Wi-Fi ou une clé USB Wi-Fi branchée ultérieurement est détecté sans redémarrage. <strong>🔄 Actualiser</strong> le fait immédiatement.
+    </div>
+  </div>
+
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Onglet 5&nbsp;: Profils Wi-Fi</h2>
+  <div class="box">
+    <p>Cet onglet affiche les réseaux Wi-Fi enregistrés sur ce PC avec leur mot de passe et les transfère sur un autre PC – par exemple lors du passage à un nouvel ordinateur. À droite, vous voyez la qualité de votre connexion Wi-Fi comparée aux normes Wi-Fi et les réseaux Wi-Fi à portée.</p>
+
+    <div class="warn">
+      <strong>⚠ Droits d'administrateur requis&nbsp;:</strong> la lecture, la sauvegarde et l'importation des profils ne fonctionnent qu'avec des droits d'administrateur. Si le programme s'exécute sans, un message s'affiche en haut de l'onglet et les boutons concernés sont verrouillés.
+    </div>
+
+    <h3>Colonne de gauche&nbsp;: boutons et profils enregistrés</h3>
+    <table>
+      <tr><th>Bouton</th><th>Fonction</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  Lire les mots de passe Wi-Fi</span></td>
+          <td>Lit tous les profils Wi-Fi enregistrés avec leur mot de passe et remplit la liste en dessous.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Afficher le journal</span></td>
+          <td>Ouvre le journal de la lecture. Les mots de passe n'y figurent pas. Il se trouve dans le dossier des journaux (<code>WLAN-Profile_&lt;date&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Afficher le mot de passe</span></td>
+          <td>Affiche le mot de passe du réseau sélectionné dans la liste – avec copie et impression. Un double-clic sur le réseau fait de même.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Sauvegarder les profils</span></td>
+          <td>Sauvegarde tous les profils avec leur mot de passe dans un dossier, par ex. sur une clé USB. Un sous-dossier <code>WLAN-Profile_&lt;nom du PC&gt;_&lt;date&gt;</code> y est créé.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Importer les profils</span></td>
+          <td>Importe une telle sauvegarde sur ce PC, pour tous les utilisateurs. Ensuite, la suppression de la sauvegarde est proposée.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  Rapport Wi-Fi (HTML)</span></td>
+          <td>Crée le rapport Wi-Fi (voir ci-dessous).</td></tr>
+    </table>
+    <p>La liste <strong>«&nbsp;Profils enregistrés&nbsp;»</strong> indique l'état de chaque réseau&nbsp;: <strong>connecté</strong>, <strong>à portée</strong> ou <strong>hors de portée</strong>. Les réseaux sans mot de passe sont signalés comme tels.</p>
+
+    <div class="danger">
+      <strong>La sauvegarde contient les mots de passe en clair.</strong> Conservez le dossier ou la clé USB en lieu sûr et supprimez la sauvegarde une fois importée – le programme le propose après ⑤. Une page de mot de passe imprimée est supprimée en tant que fichier au bout d'une minute et à la fermeture du programme.
+    </div>
+
+    <h3>Passage à un nouveau PC</h3>
+    <ol>
+      <li>Sur l'ancien PC&nbsp;: <strong>④ Sauvegarder les profils</strong> et choisir une clé USB comme destination.</li>
+      <li>Sur le nouveau PC&nbsp;: lancer LanScanner, onglet Profils Wi-Fi, <strong>⑤ Importer les profils</strong> et choisir le dossier <code>WLAN-Profile_…</code> sur la clé.</li>
+      <li>Répondre <strong>Oui</strong> à la question demandant si la sauvegarde doit être supprimée.</li>
+    </ol>
+    <p>Les réseaux importés apparaissent ensuite dans la liste «&nbsp;Profils enregistrés&nbsp;».</p>
+
+    <h3>En haut à droite&nbsp;: votre connexion comparée aux normes Wi-Fi</h3>
+    <p>Le graphique montre sous forme de <strong>barres grises</strong> les débits de liaison habituels des PC et portables du Wi-Fi 4 (802.11n) au Wi-Fi 7 (802.11be), chacun avec sa bande. La <strong>barre colorée</strong> est votre débit de liaison selon Windows, colorée selon la force du signal (vert bon, jaune moyen, rouge faible). Si elle se situe en bas de sa norme, il vaut la peine de vérifier la distance au routeur, le canal et la bande.</p>
+    <div class="info">
+      <strong>ℹ Débit de liaison et débit utile&nbsp;:</strong> le débit de liaison est le débit brut de la liaison radio. En pratique, environ la moitié à deux tiers en est réellement transférée. Le débit utile réel est mesuré par le test continu LAN de l'onglet 4.
+    </div>
+
+    <h3>En bas à droite&nbsp;: réseaux Wi-Fi à portée</h3>
+    <p>Le tableau liste les réseaux Wi-Fi que l'adaptateur reçoit actuellement, avec signal, nom du réseau, bande et canal, norme, chiffrement et l'indication si le réseau est enregistré sur ce PC. Pour les réseaux enregistrés, le lien <strong>«&nbsp;Afficher le mot de passe&nbsp;»</strong> affiche directement le mot de passe. À la première ouverture de l'onglet, l'environnement est analysé une fois&nbsp;; <strong>«&nbsp;Rechercher les réseaux&nbsp;»</strong> relance la recherche.</p>
+    <div class="info">
+      <strong>ℹ Accès à la localisation&nbsp;:</strong> Windows 11 ne fournit les réseaux Wi-Fi à portée, la force du signal et la norme Wi-Fi que si les applications de bureau peuvent accéder à la localisation. Sans cette autorisation, un message avec le bouton <strong>«&nbsp;→ Ouvrir les paramètres de localisation&nbsp;»</strong> remplace le tableau.
+    </div>
+
+    <h3>Rapport Wi-Fi</h3>
+    <p>Le bouton <strong>⑥</strong> résume l'état dans un fichier HTML en couleur – pratique à transmettre, pour le dossier client ou pour comparer avant et après&nbsp;:</p>
+    <ul>
+      <li>Connexion Wi-Fi avec adaptateur, signal, bande, canal et débit de liaison</li>
+      <li>Connexion LAN</li>
+      <li>Adresse IPv4 et passerelle</li>
+      <li>Position de votre connexion parmi les normes Wi-Fi</li>
+      <li>Réseaux Wi-Fi à portée</li>
+      <li>Profils enregistrés</li>
+    </ul>
+    <p><strong>Les mots de passe ne figurent pas dans le rapport.</strong> Il est enregistré dans le dossier des journaux sous <code>WLAN-Bericht_&lt;nom du PC&gt;_&lt;date&gt;.html</code> et ouvert dans le navigateur.</p>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">10. Onglet 6&nbsp;: Pare-feu et ports</h2>
+  <div class="box">
+    <p>Cet onglet traite deux cas distincts, c'est pourquoi il est divisé en deux colonnes. Les deux accèdent au même pare-feu Windows, mais le regardent dans des sens opposés&nbsp;:</p>
+    <ul>
+      <li><strong>À gauche – «&nbsp;Atteindre un appareil du réseau&nbsp;»&nbsp;:</strong> un autre appareil du LAN (NAS, imprimante, USB de la FritzBox) n'est pas joignable depuis ce PC.</li>
+      <li><strong>À droite – «&nbsp;Port sur ce PC&nbsp;»&nbsp;:</strong> un programme de ce PC a besoin d'un port précis auquel d'autres accèdent depuis le réseau (gestion commerciale, système de caisse, base de données, maintenance à distance).</li>
+    </ul>
+    <p>Sous les deux colonnes, la <strong>liste des règles</strong> commune occupe toute la largeur&nbsp;; elle affiche les entrées des deux colonnes.</p>
+
+    <div class="warn">
+      <strong>⚠ Droits d'administrateur requis&nbsp;:</strong> lire et définir des règles de pare-feu n'est possible qu'avec des droits d'administrateur. Le plus simple est de laisser <strong>«&nbsp;Démarrer en tant qu'administrateur&nbsp;»</strong> activé (voir section 5, activé par défaut). Si le programme s'exécute sans droits d'administrateur, l'onglet le signale lors de la vérification ou de l'ajout.
+    </div>
+
+    <h3>Colonne de gauche&nbsp;: atteindre un appareil du réseau</h3>
+    <p>Utilisez-la lorsqu'un appareil est visible dans l'analyse (ou devrait l'être) mais n'est pas joignable – pas de ping, pas de partage de fichiers. Souvent, c'est le pare-feu Windows de ce PC qui bloque la connexion. Cette colonne est reprise de l'outil autonome <strong>S-IT-FWModify</strong>.</p>
+    <ol>
+      <li><strong>Saisir l'adresse IP ou le sous-réseau</strong> – une seule adresse (par ex. <code>192.168.178.60</code>) ou un sous-réseau entier (<code>192.168.178.0/24</code>). Les cibles récemment utilisées sont disponibles dans la liste déroulante.</li>
+      <li><strong>Choisir l'étendue de l'exception&nbsp;:</strong>
+          <ul>
+            <li><strong>Tous les ports</strong> – pour un seul appareil connu</li>
+            <li><strong>Partage de fichiers seulement</strong> – TCP 445, 139 et UDP 137, 138 (SMB)</li>
+            <li><strong>Partage + interface web</strong> – en plus TCP 5000, 5001 (par ex. pour les interfaces de NAS)</li>
+          </ul>
+      </li>
+      <li><strong>Vérifier</strong> – le résultat s'affiche en cinq lignes (voir ci-dessous).</li>
+      <li><strong>Ajouter l'exception</strong> – crée l'exception de pare-feu appropriée.</li>
+    </ol>
+    <p>Les cinq lignes de vérification&nbsp;:</p>
+    <ul>
+      <li><strong>L'appareil répond au ping</strong> – joignabilité de base sur le réseau</li>
+      <li><strong>Ports ouverts sur la cible</strong> – que propose l'appareil, le partage de fichiers en fait-il partie&nbsp;?</li>
+      <li><strong>Réglage de base du pare-feu</strong> – une exception peut-elle avoir le moindre effet ici&nbsp;?</li>
+      <li><strong>Profil réseau de ce PC</strong> – Privé = partages possibles, Public = tout bloqué</li>
+      <li><strong>Règle S-IT pour cette cible</strong> – existe-t-il déjà une exception créée par cet outil&nbsp;?</li>
+    </ul>
+
+    <h3>Colonne de droite&nbsp;: port sur ce PC</h3>
+    <p>Utilisez-la dans le cas inverse, lorsqu'un programme s'exécute <em>sur ce PC</em> et doit ouvrir un port précis pour que d'autres ordinateurs du réseau y accèdent – par exemple une gestion commerciale, un système de caisse ou une base de données qui propose son service sur un port fixe. La règle s'applique <strong>en entrée</strong> et <strong>uniquement depuis le réseau local</strong>.</p>
+    <ol>
+      <li><strong>Choisir un modèle</strong> (facultatif) – les cas courants sont prédéfinis et remplissent automatiquement le port, le protocole et la description&nbsp;: SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432), Bureau à distance (3389), VNC (5900), HTTP (80), HTTPS (443), HTTP alternatif (8080), HTTPS alternatif (8443). Avec <em>«&nbsp;– saisie personnelle –&nbsp;»</em>, vous saisissez vous-même n'importe quel port.</li>
+      <li><strong>Port (ou plage) et protocole</strong> – un seul numéro (par ex. <code>1433</code>) ou une plage (par ex. <code>5000-5010</code>, 200 ports au maximum), ainsi que <strong>TCP</strong> ou <strong>UDP</strong>.</li>
+      <li><strong>Description</strong> – un nom sous lequel la règle pourra être retrouvée plus tard dans la liste (par ex. «&nbsp;gestion commerciale, système de caisse&nbsp;»).</li>
+      <li><strong>Vérifier</strong> – le résultat s'affiche en trois lignes (voir ci-dessous).</li>
+      <li><strong>Ouvrir le port</strong> – crée une règle entrante pour le sous-réseau local.</li>
+    </ol>
+    <p>Les trois lignes de vérification&nbsp;:</p>
+    <ul>
+      <li><strong>Un programme écoute sur le port</strong> – sans programme à l'écoute, aucune règle de pare-feu n'a d'effet. Si le programme n'écoute que sur <code>127.0.0.1</code>, il n'est pas joignable depuis le réseau même avec une règle – le programme lui-même doit alors être lié à l'adresse LAN.</li>
+      <li><strong>Règle de pare-feu entrante</strong> – règles existantes pour ce port, y compris celles d'autres éditeurs (par ex. de l'installateur du logiciel métier). Les règles qui ne s'appliquent qu'à un autre programme précis ou à un autre service Windows sont signalées comme sans effet.</li>
+      <li><strong>Profil de pare-feu de ce PC</strong> – la règle s'applique au profil privé&nbsp;; dans le profil «&nbsp;Public&nbsp;», Windows bloque malgré tout.</li>
+    </ul>
+
+    <h3>Le résultat (les deux colonnes)</h3>
+    <p>Chaque ligne de vérification affiche un résultat&nbsp;: <strong>vert</strong> en ordre, <strong>jaune</strong> une remarque, <strong>rouge</strong> un problème. Lorsque c'est utile, la ligne propose à droite un petit bouton pour y remédier directement – par exemple passer le profil réseau en «&nbsp;privé&nbsp;» (pour que les partages soient autorisés) ou ouvrir le port aussitôt. Le texte explicatif détaillé de chaque ligne s'affiche lorsque vous maintenez la souris dessus.</p>
+
+    <h3>La liste des règles commune</h3>
+    <p>Toutes les exceptions créées par le programme – dans les deux colonnes – portent un nom propre (préfixe <code>S-IT-FW-</code>) et apparaissent dans la liste en bas. Chaque entrée crée en général plusieurs règles de pare-feu (par sens et protocole). Les boutons en dessous suppriment les règles <strong>sélectionnées</strong> ou <strong>toutes les règles S-IT</strong>.</p>
+
+    <div class="tip">
+      <strong>Vos autres règles de pare-feu restent intactes.</strong> Le programme ne voit et ne modifie que ses propres règles portant le préfixe <code>S-IT-FW-</code>. Les règles de Windows ou d'autres logiciels ne sont ni affichées ni supprimées.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Nettoyage facilité&nbsp;:</strong> si une exception ou un port ouvert n'a été défini que pour un test, supprimez-le plus tard d'un clic via la liste des règles – le pare-feu reste ainsi propre.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">11. Diagnostic (DIAG) – pour les testeurs</h2>
+  <div class="box">
+    <p>Cette section s'adresse aux testeurs et à tous ceux qui souhaitent signaler un problème de détection. Rien de tout cela n'est nécessaire en utilisation normale.</p>
+
+    <h3>À quoi sert-il&nbsp;?</h3>
+    <p>Windows fournit les informations réseau par plusieurs voies. Celle qui répond varie d'un ordinateur à l'autre – selon l'édition de Windows, les pilotes et les stratégies de l'entreprise. Si le programme affiche des valeurs erronées sur un appareil, l'affichage ne permet pas d'en voir la cause. Le diagnostic interroge donc <strong>chaque voie séparément</strong> et consigne ce qu'elle a répondu – même si elle n'a pas répondu du tout.</p>
+
+    <h3>Activation</h3>
+    <p><strong>⚙ Config → Diagnostic → «&nbsp;🔧 Afficher les outils DIAG&nbsp;»</strong>. Le bouton <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span> apparaît alors en haut de l'en-tête. Aucun redémarrage n'est nécessaire. Décocher la case le masque à nouveau.</p>
+
+    <h3>Les trois outils</h3>
+    <table>
+      <tr><th>Bouton</th><th>Fonction</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ Créer le DIAG</span></td>
+          <td>Crée <strong>exactement un fichier</strong> dans le dossier <code>Diag</code> à côté de <code>sit-lsc-start.exe</code>. Rien ne se passe tout seul – uniquement sur clic.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Afficher en clair</span></td>
+          <td>Affiche le contenu de façon lisible – <strong>exactement ce qui serait envoyé</strong>. Peut aussi être enregistré en texte clair sur demande. Le contenu a la même structure dans toutes les versions linguistiques et n'est pas traduit.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Ouvrir le dossier</span></td>
+          <td>Ouvre le dossier de stockage dans l'Explorateur.</td></tr>
+    </table>
+
+    <h3>Que contient-il&nbsp;?</h3>
+    <ul>
+      <li>Les réponses brutes de toutes les requêtes (PowerShell, wmic, registre, netsh, ipconfig), y compris les réseaux Wi-Fi à portée</li>
+      <li>La façon dont les vignettes LAN et Wi-Fi affichent ces réponses</li>
+      <li>Version de Windows et du programme, mise à l'échelle, droits d'administrateur</li>
+      <li>Ce que le programme a tiré des réponses</li>
+      <li>Après une analyse du réseau, en plus la liste des appareils de cette analyse&nbsp;: pour chaque appareil, le nom, l'adresse IP, le fabricant, les ports ouverts et le classement du programme avec sa justification</li>
+    </ul>
+    <p><strong>Aucun mot de passe, aucun identifiant.</strong> Les adresses MAC sont raccourcies&nbsp;: la partie fabricant est conservée – la détection en a besoin –, la partie propre à l'appareil est remplacée par <code>XX</code> (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>Pourquoi le fichier n'est-il pas lisible&nbsp;?</strong><br> Il est <em>masqué</em> afin de ne pas être lu par inadvertance ni décomposé par un filtre de messagerie. Ce n'est expressément <strong>pas un chiffrement</strong> et ce n'est pas censé l'être. Avec <strong>🔍 Afficher en clair</strong>, vous voyez à tout moment ce qu'il contient.
+    </div>
+
+    <h3>Envoi</h3>
+    <p>De manière volontaire et uniquement en cas de problème de détection&nbsp;: envoyez le fichier à <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>. Une phrase sur ce qui a été mal affiché est utile.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">12. Fichiers, mises à jour et sauvegarde</h2>
+  <div class="box">
+
+    <h3>Structure du dossier du programme</h3>
+    <p>Tout ce dont vous avez besoin se trouve en haut, à côté du programme de démarrage. Le sous-dossier <code>sit-lsc_program</code> ne contient que le programme lui-même et n'a pas besoin d'être ouvert&nbsp;:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← démarre le programme</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← paramètres, données personnelles, base de données des fabricants</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← journaux d'analyse, rapports et protocoles</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← fichiers de diagnostic</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← aide, ChangeLog, clause de non-responsabilité et licence</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← le programme</span>
+    </div>
+    <p>Le programme crée lui-même les dossiers <code>Config</code>, <code>Logs</code> et <code>Diag</code> lorsque c'est nécessaire.</p>
+
+    <div class="tip">
+      <strong>Liste rapide – que faut-il emporter&nbsp;?</strong><br> Lors d'un changement de PC ou d'une réinstallation, sauvegardez ces dossiers situés à côté de <code>sit-lsc-start.exe</code>&nbsp;:
+      <ul style="margin:6px 0 0 0">
+        <li><code>Config\</code> – paramètres, données personnelles sur les appareils et base de données des fabricants</li>
+        <li><code>Logs\</code> – le dossier complet, si les anciennes analyses, journaux et rapports Wi-Fi doivent être conservés</li>
+      </ul>
+      Après la copie, lancez le programme – tous les paramètres, attributions et résultats d'analyse précédents sont de nouveau disponibles immédiatement.
+    </div>
+
+    <h3>Fichiers et dossiers en un coup d'œil</h3>
+    <table>
+      <tr><th>Fichier</th><th>Contenu</th><th>Sauvegarder&nbsp;?</th></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
+          <td>Tous les paramètres (options d'analyse, dossier des journaux, apparence, etc.)</td>
+          <td><strong>✔ Oui</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Noms, types et fabricants d'appareils personnels – jamais écrasé lors des mises à jour</td>
+          <td><strong>✔ Oui</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
+          <td>Base des fabricants (recréée lors de la mise à jour OUI)</td>
+          <td>Facultatif</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Journaux d'analyse (.log), rapports HTML (.html) et fichiers CSV (.csv), ainsi que les journaux de l'onglet Profils Wi-Fi et les rapports Wi-Fi.<br> Les fichiers CSV sont uniquement destinés à l'usage interne du programme&nbsp;: <strong>«&nbsp;Charger dans le scanner&nbsp;»</strong> dans Journaux et rapports s'en sert pour recharger une analyse antérieure dans la liste des appareils. C'est pourquoi leurs noms de colonnes sont en allemand dans toutes les langues. Pour lire et transmettre, utilisez le rapport HTML et le journal.<br> <em>À emporter si les anciens résultats d'analyse doivent être conservés dans le gestionnaire de journaux.</em></td>
+          <td><strong>✔ Recommandé</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Fichiers de diagnostic – créés uniquement lorsqu'un DIAG est généré</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>L'aide (en allemand) et ses traductions (<code>S-IT-LanScanner-Hilfe_fr.html</code>, etc.), l'historique des versions <code>S-IT-LanScanner-ChangeLog.html</code>, la clause de non-responsabilité et la licence (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>Le programme&nbsp;: programme principal <code>S-IT-LanScanner.exe</code> (lancé via <code>sit-lsc-start.exe</code>) et bibliothèques du programme</td>
+          <td>–</td></tr>
+    </table>
+
+    <h3>Effectuer une mise à jour</h3>
+    <ol>
+      <li>Télécharger et décompresser la nouvelle version</li>
+      <li><strong>Important&nbsp;:</strong> copier le dossier <code>Config</code> de l'ancien dossier du programme vers le nouveau</li>
+      <li>Lancer le programme via <code>sit-lsc-start.exe</code></li>
+      <li>Tous les paramètres et informations personnelles sont de nouveau présents</li>
+    </ol>
+    <div class="info">
+      Les versions précédentes n'avaient pas encore de dossier <code>Config</code>. Copiez alors les fichiers <code>S-IT-LanScanner.ini</code> et <code>S-IT-Custom.ini</code> dans le nouveau dossier du programme, à côté de <code>sit-lsc-start.exe</code>. Au premier démarrage, le programme les déplace une seule fois dans le dossier <code>Config</code>, de même que les journaux et les fichiers de diagnostic qui se trouvent encore dans le dossier <code>sit-lsc_program</code>. Rien n'est écrasé. Ce qui a été déplacé figure dans le fichier <code>Ordnerumzug.log</code> du dossier des journaux.
+    </div>
+
+    <h3>Réinstallation / changement de PC</h3>
+    <p>Procédure recommandée&nbsp;:</p>
+    <ol>
+      <li>Copier le dossier <code>Config</code> sauvegardé dans le nouveau dossier du programme, à côté de <code>sit-lsc-start.exe</code></li>
+      <li>Copier aussi à cet endroit le dossier <code>Logs\</code> sauvegardé (ou dans le dossier des journaux configuré)</li>
+      <li>Lancer le programme – tous les paramètres, attributions et analyses précédentes sont immédiatement disponibles dans le gestionnaire de journaux</li>
+      <li>Facultatif&nbsp;: effectuer la mise à jour OUI pour charger la base des fabricants la plus récente</li>
+    </ol>
+    <div class="info">
+      Si aucun fichier n'est sauvegardé&nbsp;: <code>S-IT-LanScanner.ini</code> et <code>S-IT-Custom.ini</code> sont recréés automatiquement avec les valeurs par défaut au premier démarrage. Les informations personnelles sur les appareils doivent alors être saisies à nouveau.
+    </div>
+    <div class="tip">
+      <strong>Emporter les réseaux Wi-Fi&nbsp;:</strong> les réseaux Wi-Fi enregistrés de l'ancien PC peuvent être sauvegardés dans l'onglet <strong>Profils Wi-Fi</strong> et importés sur le nouveau PC (section 9).
+    </div>
+
+    <h3>Mettre à jour la base OUI</h3>
+    <p>Via <span class="btn-demo btn-dark">🔄 Mise à jour OUI</span> → onglet <strong>«&nbsp;Mise à jour de la base OUI&nbsp;»</strong> → <strong>«&nbsp;▶ Mettre à jour la base OUI&nbsp;»</strong>, le programme télécharge les listes complètes des fabricants de l'IEEE (MA-L, MA-M et MA-S) et les enregistre dans <code>S-IT-OUI.ini</code>. Une connexion Internet est nécessaire. La progression et le résultat s'affichent dans la même fenêtre. La base est ensuite rechargée immédiatement – aucun redémarrage n'est nécessaire.</p>
+    <p>Si l'une des listes ne peut pas être téléchargée, un message s'affiche et le fichier <code>S-IT-OUI.ini</code> existant reste inchangé.</p>
+    <div class="info">
+      Le fichier <code>S-IT-Custom.ini</code> contenant vos informations personnelles n'est <strong>jamais</strong> modifié ni écrasé par la mise à jour OUI.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">13. Questions fréquentes (FAQ)</h2>
+  <div class="box">
+
+    <h3>Un appareil n'est pas trouvé</h3>
+    <p>Causes possibles&nbsp;:</p>
+    <ul>
+      <li>L'appareil est éteint ou en mode d'économie d'énergie</li>
+      <li>L'appareil ne répond pas au ping ICMP (pare-feu) → activer l'analyse des ports aide</li>
+      <li>L'appareil se trouve dans un autre segment réseau</li>
+      <li>Choisir l'intensité de l'analyse «&nbsp;Sûr&nbsp;» et relancer l'analyse</li>
+    </ul>
+
+    <h3>Un appareil est mal classé ou pas classé du tout</h3>
+    <p>Clic droit sur l'appareil → <strong>«&nbsp;✏ Étiqueter l'appareil …&nbsp;»</strong> → choisir ou saisir le type d'appareil → Enregistrer. L'information apparaît immédiatement dans la liste et s'applique durablement (section 6).</p>
+
+    <h3>Pourquoi la colonne «&nbsp;Type d'appareil&nbsp;» est-elle vide pour certains appareils&nbsp;?</h3>
+    <p>Les indices ne suffisaient pas pour un classement clair. Le programme laisse alors volontairement le champ vide au lieu de deviner. Une analyse des ports activée fournit souvent suffisamment d'indices supplémentaires&nbsp;; sinon, une information personnelle via <strong>«&nbsp;Étiqueter l'appareil …&nbsp;»</strong> aide.</p>
+
+    <h3>Mon imprimante n'était plus joignable après l'analyse</h3>
+    <p>Dans les paramètres, réglez l'intensité de l'analyse sur <strong>«&nbsp;Sûr&nbsp;»</strong>. Ce niveau renonce aux inondations ARP et aux analyses des ports d'imprimante, qui peuvent surcharger les anciennes versions de firmware.</p>
+
+    <h3>L'antivirus signale une menace</h3>
+    <p>Comme le scanner LAN analyse activement le réseau, certains antivirus le classent à tort comme suspect (faux positif). Le programme ne contient aucun logiciel malveillant. Solution&nbsp;: ajouter le fichier du programme et le dossier à la liste d'exceptions / liste blanche de l'antivirus.</p>
+
+    <h3>Le test de débit LAN affiche «&nbsp;Pas d'accès en écriture&nbsp;»</h3>
+    <p>Le partage est probablement connecté en lecture seule ou les identifiants ne suffisent pas. Vérifiez vos droits d'écriture sur le partage.</p>
+
+    <h3>Le test indique «&nbsp;Partage manquant&nbsp;»</h3>
+    <p>Seul le <strong>nom du serveur</strong> a été indiqué, par ex. <code>\\nom-NAS</code>. Aucun fichier ne peut y être créé – il faut le partage lui-même&nbsp;: <code>\\nom-NAS\Donnees</code>. Voir section 8.</p>
+
+    <h3>La vignette Wi-Fi affiche «&nbsp;Connecté&nbsp;», mais ni force du signal ni canal</h3>
+    <p>C'est presque toujours le verrouillage de la localisation de Windows 11 et <strong>pas une erreur du programme</strong>&nbsp;: Windows ne fournit la force du signal, le canal et la norme Wi-Fi que si les applications de bureau peuvent accéder à la localisation. Il en va de même pour les réseaux Wi-Fi à portée de l'onglet Profils Wi-Fi. L'adaptateur lui-même est néanmoins correctement détecté.</p>
+    <div class="tip">
+      <strong>Solution&nbsp;:</strong> dans la vignette, cliquez sur <strong>«&nbsp;→ Ouvrir les paramètres de localisation&nbsp;»</strong> (ou Paramètres → Confidentialité et sécurité → Localisation). Activez-y les <strong>services de localisation</strong> et, plus bas, autorisez l'accès à la localisation pour les <strong>applications de bureau</strong>. Cliquez ensuite sur <strong>🔄 Actualiser</strong> dans la vignette.
+    </div>
+
+    <h3>Le nom du réseau dans la vignette Wi-Fi diffère du nom du Wi-Fi</h3>
+    <p>Sans accès à la localisation, le programme prend le nom dans la liste des réseaux de Windows&nbsp;; la vignette le précise. Windows peut y créer des entrées numérotées pour le même Wi-Fi, par exemple «&nbsp;Réseau maison 2&nbsp;», si le PC s'est connecté plusieurs fois ou avec différents adaptateurs. Avec l'accès à la localisation, la vignette affiche le vrai nom du Wi-Fi.</p>
+
+    <h3>Pourquoi la vignette Wi-Fi n'affiche-t-elle pas de débit de réception&nbsp;?</h3>
+    <p>Le débit de réception n'apparaît que pendant le test continu LAN. Sans trafic, Windows indique des valeurs basses qui n'ont rien à voir avec la qualité de la connexion. Le débit de liaison (⬆), en revanche, est toujours affiché.</p>
+
+    <h3>La vignette Wi-Fi indique «&nbsp;Adaptateur désactivé&nbsp;»</h3>
+    <p>L'adaptateur Wi-Fi est désactivé dans le Gestionnaire de périphériques ou dans les <em>Connexions réseau</em>. Après son activation, le programme le détecte au plus tard au bout de 10 secondes&nbsp;; avec <strong>🔄 Actualiser</strong>, immédiatement. Une clé USB Wi-Fi branchée ultérieurement est également détectée automatiquement.</p>
+
+    <h3>Le débit indique «&nbsp;inconnu&nbsp;»</h3>
+    <p>Dans ce cas, <strong>aucune</strong> des requêtes n'a pu fournir de débit – typique d'un <strong>adaptateur désactivé</strong>, pour lequel Windows n'indique aucun débit. Le programme affiche alors volontairement «&nbsp;inconnu&nbsp;» au lieu d'un chiffre estimé&nbsp;: une valeur que personne n'a mesurée n'a pas sa place dans un outil de diagnostic. Le nom de l'adaptateur est tout de même affiché.</p>
+
+    <h3>Le programme paraît trop petit sur mon écran UHD/4K</h3>
+    <p>Ouvrez <strong>⚙ Config</strong> et choisissez une valeur plus élevée sous <strong>«&nbsp;Taille d'affichage / mise à l'échelle&nbsp;»</strong> dans la colonne de droite. Le programme redémarre automatiquement après l'enregistrement.</p>
+    <div class="tip">
+      <strong>Recommandation pour UHD/4K&nbsp;:</strong> la mise à l'échelle du programme détermine seule la taille – vous n'avez pas besoin de modifier la mise à l'échelle de Windows. Commencez par <strong>150 %</strong>&nbsp;; cela donne un affichage bien lisible sur la plupart des écrans UHD. Si c'est encore trop petit ou trop grand, choisissez le niveau suivant jusqu'à ce que le texte et les éléments soient parfaitement lisibles pour vous.
+    </div>
+    <p>Niveaux de mise à l'échelle possibles dans le programme&nbsp;: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>Où trouver la clause de non-responsabilité&nbsp;?</h3>
+    <p>Dans le fichier <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> du dossier <code>Help</code> et sur la <a href="https://sattlerit.github.io/sit-lanscanner/">page du projet</a>. En bref&nbsp;: les résultats sont des indications sans engagement et un instantané – ils ne remplacent pas un audit de sécurité professionnel.</p>
+
+    <h3>J'ai modifié SMB1 – pourquoi l'ancien état est-il toujours affiché&nbsp;?</h3>
+    <p>SMB1 est une <strong>fonctionnalité Windows</strong>, pas un simple interrupteur&nbsp;: Windows installe les fichiers lors de l'activation et les supprime lors de la désactivation. La modification ne prend effet qu'après un <strong>redémarrage</strong> – jusque-là, la vérification indique toujours l'état précédent. Le programme <strong>ne</strong> redémarre <strong>pas</strong> l'ordinateur de lui-même&nbsp;; il le signale seulement. Redémarrez Windows vous-même au moment qui vous convient.</p>
+
+    <h3>Pourquoi y a-t-il trois lignes SMB1&nbsp;?</h3>
+    <p>Parce que SMB1 se compose de plusieurs parties indépendantes les unes des autres. Celui qui ne voit qu'une ligne se fait facilement une fausse idée de son propre ordinateur&nbsp;:</p>
+    <table>
+      <tr><th>Ligne</th><th>À quoi sert-elle</th></tr>
+      <tr><td><strong>Client SMB1</strong></td>
+          <td>Pour que <em>ce PC</em> puisse accéder à d'anciens appareils – par exemple un ancien NAS ou une imprimante réseau qui ne gère pas SMB2/3. C'est le cas le plus fréquent.</td></tr>
+      <tr><td><strong>Serveur SMB1</strong></td>
+          <td>Pour que <em>d'anciens appareils</em> puissent accéder aux partages de ce PC – par exemple un copieur qui dépose ses numérisations dans un dossier partagé. Ce côté est le plus dangereux et ne devrait être activé que tant que l'ancien appareil en a besoin.</td></tr>
+      <tr><td><strong>Conserver SMB1 durablement</strong></td>
+          <td>Windows supprime SMB1 de lui-même s'il n'a pas été utilisé pendant 15 jours. Cette ligne désactive cette suppression automatique. Utile si l'entreprise connaît de longues pauses – après deux semaines de congés, SMB1 aurait sinon soudain disparu et le scanner serait à l'arrêt.</td></tr>
+    </table>
+    <p>La ligne <strong>Conserver SMB1 durablement</strong> n'est pertinente que si le client ou le serveur est réellement actif. Si SMB1 est entièrement désactivé, elle apparaît en gris et ne demande aucune attention.</p>
+
+    <h3>Le serveur SMB1 indique «&nbsp;Fonctionnalité présente, mais protocole désactivé&nbsp;» – qu'est-ce que cela signifie&nbsp;?</h3>
+    <p>Le côté serveur a deux niveaux&nbsp;: la fonctionnalité Windows installée et l'interrupteur de protocole du serveur SMB. Après l'activation, seule la fonctionnalité est d'abord présente – l'interrupteur ne peut être activé qu'après le redémarrage. C'est précisément le rôle du bouton <strong>«&nbsp;→ Terminer&nbsp;»</strong>&nbsp;: il bascule le second interrupteur et prend effet immédiatement, sans autre redémarrage. Si le serveur SMB1 n'est finalement pas nécessaire, désactivez-le plutôt complètement.</p>
+
+    <h3>Pourquoi le bouton d'une ligne verte est-il gris&nbsp;?</h3>
+    <p>Un bouton sur une ligne verte ramène toujours <em>vers</em> l'état moins sûr – par exemple «&nbsp;← Activer&nbsp;» pour un serveur SMB1 désactivé. Ces boutons de retour sont volontairement discrets pour ne pas inviter à un clic par erreur. Ils fonctionnent tout à fait normalement.</p>
+
+    <h3>Où les journaux sont-ils enregistrés&nbsp;?</h3>
+    <p>Par défaut&nbsp;: <code>Logs\</code> à côté de <code>sit-lsc-start.exe</code>. Le dossier peut être modifié sous <strong>⚙ Config → Dossier des journaux</strong>.</p>
+
+    <h3>Puis-je utiliser l'outil sur une clé USB&nbsp;?</h3>
+    <p>Oui, l'outil est portable. Copiez le dossier complet du programme – c'est-à-dire <code>sit-lsc-start.exe</code> avec le dossier <code>sit-lsc_program</code> et les autres dossiers – sur la clé USB. Les fichiers INI sont enregistrés dans le dossier <code>Config</code>.</p>
+
+    <h3>Où trouver les rapports Wi-Fi et le journal des profils Wi-Fi&nbsp;?</h3>
+    <p>Les deux se trouvent dans le dossier des journaux, par défaut <code>Logs\</code> à côté de <code>sit-lsc-start.exe</code>. Le rapport Wi-Fi s'ouvre en outre dans le navigateur dès sa création.</p>
+
+    <h3>Le pays manque dans les informations sur le domaine</h3>
+    <p>Le pays, le réseau et la plage d'adresses proviennent du registre (par ex. RIPE). S'il n'est pas joignable, par exemple parce qu'un pare-feu ou un proxy bloque la requête, le programme n'affiche que le fournisseur de la liste intégrée.</p>
+
+    <h3>Dans les informations sur le domaine, le pays ne correspond pas au fournisseur</h3>
+    <p>Le pays est celui dans lequel le réseau du serveur est enregistré. Les grandes entreprises enregistrent souvent leurs réseaux à l'adresse de leur siège, même si le serveur se trouve dans un centre de données d'un autre pays. Voir section 7.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Cet outil vous a-t-il aidé&nbsp;?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      Le S-IT LAN Device Scanner est développé et maintenu gratuitement.<br> Un petit don aide à poursuivre le développement de l'outil. Merci beaucoup&nbsp;! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Faire un don via PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.2
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Auteur&nbsp;: Hans Udo Sattler &nbsp;•&nbsp; Traduction tchèque : RQ68 &nbsp;•&nbsp; Merci à tous les utilisateurs qui ont aidé aux tests avec des analyses de leurs propres réseaux<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Page du projet</a>
+  &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Clause de non-responsabilité</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>

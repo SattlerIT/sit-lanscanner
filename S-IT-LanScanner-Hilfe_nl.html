@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Help</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Help</h1>
+  <p>Versie 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Snelstart</a>
+  <a href="#oberflaeche">Interface</a>
+  <a href="#scan">Scan uitvoeren</a>
+  <a href="#ergebnisse">Resultaten begrijpen</a>
+  <a href="#einstellungen">Instellingen</a>
+  <a href="#custom">Eigen toewijzingen</a>
+  <a href="#internet">Internetbereikbaarheid</a>
+  <a href="#lan-performance">LAN-prestaties</a>
+  <a href="#wlan-profile">Wi-Fi-profielen</a>
+  <a href="#firewall">Firewall &amp; poorten</a>
+  <a href="#diag">Diagnose</a>
+  <a href="#dateien">Bestanden &amp; updates</a>
+  <a href="#faq">Veelgestelde vragen</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Inhoudsopgave</h3>
+    <ol>
+      <li><a href="#schnellstart">Snelstart</a></li>
+      <li><a href="#oberflaeche">De programma-interface in één oogopslag</a></li>
+      <li><a href="#scan">Scan uitvoeren</a></li>
+      <li><a href="#ergebnisse">Scanresultaten begrijpen</a></li>
+      <li><a href="#einstellungen">Instellingen</a></li>
+      <li><a href="#custom">Eigen gegevens over apparaten (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Tab 2: Internetbereikbaarheid</a></li>
+      <li><a href="#lan-performance">Tab 4: LAN-prestaties &amp; Wi-Fi</a></li>
+      <li><a href="#wlan-profile">Tab 5: Wi-Fi-profielen</a></li>
+      <li><a href="#firewall">Tab 6: Firewall &amp; poorten</a></li>
+      <li><a href="#diag">Diagnose (DIAG) – voor testers</a></li>
+      <li><a href="#dateien">Bestanden, updates en back-up</a></li>
+      <li><a href="#faq">Veelgestelde vragen (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Snelstart</h2>
+  <div class="box">
+    <h3>Eerste scan in 3 stappen</h3>
+    <ol>
+      <li><strong>Programma starten</strong> – dubbelklik op <code>sit-lsc-start.exe</code>. Bevestig zo nodig de administratorrechten (aanbevolen voor de ARP-scan).</li>
+      <li><strong>Netwerk kiezen</strong> – selecteer linksboven in de keuzelijst het gewenste netwerk (wordt automatisch herkend).</li>
+      <li><strong>Scan starten</strong> – klik op <span class="btn-demo btn-green">▶ Scan starten</span>. Na de scan verschijnen alle gevonden apparaten in de lijst.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> schakel in de instellingen de <strong>poortscan</strong> in om diensten en het besturingssysteem nauwkeuriger te herkennen. De scan duurt dan langer, maar levert duidelijk meer informatie op.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. De programma-interface in één oogopslag</h2>
+  <div class="box">
+    <h3>Knoppen in de werkbalk</h3>
+    <p>De werkbalk in de tab „LAN-scanner” bevat de scanfuncties:</p>
+    <table>
+      <tr><th>Knop</th><th>Functie</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Scan starten</span></td>
+          <td>Start de netwerkscan in het gekozen netwerk</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Scan stoppen</span></td>
+          <td>Breekt een lopende scan af</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Logs &amp; rapporten</span></td>
+          <td>Opent het logbeheer met alle opgeslagen scans</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 OUI-update</span></td>
+          <td>Opent het OUI-beheer: fabrikantendatabase bijwerken en eigen toewijzingen onderhouden</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Verbindingskwaliteit</span></td>
+          <td>Meet pakketverlies, responstijd en schommeling naar een doel en naar de gateway (zie paragraaf 4)</td></tr>
+    </table>
+
+    <h3>Knoppen in de header (altijd zichtbaar)</h3>
+    <p>Deze knoppen zijn altijd rechtsboven in de header zichtbaar – ongeacht de actieve tab bereikbaar:</p>
+    <table>
+      <tr><th>Knop</th><th>Functie</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Opent de diagnosehulpmiddelen. Alleen zichtbaar als ingeschakeld onder <strong>⚙ Config → Diagnose</strong> – bij normaal gebruik verborgen. Zie paragraaf 11.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Config</span></td>
+          <td>Opent de instellingen – rechts staat de <strong>weergavegrootte / schaling</strong> (90–300 %) voor HiDPI- en UHD-monitoren.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Help</span></td>
+          <td>Opent dit helpvenster</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Toont of verbergt de header – meer ruimte voor de apparatenlijst</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Afsluiten</span></td>
+          <td>Sluit het programma af</td></tr>
+    </table>
+
+    <h3>Tabs</h3>
+    <ul>
+      <li><strong>LAN-scanner</strong> – hoofdweergave met de apparatenlijst</li>
+      <li><strong>Internetbereikbaarheid</strong> – internetverbinding controleren, LAN-verbindingsweg, snelheidstest en domeininformatie (zie paragraaf 7)</li>
+      <li><strong>Netwerkinstellingen</strong> – netwerkhulpmiddelen en diagnose</li>
+      <li><strong>LAN-prestaties &amp; Wi-Fi</strong> – snelheidstest, verbindingsstatus en Wi-Fi-overzicht</li>
+      <li><strong>📶 Wi-Fi-profielen</strong> – opgeslagen Wi-Fi-netwerken inclusief wachtwoord tonen, back-uppen en op een andere pc terugzetten; daarnaast de eigen verbinding vergeleken met de Wi-Fi-standaarden, de Wi-Fi-netwerken binnen bereik en het Wi-Fi-rapport</li>
+      <li><strong>🛡 Firewall &amp; poorten</strong> – twee kolommen: links de bereikbaarheid van een apparaat in het netwerk controleren en zo nodig een uitzondering toevoegen, rechts een poort op deze pc controleren en openen (adminrechten vereist)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Scan uitvoeren</h2>
+  <div class="box">
+    <h3>Welk bereik moet ik scannen?</h3>
+    <p>Het <strong>netwerkveld</strong> linksboven bepaalt welke adressen worden gecontroleerd. Het is een keuzelijst <em>en</em> een invoerveld: de automatisch herkende netwerken staan klaar om te kiezen – maar u kunt er ook gewoon in typen.</p>
+    <table>
+      <tr><th>Schrijfwijze</th><th>Voorbeeld</th><th>Betekenis</th></tr>
+      <tr><td><strong>Van–tot</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>Alle adressen van het eerste tot het laatste – de eenvoudigste schrijfwijze</td></tr>
+      <tr><td><strong>Verkorte vorm</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>Hetzelfde, alleen het laatste adresblok wordt opgegeven</td></tr>
+      <tr><td><strong>Heel netwerk</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Technische schrijfwijze (CIDR) voor een volledig netwerk</td></tr>
+      <tr><td><strong>Eén apparaat</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Alleen dit ene adres controleren</td></tr>
+    </table>
+    <p>Een kleiner bereik is duidelijk sneller: in plaats van 254 adressen worden alleen de adressen gecontroleerd die u echt interesseren. Bij zeer grote bereiken vraagt het programma eerst om bevestiging, zodat een scan niet per ongeluk urenlang loopt.</p>
+    <div class="warn">
+      <strong>Als een invoer niet wordt geaccepteerd:</strong> het programma legt in begrijpelijke taal uit wat er niet klopt – bijvoorbeeld als het tweede adres vóór het eerste ligt. Controleer punten en koppelteken; spaties zijn geen probleem.
+    </div>
+
+    <h3>Scanintensiteit</h3>
+    <p>De scanintensiteit bepaalt hoe agressief het netwerk wordt bevraagd. In te stellen onder <strong>⚙ Config → Scanintensiteit</strong>:</p>
+    <table>
+      <tr><th>Modus</th><th>Methode</th><th>Aanbeveling</th></tr>
+      <tr><td><strong>Veilig</strong></td>
+          <td>Alleen ping (ICMP)</td>
+          <td>Voor gevoelige netwerken, oudere printers of als apparaten na de scan niet meer bereikbaar waren</td></tr>
+      <tr><td><strong>Standaard</strong></td>
+          <td>Ping + ARP-scan</td>
+          <td>Voor thuisnetwerken – vindt meer apparaten dan de veilige modus</td></tr>
+      <tr><td><strong>Intensief</strong></td>
+          <td>Ping + ARP-scan in twee rondes</td>
+          <td>Voor professionele omgevingen. Kan op sommige routers de verbinding kort onderbreken</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Opmerking over printers:</strong> oudere netwerkprinters (bijv. Brother HL-modellen) kunnen op agressieve ARP-floods reageren met een verbindingsuitval. Gebruik in zulke netwerken de scanintensiteit <strong>Veilig</strong>.
+    </div>
+
+    <h3>Nazoeken naar ontbrekende apparaten</h3>
+    <p>Sommige apparaten antwoorden niet de eerste keer, bijvoorbeeld in de energiebesparende modus of bij een zwak draadloos signaal, en sommige reageren nooit op ping. Het nazoeken vraagt daarom gericht opnieuw – alleen bij adressen die nog niet hebben geantwoord. In te stellen onder <strong>⚙ Config → Nazoeken naar ontbrekende apparaten</strong>:</p>
+    <ul>
+      <li><strong>Uit</strong> – geen nazoeken.</li>
+      <li><strong>Bekende adressen</strong> (standaard) – adressen waarop bij eerdere scans een apparaat was, worden een tweede keer met meer geduld gevraagd. Apparaten zonder open poort krijgen een tweede poging op hun webinterface. Duurt enkele seconden.</li>
+      <li><strong>Alle stille adressen</strong> – daarnaast worden bij alle adressen zonder antwoord gangbare poorten opgevraagd. Zo verschijnen ook apparaten die niet op ping reageren, bijvoorbeeld spraakassistenten of Windows-pc's met een gesloten firewall. Duurt merkbaar langer.</li>
+    </ul>
+
+    <h3>Poortscan</h3>
+    <p>De optionele poortscan (in te schakelen in de instellingen) controleert bekende dienstpoorten per apparaat en verbetert de herkenning van het besturingssysteem aanzienlijk. Hij verlengt de scantijd, maar levert duidelijk meer informatie op – vooral welke diensten een apparaat aanbiedt (webinterface, SSH, RDP enz.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Scanresultaten begrijpen</h2>
+  <div class="box">
+    <h3>Kolommen in de apparatenlijst</h3>
+    <table>
+      <tr><th>Kolom</th><th>Betekenis</th></tr>
+      <tr><td>🌐</td><td>Webinterface beschikbaar – aanklikken opent de browser</td></tr>
+      <tr><td>IP-adres</td><td>Huidig IP-adres in het netwerk</td></tr>
+      <tr><td>Hostnaam</td><td>Naam van het apparaat (via DNS/NetBIOS opgezocht)</td></tr>
+      <tr><td>Apparaatnaam</td><td>Naam of model dat het apparaat zelf meldt (bijv. FRITZ!-apparaten, printers, televisies, NAS) – of uw eigen naam zoals „Camera binnenplaats”</td></tr>
+      <tr><td>MAC-adres</td><td>Hardwareadres van de netwerkkaart</td></tr>
+      <tr><td>Fabrikant</td><td>Bepaald uit de OUI-database</td></tr>
+      <tr><td>Open poorten</td><td>Gevonden diensten (alleen met ingeschakelde poortscan)</td></tr>
+      <tr><td>Besturingssysteem</td><td>Herkend OS (TTL + hostnaam + fabrikant + poorten)</td></tr>
+      <tr><td>Apparaattype</td><td>Router, printer, NAS, camera, smartphone/tablet enz. – zie hieronder</td></tr>
+    </table>
+
+    <h3>Apparaattype</h3>
+    <p>Het programma wijst elk apparaat aan de hand van meerdere aanwijzingen een type toe: fabrikant, hostnaam, antwoordgedrag en – met ingeschakelde poortscan – de open poorten. Mogelijke typen zijn router, netwerkapparaat, Windows-pc, server, Mac, Linux-computer, printer, NAS, smartphone/tablet, camera, smarthome-apparaat, tv/media, VoIP-telefoon en virtuele machine.</p>
+    <p>Is de indeling niet eenduidig, dan blijft het veld <strong>leeg</strong> – een ontbrekend gegeven is hier beter dan een verkeerd. Weet u zelf wat een apparaat is, voer het dan in via <strong>rechtsklik → „Apparaat benoemen …”</strong> (paragraaf 6). Eigen gegevens hebben altijd voorrang en zijn in de lijst gemarkeerd met <strong>✏</strong>.</p>
+
+    <h3>Kolommen tonen en verbergen</h3>
+    <p>Via <strong>„☰ Kolommen …”</strong> boven de apparatenlijst kunnen afzonderlijke kolommen worden verborgen en weer getoond. Dat geldt alleen voor de weergave: log, CSV en HTML-rapport bevatten altijd alle kolommen.</p>
+
+    <h3>Rijkleuren</h3>
+    <p>De kleur hangt af van het apparaattype. Is er geen type bekend, dan van besturingssysteem, fabrikant en open poorten.</p>
+    <table>
+      <tr><th>Kleur</th><th>Betekenis</th></tr>
+      <tr><td style="background:#CCE5F5">Blauw</td><td>Windows-pc of Windows-server</td></tr>
+      <tr><td style="background:#B8EDD0">Groen</td><td>Linux, Unix of vergelijkbare systemen</td></tr>
+      <tr><td style="background:#F5C6C3">Roze</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Paars</td><td>Mobiel apparaat (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Geel</td><td>Netwerkapparaat (router, switch, access point)</td></tr>
+      <tr><td style="background:#FDDCB0">Oranje</td><td>Printer of MFP</td></tr>
+      <tr><td style="background:#BEE3F5">Lichtblauw</td><td>NAS-apparaat</td></tr>
+      <tr><td style="background:#D8E8E8">Grijs</td><td>Virtuele machine</td></tr>
+    </table>
+
+    
+    <h3>Sneltoetsen</h3>
+    <table>
+      <tr><th>Toets</th><th>Functie</th></tr>
+      <tr><td><code>F11</code></td><td>Header tonen/verbergen – meer ruimte voor de apparatenlijst (ook als knop in de header)</td></tr>
+      <tr><td><code>Dubbelklik</code></td><td>Apparaatdetails tonen</td></tr>
+      <tr><td><code>Rechtsklik</code></td><td>Contextmenu met acties</td></tr>
+    </table>
+
+    <h3>Acties via dubbelklik en rechtsklik</h3>
+    <p><strong>Dubbelklikken</strong> op een apparaat opent het detailvenster met alle informatie, poortdetails en snelle acties.</p>
+    <p><strong>Rechtsklikken</strong> opent het contextmenu met de volgende opties:</p>
+    <ul>
+      <li>Details tonen</li>
+      <li>Webinterface openen (indien beschikbaar)</li>
+      <li>Pingmonitor starten (continu pingen met verloopweergave)</li>
+      <li>Verbindingskwaliteit meten …</li>
+      <li>Wake-on-LAN verzenden</li>
+      <li>IP of MAC kopiëren</li>
+      <li>Apparaat opnieuw scannen</li>
+      <li><strong>Apparaat benoemen …</strong> – apparaatnaam, fabrikant en apparaattype blijvend vastleggen (paragraaf 6)</li>
+    </ul>
+
+    <h3>📶 Verbindingskwaliteit</h3>
+    <p>Als telefonie of video hapert of een apparaat slechts af en toe bereikbaar is, laat deze meting zien of de storing in het eigen netwerk ligt of daarachter. Te openen via de knop <span class="btn-demo" style="background:#16A085;">📶 Verbindingskwaliteit</span> in de tab LAN-scanner, via rechtsklik op een apparaat of in de apparaatdetails.</p>
+    <ol>
+      <li><strong>Doel kiezen</strong> – internet (8.8.8.8), de gateway of een apparaat uit de laatste scan.</li>
+      <li><strong>Meetduur kiezen</strong> – 30, 60 of 120 seconden.</li>
+      <li><span class="btn-demo btn-green">▶ Meting starten</span> – er wordt tegelijk naar het doel en naar de gateway gemeten.</li>
+    </ol>
+    <p>Het resultaat noemt voor beide trajecten het pakketverlies, de responstijd en de schommeling daarvan en beoordeelt ze in twee delen: de <strong>verbinding</strong> (op basis van het pakketverlies) en de geschiktheid voor <strong>telefonie en video</strong> (op basis van responstijd en schommeling). Zijn de waarden naar de gateway goed en naar het doel slecht, dan ligt de oorzaak achter de router. Met <strong>📋 Resultaat kopiëren</strong> kunt u het doorgeven.</p>
+    <div class="info">
+      <strong>ℹ Camera's en vergelijkbare apparaten:</strong> veel apparaten beantwoorden ping slechts terloops. Een hoge schommeling toont daar vaak de belasting van het apparaat en niet de kwaliteit van het netwerk. Bij zulke apparaten is het pakketverlies doorslaggevend.
+    </div>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Instellingen</h2>
+  <div class="box">
+    <p>De instellingen opent u via <span class="btn-demo btn-orange">⚙ Config</span>. Alle instellingen worden automatisch opgeslagen in het bestand <code>S-IT-LanScanner.ini</code>.</p>
+
+    <h3>Scanopties</h3>
+    <ul>
+      <li><strong>Poortscan</strong> – vindt diensten en verbetert de OS-herkenning (langzamer)</li>
+      <li><strong>ARP-scan</strong> – vindt meer apparaten via ARP-broadcasts</li>
+      <li><strong>OS-herkenning</strong> – analyseert TTL, hostnaam en fabrikant</li>
+    </ul>
+
+    <h3>Scanintensiteit</h3>
+    <p>Veilig / Standaard / Intensief – zie paragraaf 3.</p>
+
+    <h3>Taal</h3>
+    <p>Onder <strong>⚙ Config → Sprache / Language</strong> kiest u de taal van de programma-interface: Duits, Engels, Nederlands, Spaans, Frans, Italiaans, Pools, Kroatisch of Tsjechisch. De nieuwe taal werkt na een herstart van het programma; het programma biedt die aan bij het opslaan. De help opent daarna ook in de gekozen taal.</p>
+
+    <h3>Weergave</h3>
+    <ul>
+      <li><strong>Subtiel</strong> – rustige pasteltinten, voor professioneel gebruik</li>
+      <li><strong>Hoog contrast</strong> – krachtigere kleuren, beter te onderscheiden</li>
+      <li><strong>🌙 Donkere weergave</strong> – donkere achtergronden en lichte tekst in alle vensters van het programma, prettiger bij lang werken aan het beeldscherm. De rijen van de apparatenlijst behouden hun kleur per apparaattype, alleen donkerder. Werkt na een herstart; het programma biedt die aan bij het opslaan. Meldingsvensters van Windows en de rapporten in de browser blijven licht.</li>
+      <li><strong>Lettergrootte</strong> – Klein (8 pt), Normaal (9 pt), Groot (11 pt). Bij 4K-schermen of hoge resoluties is „Groot” aan te bevelen</li>
+    </ul>
+
+    <h3>HTML-rapport</h3>
+    <p>Als <strong>„Na scan automatisch openen”</strong> bij het HTML-rapport is ingeschakeld, opent het scanrapport na elke scan automatisch in de standaardbrowser. Dit kan hier worden uitgeschakeld.</p>
+
+    <h3>Logmap</h3>
+    <p>Hier legt u vast waar scanlogs en HTML-rapporten worden opgeslagen. Standaard: <code>Logs</code> naast <code>sit-lsc-start.exe</code></p>
+
+    <h3>Wachttijd voor netwerkstations</h3>
+    <p>Geldt voor de LAN-duurtest met een doel in het netwerk (<code>\\NAS\share</code> of een verbonden netwerkstation zoals <code>U:</code>). Een NAS waarvan de harde schijven in rust zijn, heeft na de eerste aanvraag enkele seconden nodig tot de share bereikbaar is. Het programma vraagt daarom tot de ingestelde tijd elke 3 seconden opnieuw en meldt pas daarna dat het doel niet bereikbaar is. Te kiezen zijn 0, 30, 60 en 120 seconden; standaard is 60.</p>
+
+    <h3>Weergavegrootte / schaling</h3>
+    <p>Schaalt de volledige interface. Te kiezen zijn <strong>90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %</strong>. Het gekozen niveau bepaalt de grootte alleen – de Windows-schaling werkt dan niet extra mee. Het niveau <strong>90 %</strong> is compact en geeft meer ruimte bij tabellen. Welk niveau waarvoor geschikt is, staat bij de ⓘ-knop naast de kop. Een wijziging werkt na een herstart, die bij het opslaan wordt aangeboden.</p>
+    <div class="info">
+      <strong>ℹ Verhouding tot de Windows-schaling:</strong> zolang hier een niveau is gekozen, bepaalt dat de weergavegrootte – ongeacht wat in Windows is ingesteld. Is geen niveau gekozen, dan volgt het programma de Windows-schaling.
+    </div>
+
+    <h3>Programmastart</h3>
+    <p>Het vakje <strong>„🛡 Als administrator starten”</strong> (standaard <strong>aan</strong>) vraagt de administratorrechten direct bij het starten aan. De scanner heeft ze nodig voor de netwerkreparatie, de ARP-cache en de firewall-tab. Bij het starten verschijnt dan de Windows-vraag (Gebruikersaccountbeheer, UAC). Wie bewust zonder adminrechten werkt, haalt het vinkje weg – dan vervalt de vraag, en de genoemde functies melden zelf wanneer ze rechten nodig hebben. Linksonder in de statusbalk toont een vaste aanduiding de werkelijke toestand: <span class="btn-demo btn-green">🛡 Admin</span> of <span class="btn-demo" style="background:#95A5A6;">🛡 geen admin</span>.</p>
+
+    <h3>Venster</h3>
+    <p>Met <strong>„🗖 Venstergrootte onthouden”</strong> onthoudt het programma bij het afsluiten de grootte en positie van het hoofdvenster – ook op welke monitor het stond – en of het gemaximaliseerd was. Bij de volgende start opent het weer precies zo. Is die monitor niet meer aangesloten, dan opent het venster op het hoofdscherm. De opgeslagen grootte geldt per schalingsniveau: na een wijziging van de schaling start het venster eenmaal in standaardgrootte en onthoudt daarna de grootte opnieuw – zo passen grootte en benodigde ruimte altijd bij elkaar.</p>
+
+    <div class="info">
+      <strong>ℹ Config-venster:</strong> bij een hoge schaling wordt het instellingenvenster groter dan het scherm. Het is daarom in beide richtingen scrollbaar (muiswiel verticaal, <code>Shift</code>+muiswiel horizontaal); de knoppen <strong>Opslaan</strong> en <strong>Annuleren</strong> blijven daarbij altijd onderaan zichtbaar.
+    </div>
+
+    <h3>Diagnose</h3>
+    <p>Het vakje <strong>„🔧 DIAG-hulpmiddelen tonen”</strong> toont bovenin de header de knop <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Standaard staat het <strong>uit</strong> – voor normaal gebruik is de diagnose niet nodig. Meer in paragraaf 11.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Eigen gegevens over apparaten (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>Niet elk apparaat laat zich automatisch betrouwbaar indelen – een nieuw apparaat ontbreekt nog in de fabrikantendatabase, een camera meldt zich als een Linux-computer, of bij meerdere gelijke apparaten moet herkenbaar zijn waar welk apparaat staat. Daarvoor voert u eigen gegevens in. Ze staan in het bestand <strong>S-IT-Custom.ini</strong> en gelden blijvend.</p>
+
+    <div class="info">
+      <strong>Belangrijk:</strong> eigen gegevens hebben <strong>altijd voorrang</strong> op de automatische herkenning. S-IT-Custom.ini wordt bij OUI-updates <strong>nooit</strong> overschreven.
+    </div>
+
+    <h3>Methode 1: rechtsklik → „Apparaat benoemen …”</h3>
+    <p>Dit is de eenvoudigste manier:</p>
+    <ol>
+      <li>Scan uitvoeren</li>
+      <li>Apparaat in de lijst <strong>rechts aanklikken</strong></li>
+      <li><strong>„✏ Apparaat benoemen …”</strong> kiezen</li>
+      <li>De gewenste velden invullen:
+          <ul>
+            <li><strong>Apparaatnaam</strong> – geldt voor dit apparaat, bijv. locatie of ruimte („Camera binnenplaats”, „Printer kantoor 2”)</li>
+            <li><strong>Fabrikant</strong> – geldt voor alle apparaten met hetzelfde MAC-prefix</li>
+            <li><strong>Apparaattype</strong> – uit de lijst kiezen of vrij invoeren</li>
+          </ul>
+      </li>
+      <li>Vastleggen waarvoor het apparaattype geldt:
+          <ul>
+            <li><strong>alleen dit apparaat</strong> – via het MAC-adres (zonder MAC via het IP-adres)</li>
+            <li><strong>alle apparaten met dit MAC-prefix</strong> – bijv. alle camera's van één fabrikant</li>
+            <li><strong>alle apparaten met dit naamdeel</strong> – bijv. alle apparaten waarvan de hostnaam „SmartPlug” bevat</li>
+          </ul>
+      </li>
+      <li>Opslaan – het gegeven verschijnt meteen in de lijst.</li>
+    </ol>
+    <p>Een leeg veld of <strong>„– automatisch bepalen –”</strong> verwijdert het eigen gegeven weer; dan geldt de automatische indeling.</p>
+
+    <h3>Methode 2: OUI-beheervenster</h3>
+    <p>Via <span class="btn-demo btn-dark">🔄 OUI-update</span> → tab <strong>„✏ Eigen toewijzingen”</strong> ziet u alle vermeldingen in één overzicht en kunt u ze toevoegen, wijzigen en verwijderen. De subtabs:</p>
+    <ul>
+      <li><strong>OUI → fabrikant</strong> – MAC-prefix (6 hex-tekens) → fabrikantnaam</li>
+      <li><strong>MAC → naam</strong> – MAC-adres → eigen apparaatnaam</li>
+      <li><strong>MAC → type</strong> – MAC-adres → apparaattype (één apparaat)</li>
+      <li><strong>IP → type</strong> – IP-adres → apparaattype (apparaat zonder MAC-adres)</li>
+      <li><strong>Hostnaam → type</strong> – naamdeel → apparaattype (alle apparaten met dit naamdeel)</li>
+      <li><strong>MAC-prefix → type</strong> – MAC-prefix → apparaattype (alle apparaten van één fabrikant)</li>
+    </ul>
+
+    <h3>Bestandsformaat S-IT-Custom.ini</h3>
+    <p>Het bestand staat in de map <code>Config</code> naast <code>sit-lsc-start.exe</code> en kan ook met een teksteditor worden bewerkt. MAC-adressen worden met koppeltekens geschreven. Sectienamen en apparaattypen staan er in het Duits in, zoals het programma ze opslaat (bijv. Kamera = camera); het programma toont de apparaattypen in de ingestelde taal.</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – eigen prioriteitstoewijzingen</span><br>
+<span class="comment">; Wordt door de OUI-update NIET overschreven.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; MAC-prefix (6 hex) = fabrikant</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; MAC-adres = eigen apparaatnaam</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Camera binnenplaats</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; MAC-adres = apparaattype (dit apparaat)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; IP-adres = apparaattype (apparaat zonder MAC)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; naamdeel = apparaattype (alle apparaten met dit naamdeel)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; MAC-prefix (6 hex) = apparaattype (alle apparaten van één fabrikant)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Volgorde bij het apparaattype:</strong> één apparaat (MAC of IP) &gt; naamdeel &gt; MAC-prefix &gt; automatische indeling
+    </div>
+    <div class="info">
+      <strong>ℹ Oudere vermeldingen:</strong> tot versie 4.0 legden de secties <code>[IP]</code> en <code>[Hostname]</code> het besturingssysteem vast. Ze bepalen nu het apparaattype; bestaande vermeldingen blijven geldig en verschijnen in de kolom „Apparaattype”.
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Tab 2: Internetbereikbaarheid</h2>
+  <div class="box">
+    <p>Bovenin de tab kiest u een van vier controles:</p>
+    <table>
+      <tr><th>Kaart</th><th>Waarvoor</th></tr>
+      <tr><td><strong>🌐 Internetbereikbaarheid</strong></td>
+          <td>Controleert of deze pc het internet bereikt: DNS, routering, TCP 443, HTTPS, IPv6 en browser.</td></tr>
+      <tr><td><strong>🔗 LAN-verbindingsweg</strong></td>
+          <td>Controleert de weg van de pc via de gateway naar een doel in het eigen netwerk, bijv. via powerline naar de NAS of naar de router.</td></tr>
+      <tr><td><strong>📶 Snelheidstest</strong></td>
+          <td>Meet download, upload en ping van de internetverbinding.</td></tr>
+      <tr><td><strong>🏷 Domeininformatie</strong></td>
+          <td>Toont bij welke provider de DNS-records van een domein worden beheerd, wie de e-mail ervan ontvangt en waar de website staat.</td></tr>
+    </table>
+
+    <h3>🏷 Domeininformatie</h3>
+    <p>Typische aanleiding: een dienstverlener moet een record van het bedrijfsdomein wijzigen, bijvoorbeeld voor een nieuwe mailserver of een verificatie bij een clouddienst, en niemand weet meer waar het domein wordt beheerd. De domeininformatie toont het met één opvraging. Administratorrechten zijn daarvoor niet nodig, een internetverbinding wel.</p>
+
+    <h4>Bediening</h4>
+    <ol>
+      <li>Kaart <strong>🏷 Domeininformatie</strong> kiezen.</li>
+      <li>Domein invoeren, bijv. <code>bedrijf.nl</code>. Een webadres (<code>https://www.bedrijf.nl/contact</code>) of een e-mailadres (<code>info@bedrijf.nl</code>) kan ook, evenals domeinen met speciale tekens zoals umlauts.</li>
+      <li>Op <span class="btn-demo btn-green">▶ Controleren</span> klikken of Enter drukken.</li>
+    </ol>
+    <p>Heeft een ingevoerd subadres zoals <code>shop.bedrijf.nl</code> geen eigen nameservers, dan controleert het programma het bovenliggende domein <code>bedrijf.nl</code> en vermeldt dat in de regel boven het resultaat.</p>
+
+    <h4>Resultaten</h4>
+    <table>
+      <tr><th>Regel</th><th>Betekenis</th></tr>
+      <tr><td><strong>Nameservers</strong></td>
+          <td>De servers die in de DNS verantwoordelijk zijn voor het domein.</td></tr>
+      <tr><td><strong>DNS beheerd bij</strong></td>
+          <td>De provider van deze nameservers. Daar worden de DNS-records van het domein gewijzigd.</td></tr>
+      <tr><td><strong>Mailservers</strong></td>
+          <td>De servers die e-mail voor het domein ontvangen, met hun prioriteit: de server met het lagere getal wordt eerst geprobeerd. Staat er „geen ingevoerd”, dan ontvangt het domein geen e-mail.</td></tr>
+      <tr><td><strong>E-mail bij</strong></td>
+          <td>De provider van de mailserver. Staat er „filterdienst” achter, dan ontvangt een spam- en virusfilter de e-mail en stuurt die door naar de eigenlijke mailbox.</td></tr>
+      <tr><td><strong>Webserver</strong></td>
+          <td>Het adres van de website (<code>www.bedrijf.nl</code>, anders <code>bedrijf.nl</code>) en de IP-adressen ervan.</td></tr>
+      <tr><td><strong>Website bij</strong></td>
+          <td>De provider bij wie de website staat.</td></tr>
+    </table>
+    <p>Onder elke provider staan in grijze tekst het adres van de server, de computernaam, de naam van het netwerk en het adresbereik daarvan.</p>
+
+    <h4>Waar de gegevens vandaan komen</h4>
+    <ul>
+      <li><strong>Provider:</strong> het programma kent de nameservers en mailservers van de gangbare providers, bijv. IONOS, Strato, Cloudflare, Microsoft 365 en Google Workspace. Staat een server daar niet in, dan noemt het de beheerder van het netwerk volgens het verantwoordelijke register, bijv. RIPE voor Europa of ARIN voor Noord-Amerika. Tussen haakjes staat dan „netwerkbeheerder volgens RIPE”.</li>
+      <li><strong>Land:</strong> het land waarin het netwerk van de server bij het register is geregistreerd. Dat is meestal de locatie van het datacenter, maar niet altijd: grote bedrijven registreren hun netwerken vaak op hun hoofdvestiging.</li>
+      <li><strong>„niet toegewezen”:</strong> de server staat niet in de lijst, en het register was niet bereikbaar of noemde geen beheerder.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Nameservers en registratie:</strong> waar de DNS-records worden beheerd, is meestal ook de provider bij wie het domein is geregistreerd. Bij DNS-diensten zoals Cloudflare kan het domein bij een andere provider staan.
+    </div>
+    <div class="tip">
+      <strong>Tip:</strong> <span class="btn-demo btn-blue">📋 Resultaat kopiëren</span> zet het resultaat als tekst met datum en tijd op het klembord, bijv. voor een e-mail aan de klant of de dienstverlener.
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="lan-performance">8. Tab 4: LAN-prestaties &amp; Wi-Fi</h2>
+  <div class="box">
+    <h3>LAN-snelheidstest</h3>
+    <p>Meet de werkelijke schrijf- en leessnelheid naar een netwerkshare – zonder serversoftware aan de andere kant.</p>
+
+    <h4>Vereisten</h4>
+    <ul>
+      <li>Een bereikbare netwerkshare (bijv. <code>\\NAS-naam\Data</code>) of een verbonden netwerkstation (bijv. <code>U:</code>)</li>
+      <li>Schrijfrechten op de share</li>
+    </ul>
+    <p>Slaapt de NAS, dan wacht het programma tot de ingestelde <strong>wachttijd voor netwerkstations</strong> (paragraaf 5) voordat het meldt dat het doel niet bereikbaar is. Voert Windows een netwerkstation als „niet beschikbaar” (rood kruis in de Verkenner), dan verbindt het programma het opnieuw, zoals de Verkenner dat doet bij het aanklikken.</p>
+
+    <div class="warn">
+      <strong>Belangrijk: de servernaam alleen is niet genoeg.</strong><br> <code>\\NAS-naam</code> toont in de Verkenner alleen de <em>lijst</em> van shares – daar kan geen bestand worden aangemaakt, de test mislukt. De share zelf moet worden opgegeven, dus bijv. <code>\\NAS-naam\Data</code>. Het eenvoudigst via <strong>📂</strong> kiezen, dan klopt het pad altijd. Naast het invoerveld legt ook de <strong>ⓘ</strong>-knop dit uit.
+    </div>
+
+    <p>Ook een <strong>lokale map</strong> (bijv. <code>C:\Temp</code>) is als doel toegestaan – dat laat ter vergelijking zien hoe snel de pc zonder netwerk is.</p>
+
+    <h4>Bediening</h4>
+    <ol>
+      <li>Doel invoeren of via <strong>📂</strong> kiezen. Het pad wordt <strong>vóór</strong> de start gecontroleerd; klopt er iets niet, dan legt een melding precies uit wat er ontbreekt.</li>
+      <li>Blokgrootte kiezen (1–64 MB per meetcyclus)</li>
+      <li><span class="btn-demo btn-green">▶ Duurtest starten</span> – de test loopt continu en werkt de livecurve bij</li>
+      <li><span class="btn-demo btn-red">⏹ Stoppen</span> – beëindigt de test</li>
+    </ol>
+    <p>Wordt tijdens de test een andere tab geopend, dan vraagt het programma of de test moet worden gestopt. Met <strong>Nee</strong> blijft de tab LAN-prestaties &amp; Wi-Fi open en loopt de test door. Bij het afsluiten van het programma wordt de test gestopt en het testbestand verwijderd.</p>
+
+    <h4>Resultaten</h4>
+    <ul>
+      <li><strong>Blauwe lijn</strong> – schrijfsnelheid</li>
+      <li><strong>Groene lijn</strong> – leessnelheid</li>
+      <li>De tegels tonen altijd de actuele meetwaarde</li>
+      <li>Het meetprotocol vermeldt elke afzonderlijke cyclus</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Lokale stations:</strong> bij lokale stations (bijv. C:\, D:\) kunnen de meetwaarden door de <strong>bestandssysteemcache van Windows</strong> sterk vertekend zijn – de cache meldt „klaar” voordat de gegevens echt op de schijf staan. Waarden van enkele duizenden Mbit/s op een normale HDD zijn daarom geen realistisch resultaat. Gebruik voor zinvolle metingen altijd een <strong>netwerkpad</strong> (UNC-pad zoals <code>\\Server\Share</code> of een netwerkstation).
+    </div>
+
+    <div class="tip">
+      <strong>Typische richtwaarden:</strong><br> Gigabit-LAN: 400–900 Mbit/s &nbsp;|&nbsp; 100 Mbit-LAN: 60–90 Mbit/s &nbsp;|&nbsp; Wi-Fi (802.11ac): 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Kleinere blokgroottes (1–4 MB) tonen meer schommelingen, omdat overhead en latentie zwaarder wegen. Voor stabiele meetwaarden zijn 16–64 MB aan te bevelen.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>Wi-Fi- en LAN-tegel</h3>
+    <p>Rechts in de tab staan naast elkaar de <strong>Wi-Fi-tegel</strong> en de <strong>LAN-tegel</strong>, daaronder IPv4-adres en gateway. Beide tegels zijn gelijk opgebouwd: bovenaan de toestand, daaronder de adapter met de naam waaronder hij ook in Apparaatbeheer staat.</p>
+    <p>De Wi-Fi-tegel toont bij een bestaande verbinding:</p>
+    <ul>
+      <li>Netwerknaam en verbindingsstatus</li>
+      <li>Signaalsterkte als gekleurde balk (groen goed, geel middel, rood zwak)</li>
+      <li>Kanaal, frequentieband en draadloze standaard (bijv. Wi-Fi 6)</li>
+      <li><strong>⬆ Verbindingssnelheid</strong> – de snelheid die Windows voor de verbinding meldt</li>
+      <li><strong>⬇ Ontvangstsnelheid</strong> – alleen tijdens de LAN-duurtest (zie hieronder)</li>
+    </ul>
+    <p>Is er geen verbinding, dan noemt de tegel de reden: <strong>Adapter uitgeschakeld</strong> (uitgeschakeld in Apparaatbeheer of in Netwerkverbindingen), <strong>Niet verbonden</strong> of <strong>Geen Wi-Fi-adapter</strong>. De LAN-tegel onderscheidt bovendien <strong>Geen kabel aangesloten</strong>.</p>
+    <div class="info">
+      <strong>ℹ Ontvangstsnelheid alleen tijdens de duurtest:</strong> de ontvangstsnelheid die Windows meldt, is alleen zinvol zolang er gegevens stromen. Zonder verkeer zakt ze naar lage waarden, ook al is de verbinding goed. De tegel toont haar daarom alleen terwijl de LAN-duurtest loopt – dan zijn ontvangstsnelheid en gemeten schrijf- en leessnelheid direct te vergelijken. Bij start en stop van de test wordt de tegel meteen bijgewerkt.
+    </div>
+    <div class="info">
+      <strong>ℹ Locatietoegang:</strong> signaalsterkte, kanaal en draadloze standaard geeft Windows 11 alleen vrij als bureaublad-apps toegang tot de locatie hebben. Ontbreekt die toegang, dan staat in de tegel een melding met de knop <strong>„→ Locatie-instellingen openen”</strong>. De netwerknaam neemt het programma dan uit de netwerklijst van Windows en wijst erop dat die van de Wi-Fi-naam kan afwijken (bijv. „Thuisnetwerk 2”).
+    </div>
+    <div class="info">
+      <strong>ℹ Bijwerken:</strong> beide tegels worden elke 10 seconden bijgewerkt; een overstap van LAN naar Wi-Fi of een later ingestoken USB-Wi-Fi-stick wordt zonder herstart herkend. Met <strong>🔄 Vernieuwen</strong> gaat het direct.
+    </div>
+  </div>
+
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Tab 5: Wi-Fi-profielen</h2>
+  <div class="box">
+    <p>Deze tab toont de op deze pc opgeslagen Wi-Fi-netwerken inclusief wachtwoord en zet ze over naar een andere pc – bijvoorbeeld bij de overstap naar een nieuwe computer. Rechts daarnaast ziet u hoe goed de eigen Wi-Fi-verbinding is vergeleken met de Wi-Fi-standaarden en welke Wi-Fi-netwerken binnen bereik zijn.</p>
+
+    <div class="warn">
+      <strong>⚠ Adminrechten vereist:</strong> uitlezen, back-uppen en terugzetten van de profielen werkt alleen met administratorrechten. Draait het programma zonder, dan staat bovenin de tab een melding en zijn de betreffende knoppen geblokkeerd.
+    </div>
+
+    <h3>Linkerkolom: knoppen en opgeslagen profielen</h3>
+    <table>
+      <tr><th>Knop</th><th>Functie</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  Wi-Fi-wachtwoorden uitlezen</span></td>
+          <td>Leest alle opgeslagen Wi-Fi-profielen inclusief wachtwoord uit en vult de lijst eronder.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Protocol tonen</span></td>
+          <td>Opent het protocol van het uitlezen. Wachtwoorden staan daar niet in. Het staat in de logmap (<code>WLAN-Profile_&lt;datum&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Wachtwoord tonen</span></td>
+          <td>Toont het wachtwoord van het in de lijst gekozen netwerk – met kopiëren en afdrukken. Dubbelklikken op het netwerk doet hetzelfde.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Back-up van profielen</span></td>
+          <td>Maakt een back-up van alle profielen inclusief wachtwoord in een map, bijv. op een USB-stick. Daar ontstaat een submap <code>WLAN-Profile_&lt;pc-naam&gt;_&lt;datum&gt;</code>.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Profielen terugzetten</span></td>
+          <td>Zet zo'n back-up op deze pc terug, voor alle gebruikers. Daarna wordt aangeboden de back-up te verwijderen.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  Wi-Fi-rapport (HTML)</span></td>
+          <td>Maakt het Wi-Fi-rapport (zie hieronder).</td></tr>
+    </table>
+    <p>De lijst <strong>„Opgeslagen profielen”</strong> noemt bij elk netwerk de toestand: <strong>verbonden</strong>, <strong>binnen bereik</strong> of <strong>niet binnen bereik</strong>. Netwerken zonder wachtwoord zijn als zodanig gemarkeerd.</p>
+
+    <div class="danger">
+      <strong>De back-up bevat de wachtwoorden als leesbare tekst.</strong> Bewaar de map of USB-stick zorgvuldig en verwijder de back-up zodra die is teruggezet – het programma biedt dat aan na ⑤. Een afgedrukte wachtwoordpagina wordt als bestand na een minuut en bij het afsluiten van het programma weer verwijderd.
+    </div>
+
+    <h3>Overstap naar een nieuwe pc</h3>
+    <ol>
+      <li>Op de oude pc: <strong>④ Back-up van profielen</strong> en een USB-stick als doel kiezen.</li>
+      <li>Op de nieuwe pc: LanScanner starten, tab Wi-Fi-profielen, <strong>⑤ Profielen terugzetten</strong> en de map <code>WLAN-Profile_…</code> op de stick kiezen.</li>
+      <li>De vraag of de back-up moet worden verwijderd met <strong>Ja</strong> beantwoorden.</li>
+    </ol>
+    <p>De teruggezette netwerken verschijnen daarna in de lijst „Opgeslagen profielen”.</p>
+
+    <h3>Rechtsboven: uw verbinding vergeleken met de Wi-Fi-standaarden</h3>
+    <p>De grafiek toont als <strong>grijze balken</strong> de gebruikelijke verbindingssnelheden van pc's en notebooks voor Wi-Fi 4 (802.11n) tot Wi-Fi 7 (802.11be), telkens met de frequentieband. De <strong>gekleurde balk</strong> is uw verbindingssnelheid volgens Windows, gekleurd naar signaalsterkte (groen goed, geel middel, rood zwak). Ligt hij aan de onderkant van zijn standaard, dan loont een blik op afstand tot de router, kanaal en band.</p>
+    <div class="info">
+      <strong>ℹ Verbindingssnelheid en doorvoer:</strong> de verbindingssnelheid is de brutosnelheid van de radioverbinding. In de praktijk wordt daarvan ongeveer de helft tot twee derde werkelijk overgedragen. De echte doorvoer meet de LAN-duurtest in tab 4.
+    </div>
+
+    <h3>Rechtsonder: Wi-Fi-netwerken binnen bereik</h3>
+    <p>De tabel vermeldt de Wi-Fi-netwerken die de adapter op dit moment ontvangt, met signaal, netwerknaam, band en kanaal, standaard, versleuteling en de vermelding of het netwerk op deze pc is opgeslagen. Bij opgeslagen netwerken toont de link <strong>„Wachtwoord tonen”</strong> het wachtwoord direct. Bij het eerste openen van de tab wordt de omgeving eenmaal gescand; <strong>„Omgeving scannen”</strong> zoekt opnieuw.</p>
+    <div class="info">
+      <strong>ℹ Locatietoegang:</strong> de Wi-Fi-netwerken binnen bereik, signaalsterkte en draadloze standaard levert Windows 11 alleen als bureaublad-apps toegang tot de locatie hebben. Ontbreekt die toegang, dan staat op de plaats van de tabel een melding met de knop <strong>„→ Locatie-instellingen openen”</strong>.
+    </div>
+
+    <h3>Wi-Fi-rapport</h3>
+    <p>Knop <strong>⑥</strong> vat de toestand samen in een kleurig HTML-bestand – geschikt om door te geven, voor het klantdossier of om voor en na te vergelijken:</p>
+    <ul>
+      <li>Wi-Fi-verbinding met adapter, signaal, band, kanaal en verbindingssnelheid</li>
+      <li>LAN-aansluiting</li>
+      <li>IPv4-adres en gateway</li>
+      <li>Indeling van de eigen verbinding in de Wi-Fi-standaarden</li>
+      <li>Wi-Fi-netwerken binnen bereik</li>
+      <li>Opgeslagen profielen</li>
+    </ul>
+    <p><strong>Wachtwoorden staan niet in het rapport.</strong> Het wordt in de logmap opgeslagen als <code>WLAN-Bericht_&lt;pc-naam&gt;_&lt;datum&gt;.html</code> en in de browser geopend.</p>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">10. Tab 6: Firewall &amp; poorten</h2>
+  <div class="box">
+    <p>Deze tab behandelt twee afzonderlijke gevallen en is daarom in twee kolommen verdeeld. Beide gebruiken dezelfde Windows-firewall, maar bekijken die vanuit tegengestelde richting:</p>
+    <ul>
+      <li><strong>Links – „Apparaat in het netwerk bereiken”:</strong> een ander apparaat in het LAN (NAS, printer, FritzBox-USB) is vanaf deze pc niet bereikbaar.</li>
+      <li><strong>Rechts – „Poort op deze pc”:</strong> een programma op deze pc heeft een bepaalde poort nodig waarop anderen uit het netwerk toegang zoeken (voorraadbeheer, kassasysteem, database, beheer op afstand).</li>
+    </ul>
+    <p>Onder beide kolommen ligt over de volle breedte de gemeenschappelijke <strong>regellijst</strong>; die toont de vermeldingen uit beide kolommen.</p>
+
+    <div class="warn">
+      <strong>⚠ Adminrechten vereist:</strong> firewallregels lezen en instellen kan alleen met administratorrechten. Het eenvoudigst laat u <strong>„Als administrator starten”</strong> ingeschakeld (zie paragraaf 5, standaard aan). Draait het programma zonder adminrechten, dan meldt de tab dat bij het controleren of toevoegen.
+    </div>
+
+    <h3>Linkerkolom: apparaat in het netwerk bereiken</h3>
+    <p>Dit gebruikt u als een apparaat in de scan zichtbaar is (of zou moeten zijn), maar niet bereikbaar is – geen ping, geen bestandsdeling. Vaak blokkeert de Windows-firewall van deze pc de verbinding. Deze kolom is overgenomen uit het zelfstandige hulpmiddel <strong>S-IT-FWModify</strong>.</p>
+    <ol>
+      <li><strong>IP-adres of subnet invoeren</strong> – één adres (bijv. <code>192.168.178.60</code>) of een volledig subnet (<code>192.168.178.0/24</code>). Laatst gebruikte doelen staan klaar in de keuzelijst.</li>
+      <li><strong>Omvang van de uitzondering kiezen:</strong>
+          <ul>
+            <li><strong>Alle poorten</strong> – voor één bekend apparaat</li>
+            <li><strong>Alleen bestandsdeling</strong> – TCP 445, 139 en UDP 137, 138 (SMB)</li>
+            <li><strong>Bestandsdeling + webinterface</strong> – aanvullend TCP 5000, 5001 (bijv. voor NAS-interfaces)</li>
+          </ul>
+      </li>
+      <li><strong>Controleren</strong> – het resultaat verschijnt in vijf regels (zie hieronder).</li>
+      <li><strong>Uitzondering toevoegen</strong> – maakt de passende firewall-uitzondering aan.</li>
+    </ol>
+    <p>De vijf controleregels:</p>
+    <ul>
+      <li><strong>Apparaat antwoordt op ping</strong> – basisbereikbaarheid in het netwerk</li>
+      <li><strong>Open poorten op het doel</strong> – wat biedt het apparaat aan, zit bestandsdeling erbij?</li>
+      <li><strong>Basisinstelling firewall</strong> – kan een uitzondering hier eigenlijk wel iets uithalen?</li>
+      <li><strong>Netwerkprofiel van deze pc</strong> – Privé = shares mogelijk, Openbaar = alles geblokkeerd</li>
+      <li><strong>S-IT-regel voor dit doel</strong> – bestaat er al een door dit hulpmiddel ingestelde uitzondering?</li>
+    </ul>
+
+    <h3>Rechterkolom: poort op deze pc</h3>
+    <p>Dit gebruikt u omgekeerd, als een programma <em>op deze pc</em> draait en een bepaalde poort moet openen zodat andere computers in het netwerk erbij kunnen – bijvoorbeeld voorraadbeheer, een kassasysteem of een database die zijn dienst op een vaste poort aanbiedt. De regel geldt <strong>inkomend</strong> en <strong>alleen vanuit het lokale netwerk</strong>.</p>
+    <ol>
+      <li><strong>Sjabloon kiezen</strong> (optioneel) – veelvoorkomende gevallen zijn vastgelegd en vullen poort, protocol en omschrijving automatisch in: SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432), Extern bureaublad (3389), VNC (5900), HTTP (80), HTTPS (443), HTTP alternatief (8080), HTTPS alternatief (8443). Met <em>„– eigen invoer –”</em> voert u zelf een willekeurige poort in.</li>
+      <li><strong>Poort (of bereik) en protocol</strong> – één nummer (bijv. <code>1433</code>) of een bereik (bijv. <code>5000-5010</code>, hoogstens 200 poorten), plus <strong>TCP</strong> of <strong>UDP</strong>.</li>
+      <li><strong>Omschrijving</strong> – een naam waaronder de regel later in de lijst terug te vinden is (bijv. „Voorraadbeheer, kassasysteem”).</li>
+      <li><strong>Controleren</strong> – het resultaat verschijnt in drie regels (zie hieronder).</li>
+      <li><strong>Poort openen</strong> – maakt een inkomende regel voor het lokale subnet aan.</li>
+    </ol>
+    <p>De drie controleregels:</p>
+    <ul>
+      <li><strong>Programma luistert op de poort</strong> – zonder een luisterend programma heeft geen enkele firewallregel effect. Luistert het programma alleen op <code>127.0.0.1</code>, dan is het ook met regel niet vanuit het netwerk bereikbaar – dan moet het programma zelf aan het LAN-adres worden gebonden.</li>
+      <li><strong>Inkomende firewallregel</strong> – bestaande regels voor deze poort, ook die van anderen (bijv. van het installatieprogramma van de vaktoepassing). Regels die alleen voor één ander programma of een andere Windows-service gelden, worden als zonder effect aangeduid.</li>
+      <li><strong>Firewallprofiel van deze pc</strong> – de regel geldt voor het privéprofiel; in het profiel „Openbaar” blokkeert Windows toch.</li>
+    </ul>
+
+    <h3>Het resultaat (beide kolommen)</h3>
+    <p>Elke controleregel toont een resultaat: <strong>groen</strong> in orde, <strong>geel</strong> een opmerking, <strong>rood</strong> een probleem. Waar zinvol biedt de regel rechts een kleine knop voor directe oplossing aan – bijvoorbeeld het netwerkprofiel op „privé” zetten (zodat shares wél worden toegestaan) of de poort meteen openen. De uitgebreide toelichting bij elke regel verschijnt als u de muis erboven houdt.</p>
+
+    <h3>De gemeenschappelijke regellijst</h3>
+    <p>Alle uitzonderingen die het programma aanmaakt – uit beide kolommen – krijgen een eigen naam (prefix <code>S-IT-FW-</code>) en verschijnen in de lijst onderaan. Per vermelding ontstaan meestal meerdere firewallregels (per richting en protocol). Met de knoppen eronder worden <strong>gemarkeerde</strong> of <strong>alle S-IT-regels</strong> weer verwijderd.</p>
+
+    <div class="tip">
+      <strong>Uw overige firewallregels blijven onaangetast.</strong> Het programma ziet en wijzigt uitsluitend zijn eigen regels met het prefix <code>S-IT-FW-</code>. Regels van Windows of andere software worden niet getoond en niet verwijderd.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Opruimen eenvoudig gemaakt:</strong> is een uitzondering of een geopende poort alleen voor een test ingesteld, verwijder die later dan met één klik via de regellijst – zo blijft de firewall schoon.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">11. Diagnose (DIAG) – voor testers</h2>
+  <div class="box">
+    <p>Deze paragraaf is bedoeld voor testers en voor iedereen die een herkenningsprobleem wil melden. Voor normaal gebruik is hiervan niets nodig.</p>
+
+    <h3>Waarvoor?</h3>
+    <p>Windows levert netwerkinformatie via meerdere wegen. Welke daarvan antwoordt, verschilt van computer tot computer – afhankelijk van de Windows-editie, stuurprogramma's en bedrijfsbeleid. Toont het programma op een apparaat verkeerde waarden, dan is aan de weergave niet te zien waaraan dat ligt. De diagnose vraagt daarom <strong>elke weg afzonderlijk</strong> op en legt vast wat die heeft geantwoord – ook als die helemaal niet heeft geantwoord.</p>
+
+    <h3>Inschakelen</h3>
+    <p><strong>⚙ Config → Diagnose → „🔧 DIAG-hulpmiddelen tonen”</strong>. Daarna verschijnt bovenin de header de knop <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Geen herstart nodig. Het vinkje weghalen verbergt hem weer.</p>
+
+    <h3>De drie hulpmiddelen</h3>
+    <table>
+      <tr><th>Knop</th><th>Functie</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ DIAG maken</span></td>
+          <td>Maakt <strong>precies één bestand</strong> aan in de map <code>Diag</code> naast <code>sit-lsc-start.exe</code>. Er gebeurt niets vanzelf – alleen na een klik.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Leesbare tekst tonen</span></td>
+          <td>Toont de inhoud leesbaar – <strong>precies wat verzonden zou worden</strong>. Desgewenst ook als leesbare tekst op te slaan. De inhoud is in alle taalversies hetzelfde opgebouwd en wordt niet vertaald.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Map openen</span></td>
+          <td>Opent de opslagmap in de Verkenner.</td></tr>
+    </table>
+
+    <h3>Wat staat erin?</h3>
+    <ul>
+      <li>De ruwe antwoorden van alle opvragingen (PowerShell, wmic, register, netsh, ipconfig), inclusief de Wi-Fi-netwerken binnen bereik</li>
+      <li>Hoe de LAN- en Wi-Fi-tegel deze antwoorden weergeven</li>
+      <li>Windows- en programmaversie, schaling, adminrechten</li>
+      <li>Wat het programma van de antwoorden heeft gemaakt</li>
+      <li>Na een netwerkscan bovendien de apparatenlijst van die scan: per apparaat naam, IP-adres, fabrikant, open poorten en de indeling door het programma met de reden</li>
+    </ul>
+    <p><strong>Geen wachtwoorden, geen toegangsgegevens.</strong> MAC-adressen worden ingekort: het fabrikantdeel blijft staan – de herkenning heeft het nodig –, het apparaatspecifieke deel wordt vervangen door <code>XX</code> (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>Waarom is het bestand niet leesbaar?</strong><br> Het is <em>versluierd</em>, zodat het niet per ongeluk wordt meegelezen of door een mailfilter wordt ontleed. Dat is uitdrukkelijk <strong>geen versleuteling</strong> en is ook niet zo bedoeld. Met <strong>🔍 Leesbare tekst tonen</strong> ziet u op elk moment zelf wat erin staat.
+    </div>
+
+    <h3>Insturen</h3>
+    <p>Vrijwillig en alleen bij een herkenningsprobleem: stuur het bestand naar <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>. Een zin over wat verkeerd werd weergegeven is nuttig.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">12. Bestanden, updates en back-up</h2>
+  <div class="box">
+
+    <h3>Opbouw van de programmamap</h3>
+    <p>Alles wat u zelf nodig hebt, staat bovenaan naast het startprogramma. De submap <code>sit-lsc_program</code> bevat alleen het programma zelf en hoeft niet te worden geopend:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← hiermee wordt het programma gestart</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← instellingen, eigen gegevens, fabrikantendatabase</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← scanlogs, rapporten en protocollen</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← diagnosebestanden</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← help, ChangeLog, disclaimer en licentie</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← het programma</span>
+    </div>
+    <p>De mappen <code>Config</code>, <code>Logs</code> en <code>Diag</code> maakt het programma zelf aan wanneer dat nodig is.</p>
+
+    <div class="tip">
+      <strong>Korte checklist – wat meenemen?</strong><br> Bij een pc-wissel of herinstallatie deze mappen naast <code>sit-lsc-start.exe</code> veiligstellen:
+      <ul style="margin:6px 0 0 0">
+        <li><code>Config\</code> – instellingen, eigen gegevens over apparaten en de fabrikantendatabase</li>
+        <li><code>Logs\</code> – volledige map, als oude scans, protocollen en Wi-Fi-rapporten bewaard moeten blijven</li>
+      </ul>
+      Na het kopiëren het programma starten – alle instellingen, toewijzingen en eerdere scanresultaten zijn meteen weer beschikbaar.
+    </div>
+
+    <h3>Bestanden en mappen in één oogopslag</h3>
+    <table>
+      <tr><th>Bestand</th><th>Inhoud</th><th>Veiligstellen?</th></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
+          <td>Alle instellingen (scanopties, logmap, weergave enz.)</td>
+          <td><strong>✔ Ja</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Eigen apparaatnamen, apparaattypen en fabrikanten – wordt bij updates nooit overschreven</td>
+          <td><strong>✔ Ja</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
+          <td>Fabrikantendatabase (wordt bij een OUI-update opnieuw aangemaakt)</td>
+          <td>Optioneel</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Scanlogs (.log), HTML-rapporten (.html) en CSV-bestanden (.csv), daarnaast de protocollen van de tab Wi-Fi-profielen en de Wi-Fi-rapporten.<br> De CSV-bestanden zijn alleen bedoeld voor intern gebruik door het programma: <strong>„In scanner laden”</strong> in Logs &amp; rapporten laadt daaruit een eerdere scan terug in de apparatenlijst. Hun kolomnamen zijn daarom in elke taal Duits. Voor lezen en doorgeven zijn het HTML-rapport en de log bedoeld.<br> <em>Meenemen als oude scanresultaten in het logbeheer bewaard moeten blijven.</em></td>
+          <td><strong>✔ Aanbevolen</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Diagnosebestanden – ontstaan alleen als een DIAG wordt gemaakt</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>De help (Duits) en de vertalingen (<code>S-IT-LanScanner-Hilfe_nl.html</code> enz.), de versiegeschiedenis <code>S-IT-LanScanner-ChangeLog.html</code>, disclaimer en licentie (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>Het programma: hoofdprogramma <code>S-IT-LanScanner.exe</code> (wordt via <code>sit-lsc-start.exe</code> gestart) en programmabibliotheken</td>
+          <td>–</td></tr>
+    </table>
+
+    <h3>Update uitvoeren</h3>
+    <ol>
+      <li>Nieuwe versie downloaden en uitpakken</li>
+      <li><strong>Belangrijk:</strong> de map <code>Config</code> uit de oude programmamap naar de nieuwe kopiëren</li>
+      <li>Het programma via <code>sit-lsc-start.exe</code> starten</li>
+      <li>Alle instellingen en eigen gegevens zijn weer aanwezig</li>
+    </ol>
+    <div class="info">
+      Eerdere versies hadden nog geen map <code>Config</code>. Kopieer dan de bestanden <code>S-IT-LanScanner.ini</code> en <code>S-IT-Custom.ini</code> naar de nieuwe programmamap naast <code>sit-lsc-start.exe</code>. Het programma verplaatst ze bij de eerste start eenmalig naar de map <code>Config</code>, net als logs en diagnosebestanden die nog in de map <code>sit-lsc_program</code> staan. Daarbij wordt niets overschreven. Wat is verplaatst, staat in het bestand <code>Ordnerumzug.log</code> in de logmap.
+    </div>
+
+    <h3>Herinstallatie / pc-wissel</h3>
+    <p>Aanbevolen werkwijze:</p>
+    <ol>
+      <li>Veiliggestelde map <code>Config</code> naar de nieuwe programmamap naast <code>sit-lsc-start.exe</code> kopiëren</li>
+      <li>Veiliggestelde map <code>Logs\</code> eveneens daarheen kopiëren (of naar de ingestelde logmap)</li>
+      <li>Programma starten – alle instellingen, toewijzingen en eerdere scans zijn meteen beschikbaar in het logbeheer</li>
+      <li>Optioneel: OUI-update uitvoeren om de nieuwste fabrikantendatabase te laden</li>
+    </ol>
+    <div class="info">
+      Worden er geen bestanden veiliggesteld: <code>S-IT-LanScanner.ini</code> en <code>S-IT-Custom.ini</code> worden bij de eerste start automatisch met standaardwaarden opnieuw aangemaakt. Eigen gegevens over apparaten moeten dan opnieuw worden ingevoerd.
+    </div>
+    <div class="tip">
+      <strong>Wi-Fi-netwerken meenemen:</strong> de opgeslagen Wi-Fi-netwerken van de oude pc kunnen in de tab <strong>Wi-Fi-profielen</strong> worden geback-upt en op de nieuwe pc worden teruggezet (paragraaf 9).
+    </div>
+
+    <h3>OUI-database bijwerken</h3>
+    <p>Via <span class="btn-demo btn-dark">🔄 OUI-update</span> → tab <strong>„OUI-database-update”</strong> → <strong>„▶ OUI-database bijwerken”</strong> laadt het programma de volledige fabrikantenlijsten van de IEEE (MA-L, MA-M en MA-S) en slaat ze op in <code>S-IT-OUI.ini</code>. Daarvoor is een internetverbinding nodig. Voortgang en resultaat verschijnen in hetzelfde venster. Daarna wordt de database meteen opnieuw ingelezen – een herstart is niet nodig.</p>
+    <p>Kan een van de lijsten niet worden geladen, dan verschijnt een melding en blijft de bestaande <code>S-IT-OUI.ini</code> ongewijzigd.</p>
+    <div class="info">
+      Het bestand <code>S-IT-Custom.ini</code> met uw eigen gegevens wordt bij de OUI-update <strong>nooit</strong> gewijzigd of overschreven.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">13. Veelgestelde vragen (FAQ)</h2>
+  <div class="box">
+
+    <h3>Een apparaat wordt niet gevonden</h3>
+    <p>Mogelijke oorzaken:</p>
+    <ul>
+      <li>Apparaat is uitgeschakeld of in de energiebesparingsmodus</li>
+      <li>Apparaat antwoordt niet op ICMP-ping (firewall) → poortscan inschakelen helpt</li>
+      <li>Apparaat bevindt zich in een ander netwerksegment</li>
+      <li>Scanintensiteit „Veilig” kiezen en opnieuw scannen</li>
+    </ul>
+
+    <h3>Een apparaat wordt verkeerd of helemaal niet ingedeeld</h3>
+    <p>Rechtsklik op het apparaat → <strong>„✏ Apparaat benoemen …”</strong> → apparaattype kiezen of invoeren → Opslaan. Het gegeven verschijnt meteen in de lijst en geldt blijvend (paragraaf 6).</p>
+
+    <h3>Waarom is de kolom „Apparaattype” bij sommige apparaten leeg?</h3>
+    <p>De aanwijzingen waren niet voldoende voor een eenduidige indeling. Het programma laat het veld dan bewust leeg in plaats van te gokken. Een ingeschakelde poortscan levert vaak genoeg extra aanwijzingen; anders helpt een eigen gegeven via <strong>„Apparaat benoemen …”</strong>.</p>
+
+    <h3>Mijn printer was na de scan niet meer bereikbaar</h3>
+    <p>Zet in de instellingen de scanintensiteit op <strong>„Veilig”</strong>. Die ziet af van ARP-floods en poortscans op printerpoorten, die oudere firmwareversies kunnen overbelasten.</p>
+
+    <h3>Antivirusprogramma meldt een bedreiging</h3>
+    <p>Omdat de LAN-scanner het netwerk actief scant, beschouwen sommige antivirusprogramma's hem ten onrechte als verdacht (false positive). Het programma bevat geen enkele schadelijke software. Oplossing: het programmabestand en de map opnemen in de uitzonderingslijst / whitelist van het antivirusprogramma.</p>
+
+    <h3>De LAN-snelheidstest toont „Geen schrijftoegang”</h3>
+    <p>De share is waarschijnlijk alleen-lezen verbonden of de toegangsgegevens volstaan niet. Controleer uw schrijfrechten op de share.</p>
+
+    <h3>De test zegt „Share ontbreekt”</h3>
+    <p>Er is alleen de <strong>servernaam</strong> opgegeven, bijv. <code>\\NAS-naam</code>. Daar kan geen bestand worden aangemaakt – nodig is de share zelf: <code>\\NAS-naam\Data</code>. Zie paragraaf 8.</p>
+
+    <h3>De Wi-Fi-tegel toont „Verbonden”, maar geen signaalsterkte en geen kanaal</h3>
+    <p>Dat is bijna altijd de locatieblokkering van Windows 11 en <strong>geen fout van het programma</strong>: Windows geeft signaalsterkte, kanaal en draadloze standaard alleen vrij als bureaublad-apps toegang tot de locatie hebben. Hetzelfde geldt voor de Wi-Fi-netwerken binnen bereik in de tab Wi-Fi-profielen. De adapter zelf wordt toch correct herkend.</p>
+    <div class="tip">
+      <strong>Oplossing:</strong> klik in de tegel op <strong>„→ Locatie-instellingen openen”</strong> (of Instellingen → Privacy en beveiliging → Locatie). Schakel daar de <strong>locatievoorzieningen</strong> in en sta verderop de locatietoegang voor <strong>bureaublad-apps</strong> toe. Klik daarna in de tegel op <strong>🔄 Vernieuwen</strong>.
+    </div>
+
+    <h3>De netwerknaam in de Wi-Fi-tegel wijkt af van de Wi-Fi-naam</h3>
+    <p>Zonder locatietoegang neemt het programma de naam uit de netwerklijst van Windows; de tegel vermeldt dat. Windows maakt daar voor hetzelfde Wi-Fi-netwerk soms genummerde vermeldingen aan, bijv. „Thuisnetwerk 2”, als de pc zich meerdere keren of met verschillende adapters heeft aangemeld. Met locatietoegang toont de tegel de werkelijke Wi-Fi-naam.</p>
+
+    <h3>Waarom toont de Wi-Fi-tegel geen ontvangstsnelheid?</h3>
+    <p>De ontvangstsnelheid verschijnt alleen terwijl de LAN-duurtest loopt. Zonder verkeer meldt Windows daarvoor lage waarden die niets met de kwaliteit van de verbinding te maken hebben. De verbindingssnelheid (⬆) staat er daarentegen altijd.</p>
+
+    <h3>De Wi-Fi-tegel meldt „Adapter uitgeschakeld”</h3>
+    <p>De Wi-Fi-adapter is uitgeschakeld in Apparaatbeheer of onder <em>Netwerkverbindingen</em>. Na het inschakelen herkent het programma hem uiterlijk na 10 seconden; met <strong>🔄 Vernieuwen</strong> meteen. Een later ingestoken USB-Wi-Fi-stick wordt eveneens vanzelf herkend.</p>
+
+    <h3>Bij de snelheid staat „onbekend”</h3>
+    <p>Dan kon <strong>geen enkele</strong> opvraging een snelheid leveren – typisch bij een <strong>uitgeschakelde adapter</strong>, waarvoor Windows geen snelheid meldt. Het programma toont in dat geval bewust „onbekend” in plaats van een geschat getal: in een diagnosehulpmiddel hoort geen waarde thuis die niemand heeft gemeten. De adapternaam wordt toch getoond.</p>
+
+    <h3>Het programma oogt te klein op mijn UHD/4K-monitor</h3>
+    <p>Open <strong>⚙ Config</strong> en kies in de rechterkolom bij <strong>„Weergavegrootte / schaling”</strong> een hogere waarde. Het programma start na het opslaan automatisch opnieuw.</p>
+    <div class="tip">
+      <strong>Aanbeveling voor UHD/4K:</strong> de programmaschaling bepaalt de grootte alleen – de Windows-schaling hoeft u daarvoor niet te wijzigen. Begin met <strong>150 %</strong>; dat geeft op de meeste UHD-monitoren een goed leesbare weergave. Is het nog te klein of te groot, kies dan het volgende niveau tot tekst en elementen voor u optimaal leesbaar zijn.
+    </div>
+    <p>Mogelijke schalingsniveaus in het programma: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>Waar vind ik de disclaimer?</h3>
+    <p>In het bestand <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> in de map <code>Help</code> en op de <a href="https://sattlerit.github.io/sit-lanscanner/">projectpagina</a>. Kort samengevat: de resultaten zijn vrijblijvende aanwijzingen en een momentopname – ze vervangen geen vakkundige beveiligingscontrole.</p>
+
+    <h3>Ik heb SMB1 omgeschakeld – waarom staat er nog steeds de oude toestand?</h3>
+    <p>SMB1 is een <strong>Windows-onderdeel</strong>, geen eenvoudige schakelaar: Windows laadt de bestanden bij het inschakelen na en verwijdert ze bij het uitschakelen. Pas na een <strong>herstart</strong> is de wijziging van kracht – tot dan meldt de controle nog de vorige toestand. Het programma start de computer <strong>niet</strong> uit zichzelf opnieuw; het wijst er alleen op. Start Windows zelf opnieuw wanneer het u uitkomt.</p>
+
+    <h3>Waarom zijn er drie SMB1-regels?</h3>
+    <p>Omdat SMB1 uit meerdere, van elkaar onafhankelijke delen bestaat. Wie maar één regel ziet, krijgt gemakkelijk een verkeerd beeld van de eigen computer:</p>
+    <table>
+      <tr><th>Regel</th><th>Waarvoor</th></tr>
+      <tr><td><strong>SMB1-client</strong></td>
+          <td>Zodat <em>deze pc</em> oude apparaten kan bereiken – bijvoorbeeld een oudere NAS of een netwerkprinter die geen SMB2/3 ondersteunt. Dat is het meest voorkomende geval.</td></tr>
+      <tr><td><strong>SMB1-server</strong></td>
+          <td>Zodat <em>oude apparaten</em> bij de shares van deze pc kunnen – bijvoorbeeld een kopieerapparaat dat scans in een gedeelde map zet. Deze kant is de gevaarlijkere en moet alleen zo lang aan staan als het oude apparaat haar nodig heeft.</td></tr>
+      <tr><td><strong>SMB1 blijvend behouden</strong></td>
+          <td>Windows verwijdert SMB1 vanzelf weer als het 15 dagen niet is gebruikt. Deze regel schakelt die automatische verwijdering uit. Zinvol als het bedrijf langere pauzes heeft – na twee weken bedrijfsvakantie zou SMB1 anders plotseling weg zijn en zou de scanner stilliggen.</td></tr>
+    </table>
+    <p>De regel <strong>SMB1 blijvend behouden</strong> speelt alleen een rol als client of server werkelijk actief zijn. Staat SMB1 helemaal uit, dan is ze grijs en vraagt ze geen aandacht.</p>
+
+    <h3>Bij de SMB1-server staat „Onderdeel aanwezig, maar protocol uit” – wat betekent dat?</h3>
+    <p>De serverkant heeft twee niveaus: het nageladen Windows-onderdeel en de protocolschakelaar in de SMB-server. Na het inschakelen is eerst alleen het onderdeel er – de schakelaar kan pas na de herstart worden gezet. Precies daarvoor is de knop <strong>„→ Voltooien”</strong> er: hij zet de tweede schakelaar om en werkt meteen, zonder nieuwe herstart. Is de SMB1-server toch niet nodig, schakel hem dan in plaats daarvan helemaal uit.</p>
+
+    <h3>Waarom is de knop op een groene regel grijs?</h3>
+    <p>Een knop op een groene regel leidt altijd <em>terug</em> naar de minder veilige toestand – bijvoorbeeld „← Inschakelen” bij een uitgeschakelde SMB1-server. Zulke terugzetknoppen zijn bewust onopvallend gehouden, zodat ze niet uitnodigen tot per ongeluk klikken. Ze werken heel normaal.</p>
+
+    <h3>Waar worden de logs opgeslagen?</h3>
+    <p>Standaard: <code>Logs\</code> naast <code>sit-lsc-start.exe</code>. De map kan worden gewijzigd onder <strong>⚙ Config → Logmap</strong>.</p>
+
+    <h3>Kan ik het hulpmiddel op een USB-stick gebruiken?</h3>
+    <p>Ja, het hulpmiddel is draagbaar. Kopieer de volledige programmamap – dus <code>sit-lsc-start.exe</code> samen met de map <code>sit-lsc_program</code> en de overige mappen – naar de USB-stick. De INI-bestanden worden opgeslagen in de map <code>Config</code>.</p>
+
+    <h3>Waar vind ik de Wi-Fi-rapporten en het protocol van de Wi-Fi-profielen?</h3>
+    <p>Beide staan in de logmap, standaard <code>Logs\</code> naast <code>sit-lsc-start.exe</code>. Het Wi-Fi-rapport opent bovendien direct na het aanmaken in de browser.</p>
+
+    <h3>Bij de domeininformatie ontbreekt het land</h3>
+    <p>Land, netwerk en adresbereik komen van het register (bijv. RIPE). Is dat niet bereikbaar, bijvoorbeeld omdat een firewall of proxy de opvraging blokkeert, dan toont het programma alleen de provider uit de ingebouwde lijst.</p>
+
+    <h3>Bij de domeininformatie past het land niet bij de provider</h3>
+    <p>Het land is het land waarin het netwerk van de server is geregistreerd. Grote bedrijven registreren hun netwerken vaak op hun hoofdvestiging, ook als de server in een datacenter in een ander land staat. Zie paragraaf 7.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Heeft dit hulpmiddel u geholpen?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      De S-IT LAN Device Scanner wordt kosteloos ontwikkeld en onderhouden.<br> Een kleine donatie helpt om het hulpmiddel verder te ontwikkelen. Hartelijk dank! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Doneren via PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Versie 4.2
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Auteur: Hans Udo Sattler &nbsp;•&nbsp; Tsjechische vertaling: RQ68 &nbsp;•&nbsp; Dank aan alle gebruikers die met scans van hun eigen netwerken hebben geholpen bij het testen<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Projectpagina</a>
+  &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Disclaimer</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Help</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Help</h1>
+  <p>Version 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Quick start</a>
+  <a href="#oberflaeche">Interface</a>
+  <a href="#scan">Running a scan</a>
+  <a href="#ergebnisse">Understanding results</a>
+  <a href="#einstellungen">Settings</a>
+  <a href="#custom">Own assignments</a>
+  <a href="#internet">Internet reachability</a>
+  <a href="#lan-performance">LAN performance</a>
+  <a href="#wlan-profile">Wi-Fi profiles</a>
+  <a href="#firewall">Firewall &amp; ports</a>
+  <a href="#diag">Diagnostics</a>
+  <a href="#dateien">Files &amp; updates</a>
+  <a href="#faq">FAQ</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Contents</h3>
+    <ol>
+      <li><a href="#schnellstart">Quick start</a></li>
+      <li><a href="#oberflaeche">The program interface at a glance</a></li>
+      <li><a href="#scan">Running a scan</a></li>
+      <li><a href="#ergebnisse">Understanding the scan results</a></li>
+      <li><a href="#einstellungen">Settings</a></li>
+      <li><a href="#custom">Own device information (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Tab 2: Internet Reachability</a></li>
+      <li><a href="#lan-performance">Tab 4: LAN Performance &amp; Wi-Fi</a></li>
+      <li><a href="#wlan-profile">Tab 5: Wi-Fi Profiles</a></li>
+      <li><a href="#firewall">Tab 6: Firewall &amp; Ports</a></li>
+      <li><a href="#diag">Diagnostics (DIAG) – for testers</a></li>
+      <li><a href="#dateien">Files, updates and backup</a></li>
+      <li><a href="#faq">Frequently asked questions (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Quick start</h2>
+  <div class="box">
+    <h3>First scan in 3 steps</h3>
+    <ol>
+      <li><strong>Start the program</strong> – double-click <code>sit-lsc-start.exe</code>. Confirm administrator rights if asked (recommended for the ARP scan).</li>
+      <li><strong>Choose a network</strong> – select the desired network in the drop-down list at the top left (it is detected automatically).</li>
+      <li><strong>Start the scan</strong> – click <span class="btn-demo btn-green">▶ Start scan</span>. After the scan, all devices found appear in the list.</li>
+    </ol>
+    <div class="tip">
+      <strong>Tip:</strong> Turn on the <strong>port scan</strong> in the settings to detect services and the operating system more precisely. The scan then takes longer but provides considerably more information.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. The program interface at a glance</h2>
+  <div class="box">
+    <h3>Buttons in the toolbar</h3>
+    <p>The toolbar in the “LAN Scanner” tab contains the scan functions:</p>
+    <table>
+      <tr><th>Button</th><th>Function</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Start scan</span></td>
+          <td>Starts the network scan in the selected network</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Stop scan</span></td>
+          <td>Cancels a running scan</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Logs &amp; Reports</span></td>
+          <td>Opens the log manager with all saved scans</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 OUI Update</span></td>
+          <td>Opens the OUI management: update the manufacturer database and maintain your own assignments</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Connection Quality</span></td>
+          <td>Measures packet loss, response time and jitter to a target and to the gateway (see section 4)</td></tr>
+    </table>
+
+    <h3>Buttons in the header (always visible)</h3>
+    <p>These buttons are always visible at the top right of the header – reachable regardless of the active tab:</p>
+    <table>
+      <tr><th>Button</th><th>Function</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Opens the diagnostic tools. Only visible if switched on under <strong>⚙ Config → Diagnostics</strong> – hidden in normal use. See section 11.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Config</span></td>
+          <td>Opens the settings – on the right you find <strong>Display size / scaling</strong> (90–300 %) for HiDPI and UHD monitors.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Help</span></td>
+          <td>Opens this help window</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Shows or hides the header – more room for the device list</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Exit</span></td>
+          <td>Closes the program</td></tr>
+    </table>
+
+    <h3>Tabs</h3>
+    <ul>
+      <li><strong>LAN Scanner</strong> – main view with the device list</li>
+      <li><strong>Internet Reachability</strong> – check the Internet connection, LAN connection path, speed test and domain lookup (see section 7)</li>
+      <li><strong>Network Settings</strong> – network tools and diagnostics</li>
+      <li><strong>LAN Performance &amp; Wi-Fi</strong> – speed test, connection status and Wi-Fi overview</li>
+      <li><strong>📶 Wi-Fi Profiles</strong> – show saved Wi-Fi networks including their password, back them up and import them on another PC; also your own connection compared with the Wi-Fi standards, the Wi-Fi networks in range and the Wi-Fi report</li>
+      <li><strong>🛡 Firewall &amp; Ports</strong> – two columns: on the left, check whether a device on the network can be reached and add an exception if needed; on the right, check and open a port on this PC (admin rights required)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Running a scan</h2>
+  <div class="box">
+    <h3>Which range should I scan?</h3>
+    <p>The <strong>network field</strong> at the top left determines which addresses are checked. It is a drop-down list <em>and</em> an input field: the automatically detected networks are offered for selection – but you can also simply type into it.</p>
+    <table>
+      <tr><th>Notation</th><th>Example</th><th>Meaning</th></tr>
+      <tr><td><strong>From–to</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>All addresses from the first to the last – the simplest notation</td></tr>
+      <tr><td><strong>Short form</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>The same, only the last address block is given</td></tr>
+      <tr><td><strong>Whole network</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Technical notation (CIDR) for a complete network</td></tr>
+      <tr><td><strong>Single device</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Check only this one address</td></tr>
+    </table>
+    <p>A smaller range is considerably faster: instead of 254 addresses, only the ones you are really interested in are checked. For very large ranges the program asks first, so that a scan does not accidentally run for hours.</p>
+    <div class="warn">
+      <strong>If an entry is not accepted:</strong> the program explains in plain words what is wrong – for example if the second address comes before the first. Check the dots and the hyphen; spaces do not matter.
+    </div>
+
+    <h3>Scan intensity</h3>
+    <p>The scan intensity determines how aggressively the network is queried. It can be set under <strong>⚙ Config → Scan intensity</strong>:</p>
+    <table>
+      <tr><th>Mode</th><th>Method</th><th>Recommendation</th></tr>
+      <tr><td><strong>Safe</strong></td>
+          <td>Ping only (ICMP)</td>
+          <td>For sensitive networks, older printers or if devices were no longer reachable after the scan</td></tr>
+      <tr><td><strong>Standard</strong></td>
+          <td>Ping + ARP scan</td>
+          <td>For home networks – finds more devices than safe mode</td></tr>
+      <tr><td><strong>Intensive</strong></td>
+          <td>Ping + ARP scan in two passes</td>
+          <td>For professional environments. May briefly interrupt the connection on some routers</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Note on printers:</strong> older network printers (e.g. Brother HL models) may react to aggressive ARP floods with a connection failure. Use the scan intensity <strong>Safe</strong> in such networks.
+    </div>
+
+    <h3>Follow-up search for missing devices</h3>
+    <p>Some devices do not answer the first time, for example in power-saving mode or with a weak wireless signal, and some never answer ping at all. The follow-up search therefore asks again in a targeted way – only at addresses that have not answered yet. Set it under <strong>⚙ Config → Follow-up search for missing devices</strong>:</p>
+    <ul>
+      <li><strong>Off</strong> – no follow-up search.</li>
+      <li><strong>Known addresses</strong> (default) – addresses where a device was found in earlier scans are asked a second time with more patience. Devices without an open port get a second attempt on their web interface. Takes a few seconds.</li>
+      <li><strong>All silent addresses</strong> – in addition, typical ports are checked on all addresses without an answer. This also reveals devices that do not answer ping, for example voice assistants or Windows PCs with a closed firewall. Takes noticeably longer.</li>
+    </ul>
+
+    <h3>Port scan</h3>
+    <p>The optional port scan (can be turned on in the settings) checks well-known service ports on each device and considerably improves operating system detection. It makes the scan take longer but provides much more information – especially which services a device offers (web interface, SSH, RDP etc.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Understanding the scan results</h2>
+  <div class="box">
+    <h3>Columns in the device list</h3>
+    <table>
+      <tr><th>Column</th><th>Meaning</th></tr>
+      <tr><td>🌐</td><td>Web interface available – clicking opens the browser</td></tr>
+      <tr><td>IP address</td><td>Current IP in the network</td></tr>
+      <tr><td>Host name</td><td>Name of the device (resolved via DNS/NetBIOS)</td></tr>
+      <tr><td>Device name</td><td>Name or model reported by the device itself (e.g. FRITZ! devices, printers, TVs, NAS) – or your own name such as “Camera yard”</td></tr>
+      <tr><td>MAC address</td><td>Hardware address of the network card</td></tr>
+      <tr><td>Manufacturer</td><td>Determined from the OUI database</td></tr>
+      <tr><td>Open ports</td><td>Services found (only with the port scan turned on)</td></tr>
+      <tr><td>Operating system</td><td>Detected OS (TTL + host name + manufacturer + ports)</td></tr>
+      <tr><td>Device type</td><td>Router, printer, NAS, camera, smartphone/tablet etc. – see below</td></tr>
+    </table>
+
+    <h3>Device type</h3>
+    <p>The program assigns each device to a type using several clues: manufacturer, host name, response behaviour and – with the port scan turned on – the open ports. Possible types are router, network device, Windows PC, server, Mac, Linux computer, printer, NAS, smartphone/tablet, camera, smart home device, TV/media, VoIP phone and virtual machine.</p>
+    <p>If the classification is not clear, the field stays <strong>empty</strong> – a missing entry is better than a wrong one. If you know what a device is, enter it via <strong>right-click → “Label device …”</strong> (section 6). Your own entries always take precedence and are marked with <strong>✏</strong> in the list.</p>
+
+    <h3>Showing and hiding columns</h3>
+    <p>With <strong>“☰ Columns …”</strong> above the device list, individual columns can be hidden and shown again. This only affects the display: the log, CSV and HTML report always contain all columns.</p>
+
+    <h3>Row colours</h3>
+    <p>The colour depends on the device type. If no type is known, it depends on the operating system, manufacturer and open ports.</p>
+    <table>
+      <tr><th>Colour</th><th>Meaning</th></tr>
+      <tr><td style="background:#CCE5F5">Blue</td><td>Windows PC or Windows server</td></tr>
+      <tr><td style="background:#B8EDD0">Green</td><td>Linux, Unix or similar systems</td></tr>
+      <tr><td style="background:#F5C6C3">Pink</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Purple</td><td>Mobile device (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Yellow</td><td>Network device (router, switch, access point)</td></tr>
+      <tr><td style="background:#FDDCB0">Orange</td><td>Printer or MFP</td></tr>
+      <tr><td style="background:#BEE3F5">Light blue</td><td>NAS device</td></tr>
+      <tr><td style="background:#D8E8E8">Grey</td><td>Virtual machine</td></tr>
+    </table>
+
+    
+    <h3>Keyboard shortcuts</h3>
+    <table>
+      <tr><th>Key</th><th>Function</th></tr>
+      <tr><td><code>F11</code></td><td>Show/hide the header – more room for the device list (also available as a button in the header)</td></tr>
+      <tr><td><code>Double-click</code></td><td>Show device details</td></tr>
+      <tr><td><code>Right-click</code></td><td>Context menu with actions</td></tr>
+    </table>
+
+    <h3>Actions via double-click and right-click</h3>
+    <p><strong>Double-clicking</strong> a device opens the details window with all information, port details and quick actions.</p>
+    <p><strong>Right-clicking</strong> opens the context menu with the following options:</p>
+    <ul>
+      <li>Show details</li>
+      <li>Open web interface (if available)</li>
+      <li>Start ping monitor (continuous ping with history)</li>
+      <li>Measure connection quality …</li>
+      <li>Send Wake-on-LAN</li>
+      <li>Copy IP or MAC</li>
+      <li>Rescan device</li>
+      <li><strong>Label device …</strong> – set the device name, manufacturer and device type permanently (section 6)</li>
+    </ul>
+
+    <h3>📶 Connection Quality</h3>
+    <p>If telephony or video stutters or a device is only reachable at times, this measurement shows whether the problem lies in your own network or beyond it. Open it via the <span class="btn-demo" style="background:#16A085;">📶 Connection Quality</span> button in the LAN Scanner tab, by right-clicking a device or in the device details.</p>
+    <ol>
+      <li><strong>Choose the target</strong> – Internet (8.8.8.8), the gateway or a device from the last scan.</li>
+      <li><strong>Choose the duration</strong> – 30, 60 or 120 seconds.</li>
+      <li><span class="btn-demo btn-green">▶ Start measurement</span> – the target and the gateway are measured at the same time.</li>
+    </ol>
+    <p>For both paths, the result gives the packet loss, the response time and its jitter, and assesses them in two parts: the <strong>connection</strong> (based on packet loss) and the suitability for <strong>telephony and video</strong> (based on response time and jitter). If the values to the gateway are good and those to the target are poor, the cause lies beyond the router. <strong>📋 Copy result</strong> lets you pass it on.</p>
+    <div class="info">
+      <strong>ℹ Cameras and similar devices:</strong> many devices answer ping only as a side task. A high jitter there often reflects the load on the device and not the quality of the network. For such devices, the packet loss is what counts.
+    </div>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Settings</h2>
+  <div class="box">
+    <p>You open the settings via <span class="btn-demo btn-orange">⚙ Config</span>. All settings are saved automatically in the file <code>S-IT-LanScanner.ini</code>.</p>
+
+    <h3>Scan options</h3>
+    <ul>
+      <li><strong>Port scan</strong> – finds services and improves OS detection (slower)</li>
+      <li><strong>ARP scan</strong> – finds more devices through ARP broadcasts</li>
+      <li><strong>OS detection</strong> – analyses TTL, host name and manufacturer</li>
+    </ul>
+
+    <h3>Scan intensity</h3>
+    <p>Safe / Standard / Intensive – see section 3.</p>
+
+    <h3>Language</h3>
+    <p>Under <strong>⚙ Config → Sprache / Language</strong> you choose the language of the program interface: German, English, Dutch, Spanish, French, Italian, Polish, Croatian or Czech. The new language takes effect after the program is restarted; the program offers the restart when you save. The help then also opens in the selected language.</p>
+
+    <h3>Appearance</h3>
+    <ul>
+      <li><strong>Subtle</strong> – calm pastel tones, for professional use</li>
+      <li><strong>High contrast</strong> – stronger colours, easier to tell apart</li>
+      <li><strong>🌙 Dark mode</strong> – dark backgrounds and light text in all program windows, more comfortable for long work at the screen. The rows of the device list keep their colour by device type, only darker. Takes effect after a restart, which the program offers when saving. Windows message boxes and the reports in the browser remain light.</li>
+      <li><strong>Font size</strong> – Small (8 pt), Normal (9 pt), Large (11 pt). “Large” is recommended for 4K screens or high resolutions</li>
+    </ul>
+
+    <h3>HTML report</h3>
+    <p>If <strong>“Open automatically after scan”</strong> is turned on for the HTML report, the scan report opens automatically in the default browser after each scan. This can be turned off here.</p>
+
+    <h3>Log folder</h3>
+    <p>Here you can set where scan logs and HTML reports are saved. Default: <code>Logs</code> next to <code>sit-lsc-start.exe</code></p>
+
+    <h3>Wait time for network drives</h3>
+    <p>Applies to the LAN continuous test with a target on the network (<code>\\NAS\share</code> or a mapped network drive such as <code>U:</code>). A NAS whose hard disks are in standby needs a few seconds after the first request until the share is reachable. The program therefore retries every 3 seconds up to the set time and only then reports that the target is not reachable. You can choose 0, 30, 60 or 120 seconds; the default is 60.</p>
+
+    <h3>Display size / scaling</h3>
+    <p>Scales the entire interface. Available levels are <strong>90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %</strong>. The selected level alone determines the size – the Windows scaling is then not applied on top. The <strong>90 %</strong> level is compact and gives more room for tables. Which level suits which purpose is explained by the ⓘ button next to the heading. A change takes effect after a restart, which is offered when saving.</p>
+    <div class="info">
+      <strong>ℹ Relation to the Windows scaling:</strong> as long as a level is selected here, it determines the display size – regardless of the Windows setting. If no level is selected, the program follows the Windows scaling.
+    </div>
+
+    <h3>Program start</h3>
+    <p>The <strong>“🛡 Start as administrator”</strong> check box (default <strong>on</strong>) requests administrator rights right at program start. The scanner needs them for network repair, the ARP cache and the firewall tab. Windows then asks for confirmation at start (User Account Control, UAC). If you deliberately work without admin rights, untick the box – the prompt is then skipped, and the functions mentioned report by themselves when they need rights. At the bottom left of the status bar, a permanent indicator shows the actual state: <span class="btn-demo btn-green">🛡 Admin</span> or <span class="btn-demo" style="background:#95A5A6;">🛡 no admin</span>.</p>
+
+    <h3>Window</h3>
+    <p>With <strong>“🗖 Remember window size”</strong> the program remembers the size and position of the main window on exit – including the monitor it was on – and whether it was maximized. At the next start it opens exactly like that again. If that monitor is no longer connected, the window opens on the main screen. The saved size applies per scaling level: after changing the scaling, the window starts once in standard size and then remembers the size anew – so size and space requirements always match.</p>
+
+    <div class="info">
+      <strong>ℹ Config window:</strong> at high scaling, the settings window becomes larger than the screen. It can therefore be scrolled in both directions (mouse wheel vertically, <code>Shift</code>+mouse wheel horizontally); the <strong>Save</strong> and <strong>Cancel</strong> buttons always remain visible at the bottom.
+    </div>
+
+    <h3>Diagnostics</h3>
+    <p>The <strong>“🔧 Show DIAG tools”</strong> check box shows the <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span> button at the top of the header. By default it is <strong>off</strong> – the diagnostics are not needed for normal use. More in section 11.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Own device information (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>Not every device can be classified reliably by automatic means – a new device is still missing from the manufacturer database, a camera identifies itself like a Linux computer, or with several identical devices you want to see which one is where. For this you enter your own information. It is stored in the file <strong>S-IT-Custom.ini</strong> and applies permanently.</p>
+
+    <div class="info">
+      <strong>Important:</strong> your own entries <strong>always take precedence</strong> over automatic detection. S-IT-Custom.ini is <strong>never</strong> overwritten by OUI updates.
+    </div>
+
+    <h3>Method 1: right-click → “Label device …”</h3>
+    <p>This is the easiest way:</p>
+    <ol>
+      <li>Run a scan</li>
+      <li><strong>Right-click</strong> the device in the list</li>
+      <li>Choose <strong>“✏ Label device …”</strong></li>
+      <li>Fill in the desired fields:
+          <ul>
+            <li><strong>Device name</strong> – applies to this device, e.g. location or room (“Camera yard”, “Printer office 2”)</li>
+            <li><strong>Manufacturer</strong> – applies to all devices with the same MAC prefix</li>
+            <li><strong>Device type</strong> – choose from the list or enter freely</li>
+          </ul>
+      </li>
+      <li>Specify what the device type applies to:
+          <ul>
+            <li><strong>this device only</strong> – via the MAC address (without a MAC via the IP address)</li>
+            <li><strong>all devices with this MAC prefix</strong> – e.g. all cameras of one manufacturer</li>
+            <li><strong>all devices with this name part</strong> – e.g. all devices whose host name contains “SmartPlug”</li>
+          </ul>
+      </li>
+      <li>Save – the entry appears in the list immediately.</li>
+    </ol>
+    <p>An empty field or <strong>“– determine automatically –”</strong> removes your own entry again; the automatic classification then applies.</p>
+
+    <h3>Method 2: OUI management window</h3>
+    <p>Via <span class="btn-demo btn-dark">🔄 OUI Update</span> → tab <strong>“✏ Own assignments”</strong> you see all entries in one overview and can add, change and delete them. The sub-tabs:</p>
+    <ul>
+      <li><strong>OUI → manufacturer</strong> – MAC prefix (6 hex characters) → manufacturer name</li>
+      <li><strong>MAC → name</strong> – MAC address → own device name</li>
+      <li><strong>MAC → type</strong> – MAC address → device type (a single device)</li>
+      <li><strong>IP → type</strong> – IP address → device type (device without a MAC address)</li>
+      <li><strong>Host name → type</strong> – name part → device type (all devices with this name part)</li>
+      <li><strong>MAC prefix → type</strong> – MAC prefix → device type (all devices of one manufacturer)</li>
+    </ul>
+
+    <h3>File format of S-IT-Custom.ini</h3>
+    <p>The file is located in the <code>Config</code> folder next to <code>sit-lsc-start.exe</code> and can also be edited with a text editor. MAC addresses are written with hyphens. Section names and device types are written in German, as the program stores them (e.g. Kamera = camera); the program shows the device types in the set language.</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – own priority assignments</span><br>
+<span class="comment">; NOT overwritten by the OUI update.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; MAC prefix (6 hex) = manufacturer</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; MAC address = own device name</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Camera yard</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; MAC address = device type (this device)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; IP address = device type (device without MAC)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; name part = device type (all devices with this name part)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; MAC prefix (6 hex) = device type (all devices of one manufacturer)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Order for the device type:</strong> single device (MAC or IP) &gt; name part &gt; MAC prefix &gt; automatic classification
+    </div>
+    <div class="info">
+      <strong>ℹ Older entries:</strong> up to version 4.0, the sections <code>[IP]</code> and <code>[Hostname]</code> set the operating system. They now determine the device type; existing entries remain valid and appear in the “Device type” column.
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Tab 2: Internet Reachability</h2>
+  <div class="box">
+    <p>At the top of the tab you choose one of four checks:</p>
+    <table>
+      <tr><th>Card</th><th>Purpose</th></tr>
+      <tr><td><strong>🌐 Internet reachability</strong></td>
+          <td>Checks whether this PC can reach the Internet: DNS, routing, TCP 443, HTTPS, IPv6 and browser.</td></tr>
+      <tr><td><strong>🔗 LAN connection path</strong></td>
+          <td>Checks the path from the PC via the gateway to a target in your own network, e.g. via powerline to the NAS or to the router.</td></tr>
+      <tr><td><strong>📶 Speed test</strong></td>
+          <td>Measures download, upload and ping of the Internet connection.</td></tr>
+      <tr><td><strong>🏷 Domain lookup</strong></td>
+          <td>Shows with which provider the DNS records of a domain are managed, who receives its e-mail and where the website is hosted.</td></tr>
+    </table>
+
+    <h3>🏷 Domain lookup</h3>
+    <p>Typical occasion: a service provider is to change a record of the company domain, for example for a new mail server or a verification for a cloud service, and nobody knows any more where the domain is managed. The domain lookup shows it with one query. No administrator rights are needed, but an Internet connection is.</p>
+
+    <h4>Operation</h4>
+    <ol>
+      <li>Choose the <strong>🏷 Domain lookup</strong> card.</li>
+      <li>Enter the domain, e.g. <code>company.com</code>. A web address (<code>https://www.company.com/contact</code>) or an e-mail address (<code>info@company.com</code>) also works, as do domains with special characters such as umlauts.</li>
+      <li>Click <span class="btn-demo btn-green">▶ Check</span> or press Enter.</li>
+    </ol>
+    <p>If an entered sub-address such as <code>shop.company.com</code> has no name servers of its own, the program checks the parent domain <code>company.com</code> and says so in the line above the result.</p>
+
+    <h4>Results</h4>
+    <table>
+      <tr><th>Line</th><th>Meaning</th></tr>
+      <tr><td><strong>Name servers</strong></td>
+          <td>The servers responsible for the domain in the DNS.</td></tr>
+      <tr><td><strong>DNS managed by</strong></td>
+          <td>The provider of these name servers. This is where the DNS records of the domain are changed.</td></tr>
+      <tr><td><strong>Mail servers</strong></td>
+          <td>The servers that receive e-mail for the domain, with their priority: the server with the lower number is tried first. If it says “none entered”, the domain does not receive e-mail.</td></tr>
+      <tr><td><strong>E-mail with</strong></td>
+          <td>The provider of the mail server. If it says “filter service”, a spam and virus filter receives the e-mail and forwards it to the actual mailbox.</td></tr>
+      <tr><td><strong>Web server</strong></td>
+          <td>The address of the website (<code>www.company.com</code>, otherwise <code>company.com</code>) and its IP addresses.</td></tr>
+      <tr><td><strong>Website with</strong></td>
+          <td>The provider hosting the website.</td></tr>
+    </table>
+    <p>Below each provider, grey text shows the server's address, its host name, the name of its network and its address range.</p>
+
+    <h4>Where the information comes from</h4>
+    <ul>
+      <li><strong>Provider:</strong> the program knows the name servers and mail servers of the common providers, e.g. IONOS, Strato, Cloudflare, Microsoft 365 and Google Workspace. If a server is not listed there, it names the operator of its network according to the responsible registry, e.g. RIPE for Europe or ARIN for North America. The brackets then say “network operator according to RIPE”.</li>
+      <li><strong>Country:</strong> the country in which the server's network is registered with the registry. This is usually the location of the data centre, but not always: large companies often register their networks to their headquarters.</li>
+      <li><strong>“not assigned”:</strong> the server is not on the list, and the registry was not reachable or named no operator.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Name servers and registration:</strong> where the DNS records are managed is usually also the provider with whom the domain is registered. With DNS services such as Cloudflare, the domain can be registered with another provider.
+    </div>
+    <div class="tip">
+      <strong>Tip:</strong> <span class="btn-demo btn-blue">📋 Copy result</span> puts the result on the clipboard as text with date and time, e.g. for an e-mail to the customer or the service provider.
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="lan-performance">8. Tab 4: LAN Performance &amp; Wi-Fi</h2>
+  <div class="box">
+    <h3>LAN speed test</h3>
+    <p>Measures the actual write and read speed to a network share – without server software on the other side.</p>
+
+    <h4>Requirements</h4>
+    <ul>
+      <li>A reachable network share (e.g. <code>\\NAS-name\Data</code>) or a mapped network drive (e.g. <code>U:</code>)</li>
+      <li>Write permission on the share</li>
+    </ul>
+    <p>If the NAS is asleep, the program waits up to the set <strong>wait time for network drives</strong> (section 5) before reporting that the target is not reachable. If Windows lists a network drive as “unavailable” (red cross in Explorer), the program reconnects it, as Explorer does when you click it.</p>
+
+    <div class="warn">
+      <strong>Important: the server name alone is not enough.</strong><br> <code>\\NAS-name</code> only shows the <em>list</em> of shares in Explorer – no file can be created there, so the test fails. The share itself must be specified, e.g. <code>\\NAS-name\Data</code>. The easiest way is to select it via <strong>📂</strong>, then the path is always correct. The <strong>ⓘ</strong> button next to the input field explains this as well.
+    </div>
+
+    <p>A <strong>local folder</strong> (e.g. <code>C:\Temp</code>) is also allowed as a target – for comparison, it shows how fast the PC is without the network.</p>
+
+    <h4>Operation</h4>
+    <ol>
+      <li>Enter the target or select it via <strong>📂</strong>. The path is checked <strong>before</strong> the start; if something is wrong, a message explains exactly what is missing.</li>
+      <li>Choose the chunk size (1–64 MB per measurement cycle)</li>
+      <li><span class="btn-demo btn-green">▶ Start continuous test</span> – the test runs continuously and updates the live chart</li>
+      <li><span class="btn-demo btn-red">⏹ Stop</span> – ends the test</li>
+    </ol>
+    <p>If another tab is opened during the test, the program asks whether the test should be stopped. With <strong>No</strong>, the LAN Performance &amp; Wi-Fi tab stays open and the test continues. When the program is closed, the test is stopped and the test file is deleted.</p>
+
+    <h4>Results</h4>
+    <ul>
+      <li><strong>Blue line</strong> – write speed</li>
+      <li><strong>Green line</strong> – read speed</li>
+      <li>The tiles always show the current measured value</li>
+      <li>The measurement log lists every single cycle</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Local drives:</strong> with local drives (e.g. C:\, D:\), the measured values can be considerably distorted by the <strong>Windows file system cache</strong> – the cache reports “done” before the data is really on the disk. Values of several thousand Mbit/s on a normal HDD are therefore not a realistic result. For meaningful measurements always use a <strong>network path</strong> (UNC path such as <code>\\Server\Share</code> or a network drive).
+    </div>
+
+    <div class="tip">
+      <strong>Typical guide values:</strong><br> Gigabit LAN: 400–900 Mbit/s &nbsp;|&nbsp; 100 Mbit LAN: 60–90 Mbit/s &nbsp;|&nbsp; Wi-Fi (802.11ac): 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Smaller chunk sizes (1–4 MB) show more fluctuation because overhead and latency carry more weight. For stable values, 16–64 MB are recommended.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>Wi-Fi and LAN tile</h3>
+    <p>On the right of the tab, the <strong>Wi-Fi tile</strong> and the <strong>LAN tile</strong> stand side by side, with the IPv4 address and gateway below. Both tiles are built the same way: the status at the top, below it the adapter with the name under which it also appears in Device Manager.</p>
+    <p>With an existing connection, the Wi-Fi tile shows:</p>
+    <ul>
+      <li>Network name and connection status</li>
+      <li>Signal strength as a coloured bar (green good, yellow fair, red weak)</li>
+      <li>Channel, frequency band and Wi-Fi standard (e.g. Wi-Fi 6)</li>
+      <li><strong>⬆ Link rate</strong> – the rate that Windows reports for the connection</li>
+      <li><strong>⬇ Receive rate</strong> – only during the LAN continuous test (see below)</li>
+    </ul>
+    <p>If there is no connection, the tile states the reason: <strong>Adapter disabled</strong> (switched off in Device Manager or in Network Connections), <strong>Not connected</strong> or <strong>No Wi-Fi adapter</strong>. The LAN tile additionally distinguishes <strong>No cable connected</strong>.</p>
+    <div class="info">
+      <strong>ℹ Receive rate only during the continuous test:</strong> the receive rate reported by Windows is only meaningful while data is flowing. Without traffic it drops to low values even though the connection is good. The tile therefore only shows it while the LAN continuous test is running – then the receive rate and the measured write and read rates can be compared directly. The tile is updated immediately when the test starts and stops.
+    </div>
+    <div class="info">
+      <strong>ℹ Location access:</strong> Windows 11 only provides signal strength, channel and Wi-Fi standard if desktop apps may access the location. Without this permission, the tile shows a note with the <strong>“→ Open location settings”</strong> button. The program then takes the network name from the Windows network list and points out that it may differ from the Wi-Fi name (e.g. “Home network 2”).
+    </div>
+    <div class="info">
+      <strong>ℹ Updating:</strong> both tiles are updated every 10 seconds; a switch from LAN to Wi-Fi or a USB Wi-Fi stick plugged in later is detected without a restart. <strong>🔄 Refresh</strong> updates them immediately.
+    </div>
+  </div>
+
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Tab 5: Wi-Fi Profiles</h2>
+  <div class="box">
+    <p>This tab shows the Wi-Fi networks saved on this PC including their password and transfers them to another PC – for example when moving to a new computer. To the right you can see how good your own Wi-Fi connection is compared with the Wi-Fi standards and which Wi-Fi networks are in range.</p>
+
+    <div class="warn">
+      <strong>⚠ Admin rights required:</strong> reading, backing up and importing the profiles only work with administrator rights. If the program runs without them, a note appears at the top of the tab and the buttons concerned are locked.
+    </div>
+
+    <h3>Left column: buttons and saved profiles</h3>
+    <table>
+      <tr><th>Button</th><th>Function</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  Read Wi-Fi passwords</span></td>
+          <td>Reads all saved Wi-Fi profiles including password and fills the list below.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Show log</span></td>
+          <td>Opens the log of the reading. Passwords are not stored there. It is located in the log folder (<code>WLAN-Profile_&lt;date&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Show password</span></td>
+          <td>Shows the password of the network selected in the list – with copy and print. Double-clicking the network does the same.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Back up profiles</span></td>
+          <td>Backs up all profiles including password to a folder, e.g. on a USB stick. A subfolder <code>WLAN-Profile_&lt;PC name&gt;_&lt;date&gt;</code> is created there.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Import profiles</span></td>
+          <td>Imports such a backup on this PC, for all users. Afterwards, deleting the backup is offered.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  Wi-Fi report (HTML)</span></td>
+          <td>Creates the Wi-Fi report (see below).</td></tr>
+    </table>
+    <p>The <strong>“Saved profiles”</strong> list states the status of each network: <strong>connected</strong>, <strong>in range</strong> or <strong>not in range</strong>. Networks without a password are marked as such.</p>
+
+    <div class="danger">
+      <strong>The backup contains the passwords in plain text.</strong> Keep the folder or USB stick in a safe place and delete the backup once it has been imported – the program offers this after ⑤. A printed password page is deleted as a file after one minute and when the program is closed.
+    </div>
+
+    <h3>Moving to a new PC</h3>
+    <ol>
+      <li>On the old PC: <strong>④ Back up profiles</strong> and choose a USB stick as the target.</li>
+      <li>On the new PC: start the LanScanner, Wi-Fi Profiles tab, <strong>⑤ Import profiles</strong> and choose the <code>WLAN-Profile_…</code> folder on the stick.</li>
+      <li>Answer the question whether the backup should be deleted with <strong>Yes</strong>.</li>
+    </ol>
+    <p>The imported networks then appear in the “Saved profiles” list.</p>
+
+    <h3>Top right: your connection compared with the Wi-Fi standards</h3>
+    <p>The chart shows as <strong>grey bars</strong> the typical link rates of PCs and notebooks for Wi-Fi 4 (802.11n) to Wi-Fi 7 (802.11be), each with its frequency band. The <strong>coloured bar</strong> is your link rate according to Windows, coloured by signal strength (green good, yellow fair, red weak). If it is at the lower end of its standard, it is worth looking at the distance to the router, the channel and the band.</p>
+    <div class="info">
+      <strong>ℹ Link rate and data throughput:</strong> the link rate is the gross rate of the radio connection. In practice, about half to two thirds of it is actually transferred. The real throughput is measured by the LAN continuous test in tab 4.
+    </div>
+
+    <h3>Bottom right: Wi-Fi networks in range</h3>
+    <p>The table lists the Wi-Fi networks the adapter currently receives, with signal, network name, band and channel, standard, encryption and whether the network is saved on this PC. For saved networks, the <strong>“Show password”</strong> link shows the password directly. When the tab is opened for the first time, the surroundings are scanned once; <strong>“Scan for networks”</strong> searches again.</p>
+    <div class="info">
+      <strong>ℹ Location access:</strong> Windows 11 only provides the Wi-Fi networks in range, signal strength and Wi-Fi standard if desktop apps may access the location. Without this permission, a note with the <strong>“→ Open location settings”</strong> button appears in place of the table.
+    </div>
+
+    <h3>Wi-Fi report</h3>
+    <p>Button <strong>⑥</strong> summarises the status in a colourful HTML file – suitable for passing on, for the customer file or for a before-and-after comparison:</p>
+    <ul>
+      <li>Wi-Fi connection with adapter, signal, band, channel and link rate</li>
+      <li>LAN connection</li>
+      <li>IPv4 address and gateway</li>
+      <li>Classification of your own connection among the Wi-Fi standards</li>
+      <li>Wi-Fi networks in range</li>
+      <li>Saved profiles</li>
+    </ul>
+    <p><strong>Passwords are not included in the report.</strong> It is saved in the log folder as <code>WLAN-Bericht_&lt;PC name&gt;_&lt;date&gt;.html</code> and opened in the browser.</p>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">10. Tab 6: Firewall &amp; Ports</h2>
+  <div class="box">
+    <p>This tab deals with two separate cases, which is why it is divided into two columns. Both access the same Windows firewall but look at it from opposite directions:</p>
+    <ul>
+      <li><strong>Left – “Reach a device on the network”:</strong> another device in the LAN (NAS, printer, FritzBox USB) cannot be reached from this PC.</li>
+      <li><strong>Right – “Port on this PC”:</strong> a program on this PC needs a specific port that others on the network access (inventory management, POS system, database, remote maintenance).</li>
+    </ul>
+    <p>Below both columns, the shared <strong>rule list</strong> spans the full width; it shows the entries from both columns.</p>
+
+    <div class="warn">
+      <strong>⚠ Admin rights required:</strong> reading and setting firewall rules only works with administrator rights. The easiest way is to leave <strong>“Start as administrator”</strong> turned on (see section 5, on by default). If the program runs without admin rights, the tab reports this when checking or adding.
+    </div>
+
+    <h3>Left column: reach a device on the network</h3>
+    <p>Use this if a device is visible in the scan (or should be) but cannot be reached – no ping, no file sharing. Often the Windows firewall of this PC blocks the connection. This column is taken over from the stand-alone tool <strong>S-IT-FWModify</strong>.</p>
+    <ol>
+      <li><strong>Enter the IP address or subnet</strong> – a single address (e.g. <code>192.168.178.60</code>) or a whole subnet (<code>192.168.178.0/24</code>). Recently used targets are available in the drop-down field.</li>
+      <li><strong>Choose the scope of the exception:</strong>
+          <ul>
+            <li><strong>All ports</strong> – for a single, known device</li>
+            <li><strong>File sharing only</strong> – TCP 445, 139 and UDP 137, 138 (SMB)</li>
+            <li><strong>File sharing + web interface</strong> – additionally TCP 5000, 5001 (e.g. for NAS interfaces)</li>
+          </ul>
+      </li>
+      <li><strong>Check</strong> – the result appears in five lines (see below).</li>
+      <li><strong>Add exception</strong> – creates the matching firewall exception.</li>
+    </ol>
+    <p>The five check lines:</p>
+    <ul>
+      <li><strong>Device responds to ping</strong> – basic reachability on the network</li>
+      <li><strong>Open ports on the target</strong> – what does the device offer, is file sharing among it?</li>
+      <li><strong>Firewall base setting</strong> – can an exception have any effect here at all?</li>
+      <li><strong>Network profile of this PC</strong> – Private = sharing possible, Public = everything blocked</li>
+      <li><strong>S-IT rule for this target</strong> – is there already an exception set by this tool?</li>
+    </ul>
+
+    <h3>Right column: port on this PC</h3>
+    <p>Use this the other way round, if a program runs <em>on this PC</em> and must open a specific port so that other computers on the network can access it – for example inventory management, a POS system or a database that offers its service on a fixed port. The rule applies <strong>inbound</strong> and <strong>only from the local network</strong>.</p>
+    <ol>
+      <li><strong>Choose a template</strong> (optional) – common cases are stored and fill in port, protocol and description automatically: SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432), Remote Desktop (3389), VNC (5900), HTTP (80), HTTPS (443), HTTP alternative (8080), HTTPS alternative (8443). With <em>“– custom entry –”</em> you enter any port yourself.</li>
+      <li><strong>Port (or range) and protocol</strong> – a single number (e.g. <code>1433</code>) or a range (e.g. <code>5000-5010</code>, at most 200 ports), plus <strong>TCP</strong> or <strong>UDP</strong>.</li>
+      <li><strong>Description</strong> – a name under which the rule can be found again later in the list (e.g. “inventory management, POS system”).</li>
+      <li><strong>Check</strong> – the result appears in three lines (see below).</li>
+      <li><strong>Open port</strong> – creates an inbound rule for the local subnet.</li>
+    </ol>
+    <p>The three check lines:</p>
+    <ul>
+      <li><strong>Program listens on the port</strong> – without a listening program, no firewall rule has any effect. If the program only listens on <code>127.0.0.1</code>, it cannot be reached from the network even with a rule – then the program itself must be bound to the LAN address.</li>
+      <li><strong>Inbound firewall rule</strong> – existing rules for this port, including third-party ones (e.g. from the installer of the business application). Rules that only apply to a single other program or another Windows service are shown as having no effect.</li>
+      <li><strong>Firewall profile of this PC</strong> – the rule applies to the private profile; in the “Public” profile Windows blocks anyway.</li>
+    </ul>
+
+    <h3>The result (both columns)</h3>
+    <p>Each check line shows a result: <strong>green</strong> OK, <strong>yellow</strong> a note, <strong>red</strong> a problem. Where useful, the line offers a small button on the right for a direct fix – for example switching the network profile to “private” (so that sharing is allowed at all) or opening the port right away. The detailed explanation for each line appears when you hold the mouse over it.</p>
+
+    <h3>The shared rule list</h3>
+    <p>All exceptions the program creates – from both columns – have their own name (prefix <code>S-IT-FW-</code>) and appear in the list below. Each entry usually creates several firewall rules (per direction and protocol). The buttons below remove <strong>selected</strong> or <strong>all S-IT rules</strong> again.</p>
+
+    <div class="tip">
+      <strong>Your other firewall rules remain untouched.</strong> The program only sees and changes its own rules with the prefix <code>S-IT-FW-</code>. Third-party rules from Windows or other software are neither shown nor deleted.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Tidying up made easy:</strong> if an exception or an opened port was only set for testing, remove it later with one click via the rule list – this keeps the firewall clean.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">11. Diagnostics (DIAG) – for testers</h2>
+  <div class="box">
+    <p>This section is aimed at testers and anyone who wants to report a detection problem. None of it is needed for normal use.</p>
+
+    <h3>What for?</h3>
+    <p>Windows provides network information through several channels. Which of them responds differs from computer to computer – depending on the Windows edition, drivers and company policies. If the program shows wrong values on a device, the display does not reveal why. The diagnostics therefore query <strong>each channel individually</strong> and record what it answered – even if it did not answer at all.</p>
+
+    <h3>Switching on</h3>
+    <p><strong>⚙ Config → Diagnostics → “🔧 Show DIAG tools”</strong>. The <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span> button then appears at the top of the header. No restart needed. Removing the tick hides it again.</p>
+
+    <h3>The three tools</h3>
+    <table>
+      <tr><th>Button</th><th>Function</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ Create DIAG</span></td>
+          <td>Creates <strong>exactly one file</strong> in the <code>Diag</code> folder next to <code>sit-lsc-start.exe</code>. Nothing happens by itself – only on click.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Show plain text</span></td>
+          <td>Shows the content in readable form – <strong>exactly what would be sent</strong>. Can also be saved as plain text on request. The content has the same structure in all language versions and is not translated.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Open folder</span></td>
+          <td>Opens the storage folder in Explorer.</td></tr>
+    </table>
+
+    <h3>What does it contain?</h3>
+    <ul>
+      <li>The raw responses of all queries (PowerShell, wmic, registry, netsh, ipconfig), including the Wi-Fi networks in range</li>
+      <li>How the LAN and Wi-Fi tiles display these responses</li>
+      <li>Windows and program version, scaling, admin rights</li>
+      <li>What the program made of the responses</li>
+      <li>After a network scan, additionally the device list of that scan: for each device the name, IP address, manufacturer, open ports and the program's classification with the reason</li>
+    </ul>
+    <p><strong>No passwords, no credentials.</strong> MAC addresses are shortened: the manufacturer part remains – detection needs it – and the device-specific part is replaced by <code>XX</code> (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>Why is the file not readable?</strong><br> It is <em>obfuscated</em> so that it is not accidentally read along or taken apart by a mail filter. This is expressly <strong>not encryption</strong> and is not meant to be. With <strong>🔍 Show plain text</strong> you can see what it contains at any time.
+    </div>
+
+    <h3>Sending it in</h3>
+    <p>Voluntarily and only for a detection problem: send the file to <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>. A sentence about what was displayed incorrectly is helpful.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">12. Files, updates and backup</h2>
+  <div class="box">
+
+    <h3>Structure of the program folder</h3>
+    <p>Everything you need yourself is at the top, next to the start program. The subfolder <code>sit-lsc_program</code> contains only the program itself and does not need to be opened:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← starts the program</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← settings, own entries, manufacturer database</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← scan logs, reports and other logs</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← diagnostic files</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← help, ChangeLog, disclaimer and licence</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← the program</span>
+    </div>
+    <p>The program creates the <code>Config</code>, <code>Logs</code> and <code>Diag</code> folders itself when needed.</p>
+
+    <div class="tip">
+      <strong>Short checklist – what to take along?</strong><br> When changing PCs or reinstalling, back up these folders next to <code>sit-lsc-start.exe</code>:
+      <ul style="margin:6px 0 0 0">
+        <li><code>Config\</code> – settings, own entries for devices and the manufacturer database</li>
+        <li><code>Logs\</code> – the complete folder, if old scans, logs and Wi-Fi reports are to be kept</li>
+      </ul>
+      After copying, start the program – all settings, assignments and previous scan results are available again immediately.
+    </div>
+
+    <h3>Files and folders at a glance</h3>
+    <table>
+      <tr><th>File</th><th>Content</th><th>Back up?</th></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
+          <td>All settings (scan options, log folder, appearance etc.)</td>
+          <td><strong>✔ Yes</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Own device names, device types and manufacturers – never overwritten by updates</td>
+          <td><strong>✔ Yes</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
+          <td>Manufacturer database (recreated by the OUI update)</td>
+          <td>Optional</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Scan logs (.log), HTML reports (.html) and CSV files (.csv), plus the logs of the Wi-Fi Profiles tab and the Wi-Fi reports.<br> The CSV files are intended only for internal use by the program: <strong>“Load into scanner”</strong> in Logs &amp; Reports uses them to load an earlier scan back into the device list. Their column names are therefore German in every language. For reading and passing on, use the HTML report and the log.<br> <em>Take along if old scan results are to be kept in the log manager.</em></td>
+          <td><strong>✔ Recommended</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Diagnostic files – only created when a DIAG is generated</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>The help (German) and its translations (<code>S-IT-LanScanner-Hilfe_en.html</code> etc.), the version history <code>S-IT-LanScanner-ChangeLog.html</code>, disclaimer and licence (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>The program: main program <code>S-IT-LanScanner.exe</code> (started via <code>sit-lsc-start.exe</code>) and program libraries</td>
+          <td>–</td></tr>
+    </table>
+
+    <h3>Performing an update</h3>
+    <ol>
+      <li>Download and unpack the new version</li>
+      <li><strong>Important:</strong> copy the <code>Config</code> folder from the old program folder into the new one</li>
+      <li>Start the program via <code>sit-lsc-start.exe</code></li>
+      <li>All settings and own information are available again</li>
+    </ol>
+    <div class="info">
+      Earlier versions did not yet have a <code>Config</code> folder. In that case, copy the files <code>S-IT-LanScanner.ini</code> and <code>S-IT-Custom.ini</code> into the new program folder next to <code>sit-lsc-start.exe</code>. At the first start, the program moves them once into the <code>Config</code> folder, as well as logs and diagnostic files that are still in the <code>sit-lsc_program</code> folder. Nothing is overwritten in the process. What was moved is listed in the file <code>Ordnerumzug.log</code> in the log folder.
+    </div>
+
+    <h3>Reinstallation / changing PCs</h3>
+    <p>Recommended procedure:</p>
+    <ol>
+      <li>Copy the backed-up <code>Config</code> folder into the new program folder next to <code>sit-lsc-start.exe</code></li>
+      <li>Also copy the backed-up <code>Logs\</code> folder there (or into the configured log folder)</li>
+      <li>Start the program – all settings, assignments and previous scans are available in the log manager immediately</li>
+      <li>Optional: run the OUI update to load the latest manufacturer database</li>
+    </ol>
+    <div class="info">
+      If no files are backed up: <code>S-IT-LanScanner.ini</code> and <code>S-IT-Custom.ini</code> are recreated automatically with default values at the first start. Own device information must then be entered again.
+    </div>
+    <div class="tip">
+      <strong>Taking Wi-Fi networks along:</strong> the saved Wi-Fi networks of the old PC can be backed up in the <strong>Wi-Fi Profiles</strong> tab and imported on the new PC (section 9).
+    </div>
+
+    <h3>Updating the OUI database</h3>
+    <p>Via <span class="btn-demo btn-dark">🔄 OUI Update</span> → tab <strong>“OUI database update”</strong> → <strong>“▶ Update OUI database”</strong> the program downloads the complete IEEE vendor lists (MA-L, MA-M and MA-S) and saves them in <code>S-IT-OUI.ini</code>. An Internet connection is required. Progress and result appear in the same window. The database is then reloaded at once – no restart needed.</p>
+    <p>If one of the lists cannot be downloaded, a message appears and the existing <code>S-IT-OUI.ini</code> remains unchanged.</p>
+    <div class="info">
+      The file <code>S-IT-Custom.ini</code> with your own information is <strong>never</strong> changed or overwritten by the OUI update.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">13. Frequently asked questions (FAQ)</h2>
+  <div class="box">
+
+    <h3>A device is not found</h3>
+    <p>Possible causes:</p>
+    <ul>
+      <li>The device is switched off or in power-saving mode</li>
+      <li>The device does not answer ICMP ping (firewall) → turning on the port scan helps</li>
+      <li>The device is in another network segment</li>
+      <li>Choose the “Safe” scan intensity and scan again</li>
+    </ul>
+
+    <h3>A device is classified wrongly or not at all</h3>
+    <p>Right-click the device → <strong>“✏ Label device …”</strong> → choose or enter the device type → Save. The entry appears in the list immediately and applies permanently (section 6).</p>
+
+    <h3>Why is the “Device type” column empty for some devices?</h3>
+    <p>The clues were not enough for a clear classification. The program then deliberately leaves the field empty instead of guessing. A port scan that is turned on often provides enough additional clues; otherwise your own entry via <strong>“Label device …”</strong> helps.</p>
+
+    <h3>My printer was no longer reachable after the scan</h3>
+    <p>Set the scan intensity to <strong>“Safe”</strong> in the settings. This level does without ARP floods and port scans on printer ports, which can overload older firmware versions.</p>
+
+    <h3>The antivirus program reports a threat</h3>
+    <p>Because the LAN Scanner actively scans the network, some antivirus programs wrongly classify it as suspicious (false positive). The program contains no malware whatsoever. Solution: add the program file and the folder to the exception list / whitelist of the antivirus program.</p>
+
+    <h3>The LAN speed test shows “No write access”</h3>
+    <p>The share is probably connected read-only or the credentials are not sufficient. Check your write permissions on the share.</p>
+
+    <h3>The test says “Share missing”</h3>
+    <p>Only the <strong>server name</strong> was specified, e.g. <code>\\NAS-name</code>. No file can be created there – the share itself is needed: <code>\\NAS-name\Data</code>. See section 8.</p>
+
+    <h3>The Wi-Fi tile shows “Connected” but no signal strength and no channel</h3>
+    <p>This is almost always the location lock of Windows 11 and <strong>not a fault of the program</strong>: Windows only provides signal strength, channel and Wi-Fi standard if desktop apps may access the location. The same applies to the Wi-Fi networks in range in the Wi-Fi Profiles tab. The adapter itself is still detected correctly.</p>
+    <div class="tip">
+      <strong>Remedy:</strong> click <strong>“→ Open location settings”</strong> in the tile (or Settings → Privacy &amp; security → Location). Turn on the <strong>location services</strong> there and, further down, allow location access for <strong>desktop apps</strong>. Then click <strong>🔄 Refresh</strong> in the tile.
+    </div>
+
+    <h3>The network name in the Wi-Fi tile differs from the Wi-Fi name</h3>
+    <p>Without location access, the program takes the name from the Windows network list; the tile says so. Windows may create numbered entries there for the same Wi-Fi, for example “Home network 2”, if the PC has connected several times or with different adapters. With location access, the tile shows the actual Wi-Fi name.</p>
+
+    <h3>Why does the Wi-Fi tile show no receive rate?</h3>
+    <p>The receive rate only appears while the LAN continuous test is running. Without traffic, Windows reports low values for it that have nothing to do with the quality of the connection. The link rate (⬆), on the other hand, is always shown.</p>
+
+    <h3>The Wi-Fi tile reports “Adapter disabled”</h3>
+    <p>The Wi-Fi adapter is switched off in Device Manager or under <em>Network Connections</em>. After switching it on, the program detects it within 10 seconds at the latest; with <strong>🔄 Refresh</strong> immediately. A USB Wi-Fi stick plugged in later is also detected automatically.</p>
+
+    <h3>The speed says “unknown”</h3>
+    <p>Then <strong>none</strong> of the queries could provide a speed – typical for a <strong>disabled adapter</strong>, for which Windows reports no rate. In this case the program deliberately shows “unknown” instead of an estimated number: a value that nobody has measured has no place in a diagnostic tool. The adapter name is still shown.</p>
+
+    <h3>The program looks too small on my UHD/4K monitor</h3>
+    <p>Open <strong>⚙ Config</strong> and choose a higher value under <strong>“Display size / scaling”</strong> in the right column. The program restarts automatically after saving.</p>
+    <div class="tip">
+      <strong>Recommendation for UHD/4K:</strong> the program scaling alone determines the size – you do not have to change the Windows scaling for it. Start with <strong>150 %</strong>; this gives a well readable display on most UHD monitors. If it is still too small or too large, choose the next level until text and elements are optimally readable for you.
+    </div>
+    <p>Available scaling levels in the program: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>Where can I find the disclaimer?</h3>
+    <p>In the file <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> in the <code>Help</code> folder and on the <a href="https://sattlerit.github.io/sit-lanscanner/">project page</a>. In short: the results are non-binding indications and a snapshot – they do not replace a professional security audit.</p>
+
+    <h3>I switched SMB1 – why does it still show the old state?</h3>
+    <p>SMB1 is a <strong>Windows feature</strong>, not a simple switch: Windows installs the files when enabling it and removes them when disabling it. The change only takes effect after a <strong>restart</strong> – until then the check still reports the previous state. The program does <strong>not</strong> restart the computer by itself; it only points this out. Restart Windows yourself when convenient.</p>
+
+    <h3>Why are there three SMB1 lines?</h3>
+    <p>Because SMB1 consists of several independent parts. If you only see one line, you can easily get a wrong picture of your own computer:</p>
+    <table>
+      <tr><th>Line</th><th>Purpose</th></tr>
+      <tr><td><strong>SMB1 client</strong></td>
+          <td>So that <em>this PC</em> can access old devices – for example an older NAS or a network printer that does not support SMB2/3. This is the most common case.</td></tr>
+      <tr><td><strong>SMB1 server</strong></td>
+          <td>So that <em>old devices</em> can access the shares of this PC – for example a copier that stores scans in a shared folder. This side is the more dangerous one and should only be on as long as the old device needs it.</td></tr>
+      <tr><td><strong>Keep SMB1 permanently</strong></td>
+          <td>Windows removes SMB1 again by itself if it has not been used for 15 days. This line switches the automatic removal off. Useful if the business has longer breaks – after two weeks of company holidays, SMB1 would otherwise suddenly be gone and the scanner would stand still.</td></tr>
+    </table>
+    <p>The <strong>Keep SMB1 permanently</strong> line only becomes relevant if the client or server is actually active. If SMB1 is completely off, it is shown in grey and needs no attention.</p>
+
+    <h3>The SMB1 server says “Feature present, but protocol off” – what does that mean?</h3>
+    <p>The server side has two levels: the installed Windows feature and the protocol switch in the SMB server. After switching on, at first only the feature is there – the switch can only be set after the restart. This is exactly what the <strong>“→ Complete”</strong> button is for: it sets the second switch and takes effect immediately, without another restart. If the SMB1 server is not needed after all, switch it off completely instead.</p>
+
+    <h3>Why is the button on a green line grey?</h3>
+    <p>A button on a green line always leads <em>back</em> to the less secure state – for example “← Enable” for a switched-off SMB1 server. Such reset buttons are deliberately kept subdued so that they do not invite accidental clicks. They work quite normally.</p>
+
+    <h3>Where are the logs saved?</h3>
+    <p>Default: <code>Logs\</code> next to <code>sit-lsc-start.exe</code>. The folder can be changed under <strong>⚙ Config → Log folder</strong>.</p>
+
+    <h3>Can I use the tool on a USB stick?</h3>
+    <p>Yes, the tool is portable. Copy the complete program folder – that is <code>sit-lsc-start.exe</code> together with the <code>sit-lsc_program</code> folder and the other folders – to the USB stick. The INI files are saved in the <code>Config</code> folder.</p>
+
+    <h3>Where can I find the Wi-Fi reports and the log of the Wi-Fi profiles?</h3>
+    <p>Both are located in the log folder, by default <code>Logs\</code> next to <code>sit-lsc-start.exe</code>. In addition, the Wi-Fi report opens in the browser right after it is created.</p>
+
+    <h3>The domain lookup shows no country</h3>
+    <p>Country, network and address range come from the registry (e.g. RIPE). If it is not reachable, for example because a firewall or proxy blocks the query, the program only shows the provider from the built-in list.</p>
+
+    <h3>In the domain lookup the country does not match the provider</h3>
+    <p>The country is the country in which the server's network is registered. Large companies often register their networks to their headquarters, even if the server is in a data centre in another country. See section 7.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Has this tool helped you?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      The S-IT LAN Device Scanner is developed and maintained free of charge.<br> A small donation helps to develop the tool further. Thank you very much! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Donate via PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.2
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Author: Hans Udo Sattler &nbsp;•&nbsp; Czech translation: RQ68 &nbsp;•&nbsp; Thanks to all users who helped with testing by scanning their own networks<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Project page</a>
+  &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Disclaimer</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>

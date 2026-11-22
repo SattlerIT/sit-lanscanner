@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Pomoć</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Pomoć</h1>
+  <p>Verzija 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Brzi početak</a>
+  <a href="#oberflaeche">Sučelje</a>
+  <a href="#scan">Skeniranje</a>
+  <a href="#ergebnisse">Rezultati</a>
+  <a href="#einstellungen">Postavke</a>
+  <a href="#custom">Vlastite dodjele</a>
+  <a href="#internet">Dostupnost interneta</a>
+  <a href="#lan-performance">LAN performanse</a>
+  <a href="#wlan-profile">Wi-Fi profili</a>
+  <a href="#firewall">Vatrozid i priključci</a>
+  <a href="#diag">Dijagnostika</a>
+  <a href="#dateien">Datoteke i ažuriranja</a>
+  <a href="#faq">Česta pitanja</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Sadržaj</h3>
+    <ol>
+      <li><a href="#schnellstart">Brzi početak</a></li>
+      <li><a href="#oberflaeche">Pregled programskog sučelja</a></li>
+      <li><a href="#scan">Provođenje skeniranja</a></li>
+      <li><a href="#ergebnisse">Razumijevanje rezultata skeniranja</a></li>
+      <li><a href="#einstellungen">Postavke</a></li>
+      <li><a href="#custom">Vlastiti podaci o uređajima (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Kartica 2: Dostupnost interneta</a></li>
+      <li><a href="#lan-performance">Kartica 4: LAN performanse i Wi-Fi</a></li>
+      <li><a href="#wlan-profile">Kartica 5: Wi-Fi profili</a></li>
+      <li><a href="#firewall">Kartica 6: Vatrozid i priključci</a></li>
+      <li><a href="#diag">Dijagnostika (DIAG) – za testere</a></li>
+      <li><a href="#dateien">Datoteke, ažuriranja i sigurnosne kopije</a></li>
+      <li><a href="#faq">Česta pitanja (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Brzi početak</h2>
+  <div class="box">
+    <h3>Prvo skeniranje u 3 koraka</h3>
+    <ol>
+      <li><strong>Pokrenite program</strong> – dvaput kliknite <code>sit-lsc-start.exe</code>. Ako se zatraži, potvrdite administratorska prava (preporučeno za ARP skeniranje).</li>
+      <li><strong>Odaberite mrežu</strong> – na padajućem popisu gore lijevo odaberite željenu mrežu (prepoznaje se automatski).</li>
+      <li><strong>Pokrenite skeniranje</strong> – kliknite <span class="btn-demo btn-green">▶ Pokreni skeniranje</span>. Nakon skeniranja svi pronađeni uređaji pojavljuju se na popisu.</li>
+    </ol>
+    <div class="tip">
+      <strong>Savjet:</strong> u postavkama uključite <strong>skeniranje priključaka</strong> kako bi se usluge i operacijski sustav prepoznali preciznije. Skeniranje tada traje dulje, ali daje znatno više informacija.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. Pregled programskog sučelja</h2>
+  <div class="box">
+    <h3>Gumbi na alatnoj traci</h3>
+    <p>Alatna traka na kartici „LAN skener“ sadrži funkcije skeniranja:</p>
+    <table>
+      <tr><th>Gumb</th><th>Funkcija</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Pokreni skeniranje</span></td>
+          <td>Pokreće skeniranje odabrane mreže</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Zaustavi skeniranje</span></td>
+          <td>Prekida skeniranje u tijeku</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Zapisi i izvješća</span></td>
+          <td>Otvara upravljanje zapisima sa svim spremljenim skeniranjima</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 Ažuriranje OUI</span></td>
+          <td>Otvara upravljanje OUI: ažuriranje baze proizvođača i uređivanje vlastitih dodjela</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Kvaliteta veze</span></td>
+          <td>Mjeri gubitak paketa, vrijeme odziva i kolebanje prema cilju i prema pristupniku (vidi odjeljak 4)</td></tr>
+    </table>
+
+    <h3>Gumbi u zaglavlju (uvijek vidljivi)</h3>
+    <p>Ovi su gumbi uvijek vidljivi gore desno u zaglavlju – dostupni bez obzira na aktivnu karticu:</p>
+    <table>
+      <tr><th>Gumb</th><th>Funkcija</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Otvara dijagnostičke alate. Vidljiv samo ako je uključen pod <strong>⚙ Konfig → Dijagnostika</strong> – u uobičajenom radu skriven. Vidi odjeljak 11.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Konfig</span></td>
+          <td>Otvara postavke – desno se nalazi <strong>veličina prikaza / skaliranje</strong> (90–300 %) za HiDPI i UHD monitore.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Pomoć</span></td>
+          <td>Otvara ovaj prozor pomoći</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Prikazuje ili skriva zaglavlje – više mjesta za popis uređaja</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Izlaz</span></td>
+          <td>Zatvara program</td></tr>
+    </table>
+
+    <h3>Kartice</h3>
+    <ul>
+      <li><strong>LAN skener</strong> – glavni prikaz s popisom uređaja</li>
+      <li><strong>Dostupnost interneta</strong> – provjera internetske veze, put LAN veze, test brzine i podaci o domeni (vidi odjeljak 7)</li>
+      <li><strong>Mrežne postavke</strong> – mrežni alati i dijagnostika</li>
+      <li><strong>LAN performanse i Wi-Fi</strong> – test brzine, stanje veze i pregled Wi-Fi mreže</li>
+      <li><strong>📶 Wi-Fi profili</strong> – prikaz spremljenih Wi-Fi mreža zajedno s lozinkom, izrada sigurnosne kopije i uvoz na drugo računalo; uz to vlastita veza u usporedbi s Wi-Fi standardima, Wi-Fi mreže u dometu i Wi-Fi izvješće</li>
+      <li><strong>🛡 Vatrozid i priključci</strong> – dva stupca: lijevo provjera dostupnosti uređaja u mreži i po potrebi upis iznimke, desno provjera i otvaranje priključka na ovom računalu (potrebna administratorska prava)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Provođenje skeniranja</h2>
+  <div class="box">
+    <h3>Koji raspon treba skenirati?</h3>
+    <p><strong>Polje mreže</strong> gore lijevo određuje koje se adrese provjeravaju. To je padajući popis <em>i</em> polje za unos: automatski prepoznate mreže nude se za odabir – ali u polje možete i jednostavno upisati raspon.</p>
+    <table>
+      <tr><th>Zapis</th><th>Primjer</th><th>Značenje</th></tr>
+      <tr><td><strong>Od–do</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>Sve adrese od prve do posljednje – najjednostavniji zapis</td></tr>
+      <tr><td><strong>Skraćeni oblik</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>Isto, samo se navodi posljednji blok adrese</td></tr>
+      <tr><td><strong>Cijela mreža</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Stručni zapis (CIDR) za cijelu mrežu</td></tr>
+      <tr><td><strong>Jedan uređaj</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Provjera samo te jedne adrese</td></tr>
+    </table>
+    <p>Manji raspon znatno je brži: umjesto 254 adrese provjeravaju se samo one koje Vas stvarno zanimaju. Kod vrlo velikih raspona program najprije traži potvrdu kako skeniranje greškom ne bi trajalo satima.</p>
+    <div class="warn">
+      <strong>Ako unos nije prihvaćen:</strong> program razumljivim jezikom objašnjava što nije u redu – npr. ako je druga adresa prije prve. Provjerite točke i crticu; razmaci nisu problem.
+    </div>
+
+    <h3>Intenzitet skeniranja</h3>
+    <p>Intenzitet skeniranja određuje koliko se agresivno mreža ispituje. Postavlja se pod <strong>⚙ Konfig → Intenzitet skeniranja</strong>:</p>
+    <table>
+      <tr><th>Način</th><th>Metoda</th><th>Preporuka</th></tr>
+      <tr><td><strong>Sigurno</strong></td>
+          <td>Samo ping (ICMP)</td>
+          <td>Za osjetljive mreže, starije pisače ili ako nakon skeniranja uređaji više nisu bili dostupni</td></tr>
+      <tr><td><strong>Standardno</strong></td>
+          <td>Ping + ARP skeniranje</td>
+          <td>Za kućne mreže – pronalazi više uređaja od sigurnog načina</td></tr>
+      <tr><td><strong>Intenzivno</strong></td>
+          <td>Ping + ARP skeniranje u dva prolaza</td>
+          <td>Za profesionalna okruženja. Na nekim usmjerivačima može nakratko prekinuti vezu</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Napomena o pisačima:</strong> stariji mrežni pisači (npr. modeli Brother HL) mogu na agresivno ARP preplavljivanje reagirati prekidom veze. U takvim mrežama koristite intenzitet skeniranja <strong>Sigurno</strong>.
+    </div>
+
+    <h3>Dodatna pretraga uređaja koji nedostaju</h3>
+    <p>Neki uređaji ne odgovaraju prvi put, primjerice u načinu štednje energije ili uz slab bežični signal, a neki uopće ne odgovaraju na ping. Zato dodatna pretraga ciljano ponovno pita – samo na adresama koje još nisu odgovorile. Postavlja se pod <strong>⚙ Konfig → Dodatna pretraga uređaja koji nedostaju</strong>:</p>
+    <ul>
+      <li><strong>Isključeno</strong> – bez dodatne pretrage.</li>
+      <li><strong>Poznate adrese</strong> (zadano) – adrese na kojima je pri ranijim skeniranjima bio uređaj provjeravaju se drugi put s više strpljenja. Uređaji bez otvorenog porta dobivaju drugi pokušaj na svom web-sučelju. Traje nekoliko sekundi.</li>
+      <li><strong>Sve tihe adrese</strong> – dodatno se na svim adresama bez odgovora provjeravaju uobičajeni portovi. Tako se pojavljuju i uređaji koji ne odgovaraju na ping, primjerice glasovni pomoćnici ili Windows računala sa zatvorenim vatrozidom. Traje osjetno dulje.</li>
+    </ul>
+
+    <h3>Skeniranje priključaka</h3>
+    <p>Neobavezno skeniranje priključaka (uključuje se u postavkama) provjerava poznate priključke usluga na svakom uređaju i znatno poboljšava prepoznavanje operacijskog sustava. Produljuje skeniranje, ali daje znatno više informacija – posebno o tome koje usluge uređaj nudi (web-sučelje, SSH, RDP itd.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Razumijevanje rezultata skeniranja</h2>
+  <div class="box">
+    <h3>Stupci na popisu uređaja</h3>
+    <table>
+      <tr><th>Stupac</th><th>Značenje</th></tr>
+      <tr><td>🌐</td><td>Dostupno web-sučelje – klik otvara preglednik</td></tr>
+      <tr><td>IP adresa</td><td>Trenutačna IP adresa u mreži</td></tr>
+      <tr><td>Naziv hosta</td><td>Naziv uređaja (razlučen putem DNS-a/NetBIOS-a)</td></tr>
+      <tr><td>Naziv uređaja</td><td>Naziv ili model koji uređaj sam javlja (npr. FRITZ! uređaji, pisači, televizori, NAS) – ili Vaš vlastiti naziv, npr. „Kamera dvorište“</td></tr>
+      <tr><td>MAC adresa</td><td>Hardverska adresa mrežne kartice</td></tr>
+      <tr><td>Proizvođač</td><td>Utvrđen iz OUI baze</td></tr>
+      <tr><td>Otvoreni priključci</td><td>Pronađene usluge (samo uz uključeno skeniranje priključaka)</td></tr>
+      <tr><td>Operacijski sustav</td><td>Prepoznati OS (TTL + naziv hosta + proizvođač + priključci)</td></tr>
+      <tr><td>Vrsta uređaja</td><td>Usmjerivač, pisač, NAS, kamera, pametni telefon/tablet itd. – vidi u nastavku</td></tr>
+    </table>
+
+    <h3>Vrsta uređaja</h3>
+    <p>Program svakom uređaju dodjeljuje vrstu na temelju više naznaka: proizvođača, naziva hosta, načina odgovaranja i – uz uključeno skeniranje priključaka – otvorenih priključaka. Moguće vrste su usmjerivač, mrežni uređaj, Windows računalo, poslužitelj, Mac, Linux računalo, pisač, NAS, pametni telefon/tablet, kamera, uređaj pametnog doma, TV/mediji, VoIP telefon i virtualni stroj.</p>
+    <p>Ako razvrstavanje nije jednoznačno, polje ostaje <strong>prazno</strong> – podatak koji nedostaje bolji je od pogrešnog. Ako sami znate o kojem je uređaju riječ, upišite to putem <strong>desni klik → „Označi uređaj …“</strong> (odjeljak 6). Vlastiti podaci uvijek imaju prednost i na popisu su označeni s <strong>✏</strong>.</p>
+
+    <h3>Prikazivanje i skrivanje stupaca</h3>
+    <p>Putem <strong>„☰ Stupci …“</strong> iznad popisa uređaja mogu se pojedini stupci skriti i ponovno prikazati. To vrijedi samo za prikaz: zapis, CSV i HTML izvješće uvijek sadrže sve stupce.</p>
+
+    <h3>Boje redaka</h3>
+    <p>Boja ovisi o vrsti uređaja. Ako vrsta nije poznata, ovisi o operacijskom sustavu, proizvođaču i otvorenim priključcima.</p>
+    <table>
+      <tr><th>Boja</th><th>Značenje</th></tr>
+      <tr><td style="background:#CCE5F5">Plava</td><td>Windows računalo ili Windows poslužitelj</td></tr>
+      <tr><td style="background:#B8EDD0">Zelena</td><td>Linux, Unix ili slični sustavi</td></tr>
+      <tr><td style="background:#F5C6C3">Ružičasta</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Ljubičasta</td><td>Mobilni uređaj (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Žuta</td><td>Mrežni uređaj (usmjerivač, preklopnik, pristupna točka)</td></tr>
+      <tr><td style="background:#FDDCB0">Narančasta</td><td>Pisač ili višenamjenski uređaj</td></tr>
+      <tr><td style="background:#BEE3F5">Svijetloplava</td><td>NAS uređaj</td></tr>
+      <tr><td style="background:#D8E8E8">Siva</td><td>Virtualni stroj</td></tr>
+    </table>
+
+    
+    <h3>Tipkovnički prečaci</h3>
+    <table>
+      <tr><th>Tipka</th><th>Funkcija</th></tr>
+      <tr><td><code>F11</code></td><td>Prikaz/skrivanje zaglavlja – više mjesta za popis uređaja (dostupno i kao gumb u zaglavlju)</td></tr>
+      <tr><td><code>Dvostruki klik</code></td><td>Prikaz detalja uređaja</td></tr>
+      <tr><td><code>Desni klik</code></td><td>Kontekstni izbornik s radnjama</td></tr>
+    </table>
+
+    <h3>Radnje dvostrukim klikom i desnim klikom</h3>
+    <p><strong>Dvostruki klik</strong> na uređaj otvara prozor s detaljima sa svim informacijama, detaljima priključaka i brzim radnjama.</p>
+    <p><strong>Desni klik</strong> otvara kontekstni izbornik sa sljedećim mogućnostima:</p>
+    <ul>
+      <li>Prikaži detalje</li>
+      <li>Otvori web-sučelje (ako je dostupno)</li>
+      <li>Pokreni ping monitor (trajni ping s poviješću)</li>
+      <li>Izmjeri kvalitetu veze …</li>
+      <li>Pošalji Wake-on-LAN</li>
+      <li>Kopiraj IP ili MAC</li>
+      <li>Ponovno skeniraj uređaj</li>
+      <li><strong>Označi uređaj …</strong> – trajno odrediti naziv, proizvođača i vrstu uređaja (odjeljak 6)</li>
+    </ul>
+
+    <h3>📶 Kvaliteta veze</h3>
+    <p>Ako telefonija ili video zapinju ili je uređaj dostupan samo povremeno, ovo mjerenje pokazuje je li smetnja u vlastitoj mreži ili iza nje. Otvara se gumbom <span class="btn-demo" style="background:#16A085;">📶 Kvaliteta veze</span> na kartici LAN skener, desnim klikom na uređaj ili u detaljima uređaja.</p>
+    <ol>
+      <li><strong>Odaberite cilj</strong> – internet (8.8.8.8), pristupnik ili uređaj iz posljednjeg skeniranja.</li>
+      <li><strong>Odaberite trajanje mjerenja</strong> – 30, 60 ili 120 sekundi.</li>
+      <li><span class="btn-demo btn-green">▶ Pokreni mjerenje</span> – mjeri se istodobno prema cilju i prema pristupniku.</li>
+    </ol>
+    <p>Rezultat za obje dionice navodi gubitak paketa, vrijeme odziva i njegovo kolebanje te ih ocjenjuje u dva dijela: <strong>vezu</strong> (prema gubitku paketa) i prikladnost za <strong>telefoniju i video</strong> (prema vremenu odziva i kolebanju). Ako su vrijednosti prema pristupniku dobre, a prema cilju loše, uzrok je iza usmjerivača. Gumbom <strong>📋 Kopiraj rezultat</strong> može se proslijediti.</p>
+    <div class="info">
+      <strong>ℹ Kamere i slični uređaji:</strong> mnogi uređaji na ping odgovaraju samo usput. Veliko kolebanje ondje često pokazuje opterećenje uređaja, a ne kvalitetu mreže. Kod takvih je uređaja mjerodavan gubitak paketa.
+    </div>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Postavke</h2>
+  <div class="box">
+    <p>Postavke se otvaraju gumbom <span class="btn-demo btn-orange">⚙ Konfig</span>. Sve se postavke automatski spremaju u datoteku <code>S-IT-LanScanner.ini</code>.</p>
+
+    <h3>Mogućnosti skeniranja</h3>
+    <ul>
+      <li><strong>Skeniranje priključaka</strong> – pronalazi usluge i poboljšava prepoznavanje OS-a (sporije)</li>
+      <li><strong>ARP skeniranje</strong> – pronalazi više uređaja putem ARP emitiranja</li>
+      <li><strong>Prepoznavanje OS-a</strong> – analizira TTL, naziv hosta i proizvođača</li>
+    </ul>
+
+    <h3>Intenzitet skeniranja</h3>
+    <p>Sigurno / Standardno / Intenzivno – vidi odjeljak 3.</p>
+
+    <h3>Jezik</h3>
+    <p>Pod <strong>⚙ Konfig → Sprache / Language</strong> birate jezik programskog sučelja: njemački, engleski, nizozemski, španjolski, francuski, talijanski, poljski, hrvatski ili češki. Novi jezik djeluje nakon ponovnog pokretanja programa; program ga nudi pri spremanju. Pomoć se zatim također otvara na odabranom jeziku.</p>
+
+    <h3>Prikaz</h3>
+    <ul>
+      <li><strong>Diskretno</strong> – mirni pastelni tonovi, za profesionalnu upotrebu</li>
+      <li><strong>Kontrastno</strong> – jače boje, lakše se razlikuju</li>
+      <li><strong>🌙 Tamni prikaz</strong> – tamne pozadine i svijetlo pismo u svim prozorima programa, ugodnije pri dugom radu za zaslonom. Retci popisa uređaja zadržavaju boju prema vrsti uređaja, samo tamniju. Djeluje nakon ponovnog pokretanja, koje program nudi pri spremanju. Prozori poruka sustava Windows i izvješća u pregledniku ostaju svijetli.</li>
+      <li><strong>Veličina fonta</strong> – Mali (8 pt), Normalni (9 pt), Veliki (11 pt). Za 4K zaslone ili visoke razlučivosti preporučuje se „Veliki“</li>
+    </ul>
+
+    <h3>HTML izvješće</h3>
+    <p>Ako je za HTML izvješće uključeno <strong>„Automatski otvori nakon skeniranja“</strong>, izvješće se nakon svakog skeniranja automatski otvara u zadanom pregledniku. Ovdje se to može isključiti.</p>
+
+    <h3>Mapa zapisa</h3>
+    <p>Ovdje određujete gdje se spremaju zapisi skeniranja i HTML izvješća. Zadano: <code>Logs</code> pokraj datoteke <code>sit-lsc-start.exe</code></p>
+
+    <h3>Čekanje za mrežne pogone</h3>
+    <p>Vrijedi za trajni test LAN-a s ciljem u mreži (<code>\\NAS\dijeljenje</code> ili povezani mrežni pogon poput <code>U:</code>). NAS-u čiji su diskovi u stanju mirovanja nakon prvog upita treba nekoliko sekundi dok dijeljenje ne postane dostupno. Program zato do postavljenog vremena ponovno upituje svake 3 sekunde i tek nakon toga javlja da cilj nije dostupan. Mogu se odabrati 0, 30, 60 i 120 sekundi; zadano je 60.</p>
+
+    <h3>Veličina prikaza / skaliranje</h3>
+    <p>Skalira cijelo sučelje. Mogu se odabrati <strong>90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %</strong>. Odabrana razina sama određuje veličinu – skaliranje sustava Windows tada se ne dodaje. Razina <strong>90 %</strong> je kompaktna i daje više mjesta tablicama. Koja je razina za što prikladna, objašnjava gumb ⓘ pokraj naslova. Promjena djeluje nakon ponovnog pokretanja, koje se nudi pri spremanju.</p>
+    <div class="info">
+      <strong>ℹ Odnos prema skaliranju sustava Windows:</strong> dok je ovdje odabrana razina, ona određuje veličinu prikaza – neovisno o tome što je postavljeno u sustavu Windows. Ako nije odabrana nijedna razina, program slijedi skaliranje sustava Windows.
+    </div>
+
+    <h3>Pokretanje programa</h3>
+    <p>Potvrdni okvir <strong>„🛡 Pokreni kao administrator“</strong> (zadano <strong>uključeno</strong>) traži administratorska prava već pri pokretanju programa. Skener ih treba za popravak mreže, ARP predmemoriju i karticu vatrozida. Pri pokretanju se tada pojavljuje upit sustava Windows (Kontrola korisničkog računa, UAC). Tko namjerno radi bez administratorskih prava, isključuje kvačicu – tada upit izostaje, a navedene funkcije same javljaju kada trebaju prava. Dolje lijevo u traci stanja trajni pokazatelj prikazuje stvarno stanje: <span class="btn-demo btn-green">🛡 Admin</span> ili <span class="btn-demo" style="background:#95A5A6;">🛡 bez admina</span>.</p>
+
+    <h3>Prozor</h3>
+    <p>Uz <strong>„🗖 Zapamti veličinu prozora“</strong> program pri zatvaranju pamti veličinu i položaj glavnog prozora – uključujući monitor na kojem je bio – te je li bio maksimiziran. Pri sljedećem pokretanju otvara se točno tako. Ako taj monitor više nije priključen, prozor se otvara na glavnom zaslonu. Spremljena veličina vrijedi za svaku razinu skaliranja: nakon promjene skaliranja prozor se jednom pokreće u standardnoj veličini, a zatim ponovno pamti veličinu – tako veličina i potreban prostor uvijek odgovaraju jedno drugome.</p>
+
+    <div class="info">
+      <strong>ℹ Prozor Konfig:</strong> pri visokom skaliranju prozor postavki postaje veći od zaslona. Zato se može pomicati u oba smjera (kotačić miša okomito, <code>Shift</code>+kotačić miša vodoravno); gumbi <strong>Spremi</strong> i <strong>Odustani</strong> pritom uvijek ostaju vidljivi na dnu.
+    </div>
+
+    <h3>Dijagnostika</h3>
+    <p>Potvrdni okvir <strong>„🔧 Prikaži DIAG alate“</strong> prikazuje gore u zaglavlju gumb <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Zadano je <strong>isključen</strong> – za uobičajeni rad dijagnostika nije potrebna. Više u odjeljku 11.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Vlastiti podaci o uređajima (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>Ne može se svaki uređaj automatski pouzdano razvrstati – novi uređaj još nedostaje u bazi proizvođača, kamera se predstavlja kao Linux računalo ili kod više jednakih uređaja treba biti vidljivo koji je gdje. Za to upisujete vlastite podatke. Spremaju se u datoteku <strong>S-IT-Custom.ini</strong> i vrijede trajno.</p>
+
+    <div class="info">
+      <strong>Važno:</strong> vlastiti podaci <strong>uvijek imaju prednost</strong> pred automatskim prepoznavanjem. Datoteka S-IT-Custom.ini pri OUI ažuriranjima <strong>nikada</strong> se ne prepisuje.
+    </div>
+
+    <h3>Metoda 1: desni klik → „Označi uređaj …“</h3>
+    <p>To je najjednostavniji način:</p>
+    <ol>
+      <li>Provedite skeniranje</li>
+      <li><strong>Desnom tipkom kliknite</strong> uređaj na popisu</li>
+      <li>Odaberite <strong>„✏ Označi uređaj …“</strong></li>
+      <li>Ispunite željena polja:
+          <ul>
+            <li><strong>Naziv uređaja</strong> – vrijedi za ovaj uređaj, npr. lokacija ili prostorija („Kamera dvorište“, „Pisač ured 2“)</li>
+            <li><strong>Proizvođač</strong> – vrijedi za sve uređaje s istim MAC prefiksom</li>
+            <li><strong>Vrsta uređaja</strong> – odaberite s popisa ili slobodno upišite</li>
+          </ul>
+      </li>
+      <li>Odredite na što se vrsta uređaja odnosi:
+          <ul>
+            <li><strong>samo ovaj uređaj</strong> – putem MAC adrese (bez MAC-a putem IP adrese)</li>
+            <li><strong>svi uređaji s ovim MAC prefiksom</strong> – npr. sve kamere jednog proizvođača</li>
+            <li><strong>svi uređaji s ovim dijelom naziva</strong> – npr. svi uređaji čiji naziv hosta sadrži „SmartPlug“</li>
+          </ul>
+      </li>
+      <li>Spremite – podatak se odmah pojavljuje na popisu.</li>
+    </ol>
+    <p>Prazno polje ili <strong>„– utvrdi automatski –“</strong> ponovno uklanja vlastiti podatak; tada vrijedi automatsko razvrstavanje.</p>
+
+    <h3>Metoda 2: prozor za upravljanje OUI</h3>
+    <p>Putem <span class="btn-demo btn-dark">🔄 Ažuriranje OUI</span> → kartica <strong>„✏ Vlastite dodjele“</strong> vidite sve unose u jednom pregledu i možete ih dodavati, mijenjati i brisati. Podkartice:</p>
+    <ul>
+      <li><strong>OUI → proizvođač</strong> – MAC prefiks (6 heksadecimalnih znakova) → naziv proizvođača</li>
+      <li><strong>MAC → naziv</strong> – MAC adresa → vlastiti naziv uređaja</li>
+      <li><strong>MAC → vrsta</strong> – MAC adresa → vrsta uređaja (jedan uređaj)</li>
+      <li><strong>IP → vrsta</strong> – IP adresa → vrsta uređaja (uređaj bez MAC adrese)</li>
+      <li><strong>Naziv hosta → vrsta</strong> – dio naziva → vrsta uređaja (svi uređaji s tim dijelom naziva)</li>
+      <li><strong>MAC prefiks → vrsta</strong> – MAC prefiks → vrsta uređaja (svi uređaji jednog proizvođača)</li>
+    </ul>
+
+    <h3>Format datoteke S-IT-Custom.ini</h3>
+    <p>Datoteka se nalazi u mapi <code>Config</code> pokraj datoteke <code>sit-lsc-start.exe</code> i može se uređivati i uređivačem teksta. MAC adrese pišu se s crticama. Nazivi odjeljaka i vrste uređaja u njoj su na njemačkom, onako kako ih program sprema (npr. Kamera = kamera); program prikazuje vrste uređaja na postavljenom jeziku.</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – vlastite dodjele s prednošću</span><br>
+<span class="comment">; OUI ažuriranje je NE prepisuje.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; MAC prefiks (6 hex) = proizvođač</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; MAC adresa = vlastiti naziv uređaja</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera dvorište</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; MAC adresa = vrsta uređaja (ovaj uređaj)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; IP adresa = vrsta uređaja (uređaj bez MAC-a)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; dio naziva = vrsta uređaja (svi uređaji s tim dijelom naziva)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; MAC prefiks (6 hex) = vrsta uređaja (svi uređaji jednog proizvođača)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Redoslijed za vrstu uređaja:</strong> pojedini uređaj (MAC ili IP) &gt; dio naziva &gt; MAC prefiks &gt; automatsko razvrstavanje
+    </div>
+    <div class="info">
+      <strong>ℹ Stariji unosi:</strong> do verzije 4.0 odjeljci <code>[IP]</code> i <code>[Hostname]</code> određivali su operacijski sustav. Sada određuju vrstu uređaja; postojeći unosi ostaju valjani i pojavljuju se u stupcu „Vrsta uređaja“.
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Kartica 2: Dostupnost interneta</h2>
+  <div class="box">
+    <p>Gore na kartici birate jednu od četiri provjere:</p>
+    <table>
+      <tr><th>Pločica</th><th>Za što služi</th></tr>
+      <tr><td><strong>🌐 Dostupnost interneta</strong></td>
+          <td>Provjerava dolazi li ovo računalo do interneta: DNS, usmjeravanje, TCP 443, HTTPS, IPv6 i preglednik.</td></tr>
+      <tr><td><strong>🔗 Put LAN veze</strong></td>
+          <td>Provjerava put od računala preko pristupnika do cilja u vlastitoj mreži, npr. preko powerlinea do NAS-a ili usmjerivača.</td></tr>
+      <tr><td><strong>📶 Test brzine</strong></td>
+          <td>Mjeri preuzimanje, slanje i ping internetske veze.</td></tr>
+      <tr><td><strong>🏷 Podaci o domeni</strong></td>
+          <td>Pokazuje kod kojeg se davatelja upravlja DNS zapisima domene, tko prima njezinu e-poštu i gdje se nalazi web-stranica.</td></tr>
+    </table>
+
+    <h3>🏷 Podaci o domeni</h3>
+    <p>Tipičan povod: pružatelj usluga treba promijeniti zapis domene tvrtke, primjerice za novi poslužitelj e-pošte ili potvrdu kod usluge u oblaku, a više nitko ne zna gdje se domenom upravlja. Podaci o domeni to pokazuju jednim upitom. Administratorska prava za to nisu potrebna, internetska veza jest.</p>
+
+    <h4>Rukovanje</h4>
+    <ol>
+      <li>Odaberite pločicu <strong>🏷 Podaci o domeni</strong>.</li>
+      <li>Unesite domenu, npr. <code>tvrtka.hr</code>. Može i web-adresa (<code>https://www.tvrtka.hr/kontakt</code>) ili adresa e-pošte (<code>info@tvrtka.hr</code>), kao i domene s dijakritičkim znakovima.</li>
+      <li>Kliknite <span class="btn-demo btn-green">▶ Provjeri</span> ili pritisnite Enter.</li>
+    </ol>
+    <p>Ako upisana podadresa poput <code>shop.tvrtka.hr</code> nema vlastite poslužitelje imena, program provjerava nadređenu domenu <code>tvrtka.hr</code> i navodi to u retku iznad rezultata.</p>
+
+    <h4>Rezultati</h4>
+    <table>
+      <tr><th>Redak</th><th>Značenje</th></tr>
+      <tr><td><strong>Poslužitelji imena</strong></td>
+          <td>Poslužitelji koji su u DNS-u nadležni za domenu.</td></tr>
+      <tr><td><strong>DNS se vodi kod</strong></td>
+          <td>Davatelj tih poslužitelja imena. Ondje se mijenjaju DNS zapisi domene.</td></tr>
+      <tr><td><strong>Poslužitelji e-pošte</strong></td>
+          <td>Poslužitelji koji primaju e-poštu za domenu, s prioritetom: najprije se pokušava poslužitelj s manjim brojem. Ako piše „nijedan nije upisan“, domena ne prima e-poštu.</td></tr>
+      <tr><td><strong>E-pošta kod</strong></td>
+          <td>Davatelj poslužitelja e-pošte. Ako iza piše „usluga filtriranja“, e-poštu prima filtar za neželjenu poštu i viruse te je prosljeđuje u stvarni poštanski sandučić.</td></tr>
+      <tr><td><strong>Web-poslužitelj</strong></td>
+          <td>Adresa web-stranice (<code>www.tvrtka.hr</code>, inače <code>tvrtka.hr</code>) i njezine IP adrese.</td></tr>
+      <tr><td><strong>Web-stranica kod</strong></td>
+          <td>Davatelj kod kojeg se nalazi web-stranica.</td></tr>
+    </table>
+    <p>Ispod svakog davatelja sivim su slovima navedeni adresa poslužitelja, naziv računala, naziv njegove mreže i njezin raspon adresa.</p>
+
+    <h4>Odakle potječu podaci</h4>
+    <ul>
+      <li><strong>Davatelj:</strong> program poznaje poslužitelje imena i poslužitelje e-pošte uobičajenih davatelja, npr. IONOS, Strato, Cloudflare, Microsoft 365 i Google Workspace. Ako poslužitelj ondje nije naveden, navodi operatera njegove mreže prema nadležnom registru, npr. RIPE za Europu ili ARIN za Sjevernu Ameriku. U zagradi tada piše „mrežni operater prema RIPE“.</li>
+      <li><strong>Država:</strong> država u kojoj je mreža poslužitelja registrirana u registru. To je obično lokacija podatkovnog centra, ali ne uvijek: velike tvrtke često registriraju svoje mreže na adresu sjedišta.</li>
+      <li><strong>„nije dodijeljeno“:</strong> poslužitelj nije na popisu, a registar nije bio dostupan ili nije naveo operatera.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Poslužitelji imena i registracija:</strong> ondje gdje se upravlja DNS zapisima obično je i davatelj kod kojeg je domena registrirana. Kod DNS usluga poput Cloudflarea domena može biti registrirana kod drugog davatelja.
+    </div>
+    <div class="tip">
+      <strong>Savjet:</strong> <span class="btn-demo btn-blue">📋 Kopiraj rezultat</span> sprema rezultat kao tekst s datumom i vremenom u međuspremnik, npr. za e-poruku korisniku ili pružatelju usluga.
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="lan-performance">8. Kartica 4: LAN performanse i Wi-Fi</h2>
+  <div class="box">
+    <h3>Test brzine LAN-a</h3>
+    <p>Mjeri stvarnu brzinu zapisivanja i čitanja prema mrežnom dijeljenju – bez poslužiteljskog softvera na drugoj strani.</p>
+
+    <h4>Preduvjeti</h4>
+    <ul>
+      <li>Dostupno mrežno dijeljenje (npr. <code>\\Naziv-NAS-a\Podaci</code>) ili povezani mrežni pogon (npr. <code>U:</code>)</li>
+      <li>Prava zapisivanja na dijeljenju</li>
+    </ul>
+    <p>Ako NAS spava, program čeka do postavljenog <strong>vremena čekanja za mrežne pogone</strong> (odjeljak 5) prije nego što javi da cilj nije dostupan. Ako Windows vodi mrežni pogon kao „nedostupan“ (crveni križić u Eksploreru), program ga ponovno povezuje, kao što to Eksplorer čini pri kliku.</p>
+
+    <div class="warn">
+      <strong>Važno: sam naziv poslužitelja nije dovoljan.</strong><br> <code>\\Naziv-NAS-a</code> u Eksploreru prikazuje samo <em>popis</em> dijeljenja – ondje se ne može stvoriti datoteka, test ne uspijeva. Mora se navesti samo dijeljenje, npr. <code>\\Naziv-NAS-a\Podaci</code>. Najjednostavnije ga je odabrati putem <strong>📂</strong>, tada je put uvijek točan. To objašnjava i gumb <strong>ⓘ</strong> pokraj polja za unos.
+    </div>
+
+    <p>Kao cilj dopuštena je i <strong>lokalna mapa</strong> (npr. <code>C:\Temp</code>) – za usporedbu pokazuje koliko je računalo brzo bez mreže.</p>
+
+    <h4>Rukovanje</h4>
+    <ol>
+      <li>Unesite cilj ili ga odaberite putem <strong>📂</strong>. Put se provjerava <strong>prije</strong> pokretanja; ako nešto nije u redu, poruka točno objašnjava što nedostaje.</li>
+      <li>Odaberite veličinu bloka (1–64 MB po ciklusu mjerenja)</li>
+      <li><span class="btn-demo btn-green">▶ Pokreni trajni test</span> – test radi neprekidno i ažurira krivulju uživo</li>
+      <li><span class="btn-demo btn-red">⏹ Zaustavi</span> – završava test</li>
+    </ol>
+    <p>Ako se tijekom testa otvori druga kartica, program pita treba li zaustaviti test. Odabirom <strong>Ne</strong> kartica LAN performanse i Wi-Fi ostaje otvorena, a test se nastavlja. Pri zatvaranju programa test se zaustavlja, a testna datoteka briše.</p>
+
+    <h4>Rezultati</h4>
+    <ul>
+      <li><strong>Plava linija</strong> – brzina zapisivanja</li>
+      <li><strong>Zelena linija</strong> – brzina čitanja</li>
+      <li>Pločice uvijek prikazuju trenutačnu izmjerenu vrijednost</li>
+      <li>Zapisnik mjerenja navodi svaki pojedini ciklus</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Lokalni pogoni:</strong> kod lokalnih pogona (npr. C:\, D:\) izmjerene vrijednosti mogu biti znatno iskrivljene <strong>predmemorijom datotečnog sustava Windows</strong> – predmemorija javlja „gotovo“ prije nego što su podaci stvarno na disku. Vrijednosti od nekoliko tisuća Mbit/s na običnom tvrdom disku stoga nisu realan rezultat. Za mjerodavna mjerenja uvijek koristite <strong>mrežni put</strong> (UNC put poput <code>\\Posluzitelj\Dijeljenje</code> ili mrežni pogon).
+    </div>
+
+    <div class="tip">
+      <strong>Tipične orijentacijske vrijednosti:</strong><br> Gigabitni LAN: 400–900 Mbit/s &nbsp;|&nbsp; LAN 100 Mbit: 60–90 Mbit/s &nbsp;|&nbsp; Wi-Fi (802.11ac): 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Manje veličine bloka (1–4 MB) pokazuju više kolebanja jer dodatni promet i latencija imaju veću težinu. Za stabilne vrijednosti preporučuje se 16–64 MB.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>Wi-Fi i LAN pločica</h3>
+    <p>Desno na kartici jedna do druge nalaze se <strong>Wi-Fi pločica</strong> i <strong>LAN pločica</strong>, ispod njih IPv4 adresa i pristupnik. Obje su pločice jednako građene: gore stanje, ispod adapter s nazivom pod kojim je naveden i u Upravitelju uređaja.</p>
+    <p>Pri postojećoj vezi Wi-Fi pločica prikazuje:</p>
+    <ul>
+      <li>Naziv mreže i stanje veze</li>
+      <li>Jačinu signala kao obojenu traku (zeleno dobar, žuto srednji, crveno slab)</li>
+      <li>Kanal, frekvencijski pojas i Wi-Fi standard (npr. Wi-Fi 6)</li>
+      <li><strong>⬆ Brzina veze</strong> – brzina koju Windows javlja za vezu</li>
+      <li><strong>⬇ Brzina primanja</strong> – samo tijekom trajnog testa LAN-a (vidi u nastavku)</li>
+    </ul>
+    <p>Ako veze nema, pločica navodi razlog: <strong>Adapter deaktiviran</strong> (isključen u Upravitelju uređaja ili u Mrežnim vezama), <strong>Nije povezano</strong> ili <strong>Nema Wi-Fi adaptera</strong>. LAN pločica dodatno razlikuje <strong>Kabel nije priključen</strong>.</p>
+    <div class="info">
+      <strong>ℹ Brzina primanja samo tijekom trajnog testa:</strong> brzina primanja koju javlja Windows smislena je samo dok podaci teku. Bez prometa pada na niske vrijednosti iako je veza dobra. Pločica je zato prikazuje samo dok traje trajni test LAN-a – tada se brzina primanja i izmjerene brzine zapisivanja i čitanja mogu izravno usporediti. Pri pokretanju i zaustavljanju testa pločica se odmah ažurira.
+    </div>
+    <div class="info">
+      <strong>ℹ Pristup lokaciji:</strong> jačinu signala, kanal i Wi-Fi standard Windows 11 daje samo ako aplikacije za stolna računala smiju pristupati lokaciji. Ako tog dopuštenja nema, na pločici stoji napomena s gumbom <strong>„→ Otvori postavke lokacije“</strong>. Naziv mreže program tada uzima s popisa mreža sustava Windows i upozorava da se može razlikovati od naziva Wi-Fi mreže (npr. „Kućna mreža 2“).
+    </div>
+    <div class="info">
+      <strong>ℹ Ažuriranje:</strong> obje se pločice ažuriraju svakih 10 sekundi; prelazak s LAN-a na Wi-Fi ili naknadno priključen USB Wi-Fi stick prepoznaju se bez ponovnog pokretanja. Gumbom <strong>🔄 Osvježi</strong> to se događa odmah.
+    </div>
+  </div>
+
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Kartica 5: Wi-Fi profili</h2>
+  <div class="box">
+    <p>Ova kartica prikazuje Wi-Fi mreže spremljene na ovom računalu zajedno s lozinkom i prenosi ih na drugo računalo – npr. pri prelasku na novo računalo. Desno vidite koliko je dobra Vaša Wi-Fi veza u usporedbi s Wi-Fi standardima i koje su Wi-Fi mreže u dometu.</p>
+
+    <div class="warn">
+      <strong>⚠ Potrebna administratorska prava:</strong> čitanje, spremanje i uvoz profila rade samo uz administratorska prava. Ako program radi bez njih, gore na kartici stoji napomena, a odgovarajući gumbi su zaključani.
+    </div>
+
+    <h3>Lijevi stupac: gumbi i spremljeni profili</h3>
+    <table>
+      <tr><th>Gumb</th><th>Funkcija</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  Pročitaj Wi-Fi lozinke</span></td>
+          <td>Čita sve spremljene Wi-Fi profile zajedno s lozinkom i popunjava popis ispod.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Prikaži zapisnik</span></td>
+          <td>Otvara zapisnik čitanja. Lozinke se ondje ne navode. Nalazi se u mapi zapisa (<code>WLAN-Profile_&lt;datum&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Prikaži lozinku</span></td>
+          <td>Prikazuje lozinku mreže odabrane na popisu – s kopiranjem i ispisom. Dvostruki klik na mrežu čini isto.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Spremi profile</span></td>
+          <td>Sprema sigurnosnu kopiju svih profila zajedno s lozinkom u mapu, npr. na USB stick. Ondje nastaje podmapa <code>WLAN-Profile_&lt;naziv računala&gt;_&lt;datum&gt;</code>.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Uvezi profile</span></td>
+          <td>Uvozi takvu sigurnosnu kopiju na ovo računalo, za sve korisnike. Nakon toga nudi se brisanje sigurnosne kopije.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  Wi-Fi izvješće (HTML)</span></td>
+          <td>Izrađuje Wi-Fi izvješće (vidi u nastavku).</td></tr>
+    </table>
+    <p>Popis <strong>„Spremljeni profili“</strong> za svaku mrežu navodi stanje: <strong>povezano</strong>, <strong>u dometu</strong> ili <strong>izvan dometa</strong>. Mreže bez lozinke označene su kao takve.</p>
+
+    <div class="danger">
+      <strong>Sigurnosna kopija sadrži lozinke kao čisti tekst.</strong> Mapu odnosno USB stick čuvajte na odgovarajući način i izbrišite sigurnosnu kopiju nakon uvoza – program to nudi nakon ⑤. Ispisana stranica s lozinkom briše se kao datoteka nakon jedne minute i pri zatvaranju programa.
+    </div>
+
+    <h3>Prelazak na novo računalo</h3>
+    <ol>
+      <li>Na starom računalu: <strong>④ Spremi profile</strong> i odaberite USB stick kao cilj.</li>
+      <li>Na novom računalu: pokrenite LanScanner, kartica Wi-Fi profili, <strong>⑤ Uvezi profile</strong> i odaberite mapu <code>WLAN-Profile_…</code> na sticku.</li>
+      <li>Na pitanje treba li izbrisati sigurnosnu kopiju odgovorite s <strong>Da</strong>.</li>
+    </ol>
+    <p>Uvezene mreže tada se pojavljuju na popisu „Spremljeni profili“.</p>
+
+    <h3>Gore desno: Vaša veza u usporedbi s Wi-Fi standardima</h3>
+    <p>Grafikon kao <strong>sive stupce</strong> prikazuje uobičajene brzine veze stolnih i prijenosnih računala za Wi-Fi 4 (802.11n) do Wi-Fi 7 (802.11be), svaki s frekvencijskim pojasom. <strong>Obojeni stupac</strong> je Vaša brzina veze prema sustavu Windows, obojen prema jačini signala (zeleno dobar, žuto srednji, crveno slab). Ako je na donjem kraju svojeg standarda, isplati se provjeriti udaljenost od usmjerivača, kanal i pojas.</p>
+    <div class="info">
+      <strong>ℹ Brzina veze i protok podataka:</strong> brzina veze je bruto brzina radijske veze. Iskustveno se od toga stvarno prenese otprilike polovica do dvije trećine. Stvarni protok mjeri trajni test LAN-a na kartici 4.
+    </div>
+
+    <h3>Dolje desno: Wi-Fi mreže u dometu</h3>
+    <p>Tablica navodi Wi-Fi mreže koje adapter trenutačno prima, sa signalom, nazivom mreže, pojasom i kanalom, standardom, šifriranjem i podatkom je li mreža spremljena na ovom računalu. Kod spremljenih mreža poveznica <strong>„Prikaži lozinku“</strong> izravno prikazuje lozinku. Pri prvom otvaranju kartice okolina se skenira jednom; <strong>„Skeniraj okolinu“</strong> ponovno pretražuje.</p>
+    <div class="info">
+      <strong>ℹ Pristup lokaciji:</strong> Wi-Fi mreže u dometu, jačinu signala i Wi-Fi standard Windows 11 daje samo ako aplikacije za stolna računala smiju pristupati lokaciji. Ako tog dopuštenja nema, umjesto tablice stoji napomena s gumbom <strong>„→ Otvori postavke lokacije“</strong>.
+    </div>
+
+    <h3>Wi-Fi izvješće</h3>
+    <p>Gumb <strong>⑥</strong> sažima stanje u obojenoj HTML datoteci – prikladno za prosljeđivanje, za dokumentaciju korisnika ili za usporedbu prije i poslije:</p>
+    <ul>
+      <li>Wi-Fi veza s adapterom, signalom, pojasom, kanalom i brzinom veze</li>
+      <li>LAN priključak</li>
+      <li>IPv4 adresa i pristupnik</li>
+      <li>Smještaj vlastite veze među Wi-Fi standarde</li>
+      <li>Wi-Fi mreže u dometu</li>
+      <li>Spremljeni profili</li>
+    </ul>
+    <p><strong>Lozinke se ne navode u izvješću.</strong> Sprema se u mapu zapisa kao <code>WLAN-Bericht_&lt;naziv računala&gt;_&lt;datum&gt;.html</code> i otvara u pregledniku.</p>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">10. Kartica 6: Vatrozid i priključci</h2>
+  <div class="box">
+    <p>Ova kartica obrađuje dva odvojena slučaja, zato je podijeljena u dva stupca. Oba pristupaju istom vatrozidu sustava Windows, ali ga promatraju iz suprotnih smjerova:</p>
+    <ul>
+      <li><strong>Lijevo – „Pristup uređaju u mreži“:</strong> drugi uređaj u LAN-u (NAS, pisač, FritzBox USB) nije dostupan s ovog računala.</li>
+      <li><strong>Desno – „Priključak na ovom računalu“:</strong> program na ovom računalu treba određeni priključak kojem drugi pristupaju iz mreže (robno knjigovodstvo, blagajnički sustav, baza podataka, daljinsko održavanje).</li>
+    </ul>
+    <p>Ispod oba stupca cijelom širinom nalazi se zajednički <strong>popis pravila</strong>; prikazuje unose iz oba stupca.</p>
+
+    <div class="warn">
+      <strong>⚠ Potrebna administratorska prava:</strong> čitanje i postavljanje pravila vatrozida moguće je samo uz administratorska prava. Najjednostavnije je ostaviti uključeno <strong>„Pokreni kao administrator“</strong> (vidi odjeljak 5, zadano uključeno). Ako program radi bez administratorskih prava, kartica to javlja pri provjeri ili upisu.
+    </div>
+
+    <h3>Lijevi stupac: pristup uređaju u mreži</h3>
+    <p>Koristite ga kada je uređaj vidljiv u skeniranju (ili bi trebao biti), ali mu se ne može pristupiti – nema pinga, nema dijeljenja datoteka. Često vezu blokira vatrozid sustava Windows ovog računala. Ovaj je stupac preuzet iz samostalnog alata <strong>S-IT-FWModify</strong>.</p>
+    <ol>
+      <li><strong>Unesite IP adresu ili podmrežu</strong> – jednu adresu (npr. <code>192.168.178.60</code>) ili cijelu podmrežu (<code>192.168.178.0/24</code>). Nedavno korišteni ciljevi dostupni su na padajućem popisu.</li>
+      <li><strong>Odaberite opseg iznimke:</strong>
+          <ul>
+            <li><strong>Svi priključci</strong> – za jedan poznati uređaj</li>
+            <li><strong>Samo dijeljenje datoteka</strong> – TCP 445, 139 i UDP 137, 138 (SMB)</li>
+            <li><strong>Dijeljenje datoteka + web-sučelje</strong> – dodatno TCP 5000, 5001 (npr. za sučelja NAS-a)</li>
+          </ul>
+      </li>
+      <li><strong>Provjeri</strong> – nalaz se pojavljuje u pet redaka (vidi u nastavku).</li>
+      <li><strong>Upiši iznimku</strong> – stvara odgovarajuću iznimku vatrozida.</li>
+    </ol>
+    <p>Pet redaka provjere:</p>
+    <ul>
+      <li><strong>Uređaj odgovara na ping</strong> – osnovna dostupnost u mreži</li>
+      <li><strong>Otvoreni priključci na cilju</strong> – što uređaj nudi, je li među time dijeljenje datoteka?</li>
+      <li><strong>Osnovna postavka vatrozida</strong> – može li iznimka ovdje uopće išta postići?</li>
+      <li><strong>Mrežni profil ovog računala</strong> – Privatna = dijeljenja moguća, Javna = sve blokirano</li>
+      <li><strong>S-IT pravilo za ovaj cilj</strong> – postoji li već iznimka koju je postavio ovaj alat?</li>
+    </ul>
+
+    <h3>Desni stupac: priključak na ovom računalu</h3>
+    <p>Koristite ga u obrnutom slučaju, kada program radi <em>na ovom računalu</em> i mora otvoriti određeni priključak kako bi mu druga računala u mreži mogla pristupiti – primjerice robno knjigovodstvo, blagajnički sustav ili baza podataka koja nudi uslugu na fiksnom priključku. Pravilo vrijedi <strong>za dolazni promet</strong> i <strong>samo iz lokalne mreže</strong>.</p>
+    <ol>
+      <li><strong>Odaberite predložak</strong> (neobavezno) – česti slučajevi su pohranjeni i automatski ispunjavaju priključak, protokol i naziv: SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432), Udaljena radna površina (3389), VNC (5900), HTTP (80), HTTPS (443), HTTP alternativni (8080), HTTPS alternativni (8443). Mogućnošću <em>„– vlastiti unos –“</em> sami upisujete bilo koji priključak.</li>
+      <li><strong>Priključak (ili raspon) i protokol</strong> – jedan broj (npr. <code>1433</code>) ili raspon (npr. <code>5000-5010</code>, najviše 200 priključaka), uz to <strong>TCP</strong> ili <strong>UDP</strong>.</li>
+      <li><strong>Naziv</strong> – naziv pod kojim se pravilo kasnije može pronaći na popisu (npr. „robno knjigovodstvo, blagajnički sustav“).</li>
+      <li><strong>Provjeri</strong> – nalaz se pojavljuje u tri retka (vidi u nastavku).</li>
+      <li><strong>Otvori priključak</strong> – stvara dolazno pravilo za lokalnu podmrežu.</li>
+    </ol>
+    <p>Tri retka provjere:</p>
+    <ul>
+      <li><strong>Program osluškuje na priključku</strong> – bez programa koji osluškuje nijedno pravilo vatrozida ništa ne postiže. Ako program osluškuje samo na <code>127.0.0.1</code>, ni s pravilom nije dostupan iz mreže – tada se sam program mora vezati na LAN adresu.</li>
+      <li><strong>Dolazno pravilo vatrozida</strong> – postojeća pravila za ovaj priključak, i tuđa (npr. od instalacijskog programa poslovne aplikacije). Pravila koja vrijede samo za jedan drugi program ili drugu uslugu sustava Windows označena su kao bez učinka.</li>
+      <li><strong>Profil vatrozida ovog računala</strong> – pravilo vrijedi za privatni profil; u profilu „Javna“ Windows svejedno blokira.</li>
+    </ul>
+
+    <h3>Nalaz (oba stupca)</h3>
+    <p>Svaki redak provjere prikazuje rezultat: <strong>zeleno</strong> u redu, <strong>žuto</strong> napomena, <strong>crveno</strong> problem. Gdje je smisleno, redak desno nudi mali gumb za izravno rješenje – npr. prebacivanje mrežnog profila na „privatna“ (kako bi dijeljenja uopće bila dopuštena) ili odmah otvaranje priključka. Detaljan opis svakog retka pojavljuje se kada mišem zadržite pokazivač iznad njega.</p>
+
+    <h3>Zajednički popis pravila</h3>
+    <p>Sve iznimke koje program stvara – iz oba stupca – imaju vlastiti naziv (prefiks <code>S-IT-FW-</code>) i pojavljuju se na popisu dolje. Za svaki unos obično nastaje više pravila vatrozida (po smjeru i protokolu). Gumbima ispod mogu se ponovno ukloniti <strong>označena</strong> ili <strong>sva S-IT pravila</strong>.</p>
+
+    <div class="tip">
+      <strong>Vaša ostala pravila vatrozida ostaju netaknuta.</strong> Program vidi i mijenja isključivo vlastita pravila s prefiksom <code>S-IT-FW-</code>. Tuđa pravila sustava Windows ili drugog softvera niti se prikazuju niti brišu.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Jednostavno pospremanje:</strong> ako je iznimka ili otvoreni priključak postavljen samo za testiranje, kasnije ga jednim klikom uklonite putem popisa pravila – tako vatrozid ostaje uredan.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">11. Dijagnostika (DIAG) – za testere</h2>
+  <div class="box">
+    <p>Ovaj je odjeljak namijenjen testerima i svima koji žele prijaviti problem s prepoznavanjem. Za uobičajeni rad ništa od toga nije potrebno.</p>
+
+    <h3>Čemu služi?</h3>
+    <p>Windows daje mrežne podatke na više načina. Koji od njih odgovara, razlikuje se od računala do računala – ovisno o izdanju sustava Windows, upravljačkim programima i pravilima tvrtke. Ako program na nekom uređaju prikazuje pogrešne vrijednosti, iz prikaza se ne vidi zašto. Dijagnostika zato <strong>svaki način zasebno</strong> ispituje i bilježi što je odgovorio – čak i ako uopće nije odgovorio.</p>
+
+    <h3>Uključivanje</h3>
+    <p><strong>⚙ Konfig → Dijagnostika → „🔧 Prikaži DIAG alate“</strong>. Nakon toga gore u zaglavlju pojavljuje se gumb <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. Ponovno pokretanje nije potrebno. Uklanjanjem kvačice ponovno se skriva.</p>
+
+    <h3>Tri alata</h3>
+    <table>
+      <tr><th>Gumb</th><th>Funkcija</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ Izradi DIAG</span></td>
+          <td>Stvara <strong>točno jednu datoteku</strong> u mapi <code>Diag</code> pokraj datoteke <code>sit-lsc-start.exe</code>. Ništa se ne događa samo od sebe – samo na klik.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Prikaži čisti tekst</span></td>
+          <td>Prikazuje sadržaj u čitljivom obliku – <strong>točno ono što bi se poslalo</strong>. Na zahtjev se može spremiti i kao čisti tekst. Sadržaj je u svim jezičnim inačicama jednako strukturiran i ne prevodi se.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Otvori mapu</span></td>
+          <td>Otvara mapu pohrane u Eksploreru.</td></tr>
+    </table>
+
+    <h3>Što sadrži?</h3>
+    <ul>
+      <li>Neobrađene odgovore svih upita (PowerShell, wmic, registar, netsh, ipconfig), uključujući Wi-Fi mreže u dometu</li>
+      <li>Kako LAN i Wi-Fi pločica prikazuju te odgovore</li>
+      <li>Verziju sustava Windows i programa, skaliranje, administratorska prava</li>
+      <li>Što je program napravio od odgovora</li>
+      <li>Nakon skeniranja mreže dodatno i popis uređaja tog skeniranja: za svaki uređaj naziv, IP adresa, proizvođač, otvoreni priključci i razvrstavanje programa s obrazloženjem</li>
+    </ul>
+    <p><strong>Nikakve lozinke, nikakve vjerodajnice.</strong> MAC adrese se skraćuju: dio proizvođača ostaje – potreban je za prepoznavanje –, a dio jedinstven za uređaj zamjenjuje se s <code>XX</code> (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>Zašto datoteka nije čitljiva?</strong><br> <em>Prikrivena</em> je kako je ne bi netko slučajno pročitao ili kako je ne bi raščlanio filtar e-pošte. To izričito <strong>nije šifriranje</strong> i ne treba ni biti. Gumbom <strong>🔍 Prikaži čisti tekst</strong> u svakom trenutku sami vidite što sadrži.
+    </div>
+
+    <h3>Slanje</h3>
+    <p>Dobrovoljno i samo u slučaju problema s prepoznavanjem: pošaljite datoteku na <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>. Korisna je jedna rečenica o tome što je pogrešno prikazano.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">12. Datoteke, ažuriranja i sigurnosne kopije</h2>
+  <div class="box">
+
+    <h3>Struktura programske mape</h3>
+    <p>Sve što Vam je potrebno nalazi se na vrhu, pokraj programa za pokretanje. Podmapa <code>sit-lsc_program</code> sadrži samo sam program i ne morate je otvarati:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← njime se pokreće program</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← postavke, vlastiti podaci, baza proizvođača</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← zapisi skeniranja, izvješća i zapisnici</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← dijagnostičke datoteke</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← pomoć, ChangeLog, izjava o odricanju odgovornosti i licencija</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← program</span>
+    </div>
+    <p>Mape <code>Config</code>, <code>Logs</code> i <code>Diag</code> program po potrebi sam stvara.</p>
+
+    <div class="tip">
+      <strong>Kratki popis – što ponijeti?</strong><br> Pri promjeni računala ili ponovnoj instalaciji spremite ove mape pokraj datoteke <code>sit-lsc-start.exe</code>:
+      <ul style="margin:6px 0 0 0">
+        <li><code>Config\</code> – postavke, vlastiti podaci o uređajima i baza proizvođača</li>
+        <li><code>Logs\</code> – cijela mapa, ako treba sačuvati stara skeniranja, zapisnike i Wi-Fi izvješća</li>
+      </ul>
+      Nakon kopiranja pokrenite program – sve postavke, dodjele i dosadašnji rezultati skeniranja odmah su ponovno dostupni.
+    </div>
+
+    <h3>Pregled datoteka i mapa</h3>
+    <table>
+      <tr><th>Datoteka</th><th>Sadržaj</th><th>Spremiti?</th></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
+          <td>Sve postavke (mogućnosti skeniranja, mapa zapisa, prikaz itd.)</td>
+          <td><strong>✔ Da</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Vlastiti nazivi, vrste i proizvođači uređaja – pri ažuriranjima se nikada ne prepisuje</td>
+          <td><strong>✔ Da</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
+          <td>Baza proizvođača (pri OUI ažuriranju stvara se iznova)</td>
+          <td>Neobavezno</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Zapisi skeniranja (.log), HTML izvješća (.html) i CSV datoteke (.csv), uz to zapisnici kartice Wi-Fi profili i Wi-Fi izvješća.<br> CSV datoteke namijenjene su samo internoj upotrebi u programu: iz njih <strong>„Učitaj u skener“</strong> u Zapisima i izvješćima vraća ranije skeniranje u popis uređaja. Zato su nazivi njihovih stupaca na svakom jeziku njemački. Za čitanje i prosljeđivanje služe HTML izvješće i zapis.<br> <em>Ponesite ako stari rezultati skeniranja trebaju ostati u upravljanju zapisima.</em></td>
+          <td><strong>✔ Preporučeno</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Dijagnostičke datoteke – nastaju samo kada se izradi DIAG</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>Pomoć (na njemačkom) i njezini prijevodi (<code>S-IT-LanScanner-Hilfe_hr.html</code> itd.), povijest verzija <code>S-IT-LanScanner-ChangeLog.html</code>, izjava o odricanju odgovornosti i licencija (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>Program: glavni program <code>S-IT-LanScanner.exe</code> (pokreće se putem <code>sit-lsc-start.exe</code>) i programske biblioteke</td>
+          <td>–</td></tr>
+    </table>
+
+    <h3>Provođenje ažuriranja</h3>
+    <ol>
+      <li>Preuzmite i raspakirajte novu verziju</li>
+      <li><strong>Važno:</strong> kopirajte mapu <code>Config</code> iz stare programske mape u novu</li>
+      <li>Pokrenite program putem <code>sit-lsc-start.exe</code></li>
+      <li>Sve postavke i vlastiti podaci ponovno su prisutni</li>
+    </ol>
+    <div class="info">
+      Ranije verzije još nisu imale mapu <code>Config</code>. U tom slučaju kopirajte datoteke <code>S-IT-LanScanner.ini</code> i <code>S-IT-Custom.ini</code> u novu programsku mapu pokraj datoteke <code>sit-lsc-start.exe</code>. Pri prvom pokretanju program ih jednokratno premješta u mapu <code>Config</code>, kao i zapise i dijagnostičke datoteke koje se još nalaze u mapi <code>sit-lsc_program</code>. Pritom se ništa ne prebrisuje. Što je premješteno, navedeno je u datoteci <code>Ordnerumzug.log</code> u mapi zapisa.
+    </div>
+
+    <h3>Ponovna instalacija / promjena računala</h3>
+    <p>Preporučeni postupak:</p>
+    <ol>
+      <li>Spremljenu mapu <code>Config</code> kopirajte u novu programsku mapu pokraj datoteke <code>sit-lsc-start.exe</code></li>
+      <li>Spremljenu mapu <code>Logs\</code> također kopirajte onamo (ili u konfiguriranu mapu zapisa)</li>
+      <li>Pokrenite program – sve postavke, dodjele i dosadašnja skeniranja odmah su dostupni u upravljanju zapisima</li>
+      <li>Neobavezno: provedite OUI ažuriranje kako biste učitali najnoviju bazu proizvođača</li>
+    </ol>
+    <div class="info">
+      Ako se datoteke ne spreme: <code>S-IT-LanScanner.ini</code> i <code>S-IT-Custom.ini</code> pri prvom se pokretanju automatski ponovno stvaraju sa zadanim vrijednostima. Vlastite podatke o uređajima tada treba ponovno upisati.
+    </div>
+    <div class="tip">
+      <strong>Prijenos Wi-Fi mreža:</strong> spremljene Wi-Fi mreže starog računala mogu se spremiti na kartici <strong>Wi-Fi profili</strong> i uvesti na novom računalu (odjeljak 9).
+    </div>
+
+    <h3>Ažuriranje OUI baze</h3>
+    <p>Putem <span class="btn-demo btn-dark">🔄 Ažuriranje OUI</span> → kartica <strong>„Ažuriranje OUI baze“</strong> → <strong>„▶ Ažuriraj OUI bazu“</strong> program preuzima potpune popise proizvođača IEEE-a (MA-L, MA-M i MA-S) i sprema ih u <code>S-IT-OUI.ini</code>. Za to je potrebna internetska veza. Napredak i rezultat pojavljuju se u istom prozoru. Nakon toga baza se odmah ponovno učitava – ponovno pokretanje nije potrebno.</p>
+    <p>Ako se neki od popisa ne može preuzeti, pojavljuje se poruka, a postojeća datoteka <code>S-IT-OUI.ini</code> ostaje nepromijenjena.</p>
+    <div class="info">
+      Datoteka <code>S-IT-Custom.ini</code> s Vašim vlastitim podacima pri OUI ažuriranju <strong>nikada</strong> se ne mijenja niti prepisuje.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">13. Česta pitanja (FAQ)</h2>
+  <div class="box">
+
+    <h3>Uređaj nije pronađen</h3>
+    <p>Mogući uzroci:</p>
+    <ul>
+      <li>Uređaj je isključen ili u načinu uštede energije</li>
+      <li>Uređaj ne odgovara na ICMP ping (vatrozid) → pomaže uključivanje skeniranja priključaka</li>
+      <li>Uređaj se nalazi u drugom mrežnom segmentu</li>
+      <li>Odaberite intenzitet skeniranja „Sigurno“ i ponovno skenirajte</li>
+    </ul>
+
+    <h3>Uređaj je pogrešno razvrstan ili uopće nije razvrstan</h3>
+    <p>Desni klik na uređaj → <strong>„✏ Označi uređaj …“</strong> → odaberite ili upišite vrstu uređaja → Spremi. Podatak se odmah pojavljuje na popisu i vrijedi trajno (odjeljak 6).</p>
+
+    <h3>Zašto je stupac „Vrsta uređaja“ kod nekih uređaja prazan?</h3>
+    <p>Naznake nisu bile dovoljne za jednoznačno razvrstavanje. Program tada namjerno ostavlja polje prazno umjesto da nagađa. Uključeno skeniranje priključaka često daje dovoljno dodatnih naznaka; inače pomaže vlastiti podatak putem <strong>„Označi uređaj …“</strong>.</p>
+
+    <h3>Moj pisač nakon skeniranja više nije bio dostupan</h3>
+    <p>U postavkama postavite intenzitet skeniranja na <strong>„Sigurno“</strong>. Ta razina izostavlja ARP preplavljivanje i skeniranje priključaka pisača, koji mogu preopteretiti starije verzije firmvera.</p>
+
+    <h3>Antivirusni program javlja prijetnju</h3>
+    <p>Budući da LAN skener aktivno skenira mrežu, neki ga antivirusni programi pogrešno razvrstavaju kao sumnjiv (lažno pozitivno). Program ne sadrži nikakav zlonamjerni softver. Rješenje: programsku datoteku i mapu dodajte na popis iznimaka / bijelu listu antivirusnog programa.</p>
+
+    <h3>Test brzine LAN-a prikazuje „Nema prava zapisivanja“</h3>
+    <p>Dijeljenje je vjerojatno povezano samo za čitanje ili vjerodajnice nisu dovoljne. Provjerite svoja prava zapisivanja na dijeljenju.</p>
+
+    <h3>Test javlja „Nedostaje dijeljenje“</h3>
+    <p>Naveden je samo <strong>naziv poslužitelja</strong>, npr. <code>\\Naziv-NAS-a</code>. Ondje se ne može stvoriti datoteka – potrebno je samo dijeljenje: <code>\\Naziv-NAS-a\Podaci</code>. Vidi odjeljak 8.</p>
+
+    <h3>Wi-Fi pločica prikazuje „Povezano“, ali bez jačine signala i kanala</h3>
+    <p>To je gotovo uvijek blokada lokacije u sustavu Windows 11, a <strong>ne pogreška programa</strong>: Windows daje jačinu signala, kanal i Wi-Fi standard samo ako aplikacije za stolna računala smiju pristupati lokaciji. Isto vrijedi za Wi-Fi mreže u dometu na kartici Wi-Fi profili. Sam adapter svejedno se ispravno prepoznaje.</p>
+    <div class="tip">
+      <strong>Rješenje:</strong> na pločici kliknite <strong>„→ Otvori postavke lokacije“</strong> (ili Postavke → Privatnost i sigurnost → Lokacija). Ondje uključite <strong>usluge lokacije</strong>, a niže dopustite pristup lokaciji za <strong>aplikacije za stolna računala</strong>. Zatim na pločici kliknite <strong>🔄 Osvježi</strong>.
+    </div>
+
+    <h3>Naziv mreže na Wi-Fi pločici razlikuje se od naziva Wi-Fi mreže</h3>
+    <p>Bez pristupa lokaciji program uzima naziv s popisa mreža sustava Windows; pločica to i navodi. Windows ondje za istu Wi-Fi mrežu katkad stvara numerirane unose, npr. „Kućna mreža 2“, ako se računalo prijavilo više puta ili s različitim adapterima. Uz pristup lokaciji pločica prikazuje stvarni naziv Wi-Fi mreže.</p>
+
+    <h3>Zašto Wi-Fi pločica ne prikazuje brzinu primanja?</h3>
+    <p>Brzina primanja pojavljuje se samo dok traje trajni test LAN-a. Bez prometa Windows za nju javlja niske vrijednosti koje nemaju veze s kvalitetom veze. Brzina veze (⬆) naprotiv je uvijek prikazana.</p>
+
+    <h3>Wi-Fi pločica javlja „Adapter deaktiviran“</h3>
+    <p>Wi-Fi adapter isključen je u Upravitelju uređaja ili pod <em>Mrežne veze</em>. Nakon uključivanja program ga prepoznaje najkasnije nakon 10 sekundi; gumbom <strong>🔄 Osvježi</strong> odmah. Naknadno priključen USB Wi-Fi stick također se prepoznaje sam.</p>
+
+    <h3>Kod brzine piše „nepoznato“</h3>
+    <p>Tada <strong>nijedan</strong> upit nije mogao dati brzinu – tipično za <strong>deaktivirani adapter</strong>, za koji Windows ne javlja brzinu. Program u tom slučaju namjerno prikazuje „nepoznato“ umjesto procijenjenog broja: u dijagnostičkom alatu nema mjesta vrijednosti koju nitko nije izmjerio. Naziv adaptera svejedno se prikazuje.</p>
+
+    <h3>Program na mojem UHD/4K monitoru izgleda premalo</h3>
+    <p>Otvorite <strong>⚙ Konfig</strong> i u desnom stupcu pod <strong>„Veličina prikaza / skaliranje“</strong> odaberite veću vrijednost. Program se nakon spremanja automatski ponovno pokreće.</p>
+    <div class="tip">
+      <strong>Preporuka za UHD/4K:</strong> skaliranje programa samo određuje veličinu – skaliranje sustava Windows za to ne morate mijenjati. Počnite sa <strong>150 %</strong>; to na većini UHD monitora daje dobro čitljiv prikaz. Ako je i dalje premalo ili preveliko, odaberite sljedeću razinu dok tekst i elementi ne budu za Vas optimalno čitljivi.
+    </div>
+    <p>Moguće razine skaliranja u programu: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>Gdje mogu pronaći izjavu o odricanju odgovornosti?</h3>
+    <p>U datoteci <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> u mapi <code>Help</code> i na <a href="https://sattlerit.github.io/sit-lanscanner/">stranici projekta</a>. Ukratko: rezultati su neobvezujuće smjernice i trenutačna snimka – ne zamjenjuju stručnu sigurnosnu provjeru.</p>
+
+    <h3>SMB1 je prebačen – zašto i dalje piše staro stanje?</h3>
+    <p>SMB1 je <strong>značajka sustava Windows</strong>, a ne jednostavan prekidač: Windows pri uključivanju naknadno instalira datoteke, a pri isključivanju ih uklanja. Promjena stupa na snagu tek nakon <strong>ponovnog pokretanja</strong> – do tada provjera i dalje javlja dosadašnje stanje. Program računalo <strong>ne</strong> pokreće ponovno sam od sebe; samo upozorava na to. Ponovno pokrenite Windows kada Vam odgovara.</p>
+
+    <h3>Zašto postoje tri retka za SMB1?</h3>
+    <p>Zato što se SMB1 sastoji od više međusobno neovisnih dijelova. Tko vidi samo jedan redak, lako dobije pogrešnu sliku o vlastitom računalu:</p>
+    <table>
+      <tr><th>Redak</th><th>Za što služi</th></tr>
+      <tr><td><strong>SMB1 klijent</strong></td>
+          <td>Kako bi <em>ovo računalo</em> moglo pristupati starim uređajima – npr. starijem NAS-u ili mrežnom pisaču koji ne podržava SMB2/3. To je najčešći slučaj.</td></tr>
+      <tr><td><strong>SMB1 poslužitelj</strong></td>
+          <td>Kako bi <em>stari uređaji</em> mogli pristupati dijeljenjima ovog računala – npr. fotokopirni uređaj koji sprema skenove u dijeljenu mapu. Ova je strana opasnija i treba biti uključena samo dok je stari uređaj treba.</td></tr>
+      <tr><td><strong>Trajno zadrži SMB1</strong></td>
+          <td>Windows sam uklanja SMB1 ako se 15 dana nije koristio. Ovaj redak isključuje to automatsko uklanjanje. Korisno ako tvrtka ima dulje stanke – nakon dva tjedna kolektivnog godišnjeg odmora SMB1 bi inače odjednom nestao i skener bi stao.</td></tr>
+    </table>
+    <p>Redak <strong>Trajno zadrži SMB1</strong> važan je samo ako su klijent ili poslužitelj stvarno aktivni. Ako je SMB1 potpuno isključen, redak je siv i ne zahtijeva pozornost.</p>
+
+    <h3>Kod SMB1 poslužitelja piše „Značajka postoji, ali protokol je isključen“ – što to znači?</h3>
+    <p>Poslužiteljska strana ima dvije razine: naknadno instaliranu značajku sustava Windows i prekidač protokola u SMB poslužitelju. Nakon uključivanja najprije postoji samo značajka – prekidač se može postaviti tek nakon ponovnog pokretanja. Upravo tome služi gumb <strong>„→ Dovrši“</strong>: prebacuje drugi prekidač i djeluje odmah, bez novog ponovnog pokretanja. Ako SMB1 poslužitelj ipak nije potreban, umjesto toga ga potpuno isključite.</p>
+
+    <h3>Zašto je gumb u zelenom retku siv?</h3>
+    <p>Gumb u zelenom retku uvijek vodi <em>natrag</em> u manje sigurno stanje – npr. „← Aktiviraj“ kod isključenog SMB1 poslužitelja. Takvi gumbi za vraćanje namjerno su diskretni kako ne bi poticali na slučajan klik. Rade sasvim normalno.</p>
+
+    <h3>Gdje se spremaju zapisi?</h3>
+    <p>Zadano: <code>Logs\</code> pokraj datoteke <code>sit-lsc-start.exe</code>. Mapa se može promijeniti pod <strong>⚙ Konfig → Mapa zapisa</strong>.</p>
+
+    <h3>Mogu li alat koristiti na USB sticku?</h3>
+    <p>Da, alat je prijenosan. Kopirajte cijelu programsku mapu – dakle <code>sit-lsc-start.exe</code> zajedno s mapom <code>sit-lsc_program</code> i ostalim mapama – na USB stick. INI datoteke spremaju se u mapu <code>Config</code>.</p>
+
+    <h3>Gdje mogu pronaći Wi-Fi izvješća i zapisnik Wi-Fi profila?</h3>
+    <p>Oboje se nalazi u mapi zapisa, zadano <code>Logs\</code> pokraj datoteke <code>sit-lsc-start.exe</code>. Wi-Fi izvješće uz to se nakon izrade odmah otvara u pregledniku.</p>
+
+    <h3>U podacima o domeni nedostaje država</h3>
+    <p>Država, mreža i raspon adresa dolaze iz registra (npr. RIPE). Ako nije dostupan, primjerice zato što vatrozid ili proxy blokira upit, program prikazuje samo davatelja s ugrađenog popisa.</p>
+
+    <h3>U podacima o domeni država ne odgovara davatelju</h3>
+    <p>Država je država u kojoj je mreža poslužitelja registrirana. Velike tvrtke često registriraju svoje mreže na adresu sjedišta, čak i ako se poslužitelj nalazi u podatkovnom centru u drugoj državi. Vidi odjeljak 7.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      Je li Vam ovaj alat pomogao?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      S-IT LAN Device Scanner razvija se i održava besplatno.<br> Mala donacija pomaže daljnjem razvoju alata. Hvala Vam od srca! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Donacija putem PayPala
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Verzija 4.2
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Autor: Hans Udo Sattler &nbsp;•&nbsp; Prijevod na češki: RQ68 &nbsp;•&nbsp; Hvala svim korisnicima koji su pomogli u testiranju skeniranjem vlastitih mreža<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Stranica projekta</a>
+  &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Odricanje odgovornosti</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Performance test and scan load – S-IT LAN Device Scanner</title>
+  <meta name="description" content="How the LAN performance test of the S-IT LAN Device Scanner works, what it does on the target device and how to set the scan intensity and the follow-up search.">
+  <link rel="icon" type="image/x-icon" href="s-it-icon140.ico">
+  <style>
+    :root {
+      --primary:   #2C3E50;
+      --red:       #E74C3C;
+      --green:     #27AE60;
+      --blue:      #2980B9;
+      --orange:    #E67E22;
+      --yellow:    #F1C40F;
+      --light:     #ECF0F1;
+      --bg:        #F5F5F5;
+      --card:      #FFFFFF;
+      --border:    #BDC3C7;
+      --text:      #2C3E50;
+      --muted:     #7F8C8D;
+      --font:      'Segoe UI', Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--font); background: var(--bg); color: var(--text); }
+
+    /* ── HEADER ── */
+    header {
+      background: var(--primary);
+      padding: 28px 40px 24px;
+    }
+    .header-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: flex;
+      align-items: flex-end;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .logo { display: flex; align-items: baseline; gap: 0; }
+    .logo-sit  { color: var(--red);   font-size: 36px; font-weight: 700; line-height: 1; white-space: nowrap; }
+    .logo-name { color: #fff;         font-size: 36px; font-weight: 300; line-height: 1; }
+    .header-sub {
+      color: var(--border);
+      font-size: 13px;
+      padding-bottom: 4px;
+    }
+    .header-badge {
+      margin-left: auto;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2);
+      color: var(--light);
+      font-size: 12px;
+      padding: 5px 14px;
+      border-radius: 20px;
+      white-space: nowrap;
+    }
+
+    /* Rote Trennlinie */
+    .divider { height: 3px; background: var(--red); }
+
+    /* ── HERO ── */
+    .hero {
+      background: var(--primary);
+      padding: 0 40px 36px;
+    }
+    .hero-inner {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+      padding-top: 32px;
+    }
+    .hero h1 {
+      font-size: 22px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 12px;
+      line-height: 1.4;
+    }
+    .hero p {
+      color: var(--border);
+      font-size: 14px;
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+    .btn-download {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-size: 15px;
+      font-weight: 600;
+      padding: 12px 28px;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background .2s;
+    }
+    .btn-download:hover { background: #219a52; }
+    .btn-secondary {
+      display: inline-block;
+      background: transparent;
+      color: var(--light);
+      font-size: 13px;
+      padding: 12px 20px;
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 4px;
+      text-decoration: none;
+      margin-left: 10px;
+      transition: border-color .2s;
+    }
+    .btn-secondary:hover { border-color: rgba(255,255,255,.6); }
+
+    .hero-screenshot {
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+    }
+    .hero-screenshot img {
+      width: 100%;
+      display: block;
+    }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    /* ── SECTION TITLE ── */
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 16px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--red);
+      display: inline-block;
+    }
+
+    /* ── FEATURE CARDS ── */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 20px 22px;
+    }
+    .card-icon { font-size: 22px; margin-bottom: 10px; }
+    .card h3   { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
+    .card p    { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+    /* ── SCREENSHOT GALLERY ── */
+    .gallery {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+    .gallery-item {
+      border-radius: 6px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+      cursor: pointer;
+      transition: box-shadow .2s;
+      position: relative;
+    }
+    .gallery-item .badge-neu {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: #27ae60;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .5px;
+      padding: 3px 10px;
+      border-radius: 4px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.25);
+      z-index: 2;
+    }
+    .gallery-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.16); }
+    .gallery-item img   {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .gallery-caption {
+      background: var(--primary);
+      color: var(--light);
+      font-size: 11px;
+      padding: 6px 10px;
+    }
+    .gallery-more {
+      font-size: 12px;
+      color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .gallery-more a { color: var(--blue); text-decoration: none; }
+    .gallery-more a:hover { text-decoration: underline; }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.85);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img  { max-width: 90vw; max-height: 90vh; border-radius: 4px; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 28px;
+      color: #fff; font-size: 32px; cursor: pointer; line-height: 1;
+    }
+
+    /* ── INFO-BOX ── */
+    .info-box {
+      background: #EBF5FB;
+      border-left: 4px solid var(--blue);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #1A5276;
+    }
+    .info-box a { color: var(--blue); }
+    .warn-box {
+      background: #FEF9E7;
+      border-left: 4px solid var(--yellow);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #7D6608;
+    }
+    .warn-box a { color: #7D6608; }
+    .ok-box {
+      background: #EAFAF1;
+      border-left: 4px solid var(--green);
+      border-radius: 0 4px 4px 0;
+      padding: 14px 18px;
+      font-size: 13px;
+      line-height: 1.6;
+      margin-bottom: 32px;
+      color: #1E7E45;
+    }
+
+    /* ── SYSREQ TABLE ── */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 32px;
+      font-size: 13px;
+      background: var(--card);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    th {
+      background: var(--primary);
+      color: #fff;
+      padding: 10px 16px;
+      text-align: left;
+      font-weight: 600;
+    }
+    td { padding: 9px 16px; border-bottom: 1px solid var(--border); }
+    tr:last-child td { border-bottom: none; }
+    tr:nth-child(even) td { background: #F7F9FA; }
+
+    /* ── CHANGELOG ── */
+    .changelog {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+    }
+    .changelog-entry { margin-bottom: 20px; }
+    .changelog-entry:last-child { margin-bottom: 0; }
+    .changelog-version {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .changelog-version span {
+      font-weight: 400;
+      color: var(--muted);
+      margin-left: 8px;
+    }
+    .changelog-entry ul {
+      list-style: none;
+      padding: 0;
+    }
+    .changelog-entry ul li {
+      font-size: 13px;
+      color: var(--muted);
+      padding: 2px 0 2px 16px;
+      position: relative;
+    }
+    .changelog-entry ul li::before {
+      content: "•";
+      position: absolute; left: 4px;
+      color: var(--blue);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--primary);
+      color: var(--border);
+      text-align: center;
+      padding: 14px 20px;
+      font-size: 12px;
+    }
+    footer a { color: var(--border); text-decoration: none; }
+    footer a:hover { color: #fff; }
+
+    @media (max-width: 640px) {
+      .hero-inner { grid-template-columns: 1fr; }
+      .gallery    { grid-template-columns: 1fr; }
+      .header-inner { flex-direction: column; align-items: flex-start; }
+      header { padding: 20px; }
+      .hero  { padding: 0 20px 28px; }
+    }
+    /* ── FRAGEN UND ANTWORTEN ── */
+    main h3 { font-size: 16px; font-weight: 700; color: var(--primary); margin: 30px 0 8px; }
+    main p  { font-size: 14px; line-height: 1.7; margin-bottom: 12px; }
+    main code { font-family: Consolas, 'Courier New', monospace; font-size: 13px; background: #E8ECEF; padding: 1px 5px; border-radius: 3px; }
+    main table { margin-top: 6px; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <span class="logo-sit">S-IT</span>
+      <span class="logo-name">&nbsp;LAN Device Scanner</span>
+    </div>
+    <span class="header-sub">Network analysis &amp; device detection</span>
+    <span class="header-badge">Freeware · v4.2 · Windows</span>
+  </div>
+</header>
+<div class="divider"></div>
+
+
+<main>
+
+  <div class="section-title">🔍 Performance test and scan load</div>
+  <p style="font-size:14px; margin-bottom:20px;"><a href="index_en.html" style="color:var(--blue)">&larr; Back to the project page of the S-IT LAN Device Scanner</a> &nbsp;·&nbsp; <a href="faq-performance.html" style="color:var(--blue)">🇩🇪 Deutsch</a></p>
+  <p style="font-size:15px; margin-bottom:22px;">This page describes how the
+     <strong>LAN performance test</strong> works, what happens on the selected target
+     and how to set the intensity of the network scan and of the
+     <strong>follow-up search for missing devices</strong>.</p>
+
+    <h3>What does the LAN performance test do to the target device?</h3>
+    <p>It writes a test file to a folder that <em>you</em> choose, reads it back
+       immediately and measures the time. Technically, this is the same as
+       copying a file to a share in Explorer and fetching it back. No raw data
+       is sent to a network port, no packets are generated and no ports are
+       occupied. Only the target you have entered is addressed – a share, a
+       network drive such as <code>U:</code>, or a local folder for comparison.
+       A device you do not write to remains completely untouched by the test.</p>
+    <p>The amount of data transferred does not matter to the devices: network
+       ports are galvanically isolated, and the transfer rate is fixed by the
+       hardware. No program can push more through a connection than it can
+       carry – so the test always stays within what the devices are built for.</p>
+
+    <h3>What exactly happens during the performance test?</h3>
+    <p>A measuring cycle consists of four steps that repeat until you press
+       <strong>⏹ Stop</strong>:</p>
+    <table>
+      <tr><th>Step</th><th>What happens</th></tr>
+      <tr><td>1. Write</td>
+          <td>A test file <code>_sit_lan_test.tmp</code> of the selected size
+              (1, 4, 16 or 64 MB) is written to the target folder, and the time
+              is measured</td></tr>
+      <tr><td>2. Read</td>
+          <td>The same file is read back immediately, and the time is measured
+              again</td></tr>
+      <tr><td>3. Display</td>
+          <td>Size and time give the write and read rate, which appear in the
+              chart and in the log</td></tr>
+      <tr><td>4. Repeat</td>
+          <td>The cycle starts again until you end it; then the test file is
+              deleted</td></tr>
+    </table>
+    <div class="info-box">
+      <strong>Small file, large file:</strong> 1 MB rather shows how quickly
+      the network responds; 64 MB rather shows the actual sustained speed.
+      4 MB is enough for a first impression.
+    </div>
+
+    <h3>The NAS is asleep – why does the test wait first?</h3>
+    <p>Many NAS devices spin down their disks during idle periods. On the first
+       access they spin up again, which takes from a few seconds to more than a
+       minute depending on the device. So that the test does not stop with an
+       error during this time, the program waits before starting until the
+       target responds. You set how long under ⚙ Config → &ldquo;Wait time for
+       network drives&rdquo;: off, 30, 60 or 120 seconds. The default is
+       60 seconds.</p>
+
+    <h3>Does the test put a load on my NAS or server?</h3>
+    <p>For the duration of the measurement it creates continuous write and read
+       activity – comparable to a scheduled backup run or a nightly
+       synchronisation. The only difference is that it continues without a
+       break until you end the test. On a device that someone is working with,
+       their access may become slower. On a server in production use you should
+       therefore not let the test run for hours.</p>
+    <p>Worth knowing: data really is written. On flash memory – such as an SSD
+       NAS or a USB stick on the router – every write means a minimal amount of
+       wear. For a few minutes of measurement this is negligible; the tool is
+       not intended for a continuous run lasting days.</p>
+    <p>This is not a peculiarity of this program but lies in the nature of the
+       task: if you want to know how fast files actually arrive, you have to
+       write files and read them back – the drive at the other end has to
+       answer. The Windows disk check and the test programs of drive
+       manufacturers work the same way. Measurements without any writing do
+       exist, but they only test the line, not the route your data takes in
+       practice.</p>
+
+    <h3>There is a file <code>_sit_lan_test.tmp</code> in the target folder – what is it?</h3>
+    <p>This is the test file of the speed measurement. Normally it is deleted
+       automatically after the test. If the connection drops during a
+       measurement or the program is terminated forcibly, it may remain. You can
+       delete it without concern.</p>
+
+    <h3>Can intensive scans affect printers or routers?</h3>
+    <p>Slow them down briefly: yes, that happens. There are no lasting effects.
+       Small embedded devices such as printers, network cameras or older routers
+       have only a very lean network component. Many simultaneous connection
+       attempts can slow them down; in rare cases a restart of the device helps
+       it to respond quickly again.</p>
+    <p>This is not a peculiarity of this program – Windows network discovery or
+       a built-in tool such as <code>ping</code> can trigger the same reaction.
+       Because network devices react with different sensitivity to requests,
+       the scanner offers several levels that you can choose freely under
+       ⚙ Config.</p>
+    <table>
+      <tr><th>Scan intensity</th><th>What is asked</th></tr>
+      <tr><td>Safe</td><td>Each device by ping only – for sensitive networks</td></tr>
+      <tr><td>Standard</td><td>Ping and ARP – recommended</td></tr>
+      <tr><td>Intensive</td><td>Ping and ARP in two passes – finds more devices</td></tr>
+    </table>
+    <p>The port scan is a separate switch. It checks a fixed list of common
+       ports on each device found and uses the result to refine operating system
+       and device type.</p>
+
+    <h3>What does the follow-up search for missing devices do?</h3>
+    <p>Some devices do not answer on the first attempt – because they are
+       asleep, because their firewall rejects ping or because the Wi-Fi briefly
+       stalls. The follow-up search therefore asks again after ping and ARP.
+       Only addresses that have not answered so far are asked.</p>
+    <table>
+      <tr><th>Follow-up search</th><th>What is asked</th></tr>
+      <tr><td>Off</td><td>No follow-up search – the scan ends after ping and ARP</td></tr>
+      <tr><td>Known addresses</td><td>Addresses where a device was found in earlier
+          scans are asked a second time, with more patience. Takes a few
+          seconds. Default</td></tr>
+      <tr><td>All silent addresses</td><td>In addition, the program tries to
+          connect to typical ports on all addresses without an answer – for
+          example website, Windows sharing, remote maintenance, camera or printer.
+          As soon as one port answers, the address is done. Also finds devices
+          that do not answer ping, but takes longer</td></tr>
+    </table>
+    <div class="info-box">
+      <strong>You decide how thoroughly to check.</strong> Because devices on a
+      network react with different sensitivity, the scanner does not set the
+      intensity itself but leaves it to you. Fewer methods mean fewer requests
+      per device – and a faster run as a side effect. The price is the hit
+      rate: a device that does not answer ping may remain undetected. In a
+      network with sensitive devices, choose &ldquo;Safe&rdquo; and, for the
+      follow-up search, &ldquo;Off&rdquo; or &ldquo;Known addresses&rdquo;.
+    </div>
+
+  <p style="font-size:14px; margin-bottom:20px;"><a href="index_en.html" style="color:var(--blue)">&larr; Back to the project page of the S-IT LAN Device Scanner</a></p>
+
+</main>
+
+<footer>
+  © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp; Author: Hans Udo Sattler &nbsp;•&nbsp;
+  <a href="https://sattlerit.github.io/sattlerit-tools/">All tools</a> &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Licence &amp; disclaimer</a> &nbsp;•&nbsp;
+  <a href="https://sattlerit.github.io/sattlerit-tools/impressum.html">Legal notice</a> &nbsp;•&nbsp;
+  <a href="https://sattlerit.github.io/sattlerit-tools/datenschutz.html">Privacy</a>
+</footer>
+
+</body>
+</html>

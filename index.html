@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>S-IT LAN Device Scanner – Kostenloser Netzwerk-Scanner für Windows</title>
+  <meta name="description" content="Freeware für Windows: findet Geräte im Netzwerk, erkennt Hersteller, Gerätetyp und Gerätename, prüft Internet-Erreichbarkeit, Verbindungsqualität, WLAN und Firewall. In neun Sprachen.">
   <link rel="icon" type="image/x-icon" href="s-it-icon140.ico">
   <style>
     :root {
@@ -25,308 +26,145 @@
     body { font-family: var(--font); background: var(--bg); color: var(--text); }
 
     /* ── HEADER ── */
-    header {
-      background: var(--primary);
-      padding: 28px 40px 24px;
-    }
+    header { background: var(--primary); padding: 28px 40px 24px; }
     .header-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      display: flex;
-      align-items: flex-end;
-      gap: 20px;
-      flex-wrap: wrap;
+      max-width: 980px; margin: 0 auto;
+      display: flex; align-items: flex-end; gap: 20px; flex-wrap: wrap;
     }
     .logo { display: flex; align-items: baseline; gap: 0; }
-    .logo-sit  { color: var(--red);   font-size: 36px; font-weight: 700; line-height: 1; }
-    .logo-name { color: #fff;         font-size: 36px; font-weight: 300; line-height: 1; }
-    .header-sub {
-      color: var(--border);
-      font-size: 13px;
-      padding-bottom: 4px;
-    }
+    .logo-sit  { color: var(--red); font-size: 36px; font-weight: 700; line-height: 1; white-space: nowrap; }
+    .logo-name { color: #fff;       font-size: 36px; font-weight: 300; line-height: 1; }
+    .header-sub { color: var(--border); font-size: 13px; padding-bottom: 4px; }
     .header-badge {
-      margin-left: auto;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.2);
-      color: var(--light);
-      font-size: 12px;
-      padding: 5px 14px;
-      border-radius: 20px;
-      white-space: nowrap;
+      margin-left: auto; background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.2); color: var(--light);
+      font-size: 12px; padding: 5px 14px; border-radius: 20px; white-space: nowrap;
     }
-
-    /* Rote Trennlinie */
+    .header-lang { color: var(--light); font-size: 12px; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; white-space: nowrap; }
+    .header-lang:hover { border-color: rgba(255,255,255,.6); }
     .divider { height: 3px; background: var(--red); }
 
     /* ── HERO ── */
-    .hero {
-      background: var(--primary);
-      padding: 0 40px 36px;
-    }
+    .hero { background: var(--primary); padding: 0 40px 36px; }
     .hero-inner {
-      max-width: 980px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 40px;
-      align-items: center;
-      padding-top: 32px;
+      max-width: 980px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
+      align-items: center; padding-top: 32px;
     }
-    .hero h1 {
-      font-size: 22px;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 12px;
-      line-height: 1.4;
-    }
-    .hero p {
-      color: var(--border);
-      font-size: 14px;
-      line-height: 1.7;
-      margin-bottom: 24px;
-    }
+    .hero h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px; line-height: 1.4; }
+    .hero p  { color: var(--border); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
     .btn-download {
-      display: inline-block;
-      background: var(--green);
-      color: #fff;
-      font-size: 15px;
-      font-weight: 600;
-      padding: 12px 28px;
-      border-radius: 4px;
-      text-decoration: none;
-      transition: background .2s;
+      display: inline-block; background: var(--green); color: #fff;
+      font-size: 15px; font-weight: 600; padding: 12px 28px; border-radius: 4px;
+      text-decoration: none; transition: background .2s;
     }
     .btn-download:hover { background: #219a52; }
     .btn-secondary {
-      display: inline-block;
-      background: transparent;
-      color: var(--light);
-      font-size: 13px;
-      padding: 12px 20px;
-      border: 1px solid rgba(255,255,255,.25);
-      border-radius: 4px;
-      text-decoration: none;
-      margin-left: 10px;
-      transition: border-color .2s;
+      display: inline-block; background: transparent; color: var(--light);
+      font-size: 13px; padding: 12px 20px; border: 1px solid rgba(255,255,255,.25);
+      border-radius: 4px; text-decoration: none; transition: border-color .2s;
     }
     .btn-secondary:hover { border-color: rgba(255,255,255,.6); }
-
+    .btn-hint { display: block; margin-top: 14px; font-size: 12px; color: var(--light); opacity: .75; line-height: 1.5; }
     .hero-screenshot {
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 8px 32px rgba(0,0,0,.4);
+      border-radius: 6px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.4);
     }
-    .hero-screenshot img {
-      width: 100%;
-      display: block;
-    }
+    .hero-screenshot img { width: 100%; display: block; }
 
     /* ── MAIN ── */
-    main {
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 40px 20px 60px;
-    }
+    main { max-width: 980px; margin: 0 auto; padding: 40px 20px 60px; }
 
-    /* ── SECTION TITLE ── */
     .section-title {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 16px;
-      padding-bottom: 8px;
-      border-bottom: 2px solid var(--red);
-      display: inline-block;
+      font-size: 15px; font-weight: 700; color: var(--primary);
+      margin-bottom: 16px; padding-bottom: 8px;
+      border-bottom: 2px solid var(--red); display: inline-block;
     }
 
     /* ── FEATURE CARDS ── */
     .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
-      margin-bottom: 32px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px; margin-bottom: 32px;
     }
-    .card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 20px 22px;
-    }
+    .card { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 20px 22px; }
     .card-icon { font-size: 22px; margin-bottom: 10px; }
     .card h3   { font-size: 14px; font-weight: 700; margin-bottom: 6px; }
     .card p    { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .badge-new {
+      font-size: 10px; font-weight: 700; color: #fff; background: var(--green);
+      padding: 1px 7px; border-radius: 10px; vertical-align: middle; margin-left: 4px;
+    }
+
+    /* ── VIDEO ── */
+    .video-box { margin-bottom: 32px; border-radius: 6px; overflow: hidden; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,.08); background: #000; }
+    .video-box video { width: 100%; display: block; }
 
     /* ── SCREENSHOT GALLERY ── */
-    .gallery {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 16px;
-      margin-bottom: 12px;
-    }
+    .gallery { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 32px; }
     .gallery-item {
-      border-radius: 6px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      box-shadow: 0 2px 8px rgba(0,0,0,.08);
-      cursor: pointer;
-      transition: box-shadow .2s;
-      position: relative;
-    }
-    .gallery-item .badge-neu {
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      background: #27ae60;
-      color: #fff;
-      font-size: 12px;
-      font-weight: 700;
-      letter-spacing: .5px;
-      padding: 3px 10px;
-      border-radius: 4px;
-      box-shadow: 0 1px 4px rgba(0,0,0,.25);
-      z-index: 2;
+      border-radius: 6px; overflow: hidden; border: 1px solid var(--border);
+      box-shadow: 0 2px 8px rgba(0,0,0,.08); cursor: pointer; transition: box-shadow .2s;
     }
     .gallery-item:hover { box-shadow: 0 4px 16px rgba(0,0,0,.16); }
-    .gallery-item img   {
-      width: 100%;
-      height: 220px;
-      object-fit: cover;
-      object-position: top;
-      display: block;
-    }
-    .gallery-caption {
-      background: var(--primary);
-      color: var(--light);
-      font-size: 11px;
-      padding: 6px 10px;
-    }
-    .gallery-more {
-      font-size: 12px;
-      color: var(--muted);
-      margin-bottom: 32px;
-    }
-    .gallery-more a { color: var(--blue); text-decoration: none; }
-    .gallery-more a:hover { text-decoration: underline; }
+    .gallery-item img { width: 100%; height: 220px; object-fit: cover; object-position: top; display: block; }
+    .gallery-caption { background: var(--primary); color: var(--light); font-size: 11px; padding: 6px 10px; }
 
     /* ── LIGHTBOX ── */
     .lightbox {
-      display: none;
-      position: fixed; inset: 0;
-      background: rgba(0,0,0,.85);
-      z-index: 999;
-      align-items: center;
-      justify-content: center;
-      padding: 20px;
+      display: none; position: fixed; inset: 0; background: rgba(0,0,0,.85);
+      z-index: 999; align-items: center; justify-content: center; padding: 20px;
     }
     .lightbox.open { display: flex; }
     .lightbox img  { max-width: 90vw; max-height: 90vh; border-radius: 4px; }
-    .lightbox-close {
-      position: absolute; top: 20px; right: 28px;
-      color: #fff; font-size: 32px; cursor: pointer; line-height: 1;
-    }
+    .lightbox-close { position: absolute; top: 20px; right: 28px; color: #fff; font-size: 32px; cursor: pointer; line-height: 1; }
 
-    /* ── INFO-BOX ── */
-    .info-box {
-      background: #EBF5FB;
-      border-left: 4px solid var(--blue);
-      border-radius: 0 4px 4px 0;
-      padding: 14px 18px;
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 32px;
-      color: #1A5276;
-    }
-    .info-box a { color: var(--blue); }
-    .warn-box {
-      background: #FEF9E7;
-      border-left: 4px solid var(--yellow);
-      border-radius: 0 4px 4px 0;
-      padding: 14px 18px;
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 32px;
-      color: #7D6608;
-    }
-    .warn-box a { color: #7D6608; }
-    .ok-box {
-      background: #EAFAF1;
-      border-left: 4px solid var(--green);
-      border-radius: 0 4px 4px 0;
-      padding: 14px 18px;
-      font-size: 13px;
-      line-height: 1.6;
-      margin-bottom: 32px;
-      color: #1E7E45;
-    }
+    /* ── INFO BOXES ── */
+    .info-box { background: #EBF5FB; border-left: 4px solid var(--blue);  border-radius: 0 4px 4px 0; padding: 14px 18px; font-size: 13px; line-height: 1.6; margin-bottom: 32px; color: #1A5276; }
+    .warn-box { background: #FEF9E7; border-left: 4px solid var(--yellow); border-radius: 0 4px 4px 0; padding: 14px 18px; font-size: 13px; line-height: 1.6; margin-bottom: 32px; color: #7D6608; }
+    .ok-box   { background: #EAFAF1; border-left: 4px solid var(--green);  border-radius: 0 4px 4px 0; padding: 14px 18px; font-size: 13px; line-height: 1.6; margin-bottom: 32px; color: #1E7E45; }
+
+    .hash { font-family: Consolas, 'Courier New', monospace; font-size: 12.5px; word-break: break-all; background: rgba(255,255,255,.6); padding: 2px 6px; border-radius: 3px; }
 
     /* ── SYSREQ TABLE ── */
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 32px;
-      font-size: 13px;
-      background: var(--card);
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,.06);
-    }
-    th {
-      background: var(--primary);
-      color: #fff;
-      padding: 10px 16px;
-      text-align: left;
-      font-weight: 600;
-    }
+    table { width: 100%; border-collapse: collapse; margin-bottom: 32px; font-size: 13px; background: var(--card); border-radius: 6px; overflow: hidden; box-shadow: 0 1px 4px rgba(0,0,0,.06); }
+    th { background: var(--primary); color: #fff; padding: 10px 16px; text-align: left; font-weight: 600; }
     td { padding: 9px 16px; border-bottom: 1px solid var(--border); }
     tr:last-child td { border-bottom: none; }
     tr:nth-child(even) td { background: #F7F9FA; }
 
     /* ── CHANGELOG ── */
-    .changelog {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: 6px;
-      padding: 24px 28px;
-      margin-bottom: 32px;
-    }
+    .changelog { background: var(--card); border: 1px solid var(--border); border-radius: 6px; padding: 24px 28px; margin-bottom: 32px; }
     .changelog-entry { margin-bottom: 20px; }
     .changelog-entry:last-child { margin-bottom: 0; }
-    .changelog-version {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--primary);
-      margin-bottom: 4px;
+    .changelog-version { font-size: 13px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .changelog-version span { font-weight: 400; color: var(--muted); margin-left: 8px; }
+    .changelog-entry ul { list-style: none; padding: 0; }
+    .changelog-entry ul li { font-size: 13px; color: var(--muted); padding: 2px 0 2px 16px; position: relative; }
+    .changelog-entry ul li::before { content: "•"; position: absolute; left: 4px; color: var(--blue); }
+
+    /* ── MENTIONS ── */
+    .mentions { display: flex; flex-direction: column; gap: 16px; margin-bottom: 32px; }
+    .mention-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 6px;
+      padding: 22px 24px; display: flex; align-items: center; gap: 24px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
     }
-    .changelog-version span {
-      font-weight: 400;
-      color: var(--muted);
-      margin-left: 8px;
-    }
-    .changelog-entry ul {
-      list-style: none;
-      padding: 0;
-    }
-    .changelog-entry ul li {
-      font-size: 13px;
-      color: var(--muted);
-      padding: 2px 0 2px 16px;
-      position: relative;
-    }
-    .changelog-entry ul li::before {
-      content: "•";
-      position: absolute; left: 4px;
-      color: var(--blue);
-    }
+    .mention-icon { flex-shrink: 0; text-align: center; width: 88px; }
+    .mention-icon .em { font-size: 30px; line-height: 1; }
+    .mention-icon .sub { font-size: 11px; color: var(--muted); margin-top: 6px; line-height: 1.3; }
+    .mention-body { flex: 1; border-left: 3px solid var(--border); padding-left: 20px; }
+    .mention-body .name { font-size: 15px; font-weight: 700; color: var(--primary); margin-bottom: 4px; }
+    .mention-body .desc { font-size: 13px; color: var(--muted); line-height: 1.6; margin-bottom: 10px; }
+    .mention-body a { display: inline-block; background: var(--blue); color: #fff; font-size: 12px; font-weight: 600; padding: 6px 14px; border-radius: 4px; text-decoration: none; }
+
+    .mention-badge { display: inline-block; background: var(--green); color: #fff; font-size: 11px; font-weight: 700; padding: 2px 9px; border-radius: 4px; margin-left: 8px; vertical-align: middle; }
+
+    /* ── HILFE-SPRACHEN ── */
+    .help-langs { display: flex; flex-wrap: wrap; gap: 8px; margin: 4px 0 32px; }
+    .help-langs a { font-size: 13px; color: var(--primary); text-decoration: none; background: var(--card); border: 1px solid var(--border); border-radius: 20px; padding: 5px 12px; }
+    .help-langs a:hover { border-color: var(--blue); color: var(--blue); }
 
     /* ── FOOTER ── */
-    footer {
-      background: var(--primary);
-      color: var(--border);
-      text-align: center;
-      padding: 14px 20px;
-      font-size: 12px;
-    }
+    footer { background: var(--primary); color: var(--border); text-align: center; padding: 14px 20px; font-size: 12px; }
     footer a { color: var(--border); text-decoration: none; }
     footer a:hover { color: #fff; }
 
@@ -335,7 +173,10 @@
       .gallery    { grid-template-columns: 1fr; }
       .header-inner { flex-direction: column; align-items: flex-start; }
       header { padding: 20px; }
+      .header-badge { margin-left: 0; white-space: normal; border-radius: 12px; line-height: 1.6; }
       .hero  { padding: 0 20px 28px; }
+      .mention-card { flex-direction: column; align-items: flex-start; gap: 14px; }
+      .mention-body { border-left: none; padding-left: 0; }
     }
   </style>
 </head>
@@ -349,7 +190,8 @@
       <span class="logo-name">&nbsp;LAN Device Scanner</span>
     </div>
     <span class="header-sub">Netzwerk-Analyse &amp; Geräteerkennung</span>
-    <span class="header-badge">Freeware · Setup &amp; Portable · Windows</span>
+    <span class="header-badge">Freeware &middot; v4.2 &middot; Windows &nbsp;🌍 🇩🇪 🇬🇧 🇳🇱 🇪🇸 🇫🇷 🇮🇹 🇵🇱 🇭🇷 🇨🇿 &nbsp;9 Sprachen</span>
+    <a class="header-lang" href="index_en.html" title="English version">🇬🇧 English</a>
   </div>
 </header>
 <div class="divider"></div>
@@ -358,13 +200,14 @@
 <div class="hero">
   <div class="hero-inner">
     <div>
-      <h1>Der professionelle LAN- und WLAN-Scanner<br>&ndash; Netzwerkgeräte erkennen, analysieren und dokumentieren</h1>
-      <p>Der S-IT LAN Device Scanner findet alle Geräte im Netzwerk und zeigt Hersteller, Betriebssystem und offene Ports – inklusive Intensiv-Scan mit Npcap. Dazu Internet-Erreichbarkeit, LAN-Durchsatztest mit Live-Kurve, WLAN-Analyse, ein Diagnose-Tab für die Windows-Netzwerkeinstellungen und der Tab „Firewall &amp; Ports“: Er trägt Ausnahmen für nicht erreichbare Geräte ein und – neu – prüft und öffnet Ports auf diesem PC. Jeder Scan lässt sich als HTML-Report speichern, archivieren und mit früheren Scans vergleichen.</p>
-      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/download/v4.0/sit-lanscanner_v4-0.zip" class="btn-download">⬇ Download v4.0</a>
-      <a href="https://github.com/SattlerIT/sit-lanscanner/releases" class="btn-secondary">Alle Versionen</a>
+      <h1>Geräte im Netzwerk finden, erkennen und prüfen<br>&ndash; LAN, WLAN und Internet in einem Werkzeug</h1>
+      <p>Der S-IT LAN Device Scanner findet die Geräte im Netzwerk und zeigt Hersteller, Betriebssystem, offene Ports, den <strong>Gerätetyp</strong> und den <strong>Namen, den ein Gerät selbst meldet</strong>. Dazu prüft er die Internet-Erreichbarkeit, misst <strong>Verbindungsqualität</strong> und LAN-Durchsatz, zeigt die <strong>WLAN-Profile</strong> samt Vergleich der WLAN-Standards und nennt die Anbieter hinter einer Domain. Windows-Netzwerkeinstellungen und Firewall-Regeln prüft und repariert er auf Knopfdruck. Neu in Version 4.2: neun Sprachen, eine Nachsuche für fehlende Geräte und ein Setup für Installation und portable Nutzung.</p>
+      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/latest/download/sit-lsc-V4-2_latest.zip" class="btn-download">⬇ Download v4.2</a>
+      <a href="S-IT-LanScanner-Hilfe.html" target="_blank" class="btn-secondary" style="margin-left:12px;">📖 Hilfe online</a>
+      <span class="btn-hint">Version 4.2 &middot; Der Download enthält das Setup und das Programmarchiv. Bitte die Zip vollständig entpacken und <strong>S-IT-LanScanner-Setup.exe</strong> starten &ndash; das Setup installiert das Programm oder entpackt es portabel, zum Beispiel auf einen USB-Stick.</span>
     </div>
     <div class="hero-screenshot">
-      <img src="Screenshots/geraeteliste.png" alt="S-IT LAN Device Scanner Hauptfenster mit Geräteliste">
+      <img src="Screenshots/liste-de.png" alt="S-IT LAN Device Scanner – Geräteliste mit Gerätetyp und Gerätename">
     </div>
   </div>
 </div>
@@ -372,11 +215,13 @@
 <main>
 
   <!-- VIDEO -->
-  <div class="section-title">🎬 Video</div>
-  <video controls preload="none" poster="Video/S-IT-LanScanner-Video.jpg"
-         style="width:100%;display:block;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,.15);margin-bottom:32px">
-    <source src="Video/S-IT-LanScanner-Video.mp4" type="video/mp4">
-  </video>
+  <div class="section-title">🎬 Der S-IT LAN Device Scanner 4.2 im Video</div>
+  <div class="video-box">
+    <video controls preload="none" poster="Video/S-IT-LanScanner-4.2-Clip-DE.jpg">
+      <source src="Video/S-IT-LanScanner-4.2-Clip-DE.mp4" type="video/mp4">
+      Ihr Browser kann dieses Video nicht abspielen. <a href="Video/S-IT-LanScanner-4.2-Clip-DE.mp4">Video herunterladen</a>.
+    </video>
+  </div>
 
   <!-- FEATURES -->
   <div class="section-title">⚙ Funktionen</div>
@@ -384,52 +229,77 @@
     <div class="card">
       <div class="card-icon">🔍</div>
       <h3>Netzwerk-Scan</h3>
-      <p>Erkennt Geräte, Hersteller (OUI-Datenbank), Betriebssysteme und offene Ports im LAN und WLAN – inklusive Intensiv-Scan mit Npcap. Eigene Zuordnungen lassen sich per Rechtsklick direkt in der Liste setzen.</p>
+      <p>Findet die Geräte im LAN und WLAN per Ping und ARP und zeigt IP-Adresse, Hostname, MAC-Adresse, Hersteller, Betriebssystem und offene Ports. Der ARP-Scan nutzt die eingebaute Funktion von Windows &ndash; eine Zusatzinstallation ist nicht nötig.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🏷️</div>
+      <h3>Gerätetyp und Gerätename <span class="badge-new">NEU</span></h3>
+      <p>Jedes Gerät wird anhand mehrerer Hinweise einem Typ zugeordnet &ndash; vom Router über Drucker und NAS bis zu Kamera, Smart-Home-Gerät und VoIP-Telefon. Die Zeilenfarbe folgt dem Typ. Die Spalte &bdquo;Gerätename&ldquo; zeigt, was ein Gerät auf Nachfrage selbst meldet; per Rechtsklick lassen sich Name, Hersteller und Typ selbst festlegen.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🔁</div>
+      <h3>Nachsuche für fehlende Geräte <span class="badge-new">NEU</span></h3>
+      <p>Adressen, unter denen bei früheren Scans ein Gerät war, werden ein zweites Mal mit mehr Geduld gefragt. Auf Wunsch fragt die Nachsuche bei allen stillen Adressen typische Ports ab &ndash; so erscheinen auch Geräte, die Ping nicht beantworten.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📶</div>
+      <h3>WLAN-Profile <span class="badge-new">NEU</span></h3>
+      <p>Zeigt die auf diesem PC gespeicherten WLAN-Netze samt Passwort, sichert sie und spielt sie auf einem anderen PC ein. Eine Grafik ordnet die eigene Verbindung in die WLAN-Standards von Wi-Fi&nbsp;4 bis Wi-Fi&nbsp;7 ein, eine Tabelle zeigt die WLANs in Reichweite. Der WLAN-Bericht fasst alles in einer HTML-Datei zusammen, ohne Passwörter.</p>
     </div>
     <div class="card">
       <div class="card-icon">🌐</div>
       <h3>Internet-Erreichbarkeit</h3>
-      <p>Prüft DNS-Auflösung, Routing, TCP 443, HTTPS, IPv6 und Browser-Zugriff in einer Kachel-Übersicht – dazu Speedtest mit Ping, Download und Upload samt Protokoll.</p>
+      <p>Prüft DNS-Auflösung, Routing, TCP 443, HTTPS, IPv6 und Browser-Zugriff in einer Kachel-Übersicht, dazu den Verbindungsweg im LAN und einen Geschwindigkeitstest mit Ping, Download und Upload.</p>
     </div>
     <div class="card">
-      <div class="card-icon">📈</div>
-      <h3>LAN-Performance</h3>
-      <p>Live-Durchsatztest für Netzwerkfreigaben mit Schreib- und Leseraten, grafischer Kurve und Messprotokoll – Chunk-Größe frei wählbar von 1 bis 64 MB.</p>
+      <div class="card-icon">📇</div>
+      <h3>Domain-Auskunft <span class="badge-new">NEU</span></h3>
+      <p>Zu einer Domain, Webadresse oder E-Mail-Adresse zeigt sie Nameserver, Mailserver und Webserver mit Anbieter, Land und Adressbereich. Das Ergebnis lässt sich als Text kopieren, etwa für eine E-Mail an einen Kunden.</p>
     </div>
     <div class="card">
       <div class="card-icon">📡</div>
-      <h3>WLAN-Analyse</h3>
-      <p>SSID, Signalstärke, Kanal, Frequenzband, Verbindungs- und Empfangsrate direkt aus Windows – ohne Drittanbieter-Software. LAN und WLAN werden gleichzeitig erkannt und getrennt angezeigt.</p>
+      <h3>Verbindungsqualität <span class="badge-new">NEU</span></h3>
+      <p>Misst 30, 60 oder 120 Sekunden lang Paketverlust, Antwortzeit und Schwankung &ndash; gleichzeitig zum Ziel und zum Gateway. Der Vergleich zeigt, ob eine Störung im eigenen Netz liegt oder dahinter, und bewertet die Eignung für Telefonie und Video.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">📈</div>
+      <h3>LAN-Performance &amp; WLAN</h3>
+      <p>Dauertest für Freigaben und Netzlaufwerke wie U: mit Schreib- und Leserate, Live-Kurve und Messprotokoll. Ruhende NAS-Festplatten bekommen eine Wartezeit. Die Kacheln zeigen den Zustand von LAN- und WLAN-Adapter.</p>
     </div>
     <div class="card">
       <div class="card-icon">🛠</div>
       <h3>Netzwerk-Einstellungen</h3>
-      <p>Prüft Netzwerkprofil, Freigaben, SMB-Versionen, Dienste und Firewall-Regeln – SMB1 getrennt nach Client und Server, mit Reparatur-Funktionen für DNS-, NetBIOS- und ARP-Cache, TCP/IP-Stack und Winsock.</p>
+      <p>Prüft Netzwerkprofil, Freigaben, SMB-Versionen, Dienste und Firewall &ndash; SMB1 getrennt nach Client und Server. Reparatur-Funktionen für DNS-, NetBIOS- und ARP-Cache, TCP/IP-Stack und Winsock.</p>
     </div>
     <div class="card">
       <div class="card-icon">🛡</div>
       <h3>Firewall &amp; Ports</h3>
-      <p>Ist ein Gerät sichtbar, aber nicht erreichbar? Der Tab prüft Ping, offene Ports und Firewall-Status eines Ziels und trägt auf Wunsch eine passende Ausnahme ein. Neu: Ports auf diesem PC freigeben, etwa für Warenwirtschaft, Kassensystem oder Datenbank – mit Vorlagen und vorheriger Prüfung, ob ein Programm am Port lauscht. Eigene Regeln lassen sich jederzeit wieder entfernen, fremde bleiben unangetastet.</p>
+      <p>Ist ein Gerät sichtbar, aber nicht erreichbar, prüft der Reiter Ping, Ports und Firewall und trägt eine passende Ausnahme ein. Ports auf diesem PC lassen sich freigeben, mit Vorlagen und vorheriger Prüfung. Eigene Regeln lassen sich jederzeit entfernen, fremde bleiben unangetastet.</p>
     </div>
     <div class="card">
       <div class="card-icon">📋</div>
-      <h3>Log-Manager</h3>
-      <p>Alle Scans an einem Ort: anzeigen, vergleichen, löschen. Der Vergleich zweier Scans zeigt neu hinzugekommene und verschwundene Geräte auf einen Blick.</p>
+      <h3>Logs &amp; Reports</h3>
+      <p>Jeder Scan lässt sich als HTML-Report speichern &ndash; mit denselben Gerätetypen und Farben wie die Geräteliste. Der Log-Manager zeigt alle Scans und vergleicht zwei davon: neu hinzugekommene und verschwundene Geräte auf einen Blick.</p>
     </div>
     <div class="card">
       <div class="card-icon">🔄</div>
-      <h3>OUI-Updater</h3>
-      <p>Eigenständiges Tool zur Aktualisierung der Hersteller-Datenbank aus den IEEE-Quellen – über 50.000 Einträge auf Knopfdruck, eigene Zuordnungen bleiben erhalten.</p>
+      <h3>OUI-Update im Programm <span class="badge-new">NEU</span></h3>
+      <p>Die Hersteller-Datenbank ist von Anfang an vollständig und lässt sich direkt im Programm aus den Quellen der IEEE aktualisieren. Eigene Angaben bleiben erhalten.</p>
     </div>
     <div class="card">
-      <div class="card-icon">🖥</div>
-      <h3>Skalierbare Oberfläche</h3>
-      <p>Darstellungsgröße von 90–300 % im Konfig-Dialog – für kompakte Ansichten, HiDPI-, UHD- und Hochkant-Monitore. Die gewählte Stufe gilt unabhängig von der Windows-Skalierung; die Schriftgröße Klein / Normal / Groß wirkt auch in der Geräteliste. Die Fenstergröße lässt sich auf Wunsch dauerhaft merken.</p>
+      <div class="card-icon">🌍</div>
+      <h3>Neun Sprachen <span class="badge-new">NEU</span></h3>
+      <p>Programm, Hilfe, Setup und Deinstaller in Deutsch, English, Nederlands, Español, Français, Italiano, Polski, Hrvatski und Čeština. Die Ergebnisse der Prüfungen sind auf jedem Windows dieselben, gleich in welcher Sprache.</p>
+    </div>
+    <div class="card">
+      <div class="card-icon">🌙</div>
+      <h3>Dunkle Darstellung &amp; Skalierung <span class="badge-new">NEU</span></h3>
+      <p>Eine dunkle Darstellung für alle Fenster, dazu die Darstellungsgröße von 90 bis 300&nbsp;% &ndash; unabhängig von der Windows-Skalierung. Das Hauptfenster öffnet auf dem Monitor und an der Stelle, an der es zuletzt stand.</p>
     </div>
     <div class="card">
       <div class="card-icon">🔧</div>
       <h3>Diagnose (DIAG)</h3>
-      <p>Für Tester und Support: erstellt auf Wunsch eine anonymisierte Diagnosedatei (MAC-Adressen gekürzt) und zeigt den Klartext direkt im Tool an – einschaltbar unter ⚙ Konfig, Details in der Hilfe.</p>
+      <p>Für Tester und Support: eine Diagnosedatei mit gekürzten MAC-Adressen, auf Wunsch mit der Geräte-Erkennung und ihrer Begründung je Gerät. Einschaltbar unter ⚙ Konfig.</p>
     </div>
   </div>
 
@@ -437,77 +307,62 @@
   <div class="section-title">📸 Screenshots</div>
   <div class="gallery">
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="Screenshots/geraeteliste.png" alt="LAN-Scanner Geräteliste">
-      <div class="gallery-caption">Geräteliste mit Hersteller, Betriebssystem und offenen Ports – Rechtsklick für Aktionen</div>
+      <img src="Screenshots/liste-de.png" alt="Geräteliste">
+      <div class="gallery-caption">Geräteliste &ndash; Hersteller, Ports, Betriebssystem, Gerätetyp und Gerätename</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="Screenshots/log-vergleich.png" alt="Log-Manager mit Netzwerk-Vergleich">
-      <div class="gallery-caption">Log-Manager: zwei Scans vergleichen – neu, verschwunden, unverändert</div>
+      <img src="Screenshots/details-de.png" alt="Gerätedetails">
+      <div class="gallery-caption">Doppelklick auf ein Gerät &ndash; alle Angaben, dazu was das Gerät selbst meldet</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="Screenshots/internet-erreichbarkeit.png" alt="Internet-Erreichbarkeit mit Diagnose-Kacheln">
-      <div class="gallery-caption">Internet-Erreichbarkeit: DNS, Routing, TCP 443, HTTPS, IPv6, Browser-Zugriff</div>
+      <img src="Screenshots/wlan-de.png" alt="Reiter WLAN-Profile">
+      <div class="gallery-caption">WLAN-Profile &ndash; Vergleich der WLAN-Standards, WLANs in Reichweite, gespeicherte Profile</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="Screenshots/lan-performance-wlan.png" alt="LAN-Performance und WLAN mit Live-Kurve">
-      <div class="gallery-caption">LAN-Performance &amp; WLAN: Dauertest mit Live-Kurve und Verbindungsstatus</div>
+      <img src="Screenshots/vq-de.png" alt="Verbindungsqualität">
+      <div class="gallery-caption">Verbindungsqualität &ndash; Ziel und Gateway gleichzeitig gemessen</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <img src="Screenshots/netzwerk-einstellungen.png" alt="Netzwerk-Einstellungen mit Prüfergebnissen">
-      <div class="gallery-caption">Netzwerk-Einstellungen: Profil, Dienste, SMB und Firewall – SMB1 getrennt nach Client und Server</div>
+      <img src="Screenshots/internet-de.png" alt="Internet-Erreichbarkeit">
+      <div class="gallery-caption">Internet-Erreichbarkeit &ndash; DNS, Routing, TCP 443, HTTPS, IPv6, Browser-Zugriff</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <span class="badge-neu">NEU</span>
-      <img src="Screenshots/firewall-ports.png" alt="Tab Firewall und Ports mit zwei Spalten">
-      <div class="gallery-caption">Firewall &amp; Ports: links ein Gerät im Netz erreichen, rechts einen Port auf diesem PC freigeben</div>
+      <img src="Screenshots/domain-de.png" alt="Domain-Auskunft">
+      <div class="gallery-caption">Domain-Auskunft &ndash; wer verwaltet DNS, E-Mail und Webseite einer Domain</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <span class="badge-neu">NEU</span>
-      <img src="Screenshots/firewall-port-freigeben.png" alt="Port freigeben: Bestätigung vor dem Eintragen">
-      <div class="gallery-caption">Port freigeben: Vorlage wählen, prüfen, vor dem Eintragen bestätigen</div>
+      <img src="Screenshots/konfig-de.png" alt="Konfiguration">
+      <div class="gallery-caption">Konfiguration &ndash; Sprache, Nachsuche, Darstellung und Skalierung</div>
     </div>
     <div class="gallery-item" onclick="openLightbox(this)">
-      <span class="badge-neu">NEU</span>
-      <img src="Screenshots/firewall-port-gesetzt.png" alt="Port-Regel gesetzt mit Prüfergebnis">
-      <div class="gallery-caption">Regel gesetzt – die Prüfung zeigt zugleich, ob ein Programm am Port lauscht</div>
+      <img src="Screenshots/liste_dunkel-de.png" alt="Dunkle Darstellung">
+      <div class="gallery-caption">Dunkle Darstellung &ndash; für alle Fenster des Programms</div>
     </div>
   </div>
-  <p class="gallery-more">
-    Weitere Ansichten:
-    <a href="Screenshots/geschwindigkeitstest.png" target="_blank">Geschwindigkeitstest</a> &nbsp;·&nbsp;
-    <a href="Screenshots/netzwerk-reparatur.png" target="_blank">Netzwerk-Reparatur</a> &nbsp;·&nbsp;
-    <a href="Screenshots/konfiguration-skalierung.png" target="_blank">Konfiguration und Skalierung</a> &nbsp;·&nbsp;
-    <a href="Screenshots/oui-updater.png" target="_blank">OUI-Updater v1.2</a> &nbsp;·&nbsp;
-    <a href="Screenshots/diagnose.png" target="_blank">Diagnose (DIAG)</a> &nbsp;·&nbsp;
-    <a href="Screenshots/hilfe-doku.png" target="_blank">Doku &amp; Kontakt</a>
-  </p>
 
   <!-- DOWNLOAD -->
   <div class="section-title">⬇ Download &amp; Dokumentation</div>
-  <p style="font-size:14px; margin-bottom:16px;">Die aktuelle Version, Hilfe-Datei und Changelog findest du im <a href="https://github.com/SattlerIT/sit-lanscanner/releases" style="color:var(--blue)">Release-Bereich auf GitHub</a>.</p>
+  <p style="font-size:14px; margin-bottom:16px;">Die aktuelle Version steht im <a href="https://github.com/SattlerIT/sit-lanscanner/releases" style="color:var(--blue)">Release-Bereich auf GitHub</a>. Die Hilfe ist im Programm enthalten und lässt sich auch hier ohne Download lesen:</p>
+  <div class="help-langs">
+    <a href="S-IT-LanScanner-Hilfe.html" target="_blank">🇩🇪 Deutsch</a>
+    <a href="S-IT-LanScanner-Hilfe_en.html" target="_blank">🇬🇧 English</a>
+    <a href="S-IT-LanScanner-Hilfe_nl.html" target="_blank">🇳🇱 Nederlands</a>
+    <a href="S-IT-LanScanner-Hilfe_es.html" target="_blank">🇪🇸 Español</a>
+    <a href="S-IT-LanScanner-Hilfe_fr.html" target="_blank">🇫🇷 Français</a>
+    <a href="S-IT-LanScanner-Hilfe_it.html" target="_blank">🇮🇹 Italiano</a>
+    <a href="S-IT-LanScanner-Hilfe_pl.html" target="_blank">🇵🇱 Polski</a>
+    <a href="S-IT-LanScanner-Hilfe_hr.html" target="_blank">🇭🇷 Hrvatski</a>
+    <a href="S-IT-LanScanner-Hilfe_cs.html" target="_blank">🇨🇿 Čeština</a>
+  </div>
 
   <div class="ok-box">
-    <strong>Setup inklusive:</strong> Das Setup installiert wahlweise auf die Festplatte – mit Verknüpfungen und Eintrag in der Systemsteuerung unter „Programme und Features“ – oder portabel auf einen USB-Stick bzw. in einen eigenen Ordner. Bei einem Update bleiben Einstellungen, eigene Zuordnungen und Logs erhalten. Der Deinstaller sichert diese Daten auf Wunsch; bei einer späteren Neuinstallation bietet das Setup an, sie zurückzuholen.
+    <strong>Ein Setup für beide Wege:</strong> Der Download <strong>sit-lsc-V4-2_latest.zip</strong> enthält das Setup und das Programmarchiv. &bdquo;Installieren&ldquo; richtet das Programm mit Verknüpfungen und einem Eintrag in der Programmliste ein. &bdquo;Portabel&ldquo; entpackt es auf einen USB-Stick oder in einen eigenen Ordner, ohne Systemeinträge. Gestartet wird über <strong>sit-lsc-start.exe</strong>; daneben liegen die Ordner Config, Logs, Diag und Help. Der Deinstaller sichert Einstellungen, eigene Angaben, Hersteller-Datenbank und Logs auf Wunsch; eine spätere Neuinstallation bietet an, sie zurückzuholen.
   </div>
-
   <div class="info-box">
-    <strong>Direkt hier lesen:</strong> Die vollst&auml;ndige
-    <a href="S-IT-LanScanner-Hilfe.html"><strong>Hilfe-Datei</strong></a> l&auml;sst sich auch
-    ohne Download &ouml;ffnen &ndash; Schnellstart, alle f&uuml;nf Tabs, eigene
-    Ger&auml;tezuordnungen, Diagnose und h&auml;ufige Fragen.
+    <strong>Update von einer früheren Version:</strong> Das Setup übernimmt eine vorhandene Installation einschließlich aller eigenen Daten. Einstellungen und Logs werden dabei in die neuen Ordner gelegt; überschrieben wird nichts. Npcap wird nicht mehr benötigt &ndash; wer es nur für den Scanner installiert hatte, kann es über die Systemsteuerung entfernen.
   </div>
-
   <div class="info-box">
-    <strong>Wie arbeitet der Performance-Test?</strong> Eine ausf&uuml;hrliche Erl&auml;uterung,
-    was der LAN-Performance-Test auf dem Zielger&auml;t tut und wie sich die Intensit&auml;t des
-    Netzwerk-Scans einstellen l&auml;sst, steht auf der Seite
-    <a href="faq-performance.html"><strong>Performance-Test und Scan-Last</strong></a>.
-  </div>
-
-  <div class="info-box">
-    <strong>Npcap empfohlen:</strong> Für den erweiterten ARP- und Intensiv-Scan wird
-    <a href="https://npcap.com" target="_blank">Npcap</a> benötigt. Der Basis-Scan funktioniert
-    auch ohne zusätzliche Komponenten.
+    <strong>Wie arbeitet der Performance-Test?</strong> Was der LAN-Performance-Test auf dem Zielgerät tut und wie sich die Intensität des Scans und der Nachsuche einstellen lässt, steht auf der Seite <a href="faq-performance.html" style="color:inherit"><strong>Performance-Test und Scan-Last</strong></a>.
   </div>
 
   <!-- SYSTEMANFORDERUNGEN -->
@@ -515,216 +370,92 @@
   <table>
     <tr><th>Komponente</th><th>Anforderung</th></tr>
     <tr><td>Betriebssystem</td><td>Windows 10 / Windows 11 (64-Bit)</td></tr>
-    <tr><td>Rechte</td><td>Administratorrechte für den Intensivmodus erforderlich</td></tr>
-    <tr><td>Optional</td><td>Npcap für erweiterten ARP- und Intensiv-Scan</td></tr>
-    <tr><td>Lieferumfang</td><td>Setup, Deinstaller, OUI-Updater, Hilfe-Datei, ChangeLog, Lizenz und Haftungsausschluss (Deutsch/Englisch)</td></tr>
+    <tr><td>Rechte</td><td>Das Setup fordert Administratorrechte an. Das Programm startet als Administrator (abschaltbar); nötig sind die Rechte für WLAN-Profile, Netzwerk-Reparatur und Firewall &amp; Ports, empfohlen für den ARP-Scan</td></tr>
+    <tr><td>Zusatzsoftware</td><td>keine</td></tr>
+    <tr><td>Lieferumfang</td><td>Setup, Deinstaller, Hilfe in neun Sprachen, ChangeLog, Lizenz und Haftungsausschluss in neun Sprachen</td></tr>
   </table>
 
   <!-- SICHERHEITSHINWEIS -->
   <div class="section-title">🛡 Hinweis zu Virenscannern &amp; SmartScreen</div>
   <div class="info-box">
-    Da es sich um ein unabhängig entwickeltes Windows-Tool handelt, kann es vorkommen, dass
-    Windows SmartScreen oder installierte Internet-Security-Programme die Datei zunächst als
-    unbekannt einstufen. In diesem Fall fügen Sie das Programm bitte als
-    <strong>vertrauenswürdig</strong> bzw. als <strong>Ausnahme</strong> in Ihrer
-    Sicherheitssoftware hinzu. Gegebenenfalls muss der Windows-SmartScreen-Filter einmalig
-    bestätigt oder vorübergehend deaktiviert werden.
+    Der S-IT LAN Device Scanner ist ein unabhängig entwickeltes Windows-Programm ohne gekaufte Signatur. Windows SmartScreen oder ein Virenscanner stufen die Datei deshalb beim ersten Start mitunter als unbekannt ein. Die Meldung sagt nur, dass Windows die Datei noch nicht kennt. Beim ersten Start des Setups prüft der Virenschutz die neue Datei gründlich; das kann bis zu einer Minute dauern, bevor das Fenster erscheint.
   </div>
-  <div class="warn-box">
-    Alle bereitgestellten Dateien stammen direkt von <strong>Sattler IT-Service</strong> und
-    werden ausschließlich über die offizielle GitHub-Seite veröffentlicht.
-    <strong>Tipp:</strong> Nach der ersten Freigabe läuft das Tool in der Regel dauerhaft
-    ohne weitere Warnmeldungen.
+  <div class="ok-box">
+    <strong>So erkennen Sie die echte Datei:</strong> Laden Sie das Programm ausschließlich von dieser Seite oder aus dem <a href="https://github.com/SattlerIT/sit-lanscanner/releases" style="color:inherit">Release-Bereich auf GitHub</a>. Die Datei <strong>sit-lsc-V4-2_latest.zip</strong> hat die Prüfsumme (SHA-256):<br>
+    <span class="hash">797c3a7b9510706e432f5c5d1b79845b840252b784dc0d9c66400741b42b3874</span><br>
+    Sie prüfen das in der PowerShell, in dem Ordner, in dem die Datei liegt: <span class="hash">Get-FileHash .\sit-lsc-V4-2_latest.zip</span><br>
+    Stimmt die Zeichenfolge überein, ist die Datei unverändert.
   </div>
 
   <!-- HAFTUNGSAUSSCHLUSS -->
   <div class="section-title">⚖ Haftungsausschluss</div>
   <div class="warn-box">
-    Alle Angaben ohne Gewähr, Irrtümer vorbehalten. Die Ergebnisse des Scans (erkannte Geräte,
-    Hersteller, Ports, Signal- und Durchsatzwerte) sind unverbindliche Anhaltspunkte und eine
-    Momentaufnahme – sie ersetzen keine fachliche Sicherheitsprüfung. Für Entscheidungen, die auf
-    Basis der Ergebnisse getroffen werden, wird keine Verantwortung übernommen.
-    Vollständiger Text: <a href="Disclaimer.txt" target="_blank"><strong>Disclaimer.txt</strong></a>
+    Alle Angaben ohne Gewähr. Die Ergebnisse des Scans (erkannte Geräte, Hersteller, Gerätetypen, Ports, Signal- und Messwerte) sind eine Momentaufnahme und unverbindliche Anhaltspunkte &ndash; sie ersetzen keine fachliche Sicherheitsprüfung. Für Entscheidungen, die auf Basis der Ergebnisse getroffen werden, wird keine Verantwortung übernommen. Vollständiger Text: <a href="Lizenz-Disclaimer.txt" target="_blank" style="color:inherit"><strong>Lizenz-Disclaimer.txt</strong></a>
   </div>
 
   <!-- CHANGELOG -->
   <div class="section-title">📋 Changelog</div>
   <div class="changelog">
     <div class="changelog-entry">
-      <div class="changelog-version">v4.0 <span>Oktober 2026 · Build 2026.10.09</span></div>
+      <div class="changelog-version">v4.2 <span>November 2026 &middot; neun Sprachen, WLAN-Profile, Domain-Auskunft, Gerätetyp und Gerätename</span></div>
       <ul>
-        <li>🔌 Firewall-Tab erweitert zu „Firewall &amp; Ports“: neue Spalte, um einen Port auf diesem PC freizugeben – frei eingetragen oder per Vorlage (SQL Server, MySQL/MariaDB, PostgreSQL, Remotedesktop, VNC, HTTP, HTTPS), auch als Portbereich. Die Freigabe gilt eingehend und nur aus dem lokalen Netz</li>
-        <li>🔍 Port-Prüfung vor der Freigabe: lauscht ein Programm am Port, besteht bereits eine eingehende Regel, lässt das Firewall-Profil die Freigabe zu</li>
-        <li>📐 Skalierung vereinfacht: Die im Programm gewählte Stufe gilt allein, die Windows-Skalierung wirkt nicht mehr zusätzlich</li>
-        <li>🔤 Die Schriftgröße Klein / Normal / Groß gilt jetzt auch für die Geräteliste; die Zeilenhöhe folgt der Schrift – auch auf 4K-Bildschirmen gut lesbar</li>
-        <li>📦 Neues Setup: Installation oder portabel; der Deinstaller sichert auf Wunsch die eigenen Daten, das Setup holt sie bei einer Neuinstallation zurück</li>
-        <li>Korrekturen im LAN-Performance-Tab und im Dialog für die Ping-Ziele, richtige Umlaute und Windows-Profilnamen, genauere Bewertung programmgebundener Firewall-Regeln; S-IT-Symbol in allen Fenstern</li>
+        <li><strong>Neun Sprachen:</strong> Programm, Hilfe, Setup und Deinstaller; die Sprache wird unter ⚙ Konfig gewählt, das Setup übernimmt die Windows-Sprache</li>
+        <li><strong>Reiter WLAN-Profile:</strong> gespeicherte WLANs samt Passwort anzeigen, sichern und einspielen; Vergleich der WLAN-Standards, WLANs in Reichweite, WLAN-Bericht als HTML</li>
+        <li><strong>Domain-Auskunft:</strong> Nameserver, Mailserver und Webserver einer Domain mit Anbieter, Land und Adressbereich</li>
+        <li><strong>Gerätetyp und Gerätename:</strong> Typ aus mehreren Hinweisen, Zeilenfarbe nach Typ, Name laut Gerät; eigene Angaben per Rechtsklick</li>
+        <li><strong>Mehr Geräte gefunden:</strong> ARP-Scan mit der eingebauten Funktion von Windows, Nachsuche für fehlende Geräte in drei Stufen</li>
+        <li><strong>Verbindungsqualität:</strong> Paketverlust, Antwortzeit und Schwankung zum Ziel und zum Gateway, mit Bewertung für Telefonie und Video</li>
+        <li><strong>OUI-Update im Programm:</strong> vollständige Hersteller-Datenbank von Anfang an</li>
+        <li><strong>Dunkle Darstellung</strong> für alle Fenster; LAN-Dauertest auch auf Netzlaufwerke</li>
+        <li><strong>Installation:</strong> ein Setup für Installation und portable Nutzung; Übernahme vorhandener Daten</li>
       </ul>
     </div>
-    <div class="changelog-entry">
-      <div class="changelog-version">v3.22.21 – Überarbeitung <span>August 2026 · Build 2026.08.17</span></div>
-      <ul>
-        <li>🔀 SMB1 getrennt nach Client und Server: bisher eine einzige Zeile, jetzt zwei einzeln schaltbare – <strong>Client</strong> für den Zugriff auf alte NAS und Drucker, <strong>Server</strong> für alte Geräte, die auf Freigaben dieses PCs zugreifen. Behoben: SMB1 ließ sich nicht wirklich einschalten, und die Anzeige konnte in beide Richtungen falsch sein</li>
-        <li>⏳ Neue Zeile „SMB1 dauerhaft halten": Windows entfernt SMB1 nach 15 Tagen ohne Nutzung selbstständig wieder – nach Betriebspausen liefen alte Geräte deshalb plötzlich ins Leere. Die Automatik lässt sich jetzt abschalten</li>
-        <li>🎯 Einfachere Eingabe des Scanbereichs: statt CIDR genügt auch 192.168.0.1-192.168.0.50, die Kurzform 192.168.0.1-50 oder eine einzelne Adresse – mit verständlicher Meldung bei Fehleingaben</li>
-        <li>📐 Netze mit abweichender Subnetzmaske werden korrekt ausgewertet; bisher wurden stets 254 Adressen angenommen und dadurch Geräte übersehen</li>
-        <li>⏸ Kein automatischer Neustart mehr nach Änderungen an Windows-Funktionen – das Programm weist nur noch darauf hin, der Zeitpunkt bleibt dem Anwender überlassen</li>
-        <li>📄 Scan-Protokoll und HTML-Bericht nennen jetzt Version und Build-Nummer</li>
-      </ul>
-    </div>
-    <div class="changelog-entry">
-      <div class="changelog-version">v3.22.21 <span>Juli 2026 · Build 2026.07.27</span></div>
-      <ul>
-        <li>🛡 Neuer Firewall-Tab: prüft Ping, offene Ports und Firewall-Status eines Ziels und trägt auf Wunsch eine passende Ausnahme ein – für alle Ports, nur Dateifreigabe oder samt Weboberfläche. Vom Programm gesetzte Regeln lassen sich einzeln oder komplett entfernen, fremde bleiben unangetastet</li>
-        <li>Start als Administrator: einstellbar im Konfig, mit Statusanzeige in der Fußzeile – nötig für Netzwerk-Reparatur, ARP-Cache, Scapy-Scan und den Firewall-Tab</li>
-        <li>Neue kompakte Skalierungsstufe 90 % – mehr Platz bei Tabellen, besonders auf Full-HD mit 125 % Windows-Skalierung</li>
-        <li>Fenstergröße lässt sich dauerhaft speichern; das Programm öffnet beim nächsten Start in der gewohnten Größe</li>
-        <li>Aufgeräumter Konfig-Dialog: übersichtlicher gegliedert, lange Erklärungen in Info-Knöpfen, bei hoher Skalierung scrollbar</li>
-        <li>Zahlreiche Feinkorrekturen bei hoher Skalierung: Texte, Schaltflächen und Tabellen bleiben auf jeder Bildschirmgröße vollständig sichtbar; flüssiges Arbeiten auch auf langsameren Geräten</li>
-      </ul>
-    </div>
-    <div class="changelog-entry">
-      <div class="changelog-version">v3.22.19 – Überarbeitung <span>Juli 2026 · Build 2026.07.17</span></div>
-      <ul>
-        <li>LAN-/WLAN-Erkennung überarbeitet: zeigt jetzt den echten Hardware-Namen des Adapters statt des Windows-Verbindungsnamens – auch, wenn gerade keine Verbindung besteht</li>
-        <li>Keine geschätzten Geschwindigkeiten mehr: wo Windows keinen Wert liefert, steht „unbekannt“ statt einer angenommenen Zahl</li>
-        <li>VPN-Adapter werden zuverlässig als virtuell erkannt; WLAN-Adapter unabhängig von der Schreibweise (Wi-Fi, WiFi)</li>
-        <li>Zuverlässige Erkennung jetzt auch auf langsamen Rechnern; Hinweis, wenn Windows die WLAN-Details wegen ausgeschalteter Positionsdienste sperrt</li>
-        <li>LAN-Performance mit ⓘ-Erklärung und Prüfung des Zielpfads vor dem Start; SMB1-Umschaltung fordert den erforderlichen Neustart an</li>
-        <li>Neue Diagnose-Funktion 🔧 DIAG für Tester – anonymisierte Diagnosedatei mit gekürzten MAC-Adressen</li>
-        <li>Diverse Korrekturen: Programm-Skalierung bleibt nach Performance-Tests erhalten, Button-Beschriftungen in den Netzwerk-Einstellungen gekürzt, Neustart mit Administratorrechten repariert</li>
-      </ul>
-    </div>
-    <div class="changelog-entry">
-      <div class="changelog-version">v3.22.19 <span>Mai 2026 · Build 2026.05.20</span></div>
-      <ul>
-        <li>⚙ Konfig, ? Hilfe, F11 und ✖ Beenden liegen jetzt dauerhaft oben rechts im Header – in jedem Tab erreichbar, unabhängig von der aktiven Ansicht. Die Toolbar zeigt nur noch Scan-relevante Funktionen</li>
-        <li>Vollständige UI-Skalierung von 100–300 % für HiDPI und UHD, direkt im ⚙ Konfig-Dialog einstellbar – alle Schriften und Pixelwerte skalieren proportional mit</li>
-        <li>LAN- und WLAN-Hardware-Erkennung neu aufgebaut: mehrstufige Erkennung über wmic, PowerShell, Registry und netsh – funktioniert jetzt auch auf Geräten, auf denen bisher keine Verbindung erkannt wurde</li>
-        <li>Tabs „LAN-Performance &amp; WLAN“ und „Internet-Erreichbarkeit“ vollständig scrollbar – Messprotokoll und Diagnose-Detail sind auch bei hoher Skalierung erreichbar</li>
-        <li>Verbindungs- und WLAN-Kacheln passen sich der Fensterbreite an; deaktivierte Adapter werden als solche erkannt und nicht mehr als verbunden angezeigt</li>
-        <li>Log-Manager zeigt jetzt auch ältere Scans an, zu denen nur HTML- oder CSV-Dateien vorliegen – Log-Pfade werden vor dem Zugriff normalisiert</li>
-        <li>HTML-Report öffnet nach dem Scan nicht mehr doppelt</li>
-        <li>OUI-Updater v1.1: DPI-Skalierung, eigenes Hilfe-Fenster, korrektes Taskleisten-Icon; wird bei einem Update jetzt zuverlässig mit ausgetauscht</li>
-        <li>Treeview-Zeilenhöhe wird aus der logischen Auflösung berechnet – auf UHD-Monitoren deutlich besser lesbar</li>
-      </ul>
-    </div>
-    <div class="changelog-entry">
-      <div class="changelog-version">v3.22.17 <span>Vorgängerversion</span></div>
-      <ul>
-        <li>LAN und WLAN werden gleichzeitig erkannt: aktive Verbindung als Hauptverbindung, vorhandene Hardware als Zusatzinfo – mit automatischer Aktualisierung</li>
-        <li>Virtuelle Adapter (VirtualBox, VMware, Hyper-V) werden zuverlässig herausgefiltert</li>
-        <li>Netzwerk-Einstellungen im 2-spaltigen Raster – übersichtlicher und platzsparender, funktioniert auch auf Hochkant-Monitoren</li>
-      </ul>
-    </div>
+    <p style="font-size:12px; color:var(--muted); margin-top:16px;">Alle Einzelheiten und die früheren Versionen stehen im <a href="S-IT-LanScanner-ChangeLog.html" style="color:var(--blue)">vollständigen Changelog</a>.</p>
   </div>
 
   <!-- ERWÄHNUNGEN -->
-  <div class="section-title" style="margin-top:32px">🏆 Erwähnungen &amp; Reviews</div>
-  <div style="margin-bottom:32px;display:flex;flex-direction:column;gap:16px">
-    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;
-                padding:22px 24px;display:flex;align-items:center;gap:24px;
-                box-shadow:0 2px 8px rgba(0,0,0,.06)">
-      <div style="flex-shrink:0;text-align:center;width:88px">
-        <div style="font-size:30px;line-height:1">🏅</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.3">
-          Redaktions-<br>Test
-        </div>
-      </div>
-      <div style="flex:1;border-left:3px solid var(--border);padding-left:20px">
-        <div style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px">
-          CHIP.de
-          <span style="display:inline-block;background:var(--green);color:#fff;
-                       font-size:11px;font-weight:700;padding:2px 9px;border-radius:4px;
-                       margin-left:8px;vertical-align:middle">Wertung: Gut</span>
-        </div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px">
-          Die CHIP-Redaktion hat den S-IT LAN Device Scanner getestet und mit „Gut"
-          bewertet – als vielseitige Komplettlösung für Netzwerkdiagnose und
-          -verwaltung, mit Geräteerkennung, Performance-Messung, WLAN-Analyse und
-          umfangreichen Dokumentationsfunktionen.
-        </div>
-        <a href="https://www.chip.de/downloads/S-IT-LAN-Device-Scanner_187223508.html"
-           target="_blank"
-           style="display:inline-block;background:var(--blue);color:#fff;
-                  font-size:12px;font-weight:600;padding:6px 14px;border-radius:4px;
-                  text-decoration:none">
-          → Zum CHIP-Testbericht
-        </a>
+  <div class="section-title">🏆 Erwähnungen &amp; Reviews</div>
+  <div class="mentions">
+    <div class="mention-card">
+      <div class="mention-icon"><div class="em">🏅</div><div class="sub">Redaktions-<br>Test</div></div>
+      <div class="mention-body">
+        <div class="name">CHIP.de <span class="mention-badge">Wertung: Gut</span></div>
+        <div class="desc">Die CHIP-Redaktion hat den S-IT LAN Device Scanner getestet und mit &bdquo;Gut&ldquo; bewertet &ndash; als vielseitige Komplettlösung für Netzwerkdiagnose und -verwaltung, mit Geräteerkennung, Performance-Messung, WLAN-Analyse und umfangreichen Dokumentationsfunktionen.</div>
+        <a href="https://www.chip.de/downloads/S-IT-LAN-Device-Scanner_187223508.html" target="_blank">→ Zum CHIP-Testbericht</a>
       </div>
     </div>
-
-    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;
-                padding:22px 24px;display:flex;align-items:center;gap:24px;
-                box-shadow:0 2px 8px rgba(0,0,0,.06)">
-      <div style="flex-shrink:0;text-align:center;width:88px">
-        <div style="font-size:30px;line-height:1">📰</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.3">
-          Artikel &amp;<br>Community
-        </div>
-      </div>
-      <div style="flex:1;border-left:3px solid var(--border);padding-left:20px">
-        <div style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px">
-          Deskmodder.de
-        </div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px">
-          Auf Deskmodder – einem der aktivsten deutschen Windows-Blogs – wurde der
-          S-IT LAN Device Scanner als Werkzeug vorgestellt, mit dem sich Geräte im eigenen
-          Netzwerk scannen und auflisten lassen.
-        </div>
-        <a href="https://www.deskmodder.de/blog/2026/03/27/s-it-lan-scanner-geraete-im-einen-netzwerk-scannen-und-auflisten/"
-           target="_blank"
-           style="display:inline-block;background:var(--blue);color:#fff;
-                  font-size:12px;font-weight:600;padding:6px 14px;border-radius:4px;
-                  text-decoration:none">
-          → Zum Deskmodder-Artikel
-        </a>
+    <div class="mention-card">
+      <div class="mention-icon"><div class="em">📰</div><div class="sub">Artikel &amp;<br>Community</div></div>
+      <div class="mention-body">
+        <div class="name">Deskmodder.de</div>
+        <div class="desc">Auf Deskmodder &ndash; einem der aktivsten deutschen Windows-Blogs &ndash; wurde der S-IT LAN Device Scanner als Werkzeug vorgestellt, mit dem sich Geräte im eigenen Netzwerk scannen und auflisten lassen.</div>
+        <a href="https://www.deskmodder.de/blog/2026/03/27/s-it-lan-scanner-geraete-im-einen-netzwerk-scannen-und-auflisten/" target="_blank">→ Zum Deskmodder-Artikel</a>
       </div>
     </div>
-
-    <div style="background:#fff;border:1px solid var(--border);border-radius:6px;
-                padding:22px 24px;display:flex;align-items:center;gap:24px;
-                box-shadow:0 2px 8px rgba(0,0,0,.06)">
-      <div style="flex-shrink:0;text-align:center;width:88px">
-        <div style="font-size:30px;line-height:1">📦</div>
-        <div style="font-size:11px;color:var(--muted);margin-top:6px;line-height:1.3">
-          Download-<br>Portal
-        </div>
-      </div>
-      <div style="flex:1;border-left:3px solid var(--border);padding-left:20px">
-        <div style="font-size:15px;font-weight:700;color:var(--primary);margin-bottom:4px">
-          WinTotal.de
-        </div>
-        <div style="font-size:13px;color:var(--muted);line-height:1.6;margin-bottom:10px">
-          Gelistet bei WinTotal – einem der bekanntesten deutschen Software-Portale für
-          Windows-Freeware.
-        </div>
-        <a href="https://www.wintotal.de/download/s-it-lan-device-scanner/"
-           target="_blank"
-           style="display:inline-block;background:var(--blue);color:#fff;
-                  font-size:12px;font-weight:600;padding:6px 14px;border-radius:4px;
-                  text-decoration:none">
-          → Zum WinTotal-Eintrag
-        </a>
+    <div class="mention-card">
+      <div class="mention-icon"><div class="em">📦</div><div class="sub">Software-<br>Archiv</div></div>
+      <div class="mention-body">
+        <div class="name">WinTotal.de</div>
+        <div class="desc">Im Software-Archiv von WinTotal &ndash; einem der bekanntesten deutschen Portale für Windows-Freeware &ndash; gelistet und beschrieben.</div>
+        <a href="https://www.wintotal.de/download/s-it-lan-device-scanner/" target="_blank">→ Zum WinTotal-Eintrag</a>
       </div>
     </div>
   </div>
 
   <!-- FIRMENKUNDEN -->
   <div class="info-box" style="text-align:center; font-size:12px; color:var(--muted);">
-    Sie setzen den LAN Device Scanner gewerblich ein und wünschen persönliche Unterstützung bei der Einrichtung?
+    Sie setzen den S-IT LAN Device Scanner gewerblich ein und wünschen persönliche Unterstützung bei der Einrichtung?
     <a href="mailto:tool-entwicklung@sattler-it.de?subject=Anfrage%20S-IT%20LAN%20Device%20Scanner%20f%C3%BCr%20Unternehmen&body=Hallo%2C%0A%0Aich%20interessiere%20mich%20f%C3%BCr%20pers%C3%B6nliche%20Unterst%C3%BCtzung%20rund%20um%20den%20S-IT%20LAN%20Device%20Scanner%20f%C3%BCr%20mein%20Unternehmen.%0A%0AName%2FFirma%3A%20%0A%0AViele%20Gr%C3%BC%C3%9Fe"
        style="color:var(--blue)">Kurze Anfrage per E-Mail</a> genügt.
   </div>
 
   <!-- DONATION -->
   <div class="info-box" style="text-align:center">
-    <strong>☕ S-IT-Tools gefallen dir?</strong><br>
-    Über eine kleine Unterstützung freue ich mich:<br><br>
+    <strong>☕ Der S-IT LAN Device Scanner gefällt Ihnen?</strong><br>
+    Die S-IT-Tools werden kostenlos entwickelt und gepflegt. Über eine kleine Unterstützung freue ich mich:<br><br>
     <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
-       style="background:#2980B9;color:#fff;padding:8px 20px;border-radius:4px;
-              text-decoration:none;font-size:13px;font-weight:600">
-      PayPal – tool-entwicklung@sattler-it.de
+       style="background:#2980B9;color:#fff;padding:8px 20px;border-radius:4px;text-decoration:none;font-size:13px;font-weight:600">
+      PayPal &ndash; tool-entwicklung@sattler-it.de
     </a>
   </div>
 
@@ -735,7 +466,7 @@
   © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp; Autor: Hans Udo Sattler &nbsp;•&nbsp;
   <a href="https://sattlerit.github.io/sattlerit-tools/">Tool-Übersicht</a> &nbsp;•&nbsp;
   <a href="https://sattlerit.github.io/sattlerit-tools/neuigkeiten.html">Neuigkeiten</a> &nbsp;•&nbsp;
-  <a href="Disclaimer.txt">Haftungsausschluss</a> &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Lizenz &amp; Haftungsausschluss</a> &nbsp;•&nbsp;
   <a href="https://sattlerit.github.io/sattlerit-tools/impressum.html">Impressum</a> &nbsp;•&nbsp;
   <a href="https://sattlerit.github.io/sattlerit-tools/datenschutz.html">Datenschutz</a>
 </footer>

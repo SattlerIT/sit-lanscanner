@@ -39,7 +39,7 @@
   th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
   td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
   tr:nth-child(even) td { background: #F8F9FA; }
-  .btn-demo { display: inline-block; padding: 4px 12px; border-radius: 4px;
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
               font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
   .btn-green  { background: #27AE60; }
   .btn-blue   { background: #3498DB; }
@@ -68,8 +68,7 @@
 <body>
 <header>
   <h1>📖 S-IT LAN Device Scanner – Hilfe</h1>
-  <p>Version 4.0 &nbsp;•&nbsp; Build 2026.10.09 &nbsp;•&nbsp;
-     © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+  <p>Version 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
 </header>
 
 <nav>
@@ -79,7 +78,9 @@
   <a href="#ergebnisse">Ergebnisse verstehen</a>
   <a href="#einstellungen">Einstellungen</a>
   <a href="#custom">Eigene Zuordnungen</a>
+  <a href="#internet">Internet-Erreichbarkeit</a>
   <a href="#lan-performance">LAN-Performance</a>
+  <a href="#wlan-profile">WLAN-Profile</a>
   <a href="#firewall">Firewall &amp; Ports</a>
   <a href="#diag">Diagnose</a>
   <a href="#dateien">Dateien &amp; Updates</a>
@@ -96,9 +97,11 @@
       <li><a href="#scan">Scan durchführen</a></li>
       <li><a href="#ergebnisse">Scan-Ergebnisse verstehen</a></li>
       <li><a href="#einstellungen">Einstellungen</a></li>
-      <li><a href="#custom">Eigene Gerätezuordnungen (S-IT-Custom.ini)</a></li>
+      <li><a href="#custom">Eigene Angaben zu Geräten (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Tab 2: Internet-Erreichbarkeit</a></li>
       <li><a href="#lan-performance">Tab 4: LAN-Performance &amp; WLAN</a></li>
-      <li><a href="#firewall">Tab 5: Firewall &amp; Ports</a></li>
+      <li><a href="#wlan-profile">Tab 5: WLAN-Profile</a></li>
+      <li><a href="#firewall">Tab 6: Firewall &amp; Ports</a></li>
       <li><a href="#diag">Diagnose (DIAG) – für Tester</a></li>
       <li><a href="#dateien">Dateien, Updates und Sicherung</a></li>
       <li><a href="#faq">Häufige Fragen (FAQ)</a></li>
@@ -110,7 +113,7 @@
   <div class="box">
     <h3>Erster Scan in 3 Schritten</h3>
     <ol>
-      <li><strong>Programm starten</strong> – <code>S-IT-LanScanner.exe</code> doppelklicken.
+      <li><strong>Programm starten</strong> – <code>sit-lsc-start.exe</code> doppelklicken.
           Bei Bedarf Administratorrechte bestätigen (für ARP-Scan empfohlen).</li>
       <li><strong>Netzwerk wählen</strong> – Im Dropdown oben links das gewünschte
           Netzwerk auswählen (wird automatisch erkannt).</li>
@@ -128,7 +131,7 @@
   <h2 id="oberflaeche">2. Programmoberfläche im Überblick</h2>
   <div class="box">
     <h3>Schaltflächen in der Toolbar</h3>
-    <p>Die Toolbar im Tab „LAN-Scanner" enthält die Scan-Funktionen:</p>
+    <p>Die Toolbar im Tab „LAN-Scanner“ enthält die Scan-Funktionen:</p>
     <table>
       <tr><th>Schaltfläche</th><th>Funktion</th></tr>
       <tr><td><span class="btn-demo btn-green">▶ Scan starten</span></td>
@@ -140,6 +143,9 @@
       <tr><td><span class="btn-demo btn-dark">🔄 OUI-Update</span></td>
           <td>Öffnet die OUI-Verwaltung: Hersteller-DB aktualisieren
               und eigene Zuordnungen pflegen</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Verbindungsqualität</span></td>
+          <td>Misst Paketverlust, Antwortzeit und Schwankung zu einem Ziel und
+              zum Gateway (siehe Abschnitt 4)</td></tr>
     </table>
 
     <h3>Buttons im Header (immer sichtbar)</h3>
@@ -150,7 +156,7 @@
       <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
           <td>Öffnet die Diagnose-Werkzeuge. Nur sichtbar, wenn unter
               <strong>⚙ Konfig → Diagnose</strong> eingeschaltet – im Normalbetrieb
-              ausgeblendet. Siehe Abschnitt 9.</td></tr>
+              ausgeblendet. Siehe Abschnitt 11.</td></tr>
       <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Konfig</span></td>
           <td>Öffnet die Einstellungen – enthält rechts die <strong>Darstellungsgröße / Skalierung</strong>
               (90–300 %) für HiDPI- und UHD-Monitore.</td></tr>
@@ -165,9 +171,10 @@
     <h3>Tabs</h3>
     <ul>
       <li><strong>LAN-Scanner</strong> – Hauptansicht mit der Geräteliste</li>
-      <li><strong>Internet-Erreichbarkeit</strong> – Ping-Diagnose zu konfigurierbaren Zielen</li>
+      <li><strong>Internet-Erreichbarkeit</strong> – Internetverbindung prüfen, LAN-Verbindungsweg, Geschwindigkeitstest und Domain-Auskunft (siehe Abschnitt 7)</li>
       <li><strong>Netzwerk-Einstellungen</strong> – Netzwerk-Tools und Diagnose</li>
       <li><strong>LAN-Performance &amp; WLAN</strong> – Geschwindigkeitstest, Verbindungsstatus und WLAN-Übersicht</li>
+      <li><strong>📶 WLAN-Profile</strong> – gespeicherte WLAN-Netze samt Passwort anzeigen, sichern und auf einem anderen PC einspielen; dazu die eigene Verbindung im Vergleich der WLAN-Standards, die WLANs in Reichweite und der WLAN-Bericht</li>
       <li><strong>🛡 Firewall &amp; Ports</strong> – zwei Spalten: links die Erreichbarkeit eines Geräts im Netz prüfen und bei Bedarf eine Ausnahme eintragen, rechts einen Port auf diesem PC prüfen und freigeben (Adminrechte nötig)</li>
     </ul>
   </div>
@@ -207,8 +214,8 @@
     </div>
 
     <h3>Scan-Intensität</h3>
-    <p>Die Scan-Intensität bestimmt wie aggressiv das Netzwerk abgefragt wird.
-       Einstellbar unter <strong>⚙ Konfigurieren → Scan-Intensität</strong>:</p>
+    <p>Die Scan-Intensität bestimmt, wie aggressiv das Netzwerk abgefragt wird.
+       Einstellbar unter <strong>⚙ Konfig → Scan-Intensität</strong>:</p>
     <table>
       <tr><th>Modus</th><th>Methode</th><th>Empfehlung</th></tr>
       <tr><td><strong>Sicher</strong></td>
@@ -219,15 +226,32 @@
           <td>Ping + ARP-Scan</td>
           <td>Für Heimnetzwerke – findet mehr Geräte als der sichere Modus</td></tr>
       <tr><td><strong>Intensiv</strong></td>
-          <td>Ping + ARP + Scapy</td>
-          <td>Für professionelle Umgebungen. Benötigt Administratorrechte.
-              Kann auf manchen Routern die Verbindung kurzzeitig unterbrechen</td></tr>
+          <td>Ping + ARP-Scan in zwei Durchgängen</td>
+          <td>Für professionelle Umgebungen. Kann auf manchen Routern die Verbindung kurzzeitig unterbrechen</td></tr>
     </table>
     <div class="warn">
       <strong>Hinweis zu Druckern:</strong> Ältere Netzwerkdrucker (z.B. Brother HL-Modelle)
       können auf aggressive ARP-Floods mit einem Verbindungsausfall reagieren.
-      Nutzen Sie in solchen Netzwerken den Modus <strong>Sicher</strong>.
+      Nutzen Sie in solchen Netzwerken die Scan-Intensität <strong>Sicher</strong>.
     </div>
+
+    <h3>Nachsuche für fehlende Geräte</h3>
+    <p>Manche Geräte antworten nicht beim ersten Mal, etwa im Stromsparmodus oder
+       bei schwachem Funksignal, und manche beantworten Ping grundsätzlich nicht.
+       Die Nachsuche fragt deshalb gezielt nach – nur bei Adressen, die noch nicht
+       geantwortet haben. Einstellbar unter
+       <strong>⚙ Konfig → Nachsuche für fehlende Geräte</strong>:</p>
+    <ul>
+      <li><strong>Aus</strong> – keine Nachsuche.</li>
+      <li><strong>Bekannte Adressen</strong> (Voreinstellung) – Adressen, unter denen
+          bei früheren Scans ein Gerät war, werden ein zweites Mal mit mehr Geduld
+          gefragt. Geräte ohne offenen Port bekommen einen zweiten Versuch auf ihrer
+          Weboberfläche. Dauert wenige Sekunden.</li>
+      <li><strong>Alle stillen Adressen</strong> – zusätzlich werden bei allen Adressen
+          ohne Antwort typische Ports abgefragt. So erscheinen auch Geräte, die Ping
+          nicht beantworten, zum Beispiel Sprachassistenten oder Windows-PCs mit
+          geschlossener Firewall. Dauert merklich länger.</li>
+    </ul>
 
     <h3>Port-Scan</h3>
     <p>Der optionale Port-Scan (aktivierbar in den Einstellungen) prüft bekannte
@@ -245,14 +269,35 @@
       <tr><td>🌐</td><td>Web-Interface verfügbar – anklicken öffnet den Browser</td></tr>
       <tr><td>IP-Adresse</td><td>Aktuelle IP im Netzwerk</td></tr>
       <tr><td>Hostname</td><td>Name des Geräts (per DNS/NetBIOS aufgelöst)</td></tr>
+      <tr><td>Gerätename</td><td>Name oder Modell, das das Gerät selbst meldet (z.B. FRITZ!-Geräte,
+          Drucker, Fernseher, NAS) – oder Ihr eigener Name wie „Kamera Hof“</td></tr>
       <tr><td>MAC-Adresse</td><td>Hardware-Adresse der Netzwerkkarte</td></tr>
       <tr><td>Hersteller</td><td>Aus der OUI-Datenbank ermittelt</td></tr>
       <tr><td>Offene Ports</td><td>Gefundene Dienste (nur bei aktiviertem Port-Scan)</td></tr>
       <tr><td>Betriebssystem</td><td>Erkanntes OS (TTL + Hostname + Hersteller + Ports)</td></tr>
-      <tr><td>Info</td><td>Zusätzliche Geräteinformationen</td></tr>
+      <tr><td>Gerätetyp</td><td>Router, Drucker, NAS, Kamera, Smartphone/Tablet usw. – siehe unten</td></tr>
     </table>
 
+    <h3>Gerätetyp</h3>
+    <p>Das Programm ordnet jedes Gerät anhand mehrerer Hinweise einem Typ zu:
+       Hersteller, Hostname, Antwortverhalten und – bei aktiviertem Port-Scan – die
+       offenen Ports. Mögliche Typen sind Router, Netzwerkgerät, Windows-PC, Server,
+       Mac, Linux-Rechner, Drucker, NAS, Smartphone/Tablet, Kamera, Smart-Home-Gerät,
+       TV/Medien, VoIP-Telefon und virtuelle Maschine.</p>
+    <p>Ist die Einordnung nicht eindeutig, bleibt das Feld <strong>leer</strong> –
+       eine fehlende Angabe ist hier besser als eine falsche. Wissen Sie selbst, was
+       ein Gerät ist, tragen Sie es über <strong>Rechtsklick → „Gerät beschriften …“</strong>
+       ein (Abschnitt 6). Eigene Angaben haben immer Vorrang und sind in der Liste
+       mit <strong>✏</strong> markiert.</p>
+
+    <h3>Spalten ein- und ausblenden</h3>
+    <p>Über <strong>„☰ Spalten …“</strong> oberhalb der Geräteliste lassen sich
+       einzelne Spalten aus- und wieder einblenden. Das gilt nur für die Anzeige:
+       Log, CSV und HTML-Report enthalten immer alle Spalten.</p>
+
     <h3>Zeilenfarben</h3>
+    <p>Die Farbe richtet sich nach dem Gerätetyp. Ist kein Typ bekannt, nach
+       Betriebssystem, Hersteller und offenen Ports.</p>
     <table>
       <tr><th>Farbe</th><th>Bedeutung</th></tr>
       <tr><td style="background:#CCE5F5">Blau</td><td>Windows-PC oder Windows-Server</td></tr>
@@ -282,17 +327,45 @@
       <li>Details anzeigen</li>
       <li>Web-Interface öffnen (falls verfügbar)</li>
       <li>Ping-Monitor starten (Dauerpinging mit Verlaufsanzeige)</li>
+      <li>Verbindungsqualität messen …</li>
       <li>Wake-on-LAN senden</li>
       <li>IP oder MAC kopieren</li>
-      <li>Gerät einzeln neu scannen</li>
-      <li><strong>Eigene Zuordnung setzen</strong> – falsche Erkennung dauerhaft korrigieren</li>
+      <li>Gerät neu scannen</li>
+      <li><strong>Gerät beschriften …</strong> – Gerätename, Hersteller und Gerätetyp
+          dauerhaft festlegen (Abschnitt 6)</li>
     </ul>
+
+    <h3>📶 Verbindungsqualität</h3>
+    <p>Wenn Telefonie oder Video stocken oder ein Gerät nur zeitweise erreichbar ist,
+       zeigt diese Messung, ob die Störung im eigenen Netz liegt oder dahinter.
+       Aufruf über den Knopf <span class="btn-demo" style="background:#16A085;">📶 Verbindungsqualität</span>
+       im Reiter LAN-Scanner, per Rechtsklick auf ein Gerät oder in den
+       Gerätedetails.</p>
+    <ol>
+      <li><strong>Ziel wählen</strong> – Internet (8.8.8.8), das Gateway oder ein
+          Gerät aus dem letzten Scan.</li>
+      <li><strong>Messdauer wählen</strong> – 30, 60 oder 120 Sekunden.</li>
+      <li><span class="btn-demo btn-green">▶ Messung starten</span> – gemessen wird
+          gleichzeitig zum Ziel und zum Gateway.</li>
+    </ol>
+    <p>Das Ergebnis nennt für beide Strecken Paketverlust, Antwortzeit und deren
+       Schwankung und bewertet sie in zwei Teilen: die <strong>Verbindung</strong>
+       (nach dem Paketverlust) und die Eignung für <strong>Telefonie und
+       Video</strong> (nach Antwortzeit und Schwankung). Sind die Werte zum Gateway
+       gut und zum Ziel schlecht, liegt die Ursache hinter dem Router.
+       Mit <strong>📋 Ergebnis kopieren</strong> lässt es sich weitergeben.</p>
+    <div class="info">
+      <strong>ℹ Kameras und ähnliche Geräte:</strong> Viele Geräte beantworten Ping nur
+      nebenbei. Eine hohe Schwankung zeigt dort oft die Auslastung des Geräts und
+      nicht die Qualität des Netzes. Maßgeblich ist bei solchen Geräten der
+      Paketverlust.
+    </div>
   </div>
 
   <!-- EINSTELLUNGEN -->
   <h2 id="einstellungen">5. Einstellungen</h2>
   <div class="box">
-    <p>Die Einstellungen erreichen Sie über <span class="btn-demo btn-orange">⚙ Konfigurieren</span>.
+    <p>Die Einstellungen erreichen Sie über <span class="btn-demo btn-orange">⚙ Konfig</span>.
        Alle Einstellungen werden automatisch in der Datei
        <code>S-IT-LanScanner.ini</code> gespeichert.</p>
 
@@ -306,22 +379,44 @@
     <h3>Scan-Intensität</h3>
     <p>Sicher / Standard / Intensiv – siehe Abschnitt 3.</p>
 
+    <h3>Sprache</h3>
+    <p>Unter <strong>⚙ Konfig → Sprache / Language</strong> wählen Sie die Sprache der
+       Programmoberfläche: Deutsch, Englisch, Niederländisch, Spanisch, Französisch,
+       Italienisch, Polnisch, Kroatisch oder Tschechisch. Die neue Sprache wirkt nach
+       einem Neustart des Programms; das Programm bietet ihn beim Speichern an.
+       Die Hilfe öffnet sich danach ebenfalls in der gewählten Sprache.</p>
+
     <h3>Darstellung</h3>
     <ul>
       <li><strong>Dezent</strong> – ruhige Pastelltöne, für professionellen Einsatz</li>
       <li><strong>Kontrastreich</strong> – kräftigere Farben, besser unterscheidbar</li>
+      <li><strong>🌙 Dunkle Darstellung</strong> – dunkle Hintergründe und helle
+          Schrift in allen Fenstern des Programms, angenehmer bei langer Arbeit am
+          Bildschirm. Die Zeilen der Geräteliste behalten ihre Farbe nach
+          Gerätetyp, nur dunkler. Wirkt nach einem Neustart; das Programm bietet
+          ihn beim Speichern an. Meldungsfenster von Windows und die Berichte im
+          Browser bleiben hell.</li>
       <li><strong>Schriftgröße</strong> – Klein (8 pt), Normal (9 pt), Groß (11 pt).
-          Bei 4K-Bildschirmen oder hohen Auflösungen empfiehlt sich „Groß"</li>
+          Bei 4K-Bildschirmen oder hohen Auflösungen empfiehlt sich „Groß“</li>
     </ul>
 
     <h3>HTML-Report</h3>
-    <p>Wenn <strong>„HTML-Report nach Scan automatisch im Browser öffnen"</strong>
+    <p>Wenn <strong>„HTML-Report nach Scan automatisch im Browser öffnen“</strong>
        aktiviert ist, öffnet sich der Scan-Report nach jedem Scan automatisch im
        Standard-Browser. Dies kann hier deaktiviert werden.</p>
 
     <h3>Log-Verzeichnis</h3>
     <p>Hier können Sie festlegen, wo Scan-Logs und HTML-Reports gespeichert werden.
-       Standard: <code>[Programmverzeichnis]\Logs</code></p>
+       Standard: <code>Logs</code> neben <code>sit-lsc-start.exe</code></p>
+
+    <h3>Wartezeit für Netzlaufwerke</h3>
+    <p>Gilt für den LAN-Dauertest mit einem Ziel im Netzwerk
+       (<code>\\NAS\Freigabe</code> oder ein verbundenes Netzlaufwerk wie
+       <code>U:</code>). Eine NAS, deren Festplatten ruhen, braucht nach der ersten
+       Anfrage einige Sekunden, bis die Freigabe erreichbar ist. Das Programm fragt
+       deshalb bis zur eingestellten Zeit alle 3 Sekunden erneut an und meldet erst
+       danach, dass das Ziel nicht erreichbar ist. Wählbar sind 0, 30, 60 und
+       120 Sekunden; Vorgabe ist 60.</p>
 
     <h3>Darstellungsgröße / Skalierung</h3>
     <p>Skaliert die gesamte Oberfläche. Wählbar sind <strong>90 / 100 / 125 / 150 /
@@ -338,10 +433,9 @@
     </div>
 
     <h3>Programmstart</h3>
-    <p>Das Kästchen <strong>„🛡 Als Administrator starten"</strong> (Voreinstellung
+    <p>Das Kästchen <strong>„🛡 Als Administrator starten“</strong> (Voreinstellung
        <strong>an</strong>) fordert die Administratorrechte gleich beim Programmstart
-       an. Der Scanner braucht sie für die Netzwerk-Reparatur, den ARP-Cache, den
-       Scapy-Scan und den Firewall-Tab. Beim Start erscheint dann die Windows-Abfrage
+       an. Der Scanner braucht sie für die Netzwerk-Reparatur, den ARP-Cache und den Firewall-Tab. Beim Start erscheint dann die Windows-Abfrage
        (Benutzerkontensteuerung, UAC). Wer bewusst ohne Adminrechte arbeitet, nimmt den
        Haken heraus – dann entfällt die Abfrage, und die genannten Funktionen melden
        bei Bedarf selbst, dass sie Rechte brauchen. Unten links in der Statuszeile zeigt
@@ -350,9 +444,11 @@
        <span class="btn-demo" style="background:#95A5A6;">🛡 kein Admin</span>.</p>
 
     <h3>Fenster</h3>
-    <p>Mit <strong>„🗖 Fenstergröße speichern"</strong> merkt sich das Programm beim
-       Beenden die Größe des Hauptfensters und stellt sie beim nächsten Start wieder
-       her. Die gespeicherte Größe gilt je Skalierungsstufe: nach einem Wechsel der
+    <p>Mit <strong>„🗖 Fenstergröße speichern“</strong> merkt sich das Programm beim Beenden Größe und Position des
+       Hauptfensters – auch auf welchem Monitor es stand – und ob es maximiert war.
+       Beim nächsten Start öffnet es wieder genau so. Ist dieser Monitor nicht mehr
+       angeschlossen, öffnet das Fenster auf dem Hauptbildschirm.
+       Die gespeicherte Größe gilt je Skalierungsstufe: nach einem Wechsel der
        Skalierung startet das Fenster einmal in Standardgröße und merkt sich die Größe
        danach neu – so passen Größe und Platzbedarf immer zusammen.</p>
 
@@ -365,84 +461,213 @@
     </div>
 
     <h3>Diagnose</h3>
-    <p>Das Kästchen <strong>„🔧 DIAG-Werkzeuge anzeigen"</strong> blendet oben im
+    <p>Das Kästchen <strong>„🔧 DIAG-Werkzeuge anzeigen“</strong> blendet oben im
        Header den Knopf <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>
        ein. Standardmäßig ist es <strong>aus</strong> – für den normalen Betrieb wird
-       die Diagnose nicht gebraucht. Näheres in Abschnitt 9.</p>
+       die Diagnose nicht gebraucht. Näheres in Abschnitt 11.</p>
   </div>
 
   <!-- CUSTOM -->
-  <h2 id="custom">6. Eigene Gerätezuordnungen (S-IT-Custom.ini)</h2>
+  <h2 id="custom">6. Eigene Angaben zu Geräten (S-IT-Custom.ini)</h2>
   <div class="box">
-    <p>Manchmal erkennt der Scanner ein Gerät nicht korrekt – zum Beispiel
-       weil ein neues Gerät noch nicht in der OUI-Datenbank ist, oder weil
-       ein Gerät einen ungewöhnlichen TTL-Wert hat. Mit der <strong>S-IT-Custom.ini</strong>
-       können Sie eigene Zuordnungen dauerhaft hinterlegen.</p>
+    <p>Nicht jedes Gerät lässt sich automatisch sicher einordnen – ein neues Gerät
+       fehlt noch in der Hersteller-Datenbank, eine Kamera meldet sich wie ein
+       Linux-Rechner, oder bei mehreren gleichen Geräten soll erkennbar sein, wo
+       welches steht. Dafür tragen Sie eigene Angaben ein. Sie stehen in der
+       Datei <strong>S-IT-Custom.ini</strong> und gelten dauerhaft.</p>
 
     <div class="info">
-      <strong>Wichtig:</strong> Die S-IT-Custom.ini hat <strong>höchste Priorität</strong> –
-      sie überschreibt die OUI-Datenbank und alle automatischen Erkennungen.
-      Sie wird bei OUI-Updates <strong>niemals</strong> überschrieben.
+      <strong>Wichtig:</strong> Eigene Angaben haben <strong>immer Vorrang</strong>
+      vor der automatischen Erkennung. Die S-IT-Custom.ini wird bei OUI-Updates
+      <strong>niemals</strong> überschrieben.
     </div>
 
-    <h3>Methode 1: Rechtsklick direkt in der Geräteliste</h3>
+    <h3>Methode 1: Rechtsklick → „Gerät beschriften …“</h3>
     <p>Das ist der einfachste Weg:</p>
     <ol>
       <li>Scan durchführen</li>
-      <li>Gerät mit falscher Erkennung <strong>rechts anklicken</strong></li>
-      <li><strong>„✏ Eigene Zuordnung setzen …"</strong> wählen</li>
-      <li>Den richtigen Wert eingeben und die gewünschte Speichermethode wählen:
+      <li>Gerät in der Liste <strong>rechts anklicken</strong></li>
+      <li><strong>„✏ Gerät beschriften …“</strong> wählen</li>
+      <li>Die gewünschten Felder ausfüllen:
           <ul>
-            <li><strong>IP-Adresse</strong> – gilt nur für diese eine IP (ideal für feste IPs)</li>
-            <li><strong>Hostname-Pattern</strong> – gilt für alle Geräte mit diesem
-                Hostname-Muster (ideal für Geräte-Typen)</li>
-            <li><strong>OUI / Hersteller</strong> – gilt für alle Geräte dieses Herstellers
-                (ideal wenn alle Geräte einer MAC-Serie falsch erkannt werden)</li>
+            <li><strong>Gerätename</strong> – gilt für dieses Gerät, z.B. Standort
+                oder Raum („Kamera Hof“, „Drucker Büro 2“)</li>
+            <li><strong>Hersteller</strong> – gilt für alle Geräte mit demselben
+                MAC-Präfix</li>
+            <li><strong>Gerätetyp</strong> – aus der Liste wählen oder frei eintragen</li>
           </ul>
       </li>
-      <li>Auf <strong>„✔ Speichern"</strong> klicken – gilt ab dem nächsten Scan</li>
+      <li>Festlegen, wofür der Gerätetyp gilt:
+          <ul>
+            <li><strong>nur dieses Gerät</strong> – über die MAC-Adresse (ohne MAC
+                über die IP-Adresse)</li>
+            <li><strong>alle Geräte mit diesem MAC-Präfix</strong> – z.B. alle
+                Kameras eines Herstellers</li>
+            <li><strong>alle Geräte mit diesem Namensteil</strong> – z.B. alle
+                Geräte, deren Hostname „SmartPlug“ enthält</li>
+          </ul>
+      </li>
+      <li>Speichern – die Angabe erscheint sofort in der Liste.</li>
     </ol>
+    <p>Ein leeres Feld oder <strong>„– automatisch ermitteln –“</strong> entfernt
+       die eigene Angabe wieder; dann gilt die automatische Einordnung.</p>
 
     <h3>Methode 2: OUI-Verwaltungsfenster</h3>
-    <p>Über <span class="btn-demo btn-dark">🔄 OUI-Update</span> → Tab
-       <strong>„✏ Eigene Zuordnungen"</strong> können Sie alle Einträge
-       übersichtlich verwalten: hinzufügen, bearbeiten und löschen.</p>
-    <p>Der Editor hat drei Unter-Tabs:</p>
+    <p>Über <span class="btn-demo btn-dark">🔄 OUI-Update</span> → Reiter
+       <strong>„✏ Eigene Zuordnungen“</strong> sehen Sie alle Einträge in einer
+       Übersicht und können sie hinzufügen, ändern und löschen. Die Unterreiter:</p>
     <ul>
       <li><strong>OUI → Hersteller</strong> – MAC-Präfix (6 Hex-Zeichen) → Hersteller-Name</li>
-      <li><strong>Hostname → OS</strong> – Hostname-Pattern → OS-Bezeichnung</li>
-      <li><strong>IP → OS</strong> – IP-Adresse → OS-Bezeichnung</li>
+      <li><strong>MAC → Name</strong> – MAC-Adresse → eigener Gerätename</li>
+      <li><strong>MAC → Typ</strong> – MAC-Adresse → Gerätetyp (ein einzelnes Gerät)</li>
+      <li><strong>IP → Typ</strong> – IP-Adresse → Gerätetyp (Gerät ohne MAC-Adresse)</li>
+      <li><strong>Hostname → Typ</strong> – Namensteil → Gerätetyp (alle Geräte mit
+          diesem Namensteil)</li>
+      <li><strong>MAC-Präfix → Typ</strong> – MAC-Präfix → Gerätetyp (alle Geräte
+          eines Herstellers)</li>
     </ul>
 
     <h3>Dateiformat S-IT-Custom.ini</h3>
-    <p>Die Datei liegt im Programmordner und kann auch manuell bearbeitet werden:</p>
+    <p>Die Datei liegt im Ordner <code>Config</code> neben <code>sit-lsc-start.exe</code> und kann auch
+       mit einem Texteditor bearbeitet werden. MAC-Adressen werden mit Bindestrichen
+       geschrieben:</p>
     <div class="file-box">
 <span class="comment">; S-IT-Custom.ini – Eigene Prioritäts-Zuordnungen</span><br>
-<span class="comment">; Wird vom OUI-Updater NICHT überschrieben.</span><br>
+<span class="comment">; Wird vom OUI-Update NICHT überschrieben.</span><br>
 <br>
 <span class="section">[OUI]</span><br>
-<span class="comment">; MAC-Präfix (6 Hex) = Hersteller-Bezeichnung</span><br>
+<span class="comment">; MAC-Präfix (6 Hex) = Hersteller</span><br>
 <span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
-<span class="key">B4ADA3</span> = <span class="val">CVTE Smartboard</span><br>
 <br>
-<span class="section">[Hostname]</span><br>
-<span class="comment">; Hostname-Pattern = OS-Bezeichnung</span><br>
-<span class="key">T65Plus</span> = <span class="val">Android</span><br>
-<span class="key">TL-WPA</span> = <span class="val">TP-Link Powerline</span><br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; MAC-Adresse = eigener Gerätename</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera Hof</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; MAC-Adresse = Gerätetyp (dieses Gerät)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
 <br>
 <span class="section">[IP]</span><br>
-<span class="comment">; IP-Adresse = OS-Bezeichnung (höchste Priorität)</span><br>
-<span class="key">192.168.0.38</span> = <span class="val">Embedded (Smartboard)</span><br>
+<span class="comment">; IP-Adresse = Gerätetyp (Gerät ohne MAC)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; Namensteil = Gerätetyp (alle Geräte mit diesem Namensteil)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; MAC-Präfix (6 Hex) = Gerätetyp (alle Geräte eines Herstellers)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
     </div>
 
     <div class="tip">
-      <strong>Prioritätsreihenfolge:</strong> IP-Zuordnung &gt; Hostname-Pattern &gt;
-      OUI-Zuordnung &gt; Automatische Erkennung
+      <strong>Reihenfolge beim Gerätetyp:</strong> einzelnes Gerät (MAC bzw. IP) &gt;
+      Namensteil &gt; MAC-Präfix &gt; automatische Einordnung
+    </div>
+    <div class="info">
+      <strong>ℹ Ältere Einträge:</strong> Bis Version 4.0 legten die Abschnitte
+      <code>[IP]</code> und <code>[Hostname]</code> das Betriebssystem fest. Sie
+      bestimmen jetzt den Gerätetyp; vorhandene Einträge bleiben gültig und
+      erscheinen in der Spalte „Gerätetyp“.
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Tab 2: Internet-Erreichbarkeit</h2>
+  <div class="box">
+    <p>Oben im Reiter wählen Sie eine von vier Prüfungen:</p>
+    <table>
+      <tr><th>Karte</th><th>Wofür</th></tr>
+      <tr><td><strong>🌐 Internet-Erreichbarkeit</strong></td>
+          <td>Prüft, ob dieser PC ins Internet kommt: DNS, Routing, TCP 443, HTTPS,
+              IPv6 und Browser.</td></tr>
+      <tr><td><strong>🔗 LAN-Verbindungsweg</strong></td>
+          <td>Prüft den Weg vom PC über das Gateway zu einem Ziel im eigenen Netz,
+              z.B. über Powerline zur NAS oder zum Router.</td></tr>
+      <tr><td><strong>📶 Geschwindigkeitstest</strong></td>
+          <td>Misst Download, Upload und Ping der Internetverbindung.</td></tr>
+      <tr><td><strong>🏷 Domain-Auskunft</strong></td>
+          <td>Zeigt, bei welchem Anbieter die DNS-Einträge einer Domain verwaltet
+              werden, wer ihre E-Mails annimmt und wo die Webseite liegt.</td></tr>
+    </table>
+
+    <h3>🏷 Domain-Auskunft</h3>
+    <p>Typischer Anlass: Ein Dienstleister soll einen Eintrag der Firmendomain
+       ändern, etwa für einen neuen Mailserver oder eine Bestätigung bei einem
+       Cloud-Dienst, und niemand weiß mehr, wo die Domain verwaltet wird. Die
+       Domain-Auskunft zeigt es mit einer Abfrage. Administratorrechte sind dafür
+       nicht nötig, eine Internetverbindung schon.</p>
+
+    <h4>Bedienung</h4>
+    <ol>
+      <li>Karte <strong>🏷 Domain-Auskunft</strong> wählen.</li>
+      <li>Domain eingeben, z.B. <code>firma.de</code>. Eine Webadresse
+          (<code>https://www.firma.de/kontakt</code>) oder eine E-Mail-Adresse
+          (<code>info@firma.de</code>) geht auch, ebenso Domains mit Umlauten.</li>
+      <li>Auf <span class="btn-demo btn-green">▶ Prüfen</span> klicken oder
+          Enter drücken.</li>
+    </ol>
+    <p>Hat eine eingegebene Unteradresse wie <code>shop.firma.de</code> keine
+       eigenen Nameserver, prüft das Programm die übergeordnete Domain
+       <code>firma.de</code> und nennt das in der Zeile über dem Ergebnis.</p>
+
+    <h4>Ergebnisse</h4>
+    <table>
+      <tr><th>Zeile</th><th>Bedeutung</th></tr>
+      <tr><td><strong>Nameserver</strong></td>
+          <td>Die Server, die im DNS für die Domain zuständig sind.</td></tr>
+      <tr><td><strong>DNS verwaltet bei</strong></td>
+          <td>Der Anbieter dieser Nameserver. Dort werden die DNS-Einträge der
+              Domain geändert.</td></tr>
+      <tr><td><strong>Mailserver</strong></td>
+          <td>Die Server, die E-Mails für die Domain annehmen, mit ihrer Priorität:
+              Der Server mit der kleineren Zahl wird zuerst versucht. Steht dort
+              „keiner eingetragen“, empfängt die Domain keine E-Mails.</td></tr>
+      <tr><td><strong>E-Mail bei</strong></td>
+          <td>Der Anbieter des Mailservers. Steht dahinter „Filterdienst“, nimmt
+              ein Spam- und Virenfilter die E-Mails an und leitet sie an das
+              eigentliche Postfach weiter.</td></tr>
+      <tr><td><strong>Webserver</strong></td>
+          <td>Die Adresse der Webseite (<code>www.firma.de</code>, sonst
+              <code>firma.de</code>) und ihre IP-Adressen.</td></tr>
+      <tr><td><strong>Webseite bei</strong></td>
+          <td>Der Anbieter, bei dem die Webseite liegt.</td></tr>
+    </table>
+    <p>Unter jedem Anbieter stehen in grauer Schrift die Adresse des Servers, sein
+       Rechnername, der Name seines Netzes und dessen Adressbereich.</p>
+
+    <h4>Woher die Angaben stammen</h4>
+    <ul>
+      <li><strong>Anbieter:</strong> Das Programm kennt die Nameserver und
+          Mailserver der gängigen Anbieter, z.B. IONOS, Strato, Cloudflare,
+          Microsoft 365 und Google Workspace. Ist ein Server dort nicht
+          verzeichnet, nennt es den Betreiber seines Netzes laut der zuständigen
+          Vergabestelle, z.B. RIPE für Europa oder ARIN für Nordamerika. In der
+          Klammer steht dann „Netzbetreiber laut RIPE“.</li>
+      <li><strong>Land:</strong> Das Land, in dem das Netz des Servers bei der
+          Vergabestelle registriert ist. Das ist meist der Standort des
+          Rechenzentrums, aber nicht immer: Große Firmen registrieren ihre Netze
+          oft auf den Hauptsitz.</li>
+      <li><strong>„nicht zugeordnet“:</strong> Der Server ist nicht in der Liste,
+          und die Vergabestelle war nicht erreichbar oder nannte keinen
+          Betreiber.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Nameserver und Registrierung:</strong> Wo die DNS-Einträge verwaltet
+      werden, ist meist auch der Anbieter, bei dem die Domain registriert ist. Bei
+      DNS-Diensten wie Cloudflare kann die Domain bei einem anderen Anbieter
+      liegen.
+    </div>
+    <div class="tip">
+      <strong>Tipp:</strong> <span class="btn-demo btn-blue">📋 Ergebnis kopieren</span>
+      legt das Ergebnis als Text mit Datum und Uhrzeit in die Zwischenablage,
+      z.B. für eine E-Mail an den Kunden oder den Dienstleister.
     </div>
   </div>
 
   <!-- LAN-PERFORMANCE -->
-  <h2 id="lan-performance">7. Tab 4: LAN-Performance &amp; WLAN</h2>
+  <h2 id="lan-performance">8. Tab 4: LAN-Performance &amp; WLAN</h2>
   <div class="box">
     <h3>LAN-Geschwindigkeitstest</h3>
     <p>Misst die tatsächliche Schreib- und Lesegeschwindigkeit zu einer
@@ -450,16 +675,22 @@
 
     <h4>Voraussetzungen</h4>
     <ul>
-      <li>Eine erreichbare Netzwerkfreigabe (z.B. <code>\\192.168.0.53\share</code>)</li>
+      <li>Eine erreichbare Netzwerkfreigabe (z.B. <code>\\NAS-Name\Daten</code>) oder
+          ein verbundenes Netzlaufwerk (z.B. <code>U:</code>)</li>
       <li>Schreibrechte auf der Freigabe</li>
     </ul>
+    <p>Schläft die NAS, wartet das Programm bis zur eingestellten
+       <strong>Wartezeit für Netzlaufwerke</strong> (Abschnitt 5), bevor es meldet,
+       dass das Ziel nicht erreichbar ist. Führt Windows ein Netzlaufwerk als
+       „nicht verfügbar“ (rotes Kreuz im Explorer), verbindet das Programm es neu,
+       wie es der Explorer beim Anklicken tut.</p>
 
     <div class="warn">
       <strong>Wichtig: Der Servername allein genügt nicht.</strong><br>
       <code>\\NAS-Name</code> zeigt im Explorer nur die <em>Liste</em> der Freigaben –
       dort lässt sich keine Datei anlegen, der Test schlägt fehl. Es muss die Freigabe
       selbst angegeben werden, also z.B. <code>\\NAS-Name\Daten</code>.
-      Am einfachsten über <strong>📁</strong> auswählen, dann stimmt der Pfad immer.
+      Am einfachsten über <strong>📂</strong> auswählen, dann stimmt der Pfad immer.
       Neben dem Eingabefeld erklärt das auch der <strong>ⓘ</strong>-Knopf.
     </div>
 
@@ -468,7 +699,7 @@
 
     <h4>Bedienung</h4>
     <ol>
-      <li>Ziel eingeben oder über <strong>📁</strong> auswählen. Der Pfad wird
+      <li>Ziel eingeben oder über <strong>📂</strong> auswählen. Der Pfad wird
           <strong>vor</strong> dem Start geprüft; stimmt etwas nicht, erklärt eine
           Meldung genau was fehlt.</li>
       <li>Chunk-Größe wählen (1–64 MB pro Messzyklus)</li>
@@ -476,6 +707,9 @@
           kontinuierlich und aktualisiert die Live-Kurve</li>
       <li><span class="btn-demo btn-red">⏹ Stoppen</span> – beendet den Test</li>
     </ol>
+    <p>Wird während des Tests ein anderer Reiter geöffnet, fragt das Programm, ob
+       der Test gestoppt werden soll. Mit <strong>Nein</strong> bleibt der Reiter LAN-Performance &amp; WLAN offen und der Test läuft weiter. Beim Beenden des Programms
+       wird der Test gestoppt und die Testdatei gelöscht.</p>
 
     <h4>Ergebnisse</h4>
     <ul>
@@ -488,11 +722,11 @@
     <div class="warn">
       <strong>Lokale Laufwerke:</strong> Bei lokalen Laufwerken (z.B. C:\, D:\) können
       die Messwerte durch den <strong>Windows-Dateisystem-Cache</strong> erheblich
-      verfälscht sein – der Cache meldet „fertig" bevor die Daten wirklich
+      verfälscht sein – der Cache meldet „fertig“ bevor die Daten wirklich
       auf der Platte sind. Werte von mehreren tausend Mbit/s auf einer normalen
       HDD sind daher kein realistisches Ergebnis. Für aussagekräftige Messungen
       immer einen <strong>Netzwerkpfad</strong> (UNC-Pfad wie
-      <code>\\Server\Freigabe</code>) verwenden.
+      <code>\\Server\Freigabe</code> oder ein Netzlaufwerk) verwenden.
     </div>
 
     <div class="tip">
@@ -509,40 +743,168 @@
 
   <!-- WLAN -->
   <div class="box">
-    <h3>WLAN-Verbindungsübersicht</h3>
-    <p>Im dunkelgrauen WLAN-Kasten rechts sehen Sie die aktuelle WLAN-Verbindung:</p>
+    <h3>WLAN- und LAN-Kachel</h3>
+    <p>Rechts im Reiter stehen nebeneinander die <strong>WLAN-Kachel</strong> und die
+       <strong>LAN-Kachel</strong>, darunter IPv4-Adresse und Gateway. Beide Kacheln
+       sind gleich aufgebaut: oben der Zustand, darunter der Adapter mit dem Namen,
+       unter dem er auch im Geräte-Manager steht.</p>
+    <p>Die WLAN-Kachel zeigt bei bestehender Verbindung:</p>
     <ul>
-      <li>SSID und Verbindungsstatus</li>
-      <li>Signalstärke als farbiger Balken (grün ≥ 70%, gelb ≥ 40%, rot &lt; 40%)</li>
-      <li>Kanal, Frequenzband (2,4 / 5 GHz), Wi-Fi-Standard</li>
-      <li>Senderate (⬆) und Empfangsrate (⬇) der WLAN-Verbindung</li>
+      <li>Netzwerkname und Verbindungsstatus</li>
+      <li>Signalstärke als farbiger Balken (grün gut, gelb mittel, rot schwach)</li>
+      <li>Kanal, Frequenzband und Funkstandard (z.B. Wi-Fi 6)</li>
+      <li><strong>⬆ Verbindungsrate</strong> – die Rate, die Windows für die
+          Verbindung meldet</li>
+      <li><strong>⬇ Empfangsrate</strong> – nur während des LAN-Dauertests (siehe
+          unten)</li>
     </ul>
+    <p>Ist keine Verbindung da, nennt die Kachel den Grund:
+       <strong>Adapter deaktiviert</strong> (im Geräte-Manager oder in den
+       Netzwerkverbindungen abgeschaltet), <strong>Nicht verbunden</strong> oder
+       <strong>Kein WLAN-Adapter</strong>. Die LAN-Kachel unterscheidet zusätzlich
+       <strong>Kein Kabel angeschlossen</strong>.</p>
     <div class="info">
-      <strong>ℹ LAN + WLAN gleichzeitig:</strong> Das Programm erkennt beide Verbindungswege
-      gleichzeitig. Die aktive Verbindung wird als Hauptverbindung angezeigt; verfügbare,
-      aber gerade inaktive Hardware erscheint als Zusatzinfo (z.B. „LAN verfügbar: 1 Gbps").
-      Der Verbindungsstatus wird automatisch alle 15 Sekunden aktualisiert –
-      ein Wechsel von LAN auf WLAN wird ohne Neustart erkannt.
-      Über den <strong>🔄 Aktualisieren</strong>-Button in der WLAN-Kachel kann
-      sofort manuell aktualisiert werden.
+      <strong>ℹ Empfangsrate nur während des Dauertests:</strong> Die Empfangsrate,
+      die Windows meldet, ist nur aussagekräftig, solange Daten fließen. Ohne
+      Datenverkehr fällt sie auf niedrige Werte zurück, obwohl die Verbindung gut ist.
+      Die Kachel zeigt sie deshalb nur, während der LAN-Dauertest läuft – dann
+      lassen sich Empfangsrate und gemessene Schreib- und Leserate direkt
+      vergleichen. Nach Start und Stopp des Tests wird die Kachel sofort
+      aktualisiert.
     </div>
     <div class="info">
-      <strong>ℹ Hinweis zum WLAN-Empfang:</strong> Der Scanner zeigt nur Netze,
-      die der WLAN-Adapter aktuell empfängt. Bei einer 5-GHz-Verbindung können
-      2,4-GHz-Netze je nach Treiber fehlen – das ist keine Fehlfunktion.
+      <strong>ℹ Standortfreigabe:</strong> Signalstärke, Kanal und Funkstandard gibt
+      Windows 11 nur heraus, wenn Desktop-Apps auf den Standort zugreifen dürfen.
+      Fehlt die Freigabe, steht in der Kachel ein Hinweis mit dem Knopf
+      <strong>„→ Standort-Einstellungen öffnen“</strong>. Den Netzwerknamen nimmt
+      das Programm dann aus der Windows-Netzwerkliste und weist darauf hin, dass er
+      vom WLAN-Namen abweichen kann (z.B. „Heimnetz 2“).
+    </div>
+    <div class="info">
+      <strong>ℹ Aktualisierung:</strong> Beide Kacheln werden alle 10 Sekunden
+      aktualisiert; ein Wechsel von LAN auf WLAN oder ein nachträglich eingesteckter
+      USB-WLAN-Stick wird ohne Neustart erkannt. Mit <strong>🔄 Aktualisieren</strong>
+      geht es sofort.
     </div>
   </div>
 
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Tab 5: WLAN-Profile</h2>
+  <div class="box">
+    <p>Dieser Reiter zeigt die auf diesem PC gespeicherten WLAN-Netze samt Passwort
+       und überträgt sie auf einen anderen PC – etwa beim Umzug auf einen neuen
+       Rechner. Rechts daneben sehen Sie, wie gut die eigene WLAN-Verbindung im
+       Vergleich der WLAN-Standards ist und welche WLANs in Reichweite sind.</p>
+
+    <div class="warn">
+      <strong>⚠ Adminrechte nötig:</strong> Auslesen, Sichern und Einspielen der
+      Profile gehen nur mit Administratorrechten. Läuft das Programm ohne, steht
+      oben im Reiter ein Hinweis, und die betreffenden Knöpfe sind gesperrt.
+    </div>
+
+    <h3>Linke Spalte: Knöpfe und gespeicherte Profile</h3>
+    <table>
+      <tr><th>Knopf</th><th>Funktion</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  WLAN-Passwörter auslesen</span></td>
+          <td>Liest alle gespeicherten WLAN-Profile samt Passwort aus und füllt die
+              Liste darunter.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Protokoll anzeigen</span></td>
+          <td>Öffnet das Protokoll des Auslesens. Passwörter stehen dort nicht.
+              Es liegt im Log-Ordner (<code>WLAN-Profile_&lt;Datum&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Passwort anzeigen</span></td>
+          <td>Zeigt das Passwort des in der Liste gewählten Netzes – mit Kopieren und
+              Drucken. Ein Doppelklick auf das Netz bewirkt dasselbe.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Profile sichern</span></td>
+          <td>Sichert alle Profile samt Passwort in einen Ordner, z.B. auf einem
+              USB-Stick. Dort entsteht ein Unterordner
+              <code>WLAN-Profile_&lt;PC-Name&gt;_&lt;Datum&gt;</code>.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Profile einspielen</span></td>
+          <td>Spielt eine solche Sicherung auf diesem PC ein, für alle Benutzer.
+              Danach wird angeboten, die Sicherung zu löschen.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  WLAN-Bericht (HTML)</span></td>
+          <td>Erstellt den WLAN-Bericht (siehe unten).</td></tr>
+    </table>
+    <p>Die Liste <strong>„Gespeicherte Profile“</strong> nennt zu jedem Netz seinen
+       Zustand: <strong>verbunden</strong>, <strong>in Reichweite</strong> oder
+       <strong>nicht in Reichweite</strong>. Netze ohne Passwort sind als solche
+       gekennzeichnet.</p>
+
+    <div class="danger">
+      <strong>Die Sicherung enthält die Passwörter im Klartext.</strong> Bewahren
+      Sie den Ordner bzw. USB-Stick entsprechend auf und löschen Sie die Sicherung,
+      wenn sie eingespielt ist – das Programm bietet das nach ⑤ an. Eine ausgedruckte
+      Passwort-Seite wird als Datei nach einer Minute und beim Beenden des Programms
+      wieder gelöscht.
+    </div>
+
+    <h3>Umzug auf einen neuen PC</h3>
+    <ol>
+      <li>Auf dem alten PC: <strong>④ Profile sichern</strong> und einen USB-Stick
+          als Ziel wählen.</li>
+      <li>Auf dem neuen PC: LanScanner starten, Reiter WLAN-Profile,
+          <strong>⑤ Profile einspielen</strong> und den Ordner
+          <code>WLAN-Profile_…</code> auf dem Stick wählen.</li>
+      <li>Die Rückfrage, ob die Sicherung gelöscht werden soll, mit
+          <strong>Ja</strong> beantworten.</li>
+    </ol>
+    <p>Die eingespielten Netze erscheinen danach in der Liste „Gespeicherte
+       Profile“.</p>
+
+    <h3>Rechts oben: Ihre Verbindung im Vergleich der WLAN-Standards</h3>
+    <p>Die Grafik zeigt als <strong>graue Balken</strong> die üblichen
+       Verbindungsraten von PCs und Notebooks für Wi-Fi 4 (802.11n) bis Wi-Fi 7
+       (802.11be), jeweils mit dem Funkband. Der <strong>farbige Balken</strong> ist
+       Ihre Verbindungsrate laut Windows, gefärbt nach der Signalstärke (grün gut,
+       gelb mittel, rot schwach). Liegt er am unteren Ende seines Standards, lohnt
+       ein Blick auf Abstand zum Router, Kanal und Band.</p>
+    <div class="info">
+      <strong>ℹ Verbindungsrate und Datendurchsatz:</strong> Die Verbindungsrate ist
+      die Brutto-Rate der Funkverbindung. Tatsächlich übertragen werden davon
+      erfahrungsgemäß etwa die Hälfte bis zwei Drittel. Den echten Durchsatz misst
+      der LAN-Dauertest in Tab 4.
+    </div>
+
+    <h3>Rechts unten: WLANs in Reichweite</h3>
+    <p>Die Tabelle listet die WLANs, die der Adapter gerade empfängt, mit
+       Signal, Netzname, Band und Kanal, Standard, Verschlüsselung und der Angabe,
+       ob das Netz auf diesem PC gespeichert ist. Bei gespeicherten Netzen zeigt der
+       Link <strong>„Passwort zeigen“</strong> das Passwort direkt an. Beim ersten
+       Öffnen des Reiters wird die Umgebung einmal gescannt;
+       <strong>„Umgebung scannen“</strong> sucht neu.</p>
+    <div class="info">
+      <strong>ℹ Standortfreigabe:</strong> Die WLANs in Reichweite, Signalstärke und
+      Funkstandard liefert Windows 11 nur, wenn Desktop-Apps auf den Standort
+      zugreifen dürfen. Fehlt die Freigabe, steht an der Stelle der Tabelle ein
+      Hinweis mit dem Knopf <strong>„→ Standort-Einstellungen öffnen“</strong>.
+    </div>
+
+    <h3>WLAN-Bericht</h3>
+    <p>Knopf <strong>⑥</strong> fasst den Zustand in einer farbigen HTML-Datei
+       zusammen – geeignet zum Weitergeben, für die Kundenakte oder zum Vergleich
+       vorher und nachher:</p>
+    <ul>
+      <li>WLAN-Verbindung mit Adapter, Signal, Band, Kanal und Verbindungsrate</li>
+      <li>LAN-Anschluss</li>
+      <li>IPv4-Adresse und Gateway</li>
+      <li>Einordnung der eigenen Verbindung in die WLAN-Standards</li>
+      <li>WLANs in Reichweite</li>
+      <li>Gespeicherte Profile</li>
+    </ul>
+    <p><strong>Passwörter stehen nicht im Bericht.</strong> Er wird im Log-Ordner als
+       <code>WLAN-Bericht_&lt;PC-Name&gt;_&lt;Datum&gt;.html</code> gespeichert und
+       im Browser geöffnet.</p>
+  </div>
+
   <!-- FIREWALL -->
-  <h2 id="firewall">8. Tab 5: Firewall &amp; Ports</h2>
+  <h2 id="firewall">10. Tab 6: Firewall &amp; Ports</h2>
   <div class="box">
     <p>Dieser Tab behandelt zwei getrennte Fälle, deshalb ist er in zwei Spalten
        aufgeteilt. Beide greifen auf dieselbe Windows-Firewall zu, schauen sie aber
        aus entgegengesetzter Richtung an:</p>
     <ul>
-      <li><strong>Links – „Gerät im Netz erreichen":</strong> Ein anderes Gerät im
+      <li><strong>Links – „Gerät im Netz erreichen“:</strong> Ein anderes Gerät im
           LAN (NAS, Drucker, FritzBox-USB) ist von diesem PC aus nicht erreichbar.</li>
-      <li><strong>Rechts – „Port auf diesem PC":</strong> Ein Programm auf diesem PC
+      <li><strong>Rechts – „Port auf diesem PC“:</strong> Ein Programm auf diesem PC
           braucht einen bestimmten Port, auf den andere aus dem Netz zugreifen
           (Warenwirtschaft, Kassensystem, Datenbank, Fernwartung).</li>
     </ul>
@@ -552,7 +914,7 @@
     <div class="warn">
       <strong>⚠ Adminrechte nötig:</strong> Firewall-Regeln zu lesen und zu setzen
       geht nur mit Administratorrechten. Am einfachsten lassen Sie
-      <strong>„Als Administrator starten"</strong> aktiviert (siehe Abschnitt 5,
+      <strong>„Als Administrator starten“</strong> aktiviert (siehe Abschnitt 5,
       Voreinstellung an). Läuft das Programm ohne Adminrechte, meldet der Tab das beim
       Prüfen oder Eintragen.
     </div>
@@ -603,12 +965,12 @@
           SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432),
           Remotedesktop (3389), VNC (5900), HTTP (80), HTTPS (443),
           HTTP alternativ (8080), HTTPS alternativ (8443). Mit
-          <em>„– eigene Eingabe –"</em> tragen Sie einen beliebigen Port selbst ein.</li>
+          <em>„– eigene Eingabe –“</em> tragen Sie einen beliebigen Port selbst ein.</li>
       <li><strong>Port (oder Bereich) und Protokoll</strong> – eine einzelne Nummer
           (z.B. <code>1433</code>) oder ein Bereich (z.B. <code>5000-5010</code>,
           höchstens 200 Ports), dazu <strong>TCP</strong> oder <strong>UDP</strong>.</li>
       <li><strong>Bezeichnung</strong> – ein Name, unter dem die Regel später in der
-          Liste wiederzufinden ist (z.B. „Warenwirtschaft, Kassensystem").</li>
+          Liste wiederzufinden ist (z.B. „Warenwirtschaft, Kassensystem“).</li>
       <li><strong>Prüfen</strong> – der Befund erscheint in drei Zeilen (siehe unten).</li>
       <li><strong>Port freigeben</strong> – legt eine eingehende Regel für das lokale
           Subnetz an.</li>
@@ -621,17 +983,17 @@
           dann muss das Programm selbst auf die LAN-Adresse gebunden werden.</li>
       <li><strong>Eingehende Firewall-Regel</strong> – vorhandene Regeln für diesen
           Port, auch fremde (z.B. vom Installer der Fachanwendung). Regeln, die nur
-          für ein einzelnes anderes Programm gelten, werden als wirkungslos
-          ausgewiesen.</li>
+          für ein einzelnes anderes Programm oder einen anderen Windows-Dienst
+          gelten, werden als wirkungslos ausgewiesen.</li>
       <li><strong>Firewall-Profil dieses PCs</strong> – die Regel gilt für das private
-          Profil; im Profil „Öffentlich" blockt Windows trotzdem.</li>
+          Profil; im Profil „Öffentlich“ blockt Windows trotzdem.</li>
     </ul>
 
     <h3>Der Befund (beide Spalten)</h3>
     <p>Jede Prüfzeile zeigt ein Ergebnis: <strong>grün</strong> in Ordnung,
        <strong>gelb</strong> ein Hinweis, <strong>rot</strong> ein Problem. Wo es
        sinnvoll ist, bietet die Zeile rechts einen kleinen Knopf zur direkten Abhilfe
-       an – etwa das Netzwerkprofil auf „privat" umstellen (damit Freigaben überhaupt
+       an – etwa das Netzwerkprofil auf „privat“ umstellen (damit Freigaben überhaupt
        zugelassen werden) oder den Port gleich freigeben. Der ausführliche Hinweistext
        zu jeder Zeile erscheint, wenn Sie mit der Maus darüber stehen bleiben.</p>
 
@@ -657,7 +1019,7 @@
   </div>
 
   <!-- DIAGNOSE -->
-  <h2 id="diag">9. Diagnose (DIAG) – für Tester</h2>
+  <h2 id="diag">11. Diagnose (DIAG) – für Tester</h2>
   <div class="box">
     <p>Dieser Abschnitt richtet sich an Tester und an alle, die ein
        Erkennungsproblem melden möchten. Für den normalen Betrieb wird
@@ -672,7 +1034,7 @@
        geantwortet hat – auch wenn er gar nicht geantwortet hat.</p>
 
     <h3>Einschalten</h3>
-    <p><strong>⚙ Konfig → Diagnose → „🔧 DIAG-Werkzeuge anzeigen"</strong>.
+    <p><strong>⚙ Konfig → Diagnose → „🔧 DIAG-Werkzeuge anzeigen“</strong>.
        Danach erscheint oben im Header der Knopf
        <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>.
        Kein Neustart nötig. Häkchen wieder entfernen blendet ihn aus.</p>
@@ -682,20 +1044,24 @@
       <tr><th>Schaltfläche</th><th>Funktion</th></tr>
       <tr><td><span class="btn-demo btn-blue">▶ DIAG erstellen</span></td>
           <td>Erzeugt <strong>genau eine Datei</strong> im Ordner
-              <code>S-IT-Diagnose</code> neben dem Programm. Nichts passiert von
+              <code>Diag</code> neben <code>sit-lsc-start.exe</code>. Nichts passiert von
               allein – nur auf Klick.</td></tr>
       <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Klartext anzeigen</span></td>
           <td>Zeigt den Inhalt lesbar an – <strong>genau das, was verschickt
-              würde</strong>. Auf Wunsch auch als Klartext speicherbar.</td></tr>
+              würde</strong>. Auf Wunsch auch als Klartext speicherbar. Der Inhalt
+              ist in allen Sprachfassungen gleich aufgebaut und wird nicht übersetzt.</td></tr>
       <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Ordner öffnen</span></td>
           <td>Öffnet den Ablageordner im Explorer.</td></tr>
     </table>
 
     <h3>Was steht drin?</h3>
     <ul>
-      <li>Die Rohantworten aller Abfragen (PowerShell, wmic, Registry, netsh, ipconfig)</li>
+      <li>Die Rohantworten aller Abfragen (PowerShell, wmic, Registry, netsh, ipconfig),
+          einschließlich der WLANs in Reichweite</li>
+      <li>Wie die LAN- und WLAN-Kachel diese Antworten anzeigen</li>
       <li>Windows- und Programmversion, Skalierung, Adminrechte</li>
       <li>Was das Programm aus den Antworten gemacht hat</li>
+      <li>Nach einem Netzwerk-Scan zusätzlich die Geräteliste dieses Scans: je Gerät Name, IP-Adresse, Hersteller, offene Ports und die Einordnung des Programms mit Begründung</li>
     </ul>
     <p><strong>Keine Passwörter, keine Zugangsdaten.</strong> MAC-Adressen werden
        gekürzt: der Herstellerteil bleibt stehen – den braucht die Erkennung –,
@@ -706,8 +1072,7 @@
       <strong>Warum ist die Datei nicht lesbar?</strong><br>
       Sie ist <em>verschleiert</em>, damit sie nicht versehentlich mitgelesen oder
       von einem Mail-Filter zerlegt wird. Das ist ausdrücklich
-      <strong>keine Verschlüsselung</strong> und soll auch keine sein – deshalb steht
-      dort auch nichts Vertrauliches drin. Mit <strong>🔍 Klartext anzeigen</strong>
+      <strong>keine Verschlüsselung</strong> und soll auch keine sein. Mit <strong>🔍 Klartext anzeigen</strong>
       sehen Sie jederzeit selbst, was drinsteht.
     </div>
 
@@ -718,89 +1083,136 @@
   </div>
 
   <!-- DATEIEN -->
-  <h2 id="dateien">10. Dateien, Updates und Sicherung</h2>
+  <h2 id="dateien">12. Dateien, Updates und Sicherung</h2>
   <div class="box">
+
+    <h3>Aufbau des Programmordners</h3>
+    <p>Alles, was Sie selbst brauchen, liegt oben neben dem Startprogramm. Der
+       Unterordner <code>sit-lsc_program</code> enthält nur das Programm selbst
+       und muss nicht geöffnet werden:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← damit wird das Programm gestartet</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← Einstellungen, eigene Angaben, Hersteller-Datenbank</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← Scan-Logs, Berichte und Protokolle</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← Diagnose-Dateien</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← Hilfe, ChangeLog, Haftungsausschluss und Lizenz</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← das Programm</span>
+    </div>
+    <p>Die Ordner <code>Config</code>, <code>Logs</code> und <code>Diag</code> legt das
+       Programm bei Bedarf selbst an.</p>
 
     <div class="tip">
       <strong>Kurzcheckliste – Was mitnehmen?</strong><br>
-      Bei PC-Wechsel oder Neuinstallation diese Dateien/Ordner sichern:
+      Bei PC-Wechsel oder Neuinstallation diese Ordner neben
+      <code>sit-lsc-start.exe</code> sichern:
       <ul style="margin:6px 0 0 0">
-        <li><code>S-IT-LanScanner.ini</code> – alle Einstellungen</li>
-        <li><code>S-IT-Custom.ini</code> – eigene Gerätezuordnungen</li>
-        <li><code>Logs\</code> – kompletter Ordner, wenn alte Scans erhalten bleiben sollen</li>
-        <li><code>S-IT-OUI.ini</code> – optional, spart den ersten OUI-Update</li>
+        <li><code>Config\</code> – Einstellungen, eigene Angaben zu Geräten und die
+            Hersteller-Datenbank</li>
+        <li><code>Logs\</code> – kompletter Ordner, wenn alte Scans, Protokolle und
+            WLAN-Berichte erhalten bleiben sollen</li>
       </ul>
       Nach dem Kopieren das Programm starten – alle Einstellungen, Zuordnungen
       und bisherigen Scan-Ergebnisse sind sofort wieder verfügbar.
     </div>
 
-    <h3>Dateien im Programmordner</h3>
+    <h3>Dateien und Ordner im Überblick</h3>
     <table>
       <tr><th>Datei</th><th>Inhalt</th><th>Sichern?</th></tr>
-      <tr><td><code>S-IT-LanScanner.exe</code></td>
-          <td>Hauptprogramm</td><td>–</td></tr>
-      <tr><td><code>S-IT-LanScanner.ini</code></td>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
           <td>Alle Einstellungen (Scan-Optionen, Log-Verzeichnis, Darstellung usw.)</td>
           <td><strong>✔ Ja</strong></td></tr>
-      <tr><td><code>S-IT-Custom.ini</code></td>
-          <td>Eigene Gerätezuordnungen – wird bei Updates nie überschrieben</td>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Eigene Gerätenamen, Gerätetypen und Hersteller – wird bei Updates nie
+              überschrieben</td>
           <td><strong>✔ Ja</strong></td></tr>
-      <tr><td><code>S-IT-OUI.ini</code></td>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
           <td>Hersteller-Datenbank (wird bei OUI-Update neu erstellt)</td>
           <td>Optional</td></tr>
-      <tr><td><code>S-IT-LanScanner-Hilfe.html</code></td>
-          <td>Diese Hilfe-Datei</td><td>–</td></tr>
-      <tr><td><code>S-IT-LanScanner-ChangeLog.html</code></td>
-          <td>Versionshistorie</td><td>–</td></tr>
-      <tr><td><code>S-IT-OUI-Update.exe</code></td>
-          <td>OUI-Updater (separates Tool)</td><td>–</td></tr>
       <tr><td><code>Logs\</code></td>
-          <td>Scan-Logs (.log), HTML-Reports (.html) und CSV-Dateien (.csv).<br>
-              <em>Mitnehmen wenn alte Scan-Ergebnisse im Log-Manager erhalten bleiben sollen.</em></td>
+          <td>Scan-Logs (.log), HTML-Reports (.html) und CSV-Dateien (.csv), dazu die
+              Protokolle des Reiters WLAN-Profile und die WLAN-Berichte.<br>
+              Die CSV-Dateien sind nur für die interne Verwendung durch das
+              Programm vorgesehen: Aus ihnen lädt <strong>„In Scanner laden“</strong>
+              in Logs &amp; Reports einen früheren Scan zurück in die Geräteliste.
+              Ihre Spaltennamen sind deshalb in jeder Sprache deutsch. Zum Lesen
+              und Weitergeben dienen der HTML-Report und das Log.<br>
+              <em>Mitnehmen, wenn alte Scan-Ergebnisse im Log-Manager erhalten
+              bleiben sollen.</em></td>
           <td><strong>✔ Empfohlen</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Diagnose-Dateien – entsteht nur, wenn eine DIAG erstellt wird</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>Diese Hilfe (die Übersetzungen heißen <code>S-IT-LanScanner-Hilfe_en.html</code> usw.),
+              die Versionshistorie <code>S-IT-LanScanner-ChangeLog.html</code>,
+              Haftungsausschluss und Lizenz (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>Das Programm: Hauptprogramm <code>S-IT-LanScanner.exe</code> (wird über
+              <code>sit-lsc-start.exe</code> gestartet) und Programmbibliotheken</td>
+          <td>–</td></tr>
     </table>
 
     <h3>Update durchführen</h3>
     <ol>
       <li>Neue Version herunterladen und entpacken</li>
-      <li><strong>Wichtig:</strong> Die Dateien <code>S-IT-LanScanner.ini</code> und
-          <code>S-IT-Custom.ini</code> aus dem alten Ordner in den neuen Ordner kopieren</li>
-      <li>Neue <code>S-IT-LanScanner.exe</code> starten</li>
-      <li>Alle Einstellungen und eigenen Zuordnungen sind wieder vorhanden</li>
+      <li><strong>Wichtig:</strong> Den Ordner <code>Config</code> aus dem alten
+          Programmordner in den neuen kopieren</li>
+      <li>Das Programm über <code>sit-lsc-start.exe</code> starten</li>
+      <li>Alle Einstellungen und eigenen Angaben sind wieder vorhanden</li>
     </ol>
+    <div class="info">
+      Frühere Versionen hatten noch keinen Ordner <code>Config</code>. Dann die
+      Dateien <code>S-IT-LanScanner.ini</code> und <code>S-IT-Custom.ini</code> in den
+      neuen Programmordner neben <code>sit-lsc-start.exe</code> kopieren. Das
+      Programm verschiebt sie beim ersten Start einmal in den Ordner
+      <code>Config</code>, ebenso Logs und Diagnose-Dateien, die noch im Ordner
+      <code>sit-lsc_program</code> liegen. Überschrieben wird dabei nichts. Was
+      verschoben wurde, steht in der Datei <code>Ordnerumzug.log</code> im Log-Ordner.
+    </div>
 
     <h3>Neuinstallation / PC-Wechsel</h3>
     <p>Empfohlene Vorgehensweise:</p>
     <ol>
-      <li>Gesicherte Dateien in den neuen Programmordner kopieren
-          (<code>S-IT-LanScanner.ini</code>, <code>S-IT-Custom.ini</code>,
-          optional <code>S-IT-OUI.ini</code>)</li>
-      <li>Gesicherten <code>Logs\</code>-Ordner in den Programmordner kopieren
-          (oder in das konfigurierte Log-Verzeichnis)</li>
+      <li>Gesicherten Ordner <code>Config</code> in den neuen Programmordner neben
+          <code>sit-lsc-start.exe</code> kopieren</li>
+      <li>Gesicherten <code>Logs\</code>-Ordner ebenfalls dorthin kopieren (oder in
+          das konfigurierte Log-Verzeichnis)</li>
       <li>Programm starten – alle Einstellungen, Zuordnungen und bisherigen
           Scans sind sofort im Log-Manager verfügbar</li>
-      <li>Optional: OUI-Update durchführen um die neueste Hersteller-Datenbank zu laden</li>
+      <li>Optional: OUI-Update durchführen, um die neueste Hersteller-Datenbank zu laden</li>
     </ol>
     <div class="info">
       Werden keine Dateien gesichert: <code>S-IT-LanScanner.ini</code> und
       <code>S-IT-Custom.ini</code> werden beim ersten Start automatisch mit
-      Standardwerten neu angelegt. Eigene Gerätezuordnungen müssen dann
+      Standardwerten neu angelegt. Eigene Angaben zu Geräten müssen dann
       neu eingetragen werden.
+    </div>
+    <div class="tip">
+      <strong>WLAN-Netze mitnehmen:</strong> Die gespeicherten WLAN-Netze des alten
+      PCs lassen sich im Reiter <strong>WLAN-Profile</strong> sichern und auf dem
+      neuen PC einspielen (Abschnitt 9).
     </div>
 
     <h3>OUI-Datenbank aktualisieren</h3>
-    <p>Über <span class="btn-demo btn-dark">🔄 OUI-Update</span> → Tab
-       <strong>„OUI-Datenbank Update"</strong> kann die Hersteller-Datenbank
-       aus IEEE-Quellen aktualisiert werden. Nach dem Update wird die Datenbank
-       automatisch neu eingelesen – kein Neustart nötig.</p>
+    <p>Über <span class="btn-demo btn-dark">🔄 OUI-Update</span> → Reiter
+       <strong>„OUI-Datenbank Update“</strong> → <strong>„▶ OUI-Datenbank
+       aktualisieren“</strong> lädt das Programm die vollständigen
+       Hersteller-Listen der IEEE (MA-L, MA-M und MA-S) und speichert sie in der
+       <code>S-IT-OUI.ini</code>. Dafür ist eine Internetverbindung nötig.
+       Fortschritt und Ergebnis erscheinen im selben Fenster. Danach wird die
+       Datenbank sofort neu eingelesen – ein Neustart ist nicht nötig.</p>
+    <p>Kann eine der Listen nicht geladen werden, erscheint eine Meldung, und
+       die vorhandene <code>S-IT-OUI.ini</code> bleibt unverändert.</p>
     <div class="info">
-      Die Datei <code>S-IT-Custom.ini</code> mit Ihren eigenen Zuordnungen wird
+      Die Datei <code>S-IT-Custom.ini</code> mit Ihren eigenen Angaben wird
       beim OUI-Update <strong>niemals</strong> verändert oder überschrieben.
     </div>
   </div>
 
   <!-- FAQ -->
-  <h2 id="faq">11. Häufige Fragen (FAQ)</h2>
+  <h2 id="faq">13. Häufige Fragen (FAQ)</h2>
   <div class="box">
 
     <h3>Ein Gerät wird nicht gefunden</h3>
@@ -809,17 +1221,23 @@
       <li>Gerät ist ausgeschaltet oder im Energiesparmodus</li>
       <li>Gerät antwortet nicht auf ICMP-Ping (Firewall) → Port-Scan aktivieren hilft</li>
       <li>Gerät ist in einem anderen Netzwerksegment</li>
-      <li>Scan-Modus „Sicher" wählen und erneut scannen</li>
+      <li>Scan-Intensität „Sicher“ wählen und erneut scannen</li>
     </ul>
 
-    <h3>Ein Gerät wird mit falschem Betriebssystem angezeigt</h3>
-    <p>Rechtsklick auf das Gerät → <strong>„✏ Eigene Zuordnung setzen"</strong> →
-       korrekten Wert eingeben → Speichern. Ab dem nächsten Scan wird die
-       korrekte Bezeichnung angezeigt.</p>
+    <h3>Ein Gerät wird falsch oder gar nicht eingeordnet</h3>
+    <p>Rechtsklick auf das Gerät → <strong>„✏ Gerät beschriften …“</strong> →
+       Gerätetyp wählen oder eintragen → Speichern. Die Angabe erscheint sofort
+       in der Liste und gilt dauerhaft (Abschnitt 6).</p>
+
+    <h3>Warum ist die Spalte „Gerätetyp“ bei manchen Geräten leer?</h3>
+    <p>Die Hinweise reichten nicht für eine eindeutige Einordnung. Das Programm
+       lässt das Feld dann bewusst leer, statt zu raten. Ein aktivierter Port-Scan
+       liefert oft genug zusätzliche Hinweise; sonst hilft eine eigene Angabe über
+       <strong>„Gerät beschriften …“</strong>.</p>
 
     <h3>Mein Drucker war nach dem Scan nicht mehr erreichbar</h3>
-    <p>Wechseln Sie in den Einstellungen zu Scan-Modus <strong>„Sicher"</strong>.
-       Dieser verzichtet auf ARP-Flood und Port-Scans auf Drucker-Ports,
+    <p>Stellen Sie in den Einstellungen die Scan-Intensität auf <strong>„Sicher“</strong>.
+       Diese Stufe verzichtet auf ARP-Flood und Port-Scans auf Drucker-Ports,
        die ältere Firmware-Versionen überlasten können.</p>
 
     <h3>Antiviren-Programm meldet eine Bedrohung</h3>
@@ -828,44 +1246,59 @@
        keinerlei Schadsoftware. Lösung: Die Programmdatei und das Verzeichnis
        in die Ausnahmeliste / Whitelist des Antiviren-Programms aufnehmen.</p>
 
-    <h3>Der LAN-Geschwindigkeitstest zeigt „Kein Schreibzugriff"</h3>
+    <h3>Der LAN-Geschwindigkeitstest zeigt „Kein Schreibzugriff“</h3>
     <p>Die Freigabe ist vermutlich nur lesend eingebunden oder die Zugangsdaten
        reichen nicht aus. Prüfen Sie Ihre Schreibrechte auf der Freigabe.</p>
 
-    <h3>Der Test sagt „Freigabe fehlt"</h3>
+    <h3>Der Test sagt „Freigabe fehlt“</h3>
     <p>Es wurde nur der <strong>Servername</strong> angegeben, z.B.
        <code>\\NAS-Name</code>. Dort lässt sich keine Datei anlegen – nötig ist die
-       Freigabe selbst: <code>\\NAS-Name\Daten</code>. Siehe Abschnitt 7.</p>
+       Freigabe selbst: <code>\\NAS-Name\Daten</code>. Siehe Abschnitt 8.</p>
 
-    <h3>Die WLAN-Karte zeigt „Verbunden", aber keine Signalstärke und keinen Kanal</h3>
-    <p>Das ist fast immer die Windows-11-Standortsperre und <strong>kein Fehler des
-       Programms</strong>: Windows gibt SSID, Signalstärke, Kanal und Verbindungsrate
-       nur heraus, wenn die <strong>Positionsdienste</strong> eingeschaltet sind.
-       Sind sie aus, verweigert Windows die Auskunft – der Adapter selbst wird
+    <h3>Die WLAN-Kachel zeigt „Verbunden“, aber keine Signalstärke und keinen Kanal</h3>
+    <p>Das ist fast immer die Standortsperre von Windows 11 und <strong>kein Fehler
+       des Programms</strong>: Windows gibt Signalstärke, Kanal und Funkstandard nur
+       heraus, wenn Desktop-Apps auf den Standort zugreifen dürfen. Dasselbe gilt für
+       die WLANs in Reichweite im Reiter WLAN-Profile. Der Adapter selbst wird
        trotzdem korrekt erkannt.</p>
     <div class="tip">
-      <strong>Abhilfe:</strong> Einstellungen → Datenschutz und Sicherheit → Standort →
-      <strong>Ortungsdienste</strong> einschalten. Danach in der WLAN-Kachel auf
-      <strong>🔄 Aktualisieren</strong> klicken.<br>
-      Die Kachel weist auf diesen Fall auch selbst hin.
+      <strong>Abhilfe:</strong> In der Kachel auf <strong>„→ Standort-Einstellungen
+      öffnen“</strong> klicken (oder Einstellungen → Datenschutz und Sicherheit →
+      Standort). Dort die <strong>Ortungsdienste</strong> einschalten und weiter
+      unten den Standortzugriff für <strong>Desktop-Apps</strong> erlauben. Danach
+      in der Kachel auf <strong>🔄 Aktualisieren</strong> klicken.
     </div>
 
-    <h3>Die WLAN-Verbindungskarte zeigt gar nichts an</h3>
-    <p>Wenn kein WLAN-Adapter vorhanden oder kein WLAN aktiv ist, bleibt die Karte leer.
-       Klicken Sie nach dem Verbinden auf <strong>🔄 Aktualisieren</strong>.
-       Der Status wird auch automatisch alle 10 Sekunden aktualisiert – ein
-       nachträglich eingesteckter USB-WLAN-Stick wird dabei von selbst erkannt.</p>
+    <h3>Der Netzwerkname in der WLAN-Kachel weicht vom WLAN-Namen ab</h3>
+    <p>Ohne Standortfreigabe nimmt das Programm den Namen aus der
+       Windows-Netzwerkliste; die Kachel sagt das dazu. Windows legt dort für
+       dasselbe WLAN unter Umständen nummerierte Einträge an, etwa „Heimnetz 2“,
+       wenn sich der PC mehrmals oder mit verschiedenen Adaptern angemeldet hat.
+       Mit Standortfreigabe zeigt die Kachel den tatsächlichen WLAN-Namen.</p>
 
-    <h3>Bei der Geschwindigkeit steht „unbekannt"</h3>
+    <h3>Warum zeigt die WLAN-Kachel keine Empfangsrate?</h3>
+    <p>Die Empfangsrate erscheint nur, während der LAN-Dauertest läuft. Ohne
+       Datenverkehr meldet Windows dafür niedrige Werte, die mit der Qualität der
+       Verbindung nichts zu tun haben. Die Verbindungsrate (⬆) steht dagegen immer
+       da.</p>
+
+    <h3>Die WLAN-Kachel meldet „Adapter deaktiviert“</h3>
+    <p>Der WLAN-Adapter ist im Geräte-Manager oder unter
+       <em>Netzwerkverbindungen</em> abgeschaltet. Nach dem Einschalten erkennt das
+       Programm ihn spätestens nach 10 Sekunden; mit
+       <strong>🔄 Aktualisieren</strong> sofort. Ein nachträglich eingesteckter
+       USB-WLAN-Stick wird ebenfalls von selbst erkannt.</p>
+
+    <h3>Bei der Geschwindigkeit steht „unbekannt“</h3>
     <p>Dann konnte <strong>keine</strong> der Abfragen eine Geschwindigkeit liefern –
        typisch bei einem <strong>deaktivierten Adapter</strong>, für den Windows keine
-       Rate meldet. Das Programm zeigt in diesem Fall bewusst „unbekannt" statt einer
+       Rate meldet. Das Programm zeigt in diesem Fall bewusst „unbekannt“ statt einer
        geschätzten Zahl: In einem Diagnose-Werkzeug hat ein Wert, den niemand gemessen
        hat, nichts zu suchen. Der Adaptername wird trotzdem angezeigt.</p>
 
     <h3>Das Programm wirkt auf meinem UHD/4K-Monitor zu klein</h3>
-    <p>Öffnen Sie <strong>⚙ Konfigurieren</strong> und wählen Sie in der rechten Spalte
-       <strong>„Darstellungsgröße / Skalierung"</strong> einen höheren Wert.
+    <p>Öffnen Sie <strong>⚙ Konfig</strong> und wählen Sie in der rechten Spalte
+       <strong>„Darstellungsgröße / Skalierung“</strong> einen höheren Wert.
        Das Programm startet nach dem Speichern automatisch neu.</p>
     <div class="tip">
       <strong>Empfehlung für UHD/4K:</strong> Die Programm-Skalierung gibt die Größe
@@ -877,8 +1310,8 @@
     <p>Mögliche Skalierungsstufen im Programm: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
 
     <h3>Wo finde ich den Haftungsausschluss?</h3>
-    <p>In der Datei <a href="Disclaimer.txt"><code>Disclaimer.txt</code></a> im
-       Programmordner und auf der
+    <p>In der Datei <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> im
+       Ordner <code>Help</code> und auf der
        <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>.
        Kurz gefasst: Die Ergebnisse sind unverbindliche Anhaltspunkte und eine
        Momentaufnahme – sie ersetzen keine fachliche Sicherheitsprüfung.</p>
@@ -930,12 +1363,29 @@
        versehentlichen Klicken einladen. Sie funktionieren ganz normal.</p>
 
     <h3>Wo werden die Logs gespeichert?</h3>
-    <p>Standard: <code>[Programmverzeichnis]\Logs\</code>. Das Verzeichnis kann
-       unter <strong>⚙ Konfigurieren → Log-Verzeichnis</strong> geändert werden.</p>
+    <p>Standard: <code>Logs\</code> neben <code>sit-lsc-start.exe</code>. Das Verzeichnis kann
+       unter <strong>⚙ Konfig → Log-Verzeichnis</strong> geändert werden.</p>
 
     <h3>Kann ich das Tool auf einem USB-Stick verwenden?</h3>
-    <p>Ja, das Tool ist portabel. Kopieren Sie alle Dateien aus dem Programmordner
-       auf den USB-Stick. Die INI-Dateien werden neben der EXE gespeichert.</p>
+    <p>Ja, das Tool ist portabel. Kopieren Sie den kompletten Programmordner – also
+       <code>sit-lsc-start.exe</code> zusammen mit dem Ordner
+       <code>sit-lsc_program</code> und den übrigen Ordnern – auf den USB-Stick. Die
+       INI-Dateien werden im Ordner <code>Config</code> gespeichert.</p>
+
+    <h3>Wo finde ich die WLAN-Berichte und das Protokoll der WLAN-Profile?</h3>
+    <p>Beide liegen im Log-Ordner, Standard
+       <code>Logs\</code> neben <code>sit-lsc-start.exe</code>. Der WLAN-Bericht öffnet sich nach dem
+       Erstellen außerdem gleich im Browser.</p>
+
+    <h3>Bei der Domain-Auskunft fehlt das Land</h3>
+    <p>Land, Netz und Adressbereich kommen von der Vergabestelle (z.B. RIPE). Ist
+       sie nicht erreichbar, etwa weil eine Firewall oder ein Proxy die Abfrage
+       blockiert, zeigt das Programm nur den Anbieter aus der eingebauten Liste.</p>
+
+    <h3>Bei der Domain-Auskunft passt das Land nicht zum Anbieter</h3>
+    <p>Das Land ist das Land, in dem das Netz des Servers registriert ist. Große
+       Firmen registrieren ihre Netze oft auf den Hauptsitz, auch wenn der Server in
+       einem Rechenzentrum in einem anderen Land steht. Siehe Abschnitt 7.</p>
 
   </div>
 
@@ -960,12 +1410,13 @@
 </div>
 
 <footer>
-  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.0 (Build 2026.10.09)
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.2
   &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
-  Autor: Hans Udo Sattler<br>
+  Autor: Hans Udo Sattler &nbsp;•&nbsp;
+  Tschechische Übersetzung: RQ68 &nbsp;•&nbsp; Dank an alle Nutzer, die mit Scans aus ihren eigenen Netzwerken beim Testen geholfen haben<br>
   <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>
   &nbsp;•&nbsp;
-  <a href="Disclaimer.txt">Haftungsausschluss</a>
+  <a href="Lizenz-Disclaimer.txt">Haftungsausschluss</a>
   &nbsp;•&nbsp;
   <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
 </footer>

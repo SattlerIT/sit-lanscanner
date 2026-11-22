@@ -47,21 +47,438 @@
 <body>
 <header>
   <h1>S-IT LAN Device Scanner – ChangeLog</h1>
-  <p>Aktuell: Version 4.0 (Build 2026.10.09) &nbsp;•&nbsp;
+  <p>Aktuell: Version 4.2 (Build 2026.11.22b) &nbsp;•&nbsp;
      © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
 </header>
 
 <div class="container">
 
-  <!-- v4.0 -->
+  <!-- v4.2 -->
   <div class="version-block">
     <div class="version-header current">
+      <div class="v-badge">v 4.2</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Neun Oberflächensprachen &middot; Neuer Reiter WLAN-Profile &middot; Domain-Auskunft &middot; WLAN-Bericht &middot; zuverlässige LAN- und WLAN-Kacheln &middot; Ergebnisse unabhängig von der Windows-Sprache</div>
+        <div class="v-date">November 2026</div>
+      </div>
+      <div class="v-tag">Aktuell</div>
+    </div>
+
+    <div class="section">
+      <h3>◆ Verschlankt – weniger Zusatzprogramme</h3>
+      <ul>
+        <li class="note"><span class="highlight">OUI-Update im Programm</span> –
+            die Hersteller-Datenbank wird direkt im LanScanner aktualisiert
+            (🔄 OUI-Update), immer mit den vollständigen Listen der IEEE. Das
+            eigene Programm S-IT-OUI-Update entfällt. Kann eine Liste nicht
+            geladen werden, bleibt die vorhandene Datenbank unverändert.</li>
+        <li class="note"><span class="highlight">ARP-Scan ohne Zusatzinstallation</span> –
+            der ARP-Scan nutzt jetzt die eingebaute Funktion von Windows. Npcap
+            muss nicht mehr installiert werden, und Administratorrechte sind für
+            den ARP-Scan nicht nötig. Damit findet der Scan auf jedem Rechner auch
+            Geräte, die nicht auf Ping antworten – auch bei einem Von-bis-Bereich.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.11.18 bis 2026.11.19</h3>
+      <ul>
+        <li class="new"><span class="highlight">Neun Oberflächensprachen</span> –
+            Deutsch, Englisch, Niederländisch, Spanisch, Französisch, Italienisch,
+            Polnisch, Kroatisch und Tschechisch. Die Sprache wird in ⚙ Konfig unter
+            „Sprache / Language“ gewählt und wirkt nach einem Neustart des
+            Programms. Zahlen und Ländernamen erscheinen in der Schreibweise der
+            gewählten Sprache. Die Hilfe liegt in allen neun Sprachen vor;
+            <strong>? Hilfe</strong> öffnet die Hilfe der eingestellten Sprache.
+            Auch das Diagnose-Fenster (🔧 DIAG) erscheint in dieser Sprache.</li>
+        <li class="new"><span class="highlight">Dunkle Darstellung</span> –
+            in ⚙ Konfig unter „Darstellung“ einschaltbar. Alle Fenster des
+            Programms erhalten dunkle Hintergründe und helle Schrift, die Zeilen
+            der Geräteliste behalten ihre Farbe nach Gerätetyp in dunkleren
+            Tönen. Unter Windows 10 und 11 werden auch die Titelleisten dunkel.
+            Die Einstellung wirkt nach einem Neustart des Programms.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>● Verbesserungen – Build 2026.11.16 bis 2026.11.22b</h3>
+      <ul>
+        <li class="new"><span class="highlight">Hersteller laut Gerät</span> –
+            Geräte mit privater MAC-Adresse zeigten bisher „Unbekannt“ als
+            Hersteller. Meldet das Gerät seinen Hersteller selbst (UPnP), wird
+            dieser angezeigt, bei FRITZ!-Geräten dazu FRITZ!OS als Betriebssystem.</li>
+        <li class="note"><span class="highlight">Klarere Angaben</span> –
+            Toshiba-Drucker und -Kopierer erscheinen als „Toshiba TEC“ statt unter
+            dem alten Firmennamen „Tokyo Electric“. Tiptel-Telefone zeigen alle
+            dasselbe Betriebssystem, unabhängig von ihrem Namen im Netz.
+            Modellnamen ohne angehängte Herstellerkennung.</li>
+        <li class="note"><span class="highlight">Hilfe</span> – neuer Abschnitt
+            zur Sprachwahl in ⚙ Konfig.</li>
+        <li class="new"><span class="highlight">Nachsuche für fehlende Geräte</span> –
+            neue Einstellung in ⚙ Konfig mit drei Stufen. „Bekannte Adressen“
+            (Voreinstellung) fragt Adressen, unter denen bei früheren Scans ein
+            Gerät war, ein zweites Mal mit mehr Geduld; Geräte ohne offenen Port
+            bekommen einen zweiten Versuch auf ihrer Weboberfläche. „Alle stillen
+            Adressen“ fragt zusätzlich typische Ports ab und findet so auch Geräte,
+            die Ping nicht beantworten. Gefragt werden nur Adressen, die noch nicht
+            geantwortet haben.</li>
+        <li class="note"><span class="highlight">Shelly-Geräte erkannt</span> –
+            Shellys melden auf Nachfrage selbst ihr Modell. Sie erscheinen jetzt
+            als Smart-Home-Gerät mit Modellnamen, auch in einem anderen Netz
+            hinter einem Router, wo keine MAC-Adresse ankommt. Einige Modelle
+            wurden bisher als Windows-PC angezeigt.</li>
+        <li class="note"><span class="highlight">UniFi-Geräte</span> –
+            Kameras mit der Oberfläche „UniFi Protect“ erscheinen als Kamera,
+            Geräte mit „UniFi OS“ als Netzwerkgerät.</li>
+        <li class="note"><span class="highlight">Fortschritt im ARP-Scan</span> –
+            der Balken läuft mit, und die Statuszeile zeigt, wie viele Adressen
+            schon abgefragt sind (z. B. „ARP-Scan: 128 von 254 Adressen“).</li>
+        <li class="note"><span class="highlight">⚙ Konfig</span> –
+            die Scrollleisten erscheinen nur noch, wenn der Inhalt nicht ins
+            Fenster passt.</li>
+        <li class="note"><span class="highlight">Scan-Intensität „Intensiv“</span> –
+            fragt im ARP-Scan ein zweites Mal bei allen Adressen nach, die beim
+            ersten Durchgang nicht geantwortet haben. So werden Geräte im
+            Stromsparmodus eher gefunden.</li>
+        <li class="note"><span class="highlight">Knöpfe im Kopfbereich</span> –
+            passen ihre Breite der Beschriftung an; in einigen Sprachen war der
+            Text zu lang für den Knopf.</li>
+        <li class="note"><span class="highlight">Mehr Geräte gefunden</span> –
+            Geräte, die auf die erste Anfrage nicht oder zu langsam antworten,
+            fehlten bisher im Ergebnis. Das betrifft vor allem WLAN-Geräte im
+            Stromsparmodus und Smartphones. Der Scan prüft diese Geräte jetzt
+            in einem zweiten Schritt nach und nimmt sie auf.</li>
+        <li class="note"><span class="highlight">Hersteller richtiggestellt</span> –
+            die eingebaute Hersteller-Tabelle wurde Eintrag für Eintrag mit der
+            Liste der IEEE verglichen und berichtigt. Geräte, die bisher einem
+            falschen Hersteller zugeordnet waren, erscheinen jetzt richtig –
+            und damit auch Betriebssystem und Gerätetyp, die daraus abgeleitet
+            werden. Das gilt sofort, auch mit einer bereits vorhandenen
+            Hersteller-Datenbank; ein OUI-Update ist dafür nicht nötig.</li>
+        <li class="note"><span class="highlight">Genauere Einordnung</span> –
+            Lautsprecher und Mediengeräte mit AirPlay erscheinen nicht mehr als
+            iPhone/iPad. Steckdosen, Lampen und andere Kleingeräte tragen nicht
+            mehr die Angabe „Cisco IOS“. Der Zusatz „(Hop entfernt)“ steht nur
+            noch bei Geräten in einem anderen Netz. Ein Windows-Rechner bleibt
+            ein Windows-PC, auch wenn „TV“ in seinem Namen vorkommt, und eine
+            Kamera bleibt eine Kamera, auch wenn ihr Name nach einem NAS
+            klingt.</li>
+        <li class="note"><span class="highlight">Zeile „Methode“</span> –
+            nennt den ARP-Scan nur noch, wenn er bei diesem Scan tatsächlich
+            ausgeführt wurde.</li>
+        <li class="note"><span class="highlight">Hersteller-Datenbank von Anfang an vollständig</span> –
+            das Programm bringt die aktuelle Herstellerliste der IEEE mit und
+            zeigt gleich nach der Installation die vollständigen Ergebnisse,
+            auch ohne Internetverbindung.</li>
+        <li class="note"><span class="highlight">OUI-Update</span> –
+            nach der Abschlussmeldung schließt sich die OUI-Verwaltung.</li>
+        <li class="note"><span class="highlight">Hersteller bei kleinen Adressblöcken</span> –
+            manche Hersteller haben nur einen kleinen Teil eines Adressbereichs
+            der IEEE. Statt des Herstellers stand dann „IEEE Registration
+            Authority“ in der Liste; jetzt erscheint der richtige Hersteller.</li>
+        <li class="note"><span class="highlight">Anzeige der Hersteller-Datenbank</span> –
+            die Einträge aus der Datei und die nur eingebauten ergeben in der
+            Zeile „OUI-DB“ jetzt zusammen die angezeigte Gesamtzahl.</li>
+        <li class="note"><span class="highlight">Fenster öffnet, wo es zuletzt stand</span> –
+            mit „🗖 Fenstergröße speichern“ öffnet das Hauptfenster wieder auf
+            dem Monitor und an der Stelle, an der es beim Beenden stand, und
+            maximiert, wenn es maximiert war. Ist der Monitor nicht mehr
+            angeschlossen, öffnet es auf dem Hauptbildschirm.</li>
+        <li class="note"><span class="highlight">Knopf „✖ Beenden“</span> –
+            beendet das Programm jetzt mit denselben Schritten wie das ✖ der
+            Titelleiste: Die Fenstergröße wird gespeichert, Druckvorlagen mit
+            WLAN-Passwort werden gelöscht und ein laufender Dauertest wird
+            sauber beendet.</li>
+        <li class="note"><span class="highlight">DIAG prüft auch die Geräte-Erkennung</span> –
+            nach einem Netzwerk-Scan enthält die DIAG zusätzlich die Geräteliste:
+            je Gerät, was gemessen wurde und warum das Programm Betriebssystem
+            und Gerätetyp so eingeordnet hat, und auf welchem Weg es gefunden
+            wurde. Bei Geräten, die Sie selbst
+            beschriftet haben, steht daneben, was die Automatik gesagt hätte.
+            Eine falsche Anzeige lässt sich damit gezielt melden und beheben.</li>
+        <li class="note"><span class="highlight">Smartphones im FRITZ!Box-Netz</span> –
+            Smartphones und Tablets, die sich mit einer privaten WLAN-Adresse
+            anmelden, werden jetzt auch in einem FRITZ!Box-Netz als
+            Smartphone/Tablet erkannt und in der Farbe für Mobilgeräte
+            angezeigt.</li>
+        <li class="note"><span class="highlight">Betriebssystem bei Geräten in einem anderen Netz</span> –
+            liegen Geräte hinter einem Router (z. B. in einem eigenen Netz für
+            Kameras oder Gäste), schätzt der Scanner das Betriebssystem jetzt
+            ebenso zuverlässig ein wie im eigenen Netz und kennzeichnet es mit
+            „(Hop entfernt)“.</li>
+        <li class="note"><span class="highlight">Neuer Programmaufbau</span> –
+            gestartet wird über <code>sit-lsc-start.exe</code>. Daneben liegen die
+            Ordner <code>Config</code> (Einstellungen, eigene Angaben,
+            Hersteller-Datenbank), <code>Logs</code>, <code>Diag</code> und
+            <code>Help</code> (Hilfe, ChangeLog, Haftungsausschluss, Lizenz). Das
+            Programm selbst steht im Unterordner <code>sit-lsc_program</code> und
+            muss nicht geöffnet werden. Liegen Einstellungen und Logs noch am
+            bisherigen Ort, verschiebt das Programm sie beim ersten Start einmal an
+            die neuen Orte; überschrieben wird dabei nichts.</li>
+        <li class="note"><span class="highlight">Ergebnisse unabhängig von der Windows-Sprache</span> –
+            die Netzwerkliste beim Programmstart, die Reiter Internet-Erreichbarkeit
+            und WLAN-Profile sowie die Port-Prüfung im Reiter Firewall &amp; Ports
+            zeigen auf einem englischen oder anderssprachigen Windows dieselben
+            Ergebnisse wie auf einem deutschen.</li>
+        <li class="note"><span class="highlight">Schnellerer Programmstart</span> –
+            das Fenster ist sofort bedienbar; die Liste der Netzwerke erscheint
+            kurz danach.</li>
+        <li class="note"><span class="highlight">Routenverfolgung</span> –
+            zeigt alle Stationen bis zum Ziel. Antworten die letzten Stationen
+            nicht, wie bei großen Anbietern üblich, steht dort
+            „keine Antwort – bis Hop N erreichbar“ statt einer Fehlermeldung.</li>
+        <li class="note"><span class="highlight">HTTPS und Browser-Test</span> –
+            nennen bei einer Störung den Fehlercode des Servers (z.B. 404) oder
+            die Fehlermeldung. Kommt keine sichere Verbindung zustande, obwohl der
+            Server erreichbar ist, weist das Programm auf ein fehlendes oder
+            ungültiges Zertifikat hin.</li>
+        <li class="note"><span class="highlight">Port-Prüfung</span> –
+            nennt bei „Eingehende Firewall-Regel“ nur die Regeln, die für das
+            Programm bzw. den Windows-Dienst gelten, der auf dem Port wartet.
+            Regeln für andere Programme oder Dienste werden als wirkungslos
+            ausgewiesen.</li>
+        <li class="note"><span class="highlight">WLAN-Profile</span> –
+            Passwörter werden direkt von Windows gelesen. Im Protokoll steht, wenn
+            ein Passwort vorhanden, aber nicht lesbar ist.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.11.04</h3>
+      <ul>
+        <li class="new"><span class="highlight">Domain-Auskunft</span> –
+            neue Karte im Reiter Internet-Erreichbarkeit. Zu einer Domain zeigt sie
+            die Nameserver und den Anbieter, bei dem die DNS-Einträge verwaltet
+            werden, die Mailserver und den Anbieter, der die E-Mails annimmt, sowie
+            den Webserver und den Anbieter, bei dem die Webseite liegt. Zu jedem
+            Anbieter stehen das Land, die Server-Adresse, der Rechnername sowie Netz
+            und Adressbereich. Eingegeben werden kann die Domain, eine Webadresse
+            oder eine E-Mail-Adresse. Gängige Anbieter erkennt das Programm an
+            ihren Servernamen; für alle anderen fragt es die zuständige
+            Vergabestelle (z.B. RIPE) nach dem Netzbetreiber. Mit
+            <strong>📋 Ergebnis kopieren</strong> geht das Ergebnis als Text in die
+            Zwischenablage, etwa für eine E-Mail an den Kunden.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.10.29</h3>
+      <ul>
+        <li class="new"><span class="highlight">Neuer Reiter „WLAN-Profile"</span> –
+            zeigt die auf diesem PC gespeicherten WLAN-Netze samt Passwort und
+            überträgt sie auf einen anderen PC, etwa beim Umzug auf einen neuen
+            Rechner. Die Knöpfe links: <strong>① Passwörter auslesen</strong>,
+            <strong>② Protokoll anzeigen</strong>, <strong>③ Passwort anzeigen</strong>
+            (mit Kopieren und Drucken), <strong>④ Profile sichern</strong> in einen
+            Ordner, z.B. auf einem USB-Stick, und <strong>⑤ Profile einspielen</strong>
+            auf dem neuen PC, für alle Benutzer. Die Liste darunter nennt zu jedem
+            Netz, ob es gerade verbunden, in Reichweite oder nicht in Reichweite ist.
+            Auslesen, Sichern und Einspielen brauchen Administratorrechte.</li>
+        <li class="new"><span class="highlight">Eigene Verbindung im Vergleich der WLAN-Standards</span> –
+            rechts oben im Reiter zeigt eine Grafik die üblichen Verbindungsraten von
+            Wi-Fi 4 bis Wi-Fi 7 als graue Balken. Die eigene Verbindungsrate steht
+            als farbiger Balken darin, gefärbt nach der Signalstärke. So ist auf
+            einen Blick zu sehen, wo die Verbindung im Vergleich liegt.</li>
+        <li class="new"><span class="highlight">WLANs in Reichweite</span> –
+            Tabelle unter der Grafik mit Signal, Netzname, Band und Kanal, Standard,
+            Verschlüsselung und der Angabe, ob das Netz auf diesem PC gespeichert
+            ist. Beim ersten Öffnen des Reiters wird einmal gesucht, „Umgebung
+            scannen" sucht neu.</li>
+        <li class="new"><span class="highlight">WLAN-Bericht (HTML)</span> –
+            Knopf ⑥ fasst den Zustand in einer farbigen HTML-Datei zusammen:
+            WLAN-Verbindung, LAN-Anschluss, IP-Adressen, Vergleich der
+            WLAN-Standards, WLANs in Reichweite und gespeicherte Profile.
+            <strong>Passwörter stehen nicht darin.</strong> Der Bericht wird im
+            Log-Ordner gespeichert und im Browser geöffnet.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>● Verbesserungen – Build 2026.10.29 bis 2026.11.04</h3>
+      <ul>
+        <li class="note"><span class="highlight">LAN- und WLAN-Kachel übersichtlicher</span> –
+            beide Kacheln im Reiter LAN-Performance zeigen oben den Zustand und darunter
+            den Adapter mit seinem Namen aus dem Geräte-Manager. Sie unterscheiden
+            „Adapter deaktiviert", „Kein Kabel angeschlossen", „Nicht verbunden" und
+            „Kein Adapter".</li>
+        <li class="note"><span class="highlight">WLAN-Adapter zuverlässiger erkannt</span> –
+            auch Adapter, deren Name kein „WLAN" oder „Wi-Fi" enthält, erscheinen in
+            der richtigen Kachel.</li>
+        <li class="note"><span class="highlight">Netzwerkname auch ohne Standortfreigabe</span> –
+            die WLAN-Kachel zeigt den Namen des Netzes auch dann, wenn die
+            Standortfreigabe von Windows ausgeschaltet ist.</li>
+        <li class="note"><span class="highlight">Empfangsrate während des Dauertests</span> –
+            die WLAN-Kachel zeigt die Empfangsrate während des LAN-Dauertests, weil
+            sie nur aussagekräftig ist, solange Daten fließen.</li>
+        <li class="note"><span class="highlight">Verbindungsqualität auf anderssprachigem Windows</span> –
+            die Messung liefert jetzt auch auf einem englischen oder
+            anderssprachigen Windows Werte.</li>
+        <li class="note"><span class="highlight">WLAN-Grafik</span> –
+            die Beschriftung des eigenen Balkens ist auch bei hohen Verbindungsraten
+            vollständig lesbar, ebenso im WLAN-Bericht.</li>
+        <li class="note"><span class="highlight">Auswahllisten</span> –
+            zeigen dieselbe Schrift und Größe wie das übrige Programm.</li>
+        <li class="note"><span class="highlight">Diagnose (DIAG) erweitert</span> –
+            enthält zusätzlich die WLANs in Reichweite und die Angaben zu den
+            Netzwerkadaptern.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen – Build 2026.10.29 bis 2026.11.18</h3>
+      <ul>
+        <li class="fix"><span class="highlight">Dauertest beim Reiterwechsel</span> –
+            lief unbemerkt weiter, wenn ein anderer Reiter geöffnet wurde. Jetzt
+            fragt das Programm, ob der Test gestoppt werden soll.</li>
+        <li class="fix"><span class="highlight">Testdatei nach dem Beenden</span> –
+            wurde das Programm während des Dauertests beendet, blieb die Testdatei
+            im Zielordner liegen.</li>
+        <li class="fix"><span class="highlight">WLAN-Name „Nicht verbunden"</span> –
+            stand in der Kachel, obwohl die Verbindung bestand.</li>
+        <li class="fix"><span class="highlight">Gezogenes LAN-Kabel</span> –
+            wurde als „Adapter deaktiviert" gemeldet.</li>
+        <li class="fix"><span class="highlight">WLAN-Namen und Passwörter mit Umlauten</span> –
+            wurden falsch dargestellt; für solche Netze fehlte das Passwort.</li>
+        <li class="fix"><span class="highlight">Gateway fehlte</span> –
+            bei vielen Heimroutern in der Kachel und im WLAN-Bericht.</li>
+        <li class="fix"><span class="highlight">Verbindungsqualität</span> –
+            meldete „Keine Auffälligkeiten", obwohl keine Messwerte vorlagen.</li>
+        <li class="fix"><span class="highlight">Eigene Angaben</span> –
+            in der <code>S-IT-Custom.ini</code> gingen teilweise verloren.</li>
+        <li class="fix"><span class="highlight">„Scan stoppen"</span> –
+            griff in einer Phase des Scans erst verzögert.</li>
+        <li class="fix"><span class="highlight">Netzlaufwerk im Dauertest</span> –
+            bei einem nicht verfügbaren Netzlaufwerk wurde die eingestellte
+            Wartezeit überschritten, und „Stoppen" griff verspätet.</li>
+        <li class="fix"><span class="highlight">HTML-Bericht des Scans</span> –
+            die Zählung oben und die Tabelle am Ende richteten sich nach dem
+            Betriebssystem statt nach dem Gerätetyp. Jetzt zeigt der Bericht
+            dieselben Gerätetypen und Farben wie die Geräteliste.</li>
+        <li class="fix"><span class="highlight">WLAN-Bericht</span> –
+            wurde er während der Suche nach WLANs erstellt, fehlten diese darin.</li>
+        <li class="fix"><span class="highlight">DNS-Prüfung</span> –
+            zeigte unter Umständen die Adresse des eigenen Routers statt der
+            Adresse des geprüften Ziels.</li>
+        <li class="fix"><span class="highlight">Ping</span> –
+            die Meldung „Zielhost nicht erreichbar“ zählte als Antwort, im
+            LAN-Verbindungsweg und im Dauer-Ping.</li>
+        <li class="fix"><span class="highlight">Routenverfolgung</span> –
+            brach bei längeren Wegen ohne Ergebnis mit „Zeitüberschreitung“ ab.</li>
+        <li class="fix"><span class="highlight">HTTPS und Browser-Test</span> –
+            meldeten bei jeder Störung „PS-Skript blockiert“, auch wenn der Server
+            mit einem Fehler antwortete oder nicht erreichbar war.</li>
+        <li class="fix"><span class="highlight">Port-Prüfung</span> –
+            Regeln für einen anderen Windows-Dienst galten als passend, wenn
+            dieser im selben Systemprozess lief. Dadurch konnte „OK“ erscheinen,
+            obwohl die zuständige Regel abgeschaltet war.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v4.1 -->
+  <div class="version-block">
+    <div class="version-header older">
+      <div class="v-badge">v 4.1</div>
+      <div>
+        <div style="font-size:15px;font-weight:600;">Gerätetyp und Gerätename &middot; Verbindungsqualität &middot; Netzlaufwerke im Dauertest</div>
+        <div class="v-date">Oktober 2026 &nbsp;·&nbsp; veröffentlicht mit Version 4.2</div>
+      </div>
+      <div class="v-tag older">Vorgänger</div>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.10.15</h3>
+      <ul>
+        <li class="new"><span class="highlight">Spalte „Gerätetyp" statt „Zusatzinfo"</span> –
+            die bisherige Spalte wiederholte meist nur den Hersteller. Jetzt ordnet
+            das Programm jedes Gerät anhand mehrerer Hinweise (Hersteller,
+            Hostname, Antwortverhalten, offene Ports) einem Typ zu: Router,
+            Netzwerkgerät, Windows-PC, Server, Mac, Linux-Rechner, Drucker, NAS,
+            Smartphone/Tablet, Kamera, Smart-Home-Gerät, TV/Medien, VoIP-Telefon
+            oder virtuelle Maschine. Ist die Einordnung nicht eindeutig, bleibt das
+            Feld leer. Die Zeilenfarbe richtet sich nach dem Gerätetyp.</li>
+        <li class="new"><span class="highlight">Spalte „Gerätename"</span> –
+            zeigt den Namen oder das Modell, das ein Gerät auf Nachfrage selbst
+            meldet (z.B. FRITZ!-Geräte, Drucker, Fernseher, NAS), oder einen
+            eigenen Namen wie „Kamera Hof".</li>
+        <li class="new"><span class="highlight">„Gerät beschriften …" (Rechtsklick)</span> –
+            ein Dialog für Gerätename, Hersteller und Gerätetyp. Der Gerätetyp gilt
+            wahlweise für dieses Gerät, für alle Geräte mit demselben MAC-Präfix
+            oder für alle Geräte mit einem bestimmten Namensteil. Eigene Angaben
+            haben immer Vorrang vor der automatischen Einordnung und sind in der
+            Liste mit ✏ markiert. Der Dialog ersetzt „Eigene Zuordnung setzen".</li>
+        <li class="new"><span class="highlight">Spalten ein- und ausblenden</span> –
+            über „☰ Spalten …" über der Geräteliste. Das gilt nur für die Anzeige;
+            Log, CSV und HTML-Bericht enthalten immer alle Spalten.</li>
+        <li class="new"><span class="highlight">📶 Verbindungsqualität</span> –
+            misst 30, 60 oder 120 Sekunden lang Paketverlust, Antwortzeit und deren
+            Schwankung, gleichzeitig zum gewählten Ziel und zum Gateway. Der
+            Vergleich zeigt, ob eine Störung im eigenen Netz liegt oder dahinter.
+            Bewertet wird die Verbindung selbst und ihre Eignung für Telefonie und
+            Video. Aufruf über den Knopf im Reiter LAN-Scanner, per Rechtsklick auf
+            ein Gerät oder in den Gerätedetails.</li>
+        <li class="new"><span class="highlight">Kameras im Port-Scan</span> –
+            die typischen Ports von Netzwerkkameras und Rekordern (u.a. 554 für den
+            Videostrom) werden mitgeprüft und fließen in die Gerätetyp-Einordnung
+            ein.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>★ Neue Funktionen – Build 2026.10.27</h3>
+      <ul>
+        <li class="new"><span class="highlight">Netzlaufwerke im LAN-Dauertest</span> –
+            als Ziel ist jetzt auch ein verbundener Laufwerksbuchstabe wie
+            <code>U:</code> möglich. Eine NAS, deren Festplatten ruhen, braucht nach
+            der ersten Anfrage einige Sekunden; das Programm fragt deshalb bis zur
+            eingestellten <strong>Wartezeit für Netzlaufwerke</strong> (⚙ Konfig,
+            0 / 30 / 60 / 120 Sekunden) erneut an. Führt Windows das Laufwerk als
+            „nicht verfügbar", wird es wie im Explorer neu verbunden.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>● Verbesserungen – Build 2026.10.25 bis 2026.10.27</h3>
+      <ul>
+        <li class="note"><span class="highlight">Windows in anderen Sprachen</span> –
+            die Prüfungen im Reiter Netzwerk-Einstellungen sowie die WLAN- und
+            Routing-Angaben arbeiten jetzt auch auf englischem und tschechischem
+            Windows richtig.</li>
+        <li class="note"><span class="highlight">Eigene Zuordnungen bestimmen den Gerätetyp</span> –
+            Einträge in <code>S-IT-Custom.ini</code> zu IP-Adressen und Hostnamen
+            erscheinen jetzt in der Spalte „Gerätetyp". Vorhandene Einträge bleiben
+            gültig.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>⚑ Fehlerbehebungen – Build 2026.10.15 bis 2026.10.27</h3>
+      <ul>
+        <li class="fix"><span class="highlight">Fenster außerhalb des Bildschirms</span> –
+            der Log-Manager und einige andere Fenster öffneten sich teilweise
+            außerhalb des Bildschirms.</li>
+        <li class="fix"><span class="highlight">Firewall-Zeile grau</span> –
+            im Reiter Netzwerk-Einstellungen blieb die Zeile grau, wenn es genau eine
+            passende Regel gab.</li>
+        <li class="fix"><span class="highlight">Webseiten-Kachel meldete ERROR</span> –
+            auf einem frisch eingerichteten Windows, obwohl die Webseite
+            erreichbar war.</li>
+        <li class="fix"><span class="highlight">Falscher LAN-Adapter</span> –
+            auf Notebooks ohne LAN-Anschluss erschien ein LAN-Adapter, den es nicht
+            gab.</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- v4.0 -->
+  <div class="version-block">
+    <div class="version-header older">
       <div class="v-badge">v 4.0</div>
       <div>
         <div style="font-size:15px;font-weight:600;">Firewall &amp; Ports: Ports auf diesem PC freigeben &middot; Skalierung vereinfacht &middot; Schriftgröße in der Geräteliste</div>
         <div class="v-date">Oktober 2026</div>
       </div>
-      <div class="v-tag">Aktuell</div>
+      <div class="v-tag older">Vorgänger</div>
     </div>
 
     <div class="section">
@@ -857,12 +1274,12 @@
 </div>
 
 <footer>
-  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.0 (Build 2026.10.09)
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Version 4.2 (Build 2026.11.22b)
   &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
   Autor: Hans Udo Sattler<br>
   <a href="https://sattlerit.github.io/sit-lanscanner/">Projektseite</a>
   &nbsp;•&nbsp;
-  <a href="Disclaimer.txt">Haftungsausschluss</a>
+  <a href="Lizenz-Disclaimer.txt">Haftungsausschluss</a>
   &nbsp;•&nbsp;
   <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
 </footer>

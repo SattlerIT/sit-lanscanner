@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>S-IT LAN Device Scanner – Ayuda</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #F5F5F5;
+         color: #2C3E50; font-size: 14px; line-height: 1.6; }
+  header { background: #2C3E50; color: #fff; padding: 24px 36px 18px 36px; }
+  header h1 { font-size: 26px; font-weight: 700; margin-bottom: 4px; }
+  header p  { font-size: 12px; color: #BDC3C7; }
+  nav { background: #34495E; padding: 0 36px; display: flex; flex-wrap: wrap; gap: 2px; }
+  nav a { color: #BDC3C7; text-decoration: none; padding: 10px 16px;
+          font-size: 13px; display: block; }
+  nav a:hover { background: #2C3E50; color: #fff; }
+  .container { max-width: 920px; margin: 28px auto; padding: 0 20px 60px 20px; }
+  h2 { font-size: 20px; color: #2C3E50; border-bottom: 3px solid #3498DB;
+       padding-bottom: 6px; margin: 36px 0 16px 0; }
+  h3 { font-size: 15px; color: #2980B9; margin: 20px 0 8px 0; }
+  h4 { font-size: 13px; color: #7F8C8D; margin: 14px 0 6px 0;
+       text-transform: uppercase; letter-spacing: .06em; }
+  p  { margin-bottom: 10px; }
+  ul, ol { padding-left: 22px; margin-bottom: 12px; }
+  li { margin-bottom: 5px; }
+  .box { background: #fff; border-radius: 8px; padding: 18px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 16px; }
+  .info  { background: #EBF5FB; border-left: 4px solid #3498DB;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .warn  { background: #FEF9E7; border-left: 4px solid #F39C12;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .tip   { background: #EAFAF1; border-left: 4px solid #27AE60;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  .danger{ background: #FDEDEC; border-left: 4px solid #E74C3C;
+           padding: 12px 16px; border-radius: 4px; margin: 12px 0; }
+  code   { background: #ECF0F1; padding: 2px 6px; border-radius: 3px;
+           font-family: Consolas, monospace; font-size: 12px; }
+  table  { width: 100%; border-collapse: collapse; margin: 12px 0; }
+  th     { background: #2C3E50; color: #fff; padding: 8px 12px; text-align: left; }
+  td     { padding: 7px 12px; border-bottom: 1px solid #ECF0F1; }
+  tr:nth-child(even) td { background: #F8F9FA; }
+  .btn-demo { display: inline-block; white-space: nowrap; padding: 4px 12px; border-radius: 4px;
+              font-size: 12px; font-weight: 600; color: #fff; margin: 2px; }
+  .btn-green  { background: #27AE60; }
+  .btn-blue   { background: #3498DB; }
+  .btn-orange { background: #E67E22; }
+  .btn-dark   { background: #2C3E50; }
+  .btn-red    { background: #E74C3C; }
+  footer { background: #2C3E50; color: #95A5A6; text-align: center;
+           padding: 14px; font-size: 11px; margin-top: 40px; }
+  footer a { color: #7FB3D5; text-decoration: underline; }
+  footer a:hover { color: #AED6F1; }
+  .toc { background: #fff; border-radius: 8px; padding: 16px 22px;
+         box-shadow: 0 2px 6px rgba(0,0,0,.07); margin-bottom: 28px; }
+  .toc h3 { color: #2C3E50; margin-bottom: 10px; }
+  .toc ol { padding-left: 20px; }
+  .toc li { margin: 4px 0; }
+  .toc a  { color: #3498DB; text-decoration: none; }
+  .toc a:hover { text-decoration: underline; }
+  .file-box { background: #1E1E1E; color: #D4D4D4; font-family: Consolas, monospace;
+              font-size: 12px; padding: 12px 16px; border-radius: 4px; margin: 8px 0; }
+  .file-box .comment { color: #6A9955; }
+  .file-box .key     { color: #9CDCFE; }
+  .file-box .val     { color: #CE9178; }
+  .file-box .section { color: #C586C0; font-weight: bold; }
+</style>
+</head>
+<body>
+<header>
+  <h1>📖 S-IT LAN Device Scanner – Ayuda</h1>
+  <p>Versión 4.2 &nbsp;•&nbsp; © 2026 Hans Udo Sattler &nbsp;•&nbsp; Sattler IT-Service, Greifenstein</p>
+</header>
+
+<nav>
+  <a href="#schnellstart">Inicio rápido</a>
+  <a href="#oberflaeche">Interfaz</a>
+  <a href="#scan">Realizar un escaneo</a>
+  <a href="#ergebnisse">Entender los resultados</a>
+  <a href="#einstellungen">Configuración</a>
+  <a href="#custom">Asignaciones propias</a>
+  <a href="#internet">Acceso a Internet</a>
+  <a href="#lan-performance">Rendimiento LAN</a>
+  <a href="#wlan-profile">Perfiles Wi-Fi</a>
+  <a href="#firewall">Firewall y puertos</a>
+  <a href="#diag">Diagnóstico</a>
+  <a href="#dateien">Archivos y actualizaciones</a>
+  <a href="#faq">Preguntas frecuentes</a>
+</nav>
+
+<div class="container">
+
+  <div class="toc">
+    <h3>Índice</h3>
+    <ol>
+      <li><a href="#schnellstart">Inicio rápido</a></li>
+      <li><a href="#oberflaeche">La interfaz del programa de un vistazo</a></li>
+      <li><a href="#scan">Realizar un escaneo</a></li>
+      <li><a href="#ergebnisse">Entender los resultados del escaneo</a></li>
+      <li><a href="#einstellungen">Configuración</a></li>
+      <li><a href="#custom">Datos propios sobre dispositivos (S-IT-Custom.ini)</a></li>
+      <li><a href="#internet">Pestaña 2: Acceso a Internet</a></li>
+      <li><a href="#lan-performance">Pestaña 4: Rendimiento LAN y Wi-Fi</a></li>
+      <li><a href="#wlan-profile">Pestaña 5: Perfiles Wi-Fi</a></li>
+      <li><a href="#firewall">Pestaña 6: Firewall y puertos</a></li>
+      <li><a href="#diag">Diagnóstico (DIAG) – para probadores</a></li>
+      <li><a href="#dateien">Archivos, actualizaciones y copia de seguridad</a></li>
+      <li><a href="#faq">Preguntas frecuentes (FAQ)</a></li>
+    </ol>
+  </div>
+
+  <!-- SCHNELLSTART -->
+  <h2 id="schnellstart">1. Inicio rápido</h2>
+  <div class="box">
+    <h3>Primer escaneo en 3 pasos</h3>
+    <ol>
+      <li><strong>Iniciar el programa</strong> – haga doble clic en <code>sit-lsc-start.exe</code>. Si se le solicita, confirme los derechos de administrador (recomendado para el escaneo ARP).</li>
+      <li><strong>Elegir la red</strong> – seleccione la red deseada en la lista desplegable de arriba a la izquierda (se detecta automáticamente).</li>
+      <li><strong>Iniciar el escaneo</strong> – haga clic en <span class="btn-demo btn-green">▶ Iniciar escaneo</span>. Tras el escaneo, todos los dispositivos encontrados aparecen en la lista.</li>
+    </ol>
+    <div class="tip">
+      <strong>Consejo:</strong> active el <strong>escaneo de puertos</strong> en la configuración para detectar con más precisión los servicios y el sistema operativo. El escaneo tarda más, pero proporciona bastante más información.
+    </div>
+  </div>
+
+  <!-- OBERFLÄCHE -->
+  <h2 id="oberflaeche">2. La interfaz del programa de un vistazo</h2>
+  <div class="box">
+    <h3>Botones de la barra de herramientas</h3>
+    <p>La barra de herramientas de la pestaña «Escáner LAN» contiene las funciones de escaneo:</p>
+    <table>
+      <tr><th>Botón</th><th>Función</th></tr>
+      <tr><td><span class="btn-demo btn-green">▶ Iniciar escaneo</span></td>
+          <td>Inicia el escaneo en la red seleccionada</td></tr>
+      <tr><td><span class="btn-demo btn-red">⏹ Detener escaneo</span></td>
+          <td>Cancela un escaneo en curso</td></tr>
+      <tr><td><span class="btn-demo btn-blue">📋 Registros e informes</span></td>
+          <td>Abre el gestor de registros con todos los escaneos guardados</td></tr>
+      <tr><td><span class="btn-demo btn-dark">🔄 Actualizar OUI</span></td>
+          <td>Abre la gestión OUI: actualizar la base de datos de fabricantes y mantener las asignaciones propias</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">📶 Calidad de conexión</span></td>
+          <td>Mide la pérdida de paquetes, el tiempo de respuesta y la variación hacia un destino y hacia la puerta de enlace (véase el apartado 4)</td></tr>
+    </table>
+
+    <h3>Botones del encabezado (siempre visibles)</h3>
+    <p>Estos botones están siempre visibles arriba a la derecha en el encabezado – accesibles sea cual sea la pestaña activa:</p>
+    <table>
+      <tr><th>Botón</th><th>Función</th></tr>
+      <tr><td><span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span></td>
+          <td>Abre las herramientas de diagnóstico. Solo visible si está activado en <strong>⚙ Config → Diagnóstico</strong> – oculto en el uso normal. Véase el apartado 11.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">⚙ Config</span></td>
+          <td>Abre la configuración – a la derecha contiene el <strong>tamaño de visualización / escalado</strong> (90–300 %) para monitores HiDPI y UHD.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#1A5276;">? Ayuda</span></td>
+          <td>Abre esta ventana de ayuda</td></tr>
+      <tr><td><span class="btn-demo" style="background:#566573;">F11</span></td>
+          <td>Muestra u oculta el encabezado – más espacio para la lista de dispositivos</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">✖ Salir</span></td>
+          <td>Cierra el programa</td></tr>
+    </table>
+
+    <h3>Pestañas</h3>
+    <ul>
+      <li><strong>Escáner LAN</strong> – vista principal con la lista de dispositivos</li>
+      <li><strong>Acceso a Internet</strong> – comprobar la conexión a Internet, ruta de conexión LAN, prueba de velocidad y consulta de dominio (véase el apartado 7)</li>
+      <li><strong>Configuración de red</strong> – herramientas de red y diagnóstico</li>
+      <li><strong>Rendimiento LAN y Wi-Fi</strong> – prueba de velocidad, estado de conexión y resumen Wi-Fi</li>
+      <li><strong>📶 Perfiles Wi-Fi</strong> – mostrar las redes Wi-Fi guardadas con su contraseña, guardarlas e importarlas en otro PC; además, la propia conexión comparada con los estándares Wi-Fi, las redes Wi-Fi al alcance y el informe Wi-Fi</li>
+      <li><strong>🛡 Firewall y puertos</strong> – dos columnas: a la izquierda, comprobar si se puede acceder a un dispositivo de la red y añadir una excepción si es necesario; a la derecha, comprobar y abrir un puerto en este PC (se requieren derechos de administrador)</li>
+    </ul>
+  </div>
+
+  <!-- SCAN -->
+  <h2 id="scan">3. Realizar un escaneo</h2>
+  <div class="box">
+    <h3>¿Qué rango debo escanear?</h3>
+    <p>El <strong>campo de red</strong> de arriba a la izquierda determina qué direcciones se comprueban. Es una lista desplegable <em>y</em> un campo de entrada: las redes detectadas automáticamente están disponibles para elegir, pero también puede escribir directamente en él.</p>
+    <table>
+      <tr><th>Notación</th><th>Ejemplo</th><th>Significado</th></tr>
+      <tr><td><strong>Desde–hasta</strong></td>
+          <td><code>192.168.0.1-192.168.0.50</code></td>
+          <td>Todas las direcciones desde la primera hasta la última – la notación más sencilla</td></tr>
+      <tr><td><strong>Forma abreviada</strong></td>
+          <td><code>192.168.0.1-50</code></td>
+          <td>Lo mismo, pero solo se indica el último bloque de la dirección</td></tr>
+      <tr><td><strong>Red completa</strong></td>
+          <td><code>192.168.0.0/24</code></td>
+          <td>Notación técnica (CIDR) para una red completa</td></tr>
+      <tr><td><strong>Un solo dispositivo</strong></td>
+          <td><code>192.168.0.7</code></td>
+          <td>Comprobar solo esta dirección</td></tr>
+    </table>
+    <p>Un rango más pequeño es bastante más rápido: en lugar de 254 direcciones, solo se comprueban las que realmente le interesan. En rangos muy grandes, el programa pregunta antes para que un escaneo no dure horas por descuido.</p>
+    <div class="warn">
+      <strong>Si no se acepta una entrada:</strong> el programa explica en lenguaje claro qué es incorrecto, por ejemplo si la segunda dirección está antes de la primera. Revise los puntos y el guion; los espacios no importan.
+    </div>
+
+    <h3>Intensidad del escaneo</h3>
+    <p>La intensidad del escaneo determina con qué agresividad se consulta la red. Se ajusta en <strong>⚙ Config → Intensidad del escaneo</strong>:</p>
+    <table>
+      <tr><th>Modo</th><th>Método</th><th>Recomendación</th></tr>
+      <tr><td><strong>Seguro</strong></td>
+          <td>Solo ping (ICMP)</td>
+          <td>Para redes sensibles, impresoras antiguas o si después del escaneo algunos dispositivos dejaron de responder</td></tr>
+      <tr><td><strong>Estándar</strong></td>
+          <td>Ping + escaneo ARP</td>
+          <td>Para redes domésticas – encuentra más dispositivos que el modo seguro</td></tr>
+      <tr><td><strong>Intensivo</strong></td>
+          <td>Ping + escaneo ARP en dos pasadas</td>
+          <td>Para entornos profesionales. En algunos routers puede interrumpir brevemente la conexión</td></tr>
+    </table>
+    <div class="warn">
+      <strong>Nota sobre impresoras:</strong> las impresoras de red antiguas (p. ej. modelos Brother HL) pueden reaccionar a inundaciones ARP agresivas con una caída de la conexión. En esas redes, utilice la intensidad del escaneo <strong>Seguro</strong>.
+    </div>
+
+    <h3>Búsqueda adicional de dispositivos que faltan</h3>
+    <p>Algunos dispositivos no responden a la primera, por ejemplo en modo de ahorro de energía o con una señal inalámbrica débil, y otros no responden nunca al ping. Por eso la búsqueda adicional vuelve a preguntar de forma selectiva, solo en las direcciones que aún no han respondido. Se ajusta en <strong>⚙ Config → Búsqueda adicional de dispositivos que faltan</strong>:</p>
+    <ul>
+      <li><strong>Desactivada</strong> – sin búsqueda adicional.</li>
+      <li><strong>Direcciones conocidas</strong> (predeterminado) – las direcciones en las que había un dispositivo en escaneos anteriores se consultan una segunda vez con más paciencia. Los dispositivos sin ningún puerto abierto reciben un segundo intento en su interfaz web. Tarda unos segundos.</li>
+      <li><strong>Todas las direcciones silenciosas</strong> – además se consultan puertos habituales en todas las direcciones sin respuesta. Así aparecen también dispositivos que no responden al ping, por ejemplo asistentes de voz o PC con Windows con el cortafuegos cerrado. Tarda bastante más.</li>
+    </ul>
+
+    <h3>Escaneo de puertos</h3>
+    <p>El escaneo de puertos opcional (se activa en la configuración) comprueba en cada dispositivo los puertos de servicios conocidos y mejora considerablemente la detección del sistema operativo. Alarga el escaneo, pero proporciona bastante más información, sobre todo qué servicios ofrece un dispositivo (interfaz web, SSH, RDP, etc.).</p>
+  </div>
+
+  <!-- ERGEBNISSE -->
+  <h2 id="ergebnisse">4. Entender los resultados del escaneo</h2>
+  <div class="box">
+    <h3>Columnas de la lista de dispositivos</h3>
+    <table>
+      <tr><th>Columna</th><th>Significado</th></tr>
+      <tr><td>🌐</td><td>Interfaz web disponible – al hacer clic se abre el navegador</td></tr>
+      <tr><td>Dirección IP</td><td>IP actual en la red</td></tr>
+      <tr><td>Nombre de host</td><td>Nombre del dispositivo (resuelto por DNS/NetBIOS)</td></tr>
+      <tr><td>Nombre del dispositivo</td><td>Nombre o modelo que comunica el propio dispositivo (p. ej. dispositivos FRITZ!, impresoras, televisores, NAS) – o su propio nombre, como «Cámara patio»</td></tr>
+      <tr><td>Dirección MAC</td><td>Dirección de hardware de la tarjeta de red</td></tr>
+      <tr><td>Fabricante</td><td>Determinado a partir de la base de datos OUI</td></tr>
+      <tr><td>Puertos abiertos</td><td>Servicios encontrados (solo con el escaneo de puertos activado)</td></tr>
+      <tr><td>Sistema operativo</td><td>SO detectado (TTL + nombre de host + fabricante + puertos)</td></tr>
+      <tr><td>Tipo de dispositivo</td><td>Router, impresora, NAS, cámara, smartphone/tableta, etc. – véase más abajo</td></tr>
+    </table>
+
+    <h3>Tipo de dispositivo</h3>
+    <p>El programa asigna un tipo a cada dispositivo a partir de varios indicios: fabricante, nombre de host, comportamiento de respuesta y – con el escaneo de puertos activado – los puertos abiertos. Los tipos posibles son router, dispositivo de red, PC Windows, servidor, Mac, equipo Linux, impresora, NAS, smartphone/tableta, cámara, dispositivo domótico, TV/multimedia, teléfono VoIP y máquina virtual.</p>
+    <p>Si la clasificación no es clara, el campo queda <strong>vacío</strong>: es mejor que falte un dato a que sea incorrecto. Si usted sabe qué es un dispositivo, indíquelo con <strong>clic derecho → «Etiquetar dispositivo …»</strong> (apartado 6). Los datos propios siempre tienen prioridad y están marcados en la lista con <strong>✏</strong>.</p>
+
+    <h3>Mostrar y ocultar columnas</h3>
+    <p>Con <strong>«☰ Columnas …»</strong>, encima de la lista de dispositivos, se pueden ocultar y volver a mostrar columnas concretas. Esto solo afecta a la visualización: el registro, el CSV y el informe HTML contienen siempre todas las columnas.</p>
+
+    <h3>Colores de las filas</h3>
+    <p>El color depende del tipo de dispositivo. Si no se conoce el tipo, depende del sistema operativo, el fabricante y los puertos abiertos.</p>
+    <table>
+      <tr><th>Color</th><th>Significado</th></tr>
+      <tr><td style="background:#CCE5F5">Azul</td><td>PC Windows o servidor Windows</td></tr>
+      <tr><td style="background:#B8EDD0">Verde</td><td>Linux, Unix o sistemas similares</td></tr>
+      <tr><td style="background:#F5C6C3">Rosa</td><td>Apple (macOS, iOS)</td></tr>
+      <tr><td style="background:#D5C0F0">Morado</td><td>Dispositivo móvil (Android, iOS)</td></tr>
+      <tr><td style="background:#FAE9A0">Amarillo</td><td>Dispositivo de red (router, switch, punto de acceso)</td></tr>
+      <tr><td style="background:#FDDCB0">Naranja</td><td>Impresora o equipo multifunción</td></tr>
+      <tr><td style="background:#BEE3F5">Azul claro</td><td>Dispositivo NAS</td></tr>
+      <tr><td style="background:#D8E8E8">Gris</td><td>Máquina virtual</td></tr>
+    </table>
+
+    
+    <h3>Atajos de teclado</h3>
+    <table>
+      <tr><th>Tecla</th><th>Función</th></tr>
+      <tr><td><code>F11</code></td><td>Mostrar/ocultar el encabezado – más espacio para la lista de dispositivos (también como botón en el encabezado)</td></tr>
+      <tr><td><code>Doble clic</code></td><td>Mostrar los detalles del dispositivo</td></tr>
+      <tr><td><code>Clic derecho</code></td><td>Menú contextual con acciones</td></tr>
+    </table>
+
+    <h3>Acciones con doble clic y clic derecho</h3>
+    <p>Un <strong>doble clic</strong> en un dispositivo abre la ventana de detalles con toda la información, los detalles de los puertos y acciones rápidas.</p>
+    <p>El <strong>clic derecho</strong> abre el menú contextual con las siguientes opciones:</p>
+    <ul>
+      <li>Mostrar detalles</li>
+      <li>Abrir interfaz web (si está disponible)</li>
+      <li>Iniciar monitor de ping (ping continuo con historial)</li>
+      <li>Medir calidad de conexión …</li>
+      <li>Enviar Wake-on-LAN</li>
+      <li>Copiar IP o MAC</li>
+      <li>Volver a escanear dispositivo</li>
+      <li><strong>Etiquetar dispositivo …</strong> – fijar de forma permanente el nombre, el fabricante y el tipo del dispositivo (apartado 6)</li>
+    </ul>
+
+    <h3>📶 Calidad de conexión</h3>
+    <p>Si la telefonía o el vídeo se entrecortan o un dispositivo solo es accesible a ratos, esta medición muestra si el problema está en la red propia o más allá. Se abre con el botón <span class="btn-demo" style="background:#16A085;">📶 Calidad de conexión</span> de la pestaña Escáner LAN, con clic derecho en un dispositivo o en los detalles del dispositivo.</p>
+    <ol>
+      <li><strong>Elegir el destino</strong> – Internet (8.8.8.8), la puerta de enlace o un dispositivo del último escaneo.</li>
+      <li><strong>Elegir la duración</strong> – 30, 60 o 120 segundos.</li>
+      <li><span class="btn-demo btn-green">▶ Iniciar medición</span> – se mide a la vez hacia el destino y hacia la puerta de enlace.</li>
+    </ol>
+    <p>Para ambos tramos, el resultado indica la pérdida de paquetes, el tiempo de respuesta y su variación, y los valora en dos partes: la <strong>conexión</strong> (según la pérdida de paquetes) y la idoneidad para <strong>telefonía y vídeo</strong> (según el tiempo de respuesta y la variación). Si los valores hacia la puerta de enlace son buenos y hacia el destino malos, la causa está detrás del router. Con <strong>📋 Copiar resultado</strong> se puede compartir.</p>
+    <div class="info">
+      <strong>ℹ Cámaras y dispositivos similares:</strong> muchos dispositivos responden al ping solo de forma secundaria. Allí, una variación alta suele reflejar la carga del dispositivo y no la calidad de la red. En estos dispositivos, lo decisivo es la pérdida de paquetes.
+    </div>
+  </div>
+
+  <!-- EINSTELLUNGEN -->
+  <h2 id="einstellungen">5. Configuración</h2>
+  <div class="box">
+    <p>La configuración se abre con <span class="btn-demo btn-orange">⚙ Config</span>. Todos los ajustes se guardan automáticamente en el archivo <code>S-IT-LanScanner.ini</code>.</p>
+
+    <h3>Opciones de escaneo</h3>
+    <ul>
+      <li><strong>Escaneo de puertos</strong> – encuentra servicios y mejora la detección del SO (más lento)</li>
+      <li><strong>Escaneo ARP</strong> – encuentra más dispositivos mediante difusiones ARP</li>
+      <li><strong>Detección de SO</strong> – analiza TTL, nombre de host y fabricante</li>
+    </ul>
+
+    <h3>Intensidad del escaneo</h3>
+    <p>Seguro / Estándar / Intensivo – véase el apartado 3.</p>
+
+    <h3>Idioma</h3>
+    <p>En <strong>⚙ Config → Sprache / Language</strong> se elige el idioma de la interfaz del programa: alemán, inglés, neerlandés, español, francés, italiano, polaco, croata o checo. El nuevo idioma se aplica tras reiniciar el programa; el programa ofrece el reinicio al guardar. La ayuda se abre después también en el idioma elegido.</p>
+
+    <h3>Apariencia</h3>
+    <ul>
+      <li><strong>Discreta</strong> – tonos pastel tranquilos, para uso profesional</li>
+      <li><strong>Alto contraste</strong> – colores más intensos, más fáciles de distinguir</li>
+      <li><strong>🌙 Modo oscuro</strong> – fondos oscuros y texto claro en todas las ventanas del programa, más agradable para trabajar mucho tiempo ante la pantalla. Las filas de la lista de dispositivos conservan su color por tipo de dispositivo, solo más oscuro. Surte efecto tras un reinicio, que el programa ofrece al guardar. Los cuadros de mensaje de Windows y los informes en el navegador siguen siendo claros.</li>
+      <li><strong>Tamaño de letra</strong> – Pequeño (8 pt), Normal (9 pt), Grande (11 pt). En pantallas 4K o resoluciones altas se recomienda «Grande»</li>
+    </ul>
+
+    <h3>Informe HTML</h3>
+    <p>Si <strong>«Abrir automáticamente tras el escaneo»</strong> está activado para el informe HTML, el informe se abre automáticamente en el navegador predeterminado después de cada escaneo. Se puede desactivar aquí.</p>
+
+    <h3>Carpeta de registros</h3>
+    <p>Aquí puede establecer dónde se guardan los registros de escaneo y los informes HTML. Predeterminado: <code>Logs</code> junto a <code>sit-lsc-start.exe</code></p>
+
+    <h3>Espera para unidades de red</h3>
+    <p>Se aplica a la prueba continua LAN con un destino en la red (<code>\\NAS\recurso</code> o una unidad de red conectada como <code>U:</code>). Un NAS cuyos discos están en reposo necesita unos segundos tras la primera solicitud hasta que el recurso compartido es accesible. Por eso el programa vuelve a preguntar cada 3 segundos hasta el tiempo configurado y solo después informa de que el destino no es accesible. Se puede elegir 0, 30, 60 o 120 segundos; el valor predeterminado es 60.</p>
+
+    <h3>Tamaño de visualización / escalado</h3>
+    <p>Escala toda la interfaz. Se puede elegir <strong>90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %</strong>. El nivel elegido determina el tamaño por sí solo: el escalado de Windows no se suma. El nivel <strong>90 %</strong> es compacto y deja más espacio para las tablas. Qué nivel conviene para qué lo explica el botón ⓘ junto al título. Un cambio surte efecto tras un reinicio, que se ofrece al guardar.</p>
+    <div class="info">
+      <strong>ℹ Relación con el escalado de Windows:</strong> mientras haya un nivel elegido aquí, este determina el tamaño de visualización, independientemente de lo configurado en Windows. Si no hay ningún nivel elegido, el programa sigue el escalado de Windows.
+    </div>
+
+    <h3>Inicio del programa</h3>
+    <p>La casilla <strong>«🛡 Iniciar como administrador»</strong> (activada de forma <strong>predeterminada</strong>) solicita los derechos de administrador al iniciar el programa. El escáner los necesita para la reparación de red, la caché ARP y la pestaña del firewall. Al iniciar aparece entonces la consulta de Windows (Control de cuentas de usuario, UAC). Quien trabaje deliberadamente sin derechos de administrador, desmarca la casilla: así no aparece la consulta, y las funciones mencionadas avisan por sí mismas cuando necesitan derechos. Abajo a la izquierda, en la barra de estado, un indicador permanente muestra el estado real: <span class="btn-demo btn-green">🛡 Admin</span> o <span class="btn-demo" style="background:#95A5A6;">🛡 sin admin</span>.</p>
+
+    <h3>Ventana</h3>
+    <p>Con <strong>«🗖 Recordar tamaño de ventana»</strong>, el programa recuerda al salir el tamaño y la posición de la ventana principal –incluido el monitor en el que estaba– y si estaba maximizada. En el siguiente inicio se abre exactamente igual. Si ese monitor ya no está conectado, la ventana se abre en la pantalla principal. El tamaño guardado se aplica por nivel de escalado: tras cambiar el escalado, la ventana se inicia una vez en tamaño estándar y después recuerda el tamaño de nuevo; así, tamaño y espacio necesario siempre coinciden.</p>
+
+    <div class="info">
+      <strong>ℹ Ventana de configuración:</strong> con un escalado alto, la ventana de configuración es más grande que la pantalla. Por eso se puede desplazar en ambas direcciones (rueda del ratón en vertical, <code>Mayús</code>+rueda del ratón en horizontal); los botones <strong>Guardar</strong> y <strong>Cancelar</strong> permanecen siempre visibles abajo.
+    </div>
+
+    <h3>Diagnóstico</h3>
+    <p>La casilla <strong>«🔧 Mostrar herramientas DIAG»</strong> muestra arriba en el encabezado el botón <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. De forma predeterminada está <strong>desactivada</strong>: el diagnóstico no es necesario para el uso normal. Más información en el apartado 11.</p>
+  </div>
+
+  <!-- CUSTOM -->
+  <h2 id="custom">6. Datos propios sobre dispositivos (S-IT-Custom.ini)</h2>
+  <div class="box">
+    <p>No todos los dispositivos se pueden clasificar automáticamente con seguridad: un dispositivo nuevo aún no figura en la base de datos de fabricantes, una cámara se identifica como un equipo Linux o, con varios dispositivos iguales, se quiere ver cuál está dónde. Para ello introduce datos propios. Se guardan en el archivo <strong>S-IT-Custom.ini</strong> y se aplican de forma permanente.</p>
+
+    <div class="info">
+      <strong>Importante:</strong> los datos propios <strong>siempre tienen prioridad</strong> sobre la detección automática. El archivo S-IT-Custom.ini <strong>nunca</strong> se sobrescribe en las actualizaciones OUI.
+    </div>
+
+    <h3>Método 1: clic derecho → «Etiquetar dispositivo …»</h3>
+    <p>Es la forma más sencilla:</p>
+    <ol>
+      <li>Realizar un escaneo</li>
+      <li>Hacer <strong>clic derecho</strong> en el dispositivo de la lista</li>
+      <li>Elegir <strong>«✏ Etiquetar dispositivo …»</strong></li>
+      <li>Rellenar los campos deseados:
+          <ul>
+            <li><strong>Nombre del dispositivo</strong> – se aplica a este dispositivo, p. ej. ubicación o sala («Cámara patio», «Impresora oficina 2»)</li>
+            <li><strong>Fabricante</strong> – se aplica a todos los dispositivos con el mismo prefijo MAC</li>
+            <li><strong>Tipo de dispositivo</strong> – elegir de la lista o escribir libremente</li>
+          </ul>
+      </li>
+      <li>Establecer a qué se aplica el tipo de dispositivo:
+          <ul>
+            <li><strong>solo este dispositivo</strong> – mediante la dirección MAC (sin MAC, mediante la dirección IP)</li>
+            <li><strong>todos los dispositivos con este prefijo MAC</strong> – p. ej. todas las cámaras de un fabricante</li>
+            <li><strong>todos los dispositivos con esta parte del nombre</strong> – p. ej. todos los dispositivos cuyo nombre de host contiene «SmartPlug»</li>
+          </ul>
+      </li>
+      <li>Guardar: el dato aparece de inmediato en la lista.</li>
+    </ol>
+    <p>Un campo vacío o <strong>«– determinar automáticamente –»</strong> elimina de nuevo el dato propio; entonces se aplica la clasificación automática.</p>
+
+    <h3>Método 2: ventana de gestión OUI</h3>
+    <p>Con <span class="btn-demo btn-dark">🔄 Actualizar OUI</span> → pestaña <strong>«✏ Asignaciones propias»</strong> ve todas las entradas en un resumen y puede añadirlas, modificarlas y eliminarlas. Las subpestañas:</p>
+    <ul>
+      <li><strong>OUI → fabricante</strong> – prefijo MAC (6 caracteres hexadecimales) → nombre del fabricante</li>
+      <li><strong>MAC → nombre</strong> – dirección MAC → nombre propio del dispositivo</li>
+      <li><strong>MAC → tipo</strong> – dirección MAC → tipo de dispositivo (un solo dispositivo)</li>
+      <li><strong>IP → tipo</strong> – dirección IP → tipo de dispositivo (dispositivo sin dirección MAC)</li>
+      <li><strong>Nombre de host → tipo</strong> – parte del nombre → tipo de dispositivo (todos los dispositivos con esa parte del nombre)</li>
+      <li><strong>Prefijo MAC → tipo</strong> – prefijo MAC → tipo de dispositivo (todos los dispositivos de un fabricante)</li>
+    </ul>
+
+    <h3>Formato del archivo S-IT-Custom.ini</h3>
+    <p>El archivo se encuentra en la carpeta <code>Config</code> junto a <code>sit-lsc-start.exe</code> y también se puede editar con un editor de texto. Las direcciones MAC se escriben con guiones. Los nombres de sección y los tipos de dispositivo figuran en alemán, tal como los guarda el programa (p. ej. Kamera = cámara); el programa muestra los tipos de dispositivo en el idioma configurado.</p>
+    <div class="file-box">
+<span class="comment">; S-IT-Custom.ini – asignaciones propias con prioridad</span><br>
+<span class="comment">; La actualización OUI NO lo sobrescribe.</span><br>
+<br>
+<span class="section">[OUI]</span><br>
+<span class="comment">; prefijo MAC (6 hex) = fabricante</span><br>
+<span class="key">CC7314</span> = <span class="val">Cubot (Android)</span><br>
+<br>
+<span class="section">[Gerätename]</span><br>
+<span class="comment">; dirección MAC = nombre propio del dispositivo</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Cámara patio</span><br>
+<br>
+<span class="section">[Gerätetyp]</span><br>
+<span class="comment">; dirección MAC = tipo de dispositivo (este dispositivo)</span><br>
+<span class="key">E0-09-BF-1F-6B-FB</span> = <span class="val">Kamera</span><br>
+<br>
+<span class="section">[IP]</span><br>
+<span class="comment">; dirección IP = tipo de dispositivo (dispositivo sin MAC)</span><br>
+<span class="key">192.168.0.38</span> = <span class="val">Smartboard</span><br>
+<br>
+<span class="section">[Hostname]</span><br>
+<span class="comment">; parte del nombre = tipo de dispositivo (todos los dispositivos con esa parte del nombre)</span><br>
+<span class="key">SmartPlug</span> = <span class="val">Smart-Home-Gerät</span><br>
+<br>
+<span class="section">[Gerätetyp-Hersteller]</span><br>
+<span class="comment">; prefijo MAC (6 hex) = tipo de dispositivo (todos los dispositivos de un fabricante)</span><br>
+<span class="key">E009BF</span> = <span class="val">Kamera</span><br>
+    </div>
+
+    <div class="tip">
+      <strong>Orden para el tipo de dispositivo:</strong> dispositivo individual (MAC o IP) &gt; parte del nombre &gt; prefijo MAC &gt; clasificación automática
+    </div>
+    <div class="info">
+      <strong>ℹ Entradas antiguas:</strong> hasta la versión 4.0, las secciones <code>[IP]</code> y <code>[Hostname]</code> fijaban el sistema operativo. Ahora determinan el tipo de dispositivo; las entradas existentes siguen siendo válidas y aparecen en la columna «Tipo de dispositivo».
+    </div>
+  </div>
+
+  <!-- INTERNET-ERREICHBARKEIT -->
+  <h2 id="internet">7. Pestaña 2: Acceso a Internet</h2>
+  <div class="box">
+    <p>En la parte superior de la pestaña se elige una de cuatro comprobaciones:</p>
+    <table>
+      <tr><th>Tarjeta</th><th>Para qué</th></tr>
+      <tr><td><strong>🌐 Acceso a Internet</strong></td>
+          <td>Comprueba si este PC llega a Internet: DNS, enrutamiento, TCP 443, HTTPS, IPv6 y navegador.</td></tr>
+      <tr><td><strong>🔗 Ruta de conexión LAN</strong></td>
+          <td>Comprueba la ruta desde el PC, a través de la puerta de enlace, hasta un destino de la red propia, p. ej. por PLC hasta el NAS o el router.</td></tr>
+      <tr><td><strong>📶 Prueba de velocidad</strong></td>
+          <td>Mide la descarga, la subida y el ping de la conexión a Internet.</td></tr>
+      <tr><td><strong>🏷 Consulta de dominio</strong></td>
+          <td>Muestra con qué proveedor se gestionan los registros DNS de un dominio, quién recibe su correo y dónde está alojado el sitio web.</td></tr>
+    </table>
+
+    <h3>🏷 Consulta de dominio</h3>
+    <p>Situación típica: un proveedor de servicios debe cambiar un registro del dominio de la empresa, por ejemplo para un nuevo servidor de correo o una verificación en un servicio en la nube, y nadie sabe ya dónde se gestiona el dominio. La consulta de dominio lo muestra con una sola consulta. No se necesitan derechos de administrador, pero sí conexión a Internet.</p>
+
+    <h4>Manejo</h4>
+    <ol>
+      <li>Elegir la tarjeta <strong>🏷 Consulta de dominio</strong>.</li>
+      <li>Introducir el dominio, p. ej. <code>empresa.es</code>. También vale una dirección web (<code>https://www.empresa.es/contacto</code>) o una dirección de correo (<code>info@empresa.es</code>), así como dominios con caracteres especiales como la ñ.</li>
+      <li>Hacer clic en <span class="btn-demo btn-green">▶ Comprobar</span> o pulsar Intro.</li>
+    </ol>
+    <p>Si una subdirección introducida, como <code>tienda.empresa.es</code>, no tiene servidores de nombres propios, el programa comprueba el dominio superior <code>empresa.es</code> y lo indica en la línea encima del resultado.</p>
+
+    <h4>Resultados</h4>
+    <table>
+      <tr><th>Línea</th><th>Significado</th></tr>
+      <tr><td><strong>Servidores de nombres</strong></td>
+          <td>Los servidores responsables del dominio en el DNS.</td></tr>
+      <tr><td><strong>DNS gestionado por</strong></td>
+          <td>El proveedor de esos servidores de nombres. Allí se modifican los registros DNS del dominio.</td></tr>
+      <tr><td><strong>Servidores de correo</strong></td>
+          <td>Los servidores que reciben el correo del dominio, con su prioridad: primero se intenta el servidor con el número más bajo. Si pone «ninguno registrado», el dominio no recibe correo.</td></tr>
+      <tr><td><strong>Correo en</strong></td>
+          <td>El proveedor del servidor de correo. Si detrás pone «servicio de filtrado», un filtro antispam y antivirus recibe el correo y lo reenvía al buzón real.</td></tr>
+      <tr><td><strong>Servidor web</strong></td>
+          <td>La dirección del sitio web (<code>www.empresa.es</code>, si no <code>empresa.es</code>) y sus direcciones IP.</td></tr>
+      <tr><td><strong>Web en</strong></td>
+          <td>El proveedor en el que está alojado el sitio web.</td></tr>
+    </table>
+    <p>Debajo de cada proveedor aparecen en gris la dirección del servidor, su nombre de equipo, el nombre de su red y su rango de direcciones.</p>
+
+    <h4>De dónde proceden los datos</h4>
+    <ul>
+      <li><strong>Proveedor:</strong> el programa conoce los servidores de nombres y de correo de los proveedores habituales, p. ej. IONOS, Strato, Cloudflare, Microsoft 365 y Google Workspace. Si un servidor no figura allí, indica el operador de su red según el registro competente, p. ej. RIPE para Europa o ARIN para Norteamérica. Entre paréntesis aparece entonces «operador de red según RIPE».</li>
+      <li><strong>País:</strong> el país en el que la red del servidor está registrada en el registro. Suele ser la ubicación del centro de datos, pero no siempre: las grandes empresas registran a menudo sus redes en su sede central.</li>
+      <li><strong>«sin asignar»:</strong> el servidor no está en la lista y el registro no estaba accesible o no indicó ningún operador.</li>
+    </ul>
+
+    <div class="info">
+      <strong>Servidores de nombres y registro:</strong> donde se gestionan los registros DNS suele ser también el proveedor con el que está registrado el dominio. Con servicios DNS como Cloudflare, el dominio puede estar registrado en otro proveedor.
+    </div>
+    <div class="tip">
+      <strong>Consejo:</strong> <span class="btn-demo btn-blue">📋 Copiar resultado</span> copia el resultado como texto con fecha y hora al portapapeles, p. ej. para un correo al cliente o al proveedor de servicios.
+    </div>
+  </div>
+
+  <!-- LAN-PERFORMANCE -->
+  <h2 id="lan-performance">8. Pestaña 4: Rendimiento LAN y Wi-Fi</h2>
+  <div class="box">
+    <h3>Prueba de velocidad LAN</h3>
+    <p>Mide la velocidad real de escritura y lectura hacia un recurso compartido de red, sin software de servidor en el otro extremo.</p>
+
+    <h4>Requisitos</h4>
+    <ul>
+      <li>Un recurso compartido de red accesible (p. ej. <code>\\nombre-NAS\Datos</code>) o una unidad de red conectada (p. ej. <code>U:</code>)</li>
+      <li>Derechos de escritura en el recurso compartido</li>
+    </ul>
+    <p>Si el NAS está en reposo, el programa espera hasta el <strong>tiempo de espera para unidades de red</strong> configurado (apartado 5) antes de informar de que el destino no es accesible. Si Windows muestra una unidad de red como «no disponible» (cruz roja en el Explorador), el programa la vuelve a conectar, como hace el Explorador al hacer clic en ella.</p>
+
+    <div class="warn">
+      <strong>Importante: el nombre del servidor por sí solo no basta.</strong><br> <code>\\nombre-NAS</code> solo muestra en el Explorador la <em>lista</em> de recursos compartidos; allí no se puede crear ningún archivo y la prueba falla. Hay que indicar el propio recurso compartido, p. ej. <code>\\nombre-NAS\Datos</code>. Lo más sencillo es seleccionarlo con <strong>📂</strong>; así la ruta siempre es correcta. El botón <strong>ⓘ</strong> junto al campo de entrada también lo explica.
+    </div>
+
+    <p>También se permite como destino una <strong>carpeta local</strong> (p. ej. <code>C:\Temp</code>): sirve de comparación para ver lo rápido que es el PC sin la red.</p>
+
+    <h4>Manejo</h4>
+    <ol>
+      <li>Introducir el destino o seleccionarlo con <strong>📂</strong>. La ruta se comprueba <strong>antes</strong> del inicio; si algo no es correcto, un mensaje explica exactamente qué falta.</li>
+      <li>Elegir el tamaño de bloque (1–64 MB por ciclo de medición)</li>
+      <li><span class="btn-demo btn-green">▶ Iniciar prueba continua</span> – la prueba se ejecuta de forma continua y actualiza la curva en directo</li>
+      <li><span class="btn-demo btn-red">⏹ Detener</span> – finaliza la prueba</li>
+    </ol>
+    <p>Si durante la prueba se abre otra pestaña, el programa pregunta si se debe detener la prueba. Con <strong>No</strong>, la pestaña Rendimiento LAN y Wi-Fi sigue abierta y la prueba continúa. Al cerrar el programa, la prueba se detiene y el archivo de prueba se elimina.</p>
+
+    <h4>Resultados</h4>
+    <ul>
+      <li><strong>Línea azul</strong> – velocidad de escritura</li>
+      <li><strong>Línea verde</strong> – velocidad de lectura</li>
+      <li>Los recuadros muestran siempre el valor medido actual</li>
+      <li>El protocolo de medición enumera cada ciclo</li>
+    </ul>
+
+    <div class="warn">
+      <strong>Unidades locales:</strong> en unidades locales (p. ej. C:\, D:\), los valores medidos pueden estar muy falseados por la <strong>caché del sistema de archivos de Windows</strong>: la caché informa «terminado» antes de que los datos estén realmente en el disco. Por eso, valores de varios miles de Mbit/s en un disco duro normal no son un resultado realista. Para mediciones significativas, utilice siempre una <strong>ruta de red</strong> (ruta UNC como <code>\\Servidor\Recurso</code> o una unidad de red).
+    </div>
+
+    <div class="tip">
+      <strong>Valores orientativos típicos:</strong><br> LAN Gigabit: 400–900 Mbit/s &nbsp;|&nbsp; LAN de 100 Mbit: 60–90 Mbit/s &nbsp;|&nbsp; Wi-Fi (802.11ac): 150–400 Mbit/s
+    </div>
+    <div class="warn">
+      Los tamaños de bloque pequeños (1–4 MB) muestran más fluctuaciones, porque la sobrecarga y la latencia pesan más. Para valores estables se recomiendan 16–64 MB.
+    </div>
+  </div>
+
+  <!-- WLAN -->
+  <div class="box">
+    <h3>Recuadro Wi-Fi y LAN</h3>
+    <p>A la derecha de la pestaña están, uno junto al otro, el <strong>recuadro Wi-Fi</strong> y el <strong>recuadro LAN</strong>, y debajo la dirección IPv4 y la puerta de enlace. Ambos recuadros tienen la misma estructura: arriba el estado, debajo el adaptador con el nombre con el que también aparece en el Administrador de dispositivos.</p>
+    <p>Con una conexión activa, el recuadro Wi-Fi muestra:</p>
+    <ul>
+      <li>Nombre de red y estado de la conexión</li>
+      <li>Intensidad de la señal como barra de color (verde buena, amarillo media, rojo débil)</li>
+      <li>Canal, banda de frecuencia y estándar Wi-Fi (p. ej. Wi-Fi 6)</li>
+      <li><strong>⬆ Velocidad de enlace</strong> – la velocidad que Windows indica para la conexión</li>
+      <li><strong>⬇ Velocidad de recepción</strong> – solo durante la prueba continua LAN (véase más abajo)</li>
+    </ul>
+    <p>Si no hay conexión, el recuadro indica el motivo: <strong>Adaptador desactivado</strong> (desactivado en el Administrador de dispositivos o en Conexiones de red), <strong>No conectado</strong> o <strong>Sin adaptador Wi-Fi</strong>. El recuadro LAN distingue además <strong>Sin cable conectado</strong>.</p>
+    <div class="info">
+      <strong>ℹ Velocidad de recepción solo durante la prueba continua:</strong> la velocidad de recepción que indica Windows solo es significativa mientras fluyen datos. Sin tráfico baja a valores bajos aunque la conexión sea buena. Por eso el recuadro solo la muestra mientras se ejecuta la prueba continua LAN; así se pueden comparar directamente la velocidad de recepción y las velocidades de escritura y lectura medidas. Al iniciar y detener la prueba, el recuadro se actualiza de inmediato.
+    </div>
+    <div class="info">
+      <strong>ℹ Acceso a la ubicación:</strong> Windows 11 solo facilita la intensidad de la señal, el canal y el estándar Wi-Fi si las aplicaciones de escritorio pueden acceder a la ubicación. Si falta ese permiso, el recuadro muestra un aviso con el botón <strong>«→ Abrir configuración de ubicación»</strong>. El programa toma entonces el nombre de red de la lista de redes de Windows y advierte de que puede diferir del nombre de la red Wi-Fi (p. ej. «Red doméstica 2»).
+    </div>
+    <div class="info">
+      <strong>ℹ Actualización:</strong> ambos recuadros se actualizan cada 10 segundos; un cambio de LAN a Wi-Fi o un adaptador USB Wi-Fi conectado después se detectan sin reiniciar. Con <strong>🔄 Actualizar</strong> se actualizan al instante.
+    </div>
+  </div>
+
+  <!-- WLAN-PROFILE -->
+  <h2 id="wlan-profile">9. Pestaña 5: Perfiles Wi-Fi</h2>
+  <div class="box">
+    <p>Esta pestaña muestra las redes Wi-Fi guardadas en este PC con su contraseña y las transfiere a otro PC, por ejemplo al cambiar a un ordenador nuevo. A la derecha puede ver lo buena que es su conexión Wi-Fi en comparación con los estándares Wi-Fi y qué redes Wi-Fi están al alcance.</p>
+
+    <div class="warn">
+      <strong>⚠ Se requieren derechos de administrador:</strong> leer, guardar e importar los perfiles solo funciona con derechos de administrador. Si el programa se ejecuta sin ellos, aparece un aviso en la parte superior de la pestaña y los botones correspondientes quedan bloqueados.
+    </div>
+
+    <h3>Columna izquierda: botones y perfiles guardados</h3>
+    <table>
+      <tr><th>Botón</th><th>Función</th></tr>
+      <tr><td><span class="btn-demo btn-green">①  Leer contraseñas Wi-Fi</span></td>
+          <td>Lee todos los perfiles Wi-Fi guardados con su contraseña y rellena la lista de debajo.</td></tr>
+      <tr><td><span class="btn-demo btn-blue">②  Mostrar protocolo</span></td>
+          <td>Abre el protocolo de la lectura. Las contraseñas no figuran en él. Se encuentra en la carpeta de registros (<code>WLAN-Profile_&lt;fecha&gt;.log</code>).</td></tr>
+      <tr><td><span class="btn-demo" style="background:#F39C12;">③  Mostrar contraseña</span></td>
+          <td>Muestra la contraseña de la red seleccionada en la lista, con opción de copiar e imprimir. Un doble clic en la red hace lo mismo.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">④  Guardar perfiles</span></td>
+          <td>Guarda todos los perfiles con su contraseña en una carpeta, p. ej. en una memoria USB. Allí se crea una subcarpeta <code>WLAN-Profile_&lt;nombre del PC&gt;_&lt;fecha&gt;</code>.</td></tr>
+      <tr><td><span class="btn-demo btn-dark">⑤  Importar perfiles</span></td>
+          <td>Importa una copia de este tipo en este PC, para todos los usuarios. Después se ofrece eliminar la copia.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#16A085;">⑥  Informe Wi-Fi (HTML)</span></td>
+          <td>Crea el informe Wi-Fi (véase más abajo).</td></tr>
+    </table>
+    <p>La lista <strong>«Perfiles guardados»</strong> indica el estado de cada red: <strong>conectada</strong>, <strong>al alcance</strong> o <strong>fuera de alcance</strong>. Las redes sin contraseña están marcadas como tales.</p>
+
+    <div class="danger">
+      <strong>La copia contiene las contraseñas en texto sin cifrar.</strong> Guarde la carpeta o la memoria USB en un lugar seguro y elimine la copia una vez importada; el programa lo ofrece después de ⑤. Una página de contraseña impresa se elimina como archivo al cabo de un minuto y al cerrar el programa.
+    </div>
+
+    <h3>Cambio a un PC nuevo</h3>
+    <ol>
+      <li>En el PC antiguo: <strong>④ Guardar perfiles</strong> y elegir una memoria USB como destino.</li>
+      <li>En el PC nuevo: iniciar LanScanner, pestaña Perfiles Wi-Fi, <strong>⑤ Importar perfiles</strong> y elegir la carpeta <code>WLAN-Profile_…</code> de la memoria USB.</li>
+      <li>Responder <strong>Sí</strong> a la pregunta de si se debe eliminar la copia.</li>
+    </ol>
+    <p>Las redes importadas aparecen después en la lista «Perfiles guardados».</p>
+
+    <h3>Arriba a la derecha: su conexión comparada con los estándares Wi-Fi</h3>
+    <p>El gráfico muestra como <strong>barras grises</strong> las velocidades de enlace habituales de PC y portátiles para Wi-Fi 4 (802.11n) hasta Wi-Fi 7 (802.11be), cada una con su banda. La <strong>barra de color</strong> es su velocidad de enlace según Windows, coloreada según la intensidad de la señal (verde buena, amarillo media, rojo débil). Si está en el extremo inferior de su estándar, conviene revisar la distancia al router, el canal y la banda.</p>
+    <div class="info">
+      <strong>ℹ Velocidad de enlace y rendimiento real:</strong> la velocidad de enlace es la velocidad bruta de la conexión inalámbrica. En la práctica se transfiere realmente entre la mitad y dos tercios. El rendimiento real lo mide la prueba continua LAN de la pestaña 4.
+    </div>
+
+    <h3>Abajo a la derecha: redes Wi-Fi al alcance</h3>
+    <p>La tabla enumera las redes Wi-Fi que el adaptador recibe en ese momento, con señal, nombre de red, banda y canal, estándar, cifrado y la indicación de si la red está guardada en este PC. En las redes guardadas, el enlace <strong>«Mostrar contraseña»</strong> muestra la contraseña directamente. La primera vez que se abre la pestaña se explora el entorno una vez; <strong>«Buscar redes»</strong> busca de nuevo.</p>
+    <div class="info">
+      <strong>ℹ Acceso a la ubicación:</strong> Windows 11 solo facilita las redes Wi-Fi al alcance, la intensidad de la señal y el estándar Wi-Fi si las aplicaciones de escritorio pueden acceder a la ubicación. Si falta ese permiso, en lugar de la tabla aparece un aviso con el botón <strong>«→ Abrir configuración de ubicación»</strong>.
+    </div>
+
+    <h3>Informe Wi-Fi</h3>
+    <p>El botón <strong>⑥</strong> resume el estado en un archivo HTML en color, adecuado para compartir, para el expediente del cliente o para comparar antes y después:</p>
+    <ul>
+      <li>Conexión Wi-Fi con adaptador, señal, banda, canal y velocidad de enlace</li>
+      <li>Conexión LAN</li>
+      <li>Dirección IPv4 y puerta de enlace</li>
+      <li>Clasificación de la propia conexión entre los estándares Wi-Fi</li>
+      <li>Redes Wi-Fi al alcance</li>
+      <li>Perfiles guardados</li>
+    </ul>
+    <p><strong>Las contraseñas no figuran en el informe.</strong> Se guarda en la carpeta de registros como <code>WLAN-Bericht_&lt;nombre del PC&gt;_&lt;fecha&gt;.html</code> y se abre en el navegador.</p>
+  </div>
+
+  <!-- FIREWALL -->
+  <h2 id="firewall">10. Pestaña 6: Firewall y puertos</h2>
+  <div class="box">
+    <p>Esta pestaña trata dos casos distintos; por eso está dividida en dos columnas. Ambas acceden al mismo firewall de Windows, pero lo miran desde direcciones opuestas:</p>
+    <ul>
+      <li><strong>Izquierda – «Acceder a un dispositivo de la red»:</strong> otro dispositivo de la LAN (NAS, impresora, USB de FritzBox) no es accesible desde este PC.</li>
+      <li><strong>Derecha – «Puerto en este PC»:</strong> un programa de este PC necesita un puerto determinado al que otros acceden desde la red (gestión de almacén, sistema de caja, base de datos, mantenimiento remoto).</li>
+    </ul>
+    <p>Debajo de ambas columnas, a todo lo ancho, está la <strong>lista de reglas</strong> común; muestra las entradas de las dos columnas.</p>
+
+    <div class="warn">
+      <strong>⚠ Se requieren derechos de administrador:</strong> leer y establecer reglas del firewall solo es posible con derechos de administrador. Lo más sencillo es dejar activado <strong>«Iniciar como administrador»</strong> (véase el apartado 5, activado de forma predeterminada). Si el programa se ejecuta sin derechos de administrador, la pestaña lo indica al comprobar o al añadir.
+    </div>
+
+    <h3>Columna izquierda: acceder a un dispositivo de la red</h3>
+    <p>Úsela si un dispositivo es visible en el escaneo (o debería serlo) pero no es accesible: sin ping, sin uso compartido de archivos. A menudo es el firewall de Windows de este PC el que bloquea la conexión. Esta columna procede de la herramienta independiente <strong>S-IT-FWModify</strong>.</p>
+    <ol>
+      <li><strong>Introducir la dirección IP o la subred</strong> – una sola dirección (p. ej. <code>192.168.178.60</code>) o una subred completa (<code>192.168.178.0/24</code>). Los destinos usados recientemente están disponibles en la lista desplegable.</li>
+      <li><strong>Elegir el alcance de la excepción:</strong>
+          <ul>
+            <li><strong>Todos los puertos</strong> – para un único dispositivo conocido</li>
+            <li><strong>Solo uso compartido de archivos</strong> – TCP 445, 139 y UDP 137, 138 (SMB)</li>
+            <li><strong>Uso compartido + interfaz web</strong> – además TCP 5000, 5001 (p. ej. para interfaces de NAS)</li>
+          </ul>
+      </li>
+      <li><strong>Comprobar</strong> – el resultado aparece en cinco líneas (véase más abajo).</li>
+      <li><strong>Añadir excepción</strong> – crea la excepción de firewall adecuada.</li>
+    </ol>
+    <p>Las cinco líneas de comprobación:</p>
+    <ul>
+      <li><strong>El dispositivo responde al ping</strong> – accesibilidad básica en la red</li>
+      <li><strong>Puertos abiertos en el destino</strong> – ¿qué ofrece el dispositivo, incluye uso compartido de archivos?</li>
+      <li><strong>Configuración básica del firewall</strong> – ¿puede una excepción tener algún efecto aquí?</li>
+      <li><strong>Perfil de red de este PC</strong> – Privada = uso compartido posible, Pública = todo bloqueado</li>
+      <li><strong>Regla S-IT para este destino</strong> – ¿existe ya una excepción creada por esta herramienta?</li>
+    </ul>
+
+    <h3>Columna derecha: puerto en este PC</h3>
+    <p>Úsela en el caso contrario, cuando un programa se ejecuta <em>en este PC</em> y debe abrir un puerto determinado para que otros equipos de la red accedan a él, por ejemplo una gestión de almacén, un sistema de caja o una base de datos que ofrece su servicio en un puerto fijo. La regla se aplica <strong>de entrada</strong> y <strong>solo desde la red local</strong>.</p>
+    <ol>
+      <li><strong>Elegir una plantilla</strong> (opcional) – los casos habituales están predefinidos y rellenan automáticamente puerto, protocolo y descripción: SQL Server (1433), MySQL/MariaDB (3306), PostgreSQL (5432), Escritorio remoto (3389), VNC (5900), HTTP (80), HTTPS (443), HTTP alternativo (8080), HTTPS alternativo (8443). Con <em>«– entrada propia –»</em> introduce usted mismo cualquier puerto.</li>
+      <li><strong>Puerto (o rango) y protocolo</strong> – un solo número (p. ej. <code>1433</code>) o un rango (p. ej. <code>5000-5010</code>, como máximo 200 puertos), además de <strong>TCP</strong> o <strong>UDP</strong>.</li>
+      <li><strong>Descripción</strong> – un nombre con el que la regla se puede encontrar después en la lista (p. ej. «gestión de almacén, sistema de caja»).</li>
+      <li><strong>Comprobar</strong> – el resultado aparece en tres líneas (véase más abajo).</li>
+      <li><strong>Abrir puerto</strong> – crea una regla de entrada para la subred local.</li>
+    </ol>
+    <p>Las tres líneas de comprobación:</p>
+    <ul>
+      <li><strong>Un programa escucha en el puerto</strong> – sin un programa a la escucha, ninguna regla de firewall tiene efecto. Si el programa solo escucha en <code>127.0.0.1</code>, no es accesible desde la red ni siquiera con una regla; entonces hay que vincular el propio programa a la dirección LAN.</li>
+      <li><strong>Regla de firewall de entrada</strong> – reglas existentes para este puerto, también las ajenas (p. ej. del instalador de la aplicación de gestión). Las reglas que solo se aplican a otro programa concreto o a otro servicio de Windows se señalan como sin efecto.</li>
+      <li><strong>Perfil de firewall de este PC</strong> – la regla se aplica al perfil privado; en el perfil «Público», Windows bloquea de todos modos.</li>
+    </ul>
+
+    <h3>El resultado (ambas columnas)</h3>
+    <p>Cada línea de comprobación muestra un resultado: <strong>verde</strong> correcto, <strong>amarillo</strong> una indicación, <strong>rojo</strong> un problema. Cuando tiene sentido, la línea ofrece a la derecha un pequeño botón para una solución directa, por ejemplo cambiar el perfil de red a «privada» (para que el uso compartido se permita) o abrir el puerto directamente. El texto explicativo detallado de cada línea aparece al dejar el ratón encima.</p>
+
+    <h3>La lista de reglas común</h3>
+    <p>Todas las excepciones que crea el programa – de ambas columnas – llevan un nombre propio (prefijo <code>S-IT-FW-</code>) y aparecen en la lista de abajo. Por cada entrada se crean normalmente varias reglas de firewall (por dirección y protocolo). Con los botones de debajo se eliminan de nuevo las reglas <strong>marcadas</strong> o <strong>todas las reglas S-IT</strong>.</p>
+
+    <div class="tip">
+      <strong>Las demás reglas de su firewall no se tocan.</strong> El programa solo ve y modifica sus propias reglas con el prefijo <code>S-IT-FW-</code>. Las reglas ajenas de Windows o de otro software no se muestran ni se eliminan.
+    </div>
+
+    <div class="info">
+      <strong>ℹ Limpieza sencilla:</strong> si una excepción o un puerto abierto solo se estableció para hacer pruebas, elimínelo después con un clic desde la lista de reglas; así el firewall se mantiene limpio.
+    </div>
+  </div>
+
+  <!-- DIAGNOSE -->
+  <h2 id="diag">11. Diagnóstico (DIAG) – para probadores</h2>
+  <div class="box">
+    <p>Este apartado está dirigido a los probadores y a cualquiera que quiera notificar un problema de detección. Para el uso normal no se necesita nada de esto.</p>
+
+    <h3>¿Para qué?</h3>
+    <p>Windows proporciona información de red por varias vías. Cuál de ellas responde varía de un equipo a otro, según la edición de Windows, los controladores y las directivas de la empresa. Si el programa muestra valores incorrectos en un equipo, la pantalla no revela la causa. Por eso el diagnóstico consulta <strong>cada vía por separado</strong> y registra lo que ha respondido, incluso si no ha respondido nada.</p>
+
+    <h3>Activar</h3>
+    <p><strong>⚙ Config → Diagnóstico → «🔧 Mostrar herramientas DIAG»</strong>. Después aparece arriba en el encabezado el botón <span class="btn-demo" style="background:#4A6278;">🔧 DIAG</span>. No hace falta reiniciar. Al quitar la marca se vuelve a ocultar.</p>
+
+    <h3>Las tres herramientas</h3>
+    <table>
+      <tr><th>Botón</th><th>Función</th></tr>
+      <tr><td><span class="btn-demo btn-blue">▶ Crear DIAG</span></td>
+          <td>Crea <strong>exactamente un archivo</strong> en la carpeta <code>Diag</code> junto a <code>sit-lsc-start.exe</code>. No ocurre nada por sí solo, solo al hacer clic.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#5D6D7E;">🔍 Mostrar texto legible</span></td>
+          <td>Muestra el contenido de forma legible: <strong>exactamente lo que se enviaría</strong>. Si se desea, también se puede guardar como texto sin cifrar. El contenido tiene la misma estructura en todas las versiones de idioma y no se traduce.</td></tr>
+      <tr><td><span class="btn-demo" style="background:#7F8C8D;">📁 Abrir carpeta</span></td>
+          <td>Abre la carpeta de almacenamiento en el Explorador.</td></tr>
+    </table>
+
+    <h3>¿Qué contiene?</h3>
+    <ul>
+      <li>Las respuestas sin procesar de todas las consultas (PowerShell, wmic, registro, netsh, ipconfig), incluidas las redes Wi-Fi al alcance</li>
+      <li>Cómo muestran estas respuestas los recuadros LAN y Wi-Fi</li>
+      <li>Versión de Windows y del programa, escalado, derechos de administrador</li>
+      <li>Lo que el programa ha hecho con las respuestas</li>
+      <li>Tras un escaneo de red, además la lista de dispositivos de ese escaneo: por cada dispositivo, el nombre, la dirección IP, el fabricante, los puertos abiertos y la clasificación del programa con su motivo</li>
+    </ul>
+    <p><strong>Ninguna contraseña, ningún dato de acceso.</strong> Las direcciones MAC se acortan: la parte del fabricante se mantiene – la detección la necesita –, y la parte única del dispositivo se sustituye por <code>XX</code> (<code>54:E1:AD:XX:XX:XX</code>).</p>
+
+    <div class="tip">
+      <strong>¿Por qué no se puede leer el archivo?</strong><br> Está <em>ofuscado</em> para que no se lea por descuido ni lo descomponga un filtro de correo. Expresamente <strong>no es un cifrado</strong> ni pretende serlo. Con <strong>🔍 Mostrar texto legible</strong> puede ver en todo momento lo que contiene.
+    </div>
+
+    <h3>Envío</h3>
+    <p>De forma voluntaria y solo en caso de un problema de detección: envíe el archivo a <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>. Resulta útil añadir una frase sobre lo que se mostró de forma incorrecta.</p>
+  </div>
+
+  <!-- DATEIEN -->
+  <h2 id="dateien">12. Archivos, actualizaciones y copia de seguridad</h2>
+  <div class="box">
+
+    <h3>Estructura de la carpeta del programa</h3>
+    <p>Todo lo que usted necesita está arriba, junto al programa de inicio. La subcarpeta <code>sit-lsc_program</code> solo contiene el programa en sí y no es necesario abrirla:</p>
+    <div class="file-box">
+<span class="section">S-IT-LanScanner\</span><br>
+&nbsp;&nbsp;<span class="key">sit-lsc-start.exe</span> &nbsp;&nbsp;<span class="comment">← con él se inicia el programa</span><br>
+&nbsp;&nbsp;<span class="section">Config\</span> &nbsp;&nbsp;<span class="comment">← configuración, datos propios, base de datos de fabricantes</span><br>
+&nbsp;&nbsp;<span class="section">Logs\</span> &nbsp;&nbsp;<span class="comment">← registros de escaneo, informes y protocolos</span><br>
+&nbsp;&nbsp;<span class="section">Diag\</span> &nbsp;&nbsp;<span class="comment">← archivos de diagnóstico</span><br>
+&nbsp;&nbsp;<span class="section">Help\</span> &nbsp;&nbsp;<span class="comment">← ayuda, ChangeLog, exención de responsabilidad y licencia</span><br>
+&nbsp;&nbsp;<span class="section">sit-lsc_program\</span> &nbsp;&nbsp;<span class="comment">← el programa</span>
+    </div>
+    <p>El programa crea por sí mismo las carpetas <code>Config</code>, <code>Logs</code> y <code>Diag</code> cuando hacen falta.</p>
+
+    <div class="tip">
+      <strong>Lista breve – ¿qué llevarse?</strong><br> Al cambiar de PC o reinstalar, haga una copia de estas carpetas situadas junto a <code>sit-lsc-start.exe</code>:
+      <ul style="margin:6px 0 0 0">
+        <li><code>Config\</code> – configuración, datos propios de los dispositivos y la base de datos de fabricantes</li>
+        <li><code>Logs\</code> – la carpeta completa, si se quieren conservar escaneos, protocolos e informes Wi-Fi antiguos</li>
+      </ul>
+      Después de copiar, inicie el programa: toda la configuración, las asignaciones y los resultados de escaneos anteriores vuelven a estar disponibles al instante.
+    </div>
+
+    <h3>Archivos y carpetas de un vistazo</h3>
+    <table>
+      <tr><th>Archivo</th><th>Contenido</th><th>¿Copia?</th></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-LanScanner.ini</code></td>
+          <td>Toda la configuración (opciones de escaneo, carpeta de registros, apariencia, etc.)</td>
+          <td><strong>✔ Sí</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-Custom.ini</code></td>
+          <td>Nombres, tipos y fabricantes de dispositivos propios – nunca se sobrescribe en las actualizaciones</td>
+          <td><strong>✔ Sí</strong></td></tr>
+      <tr><td><code style="white-space:nowrap">Config\S-IT-OUI.ini</code></td>
+          <td>Base de datos de fabricantes (se vuelve a crear con la actualización OUI)</td>
+          <td>Opcional</td></tr>
+      <tr><td><code>Logs\</code></td>
+          <td>Registros de escaneo (.log), informes HTML (.html) y archivos CSV (.csv), además de los protocolos de la pestaña Perfiles Wi-Fi y los informes Wi-Fi.<br> Los archivos CSV están previstos solo para uso interno del programa: a partir de ellos, <strong>«Cargar en el escáner»</strong> en Registros e informes vuelve a cargar un escaneo anterior en la lista de dispositivos. Por eso sus nombres de columna están en alemán en todos los idiomas. Para leer y compartir se utilizan el informe HTML y el registro.<br> <em>Llévesela si quiere conservar los resultados de escaneos antiguos en el gestor de registros.</em></td>
+          <td><strong>✔ Recomendado</strong></td></tr>
+      <tr><td><code>Diag\</code></td>
+          <td>Archivos de diagnóstico – solo se crean al generar un DIAG</td>
+          <td>–</td></tr>
+      <tr><td><code>Help\</code></td>
+          <td>La ayuda (en alemán) y sus traducciones (<code>S-IT-LanScanner-Hilfe_es.html</code>, etc.), el historial de versiones <code>S-IT-LanScanner-ChangeLog.html</code>, la exención de responsabilidad y la licencia (<code>Lizenz-Disclaimer.txt</code>)</td>
+          <td>–</td></tr>
+      <tr><td><code>sit-lsc_program\</code></td>
+          <td>El programa: programa principal <code>S-IT-LanScanner.exe</code> (se inicia mediante <code>sit-lsc-start.exe</code>) y bibliotecas del programa</td>
+          <td>–</td></tr>
+    </table>
+
+    <h3>Realizar una actualización</h3>
+    <ol>
+      <li>Descargar y descomprimir la nueva versión</li>
+      <li><strong>Importante:</strong> copiar la carpeta <code>Config</code> de la carpeta antigua del programa a la nueva</li>
+      <li>Iniciar el programa mediante <code>sit-lsc-start.exe</code></li>
+      <li>Toda la configuración y los datos propios vuelven a estar disponibles</li>
+    </ol>
+    <div class="info">
+      Las versiones anteriores aún no tenían carpeta <code>Config</code>. En ese caso, copie los archivos <code>S-IT-LanScanner.ini</code> y <code>S-IT-Custom.ini</code> en la nueva carpeta del programa, junto a <code>sit-lsc-start.exe</code>. En el primer inicio, el programa los mueve una sola vez a la carpeta <code>Config</code>, al igual que los registros y archivos de diagnóstico que aún estén en la carpeta <code>sit-lsc_program</code>. No se sobrescribe nada. Lo que se ha movido figura en el archivo <code>Ordnerumzug.log</code> de la carpeta de registros.
+    </div>
+
+    <h3>Reinstalación / cambio de PC</h3>
+    <p>Procedimiento recomendado:</p>
+    <ol>
+      <li>Copiar la carpeta <code>Config</code> guardada en la nueva carpeta del programa, junto a <code>sit-lsc-start.exe</code></li>
+      <li>Copiar también allí la carpeta <code>Logs\</code> guardada (o en la carpeta de registros configurada)</li>
+      <li>Iniciar el programa: toda la configuración, las asignaciones y los escaneos anteriores están disponibles al instante en el gestor de registros</li>
+      <li>Opcional: realizar la actualización OUI para cargar la base de datos de fabricantes más reciente</li>
+    </ol>
+    <div class="info">
+      Si no se guarda ningún archivo: <code>S-IT-LanScanner.ini</code> y <code>S-IT-Custom.ini</code> se vuelven a crear automáticamente con valores predeterminados en el primer inicio. Los datos propios sobre dispositivos deberán introducirse de nuevo.
+    </div>
+    <div class="tip">
+      <strong>Llevarse las redes Wi-Fi:</strong> las redes Wi-Fi guardadas del PC antiguo se pueden guardar en la pestaña <strong>Perfiles Wi-Fi</strong> e importar en el PC nuevo (apartado 9).
+    </div>
+
+    <h3>Actualizar la base de datos OUI</h3>
+    <p>Con <span class="btn-demo btn-dark">🔄 Actualizar OUI</span> → pestaña <strong>«Actualizar base de datos OUI»</strong> → <strong>«▶ Actualizar base de datos OUI»</strong>, el programa descarga las listas completas de fabricantes del IEEE (MA-L, MA-M y MA-S) y las guarda en <code>S-IT-OUI.ini</code>. Para ello se necesita conexión a Internet. El progreso y el resultado aparecen en la misma ventana. Después, la base de datos se vuelve a cargar de inmediato; no hace falta reiniciar.</p>
+    <p>Si una de las listas no se puede descargar, aparece un mensaje y el archivo <code>S-IT-OUI.ini</code> existente no se modifica.</p>
+    <div class="info">
+      El archivo <code>S-IT-Custom.ini</code> con sus datos propios <strong>nunca</strong> se modifica ni se sobrescribe en la actualización OUI.
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <h2 id="faq">13. Preguntas frecuentes (FAQ)</h2>
+  <div class="box">
+
+    <h3>No se encuentra un dispositivo</h3>
+    <p>Causas posibles:</p>
+    <ul>
+      <li>El dispositivo está apagado o en modo de ahorro de energía</li>
+      <li>El dispositivo no responde al ping ICMP (firewall) → activar el escaneo de puertos ayuda</li>
+      <li>El dispositivo está en otro segmento de red</li>
+      <li>Elegir la intensidad del escaneo «Seguro» y volver a escanear</li>
+    </ul>
+
+    <h3>Un dispositivo se clasifica mal o no se clasifica</h3>
+    <p>Clic derecho en el dispositivo → <strong>«✏ Etiquetar dispositivo …»</strong> → elegir o introducir el tipo de dispositivo → Guardar. El dato aparece de inmediato en la lista y se aplica de forma permanente (apartado 6).</p>
+
+    <h3>¿Por qué está vacía la columna «Tipo de dispositivo» en algunos dispositivos?</h3>
+    <p>Los indicios no bastaban para una clasificación clara. En ese caso el programa deja el campo vacío a propósito en lugar de adivinar. Un escaneo de puertos activado suele aportar indicios adicionales suficientes; si no, ayuda un dato propio mediante <strong>«Etiquetar dispositivo …»</strong>.</p>
+
+    <h3>Mi impresora dejó de estar accesible después del escaneo</h3>
+    <p>Cambie en la configuración la intensidad del escaneo a <strong>«Seguro»</strong>. Este nivel prescinde de las inundaciones ARP y de los escaneos de los puertos de impresora, que pueden sobrecargar versiones de firmware antiguas.</p>
+
+    <h3>El antivirus informa de una amenaza</h3>
+    <p>Como el escáner LAN explora activamente la red, algunos antivirus lo clasifican erróneamente como sospechoso (falso positivo). El programa no contiene ningún software malicioso. Solución: añadir el archivo del programa y la carpeta a la lista de excepciones / lista blanca del antivirus.</p>
+
+    <h3>La prueba de velocidad LAN muestra «Sin acceso de escritura»</h3>
+    <p>Probablemente el recurso compartido está conectado solo para lectura o los datos de acceso no bastan. Compruebe sus derechos de escritura en el recurso compartido.</p>
+
+    <h3>La prueba indica «Falta el recurso compartido»</h3>
+    <p>Solo se ha indicado el <strong>nombre del servidor</strong>, p. ej. <code>\\nombre-NAS</code>. Allí no se puede crear ningún archivo; se necesita el propio recurso compartido: <code>\\nombre-NAS\Datos</code>. Véase el apartado 8.</p>
+
+    <h3>El recuadro Wi-Fi muestra «Conectado», pero sin intensidad de señal ni canal</h3>
+    <p>Casi siempre se debe al bloqueo de ubicación de Windows 11 y <strong>no es un error del programa</strong>: Windows solo facilita la intensidad de la señal, el canal y el estándar Wi-Fi si las aplicaciones de escritorio pueden acceder a la ubicación. Lo mismo ocurre con las redes Wi-Fi al alcance de la pestaña Perfiles Wi-Fi. El adaptador en sí se detecta correctamente de todos modos.</p>
+    <div class="tip">
+      <strong>Solución:</strong> en el recuadro, haga clic en <strong>«→ Abrir configuración de ubicación»</strong> (o Configuración → Privacidad y seguridad → Ubicación). Active allí los <strong>servicios de ubicación</strong> y, más abajo, permita el acceso a la ubicación para las <strong>aplicaciones de escritorio</strong>. Después, haga clic en <strong>🔄 Actualizar</strong> en el recuadro.
+    </div>
+
+    <h3>El nombre de red del recuadro Wi-Fi no coincide con el nombre de la red Wi-Fi</h3>
+    <p>Sin acceso a la ubicación, el programa toma el nombre de la lista de redes de Windows; el recuadro lo indica. Windows puede crear allí entradas numeradas para la misma red Wi-Fi, por ejemplo «Red doméstica 2», si el PC se ha conectado varias veces o con distintos adaptadores. Con acceso a la ubicación, el recuadro muestra el nombre real de la red Wi-Fi.</p>
+
+    <h3>¿Por qué el recuadro Wi-Fi no muestra la velocidad de recepción?</h3>
+    <p>La velocidad de recepción solo aparece mientras se ejecuta la prueba continua LAN. Sin tráfico, Windows indica valores bajos que no tienen nada que ver con la calidad de la conexión. La velocidad de enlace (⬆), en cambio, se muestra siempre.</p>
+
+    <h3>El recuadro Wi-Fi indica «Adaptador desactivado»</h3>
+    <p>El adaptador Wi-Fi está desactivado en el Administrador de dispositivos o en <em>Conexiones de red</em>. Tras activarlo, el programa lo detecta como muy tarde en 10 segundos; con <strong>🔄 Actualizar</strong>, al instante. Un adaptador USB Wi-Fi conectado después también se detecta automáticamente.</p>
+
+    <h3>La velocidad indica «desconocida»</h3>
+    <p>Entonces <strong>ninguna</strong> de las consultas pudo proporcionar una velocidad; es típico de un <strong>adaptador desactivado</strong>, para el que Windows no indica velocidad. En ese caso el programa muestra a propósito «desconocida» en lugar de una cifra estimada: en una herramienta de diagnóstico no tiene cabida un valor que nadie ha medido. El nombre del adaptador se muestra de todos modos.</p>
+
+    <h3>El programa se ve demasiado pequeño en mi monitor UHD/4K</h3>
+    <p>Abra <strong>⚙ Config</strong> y, en la columna derecha, elija un valor más alto en <strong>«Tamaño de visualización / escalado»</strong>. El programa se reinicia automáticamente después de guardar.</p>
+    <div class="tip">
+      <strong>Recomendación para UHD/4K:</strong> el escalado del programa determina el tamaño por sí solo; no es necesario cambiar el escalado de Windows. Empiece con <strong>150 %</strong>; en la mayoría de los monitores UHD da una visualización bien legible. Si todavía es demasiado pequeño o grande, elija el nivel siguiente hasta que el texto y los elementos le resulten óptimamente legibles.
+    </div>
+    <p>Niveles de escalado posibles en el programa: 90 / 100 / 125 / 150 / 175 / 200 / 250 / 300 %.</p>
+
+    <h3>¿Dónde encuentro la exención de responsabilidad?</h3>
+    <p>En el archivo <a href="Lizenz-Disclaimer.txt"><code>Lizenz-Disclaimer.txt</code></a> de la carpeta <code>Help</code> y en la <a href="https://sattlerit.github.io/sit-lanscanner/">página del proyecto</a>. En resumen: los resultados son indicaciones sin compromiso y una instantánea; no sustituyen una auditoría de seguridad profesional.</p>
+
+    <h3>He cambiado SMB1: ¿por qué sigue apareciendo el estado anterior?</h3>
+    <p>SMB1 es una <strong>característica de Windows</strong>, no un simple interruptor: Windows instala los archivos al activarla y los elimina al desactivarla. El cambio solo surte efecto después de un <strong>reinicio</strong>; hasta entonces la comprobación sigue indicando el estado anterior. El programa <strong>no</strong> reinicia el equipo por su cuenta; solo lo advierte. Reinicie Windows usted mismo cuando le convenga.</p>
+
+    <h3>¿Por qué hay tres líneas de SMB1?</h3>
+    <p>Porque SMB1 consta de varias partes independientes entre sí. Quien solo ve una línea puede hacerse fácilmente una idea equivocada de su propio equipo:</p>
+    <table>
+      <tr><th>Línea</th><th>Para qué</th></tr>
+      <tr><td><strong>Cliente SMB1</strong></td>
+          <td>Para que <em>este PC</em> pueda acceder a dispositivos antiguos, por ejemplo un NAS antiguo o una impresora de red que no admite SMB2/3. Es el caso más frecuente.</td></tr>
+      <tr><td><strong>Servidor SMB1</strong></td>
+          <td>Para que <em>dispositivos antiguos</em> puedan acceder a los recursos compartidos de este PC, por ejemplo una fotocopiadora que deja los escaneos en una carpeta compartida. Este lado es el más peligroso y solo debería estar activado mientras el dispositivo antiguo lo necesite.</td></tr>
+      <tr><td><strong>Mantener SMB1 de forma permanente</strong></td>
+          <td>Windows elimina SMB1 por sí solo si no se ha utilizado durante 15 días. Esta línea desactiva esa eliminación automática. Es útil si la empresa tiene pausas largas: tras dos semanas de vacaciones, SMB1 habría desaparecido de repente y el escáner quedaría parado.</td></tr>
+    </table>
+    <p>La línea <strong>Mantener SMB1 de forma permanente</strong> solo es relevante si el cliente o el servidor están realmente activos. Si SMB1 está completamente desactivado, aparece en gris y no requiere atención.</p>
+
+    <h3>En el servidor SMB1 aparece «Característica presente, pero protocolo desactivado»: ¿qué significa?</h3>
+    <p>El lado del servidor tiene dos niveles: la característica de Windows instalada y el interruptor del protocolo en el servidor SMB. Tras activarla, al principio solo está la característica; el interruptor solo se puede activar después del reinicio. Precisamente para eso está el botón <strong>«→ Completar»</strong>: activa el segundo interruptor y surte efecto de inmediato, sin otro reinicio. Si al final no se necesita el servidor SMB1, desactívelo por completo.</p>
+
+    <h3>¿Por qué el botón de una línea verde es gris?</h3>
+    <p>Un botón en una línea verde siempre lleva <em>de vuelta</em> al estado menos seguro, por ejemplo «← Activar» en un servidor SMB1 desactivado. Estos botones de restablecimiento son discretos a propósito para que no inviten a hacer clic por descuido. Funcionan con normalidad.</p>
+
+    <h3>¿Dónde se guardan los registros?</h3>
+    <p>Predeterminado: <code>Logs\</code> junto a <code>sit-lsc-start.exe</code>. La carpeta se puede cambiar en <strong>⚙ Config → Carpeta de registros</strong>.</p>
+
+    <h3>¿Puedo usar la herramienta en una memoria USB?</h3>
+    <p>Sí, la herramienta es portátil. Copie la carpeta completa del programa – es decir, <code>sit-lsc-start.exe</code> junto con la carpeta <code>sit-lsc_program</code> y las demás carpetas – en la memoria USB. Los archivos INI se guardan en la carpeta <code>Config</code>.</p>
+
+    <h3>¿Dónde encuentro los informes Wi-Fi y el protocolo de los perfiles Wi-Fi?</h3>
+    <p>Ambos están en la carpeta de registros, por defecto <code>Logs\</code> junto a <code>sit-lsc-start.exe</code>. Además, el informe Wi-Fi se abre en el navegador justo después de crearlo.</p>
+
+    <h3>En la consulta de dominio falta el país</h3>
+    <p>El país, la red y el rango de direcciones proceden del registro (p. ej. RIPE). Si no es accesible, por ejemplo porque un firewall o un proxy bloquea la consulta, el programa solo muestra el proveedor de la lista integrada.</p>
+
+    <h3>En la consulta de dominio, el país no coincide con el proveedor</h3>
+    <p>El país es aquel en el que está registrada la red del servidor. Las grandes empresas registran a menudo sus redes en su sede central, aunque el servidor esté en un centro de datos de otro país. Véase el apartado 7.</p>
+
+  </div>
+
+  <div class="box" style="background:#EBF5FB; text-align:center; padding:24px;">
+    <p style="font-size:15px; font-weight:600; color:#2C3E50; margin-bottom:8px;">
+      ¿Le ha resultado útil esta herramienta?</p>
+    <p style="color:#7F8C8D; margin-bottom:16px;">
+      El S-IT LAN Device Scanner se desarrolla y mantiene de forma gratuita.<br> Un pequeño donativo ayuda a seguir desarrollando la herramienta. ¡Muchas gracias! 🙏</p>
+    <a href="https://www.paypal.com/donate/?business=tool-entwicklung%40sattler-it.de&currency_code=EUR"
+       target="_blank"
+       style="display:inline-block; background:#009CDE; color:#fff; font-weight:700;
+              font-size:15px; padding:10px 28px; border-radius:6px;
+              text-decoration:none;">
+      ☕ Donar con PayPal
+    </a>
+    <p style="margin-top:10px; font-size:11px; color:#95A5A6;">
+      <a href="mailto:tool-entwicklung@sattler-it.de"
+         style="color:#95A5A6;">tool-entwicklung@sattler-it.de</a></p>
+  </div>
+
+</div>
+
+<footer>
+  S-IT LAN Device Scanner &nbsp;•&nbsp; Versión 4.2
+  &nbsp;•&nbsp; © 2026 Sattler IT-Service, Greifenstein &nbsp;•&nbsp;
+  Autor: Hans Udo Sattler &nbsp;•&nbsp; Traducción al checo: RQ68 &nbsp;•&nbsp; Gracias a todos los usuarios que ayudaron en las pruebas con escaneos de sus propias redes<br>
+  <a href="https://sattlerit.github.io/sit-lanscanner/">Página del proyecto</a>
+  &nbsp;•&nbsp;
+  <a href="Lizenz-Disclaimer.txt">Exención de responsabilidad</a>
+  &nbsp;•&nbsp;
+  <a href="mailto:tool-entwicklung@sattler-it.de">tool-entwicklung@sattler-it.de</a>
+</footer>
+
+</body>
+</html>
