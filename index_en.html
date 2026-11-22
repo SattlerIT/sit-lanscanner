@@ -40,7 +40,9 @@
       border: 1px solid rgba(255,255,255,.2); color: var(--light);
       font-size: 12px; padding: 5px 14px; border-radius: 20px; white-space: nowrap;
     }
-    .header-lang { color: var(--light); font-size: 12px; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; white-space: nowrap; }
+    .header-row2 { flex-basis: 100%; display: flex; }
+    .header-row2 .header-badge { margin-left: 0; }
+    .header-lang { margin-left: auto; color: var(--light); font-size: 12px; text-decoration: none; padding: 5px 12px; border: 1px solid rgba(255,255,255,.2); border-radius: 20px; white-space: nowrap; }
     .header-lang:hover { border-color: rgba(255,255,255,.6); }
     .divider { height: 3px; background: var(--red); }
 
@@ -51,7 +53,8 @@
       display: grid; grid-template-columns: 1fr 1fr; gap: 40px;
       align-items: center; padding-top: 32px;
     }
-    .hero h1 { font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px; line-height: 1.4; }
+    .hero h1 { font-size: 24px; font-weight: 600; color: #fff; margin-bottom: 14px; line-height: 1.35; }
+    .hero h1 .h1-sub { display: block; font-size: 16px; font-weight: 400; color: var(--border); margin-top: 6px; }
     .hero p  { color: var(--border); font-size: 14px; line-height: 1.7; margin-bottom: 24px; }
     .btn-download {
       display: inline-block; background: var(--green); color: #fff;
@@ -168,6 +171,14 @@
     footer a { color: var(--border); text-decoration: none; }
     footer a:hover { color: #fff; }
 
+    @media (max-width: 900px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 28px; }
+      .header-lang { margin-left: 0; }
+    }
+    @media (max-width: 640px) {
+      .logo-sit, .logo-name { font-size: 28px; }
+      .hero h1 { font-size: 21px; }
+    }
     @media (max-width: 640px) {
       .hero-inner { grid-template-columns: 1fr; }
       .gallery    { grid-template-columns: 1fr; }
@@ -190,8 +201,8 @@
       <span class="logo-name">&nbsp;LAN Device Scanner</span>
     </div>
     <span class="header-sub">Network analysis &amp; device detection</span>
-    <span class="header-badge">Freeware &middot; v4.2 &middot; Windows &nbsp;🌍 🇩🇪 🇬🇧 🇳🇱 🇪🇸 🇫🇷 🇮🇹 🇵🇱 🇭🇷 🇨🇿 &nbsp;9 languages</span>
     <a class="header-lang" href="index.html" title="Deutsche Version">🇩🇪 Deutsch</a>
+    <div class="header-row2"><span class="header-badge">Freeware &middot; v4.2 &middot; Windows &nbsp;🌍 🇩🇪 🇬🇧 🇳🇱 🇪🇸 🇫🇷 🇮🇹 🇵🇱 🇭🇷 🇨🇿 &nbsp;9 languages</span></div>
   </div>
 </header>
 <div class="divider"></div>
@@ -200,11 +211,11 @@
 <div class="hero">
   <div class="hero-inner">
     <div>
-      <h1>Find, identify and check the devices on your network<br>&ndash; LAN, Wi-Fi and internet in one tool</h1>
+      <h1>Find and check network devices<span class="h1-sub">LAN, Wi-Fi and internet in one tool</span></h1>
       <p>The S-IT LAN Device Scanner finds the devices on your network and shows manufacturer, operating system, open ports, the <strong>device type</strong> and the <strong>name a device reports about itself</strong>. It also checks internet reachability, measures <strong>connection quality</strong> and LAN throughput, shows the <strong>Wi-Fi profiles</strong> together with a comparison of the Wi-Fi standards, and names the providers behind a domain. Windows network settings and firewall rules are checked and repaired at the push of a button. New in version 4.2: nine languages, a follow-up search for missing devices, and one setup for installed and portable use.</p>
       <a href="https://github.com/SattlerIT/sit-lanscanner/releases/latest/download/sit-lsc-V4-2_latest.zip" class="btn-download">⬇ Download v4.2</a>
       <a href="S-IT-LanScanner-Hilfe_en.html" target="_blank" class="btn-secondary" style="margin-left:12px;">📖 Online help</a>
-      <span class="btn-hint">Version 4.2 &middot; The download contains the setup and the program archive. Please extract the zip completely and start <strong>S-IT-LanScanner-Setup.exe</strong> &ndash; the setup installs the program or extracts it as a portable version, for example to a USB stick.</span>
+      <span class="btn-hint">Version 4.2 &middot; The download contains the setup and the program archive. Please extract the zip completely and start <strong style="white-space:nowrap">S-IT-LanScanner-Setup.exe</strong> &ndash; the setup installs the program or extracts it as a portable version, for example to a USB stick.</span>
     </div>
     <div class="hero-screenshot">
       <img src="Screenshots/liste-en.png" alt="S-IT LAN Device Scanner – device list with device type and device name">
