@@ -68,6 +68,9 @@
       border-radius: 4px; text-decoration: none; transition: border-color .2s;
     }
     .btn-secondary:hover { border-color: rgba(255,255,255,.6); }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+    .btn-row .btn-download { padding: 12px 22px; }
+    .btn-row .btn-secondary { padding: 12px 14px; }
     .btn-hint { display: block; margin-top: 14px; font-size: 12px; color: var(--light); opacity: .75; line-height: 1.5; }
     .hero-screenshot {
       border-radius: 6px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,.4);
@@ -213,8 +216,11 @@
     <div>
       <h1>Geräte im Netzwerk finden und&nbsp;prüfen<span class="h1-sub">LAN, WLAN und Internet in einem Werkzeug</span></h1>
       <p>Der S-IT LAN Device Scanner findet die Geräte im Netzwerk und zeigt Hersteller, Betriebssystem, offene Ports, den <strong>Gerätetyp</strong> und den <strong>Namen, den ein Gerät selbst meldet</strong>. Dazu prüft er die Internet-Erreichbarkeit, misst <strong>Verbindungsqualität</strong> und LAN-Durchsatz, zeigt die <strong>WLAN-Profile</strong> samt Vergleich der WLAN-Standards und nennt die Anbieter hinter einer Domain. Windows-Netzwerkeinstellungen und Firewall-Regeln prüft und repariert er auf Knopfdruck. Neu in Version 4.2: neun Sprachen, eine Nachsuche für fehlende Geräte und ein Setup für Installation und portable Nutzung.</p>
-      <a href="https://github.com/SattlerIT/sit-lanscanner/releases/latest/download/sit-lsc-V4-2_latest.zip" class="btn-download">⬇ Download v4.2</a>
-      <a href="S-IT-LanScanner-Hilfe.html" target="_blank" class="btn-secondary" style="margin-left:12px;">📖 Hilfe online</a>
+      <div class="btn-row">
+        <a href="https://github.com/SattlerIT/sit-lanscanner/releases/latest/download/sit-lsc-V4-2_latest.zip" class="btn-download">⬇ Download v4.2</a>
+        <a href="S-IT-LanScanner-Hilfe.html" target="_blank" class="btn-secondary">📖 Hilfe online</a>
+        <a href="Manual/S-IT-LanScanner-Handbuch-v4.2.pdf" target="_blank" class="btn-secondary">📘 Handbuch (PDF)</a>
+      </div>
       <span class="btn-hint">Version 4.2 &middot; Der Download enthält das Setup und das Programmarchiv. Bitte die Zip vollständig entpacken und <strong style="white-space:nowrap">S-IT-LanScanner-Setup.exe</strong> starten &ndash; das Setup installiert das Programm oder entpackt es portabel, zum Beispiel auf einen USB&#8209;Stick.</span>
     </div>
     <div class="hero-screenshot">
@@ -361,7 +367,7 @@
 
   <!-- DOWNLOAD -->
   <div class="section-title">⬇ Download &amp; Dokumentation</div>
-  <p style="font-size:14px; margin-bottom:16px;">Die aktuelle Version steht im <a href="https://github.com/SattlerIT/sit-lanscanner/releases" style="color:var(--blue)">Release-Bereich auf GitHub</a>. Die Hilfe ist im Programm enthalten und lässt sich auch hier ohne Download lesen:</p>
+  <p style="font-size:14px; margin-bottom:16px;">Die aktuelle Version steht im <a href="https://github.com/SattlerIT/sit-lanscanner/releases" style="color:var(--blue)">Release-Bereich auf GitHub</a>. Das <strong>Handbuch</strong> erklärt auf 62 Seiten jeden Reiter, dazu Grundwissen zu Heimnetz, WLAN und Fehlersuche: <a href="Manual/S-IT-LanScanner-Handbuch-v4.2.pdf" target="_blank" style="color:var(--blue)">Deutsch (PDF)</a> &middot; <a href="Manual/S-IT-LanScanner-Manual-v4.2.pdf" target="_blank" style="color:var(--blue)">English (PDF)</a>. Die Hilfe ist im Programm enthalten und lässt sich auch hier ohne Download lesen:</p>
   <div class="help-langs">
     <a href="S-IT-LanScanner-Hilfe.html" target="_blank">🇩🇪 Deutsch</a>
     <a href="S-IT-LanScanner-Hilfe_en.html" target="_blank">🇬🇧 English</a>
